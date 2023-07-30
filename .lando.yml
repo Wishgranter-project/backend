@@ -1,0 +1,37 @@
+name: player-backend
+recipe: lamp
+config:
+  php: '8.1'
+  webroot: ./web/
+  composer_version: '2.5.1'
+  database: mysql:5.7
+  xdebug: true
+  config:
+    server: ./.lando/
+    php: ./.lando/php/php.ini
+services:
+
+  # Unset the XDEBUG_MODE environment variable, this way the xdebug.mode
+  # setting in .lando/php/php.ini will not be ignored.
+  appserver:
+    overrides:
+      environment:
+        XDEBUG_MODE:
+
+tooling:
+
+  # Enable xdebug profiling by adding a new .ini file with an overriding
+  # xdebug.mode setting and reloading apache2.
+  profiling-on:
+    service: appserver
+    description: Enable XDebug profiling for Apache.
+    cmd: "echo 'xdebug.mode = debug,coverage,profile' > z && mv z /usr/local/etc/php/conf.d/zzz-lando-xdebug-profiling.ini && service apache2 reload"
+    user: root
+
+  # Disable xdebug profiling by deleting the file created by the profiling-on
+  # command and reloading apache2.
+  profiling-off:
+    service: appserver
+    description: Disable XDebug profiling for Apache.
+    cmd: "rm /usr/local/etc/php/conf.d/zzz-lando-xdebug-profiling.ini && service apache2 reload"
+    user: root

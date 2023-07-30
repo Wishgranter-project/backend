@@ -1,0 +1,32 @@
+{
+    "name": "adinan-cenci/player-backend",
+    "description": "Backend of my player",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/descriptive-playlist"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/descriptive-manager"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Adinan Cenci",
+            "email": "adinancenci@protonmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "AdinanCenci\\Player\\": "src/"
+        }
+    },
+    "require": {
+        "adinan-cenci/descriptive-manager": "dev-master",
+        "adinan-cenci/router": "dev-master",
+        "adinan-cenci/file-cache": "dev-master"
+    }
+}
