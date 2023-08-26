@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/descriptive-manager.git",
-                "reference": "03699e435d3e3f7294e57440def9ffc36d8070e1"
+                "reference": "5405072ddc8741365a408722970919c9b5314054"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/03699e435d3e3f7294e57440def9ffc36d8070e1",
-                "reference": "03699e435d3e3f7294e57440def9ffc36d8070e1",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/5405072ddc8741365a408722970919c9b5314054",
+                "reference": "5405072ddc8741365a408722970919c9b5314054",
                 "shasum": ""
             },
             "require": {
@@ -56,20 +56,20 @@
                 "source": "https://github.com/adinan-cenci/descriptive-manager/tree/master",
                 "issues": "https://github.com/adinan-cenci/descriptive-manager/issues"
             },
-            "time": "2023-07-30T18:48:01+00:00"
+            "time": "2023-08-26T14:56:10+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-playlist",
-            "version": "v3.0.0",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/descriptive-playlist.git",
-                "reference": "21b2b4455d7139c9c933df334a24c60a1a5849c8"
+                "reference": "8e6af4bd346fe36db3d75af897449787ee9a8ece"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-playlist/zipball/21b2b4455d7139c9c933df334a24c60a1a5849c8",
-                "reference": "21b2b4455d7139c9c933df334a24c60a1a5849c8",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-playlist/zipball/8e6af4bd346fe36db3d75af897449787ee9a8ece",
+                "reference": "8e6af4bd346fe36db3d75af897449787ee9a8ece",
                 "shasum": ""
             },
             "require": {
@@ -109,10 +109,10 @@
                 "json-lines"
             ],
             "support": {
-                "source": "https://github.com/adinan-cenci/descriptive-playlist/tree/v3.0.0",
+                "source": "https://github.com/adinan-cenci/descriptive-playlist/tree/v3.1.0",
                 "issues": "https://github.com/adinan-cenci/descriptive-playlist/issues"
             },
-            "time": "2023-07-26T12:14:48+00:00"
+            "time": "2023-08-26T14:51:48+00:00"
         },
         {
             "name": "adinan-cenci/file-cache",

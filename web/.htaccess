@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} ^/?test/
+	RewriteRule ^.{1,}$   test/index.php   [QSA]
+
+	RewriteCond %{SCRIPT_FILENAME} !-f
+	RewriteCond %{SCRIPT_FILENAME} !-d
+	RewriteRule ^.{1,}$   index.php   [QSA]
+
+</IfModule>

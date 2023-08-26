@@ -9,7 +9,7 @@ use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
 
-class ItemGet extends ControllerBase 
+class ItemRead extends ControllerBase 
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {

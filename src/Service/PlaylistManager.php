@@ -7,6 +7,8 @@ class PlaylistManager extends BaseManager
 {
     public static function create() : self
     {
-        return new self(PLAYLISTS_DIR);
+        return defined('PLAYLISTS_DIR_TEST')
+            ? new self(PLAYLISTS_DIR_TEST)
+            : new self(PLAYLISTS_DIR);
     }
 }

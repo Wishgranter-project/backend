@@ -22,11 +22,15 @@ class PlaylistUpdate extends ControllerBase
         }
 
         $header   = $playlist->getHeader();
+        $header->empty();
+
         $postData = $this->getPostData($request);
 
         foreach ($postData as $k => $v) {
             if ($header->isValidPropertyName($k)) {
                 $header->{$k} = $v;
+            } else {
+                throw new \InvalidArgumentException('Unrecognized property ' . $k);
             }
         }
 

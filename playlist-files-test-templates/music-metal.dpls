@@ -1,0 +1,627 @@
+{"title":"Metal of all kinds","description":""}
+{"artist":"Valanja","title":"Nek Militema","genre":"Metal","uuid":"be360728-4ada-4ab8-adef-c15f303a1880"}
+{"artist":"Valanja","title":"Sola","genre":"Metal","uuid":"d20748d0-6035-4a68-ba78-b74c4f0ca717"}
+{"artist":"Animae Vector","title":"Nigraj kandeloj dancas","genre":"Metal","uuid":"9c672aee-8cf4-427f-b4a8-690b236b219c"}
+{"artist":"Supernova","title":"Pasio en Katen'","genre":"Metal","uuid":"4dadc246-7428-4fdd-b80b-c6ddadedb599"}
+{"artist":"5set5","title":"Vi estis","genre":"Metal","uuid":"bc0745ea-6ea6-42e8-8a61-01f362c6ac5a"}
+{"artist":"Ministry","title":"No Glory","genre":"Metal","uuid":"aec7256b-2ddd-45e3-86d6-58e151a8640a"}
+{"artist":"Ministry","title":"Lies Lies Lies","genre":"Metal","uuid":"d423a88d-12b0-40cd-8a48-aeae744eee00"}
+{"artist":"Human Fortress","title":"Border Raid in Lions March","genre":"Metal","uuid":"f3a0656d-085e-49eb-9c90-662131c6d556"}
+{"artist":"Pyramaze","title":"The Highland","genre":"Metal","uuid":"35485ba7-94ee-4f0e-a3be-bc9ade427a7c"}
+{"artist":"Pyramaze","title":"Melancholy Beast","genre":"Metal","uuid":"ffb25dc5-bbfb-4706-8ea2-4bb619d11b96"}
+{"artist":"Viper","title":"Living for the night","genre":"Metal","uuid":"c65f0dce-07f6-417a-9be7-0be65071adf8"}
+{"artist":"Grave Digger","title":"Rebellion The clans are marching against the law","genre":"Metal","uuid":"73ffb04b-48e0-42a1-82f3-a9865200d809"}
+{"artist":"Cult of Luna","title":"Circle","genre":"Metal","uuid":"0f7a4dcd-2184-4d59-9a67-02a2761cd6d6"}
+{"artist":"Dream Evil","title":"The Book of Heavy Metal","genre":"Metal","uuid":"10c2f663-14e6-4695-8bc9-0997f86fdd8b"}
+{"artist":"Dream Evil","title":"The Chosen ones","genre":"Metal","uuid":"75e6bb6e-a18e-4daa-bbc8-15782280f10e"}
+{"artist":"Manowar","title":"Die for Metal","genre":"Metal","uuid":"46de74b8-247d-4b17-b8eb-7e6c832a8782"}
+{"artist":"Manowar","title":"Hail and Kill","genre":"Metal","uuid":"78adefba-899a-4c2a-8610-c85d44413260"}
+{"artist":"Avantasia","title":"The scarecrow","genre":"Metal","uuid":"1918e650-c02e-47bd-a5d0-b152cd4f0ea6"}
+{"artist":"Avantasia","title":"Farewell","genre":"Metal","uuid":"a6f3d227-1c01-403d-8559-5396fd693efe"}
+{"artist":"Avantasia","title":"Symphony of Life","genre":"Metal","uuid":"dec293c2-5171-4b45-afd9-2d4ceaa2edb2"}
+{"artist":"Centinela","title":"Emisario de fe","genre":"Metal","uuid":"1848c7d0-fa1a-4412-97d7-0083cb0ff728"}
+{"artist":"Halloween","title":"If I could Fly","genre":"Metal","uuid":"a41c69b0-117b-49a5-8059-a11be35d94de"}
+{"artist":"Halloween","title":"I want out","genre":"Metal","uuid":"5005505f-0e57-4e2b-8607-5c2277a2f25e"}
+{"artist":"Savage Circus","title":"Evil Eyes","genre":"Metal","uuid":"abc06e5e-fb6b-4724-aba5-779865bd619f"}
+{"artist":"Stratovarius","title":"Hunting Hight and Low","genre":"Metal","uuid":"17bdd6c4-856f-4886-b1c2-d7b9195220a5"}
+{"artist":"Powerwolf","title":"We Drink Your Blood","genre":"Metal","uuid":"8ea8e740-0243-4eec-abcb-0ba4a9452db8"}
+{"artist":"Axxis","title":"Tales of glory Island","genre":"Metal","uuid":"c626ddaa-71b1-4055-9512-adeefe350a7a"}
+{"artist":"Dio","title":"Holy diver","genre":"Metal","uuid":"f439bf5a-0865-4416-8b62-2c22023d2428"}
+{"artist":"Ghost","title":"Cirice","genre":"Metal","uuid":"9519142b-be59-4b02-9809-597f57dba7f7"}
+{"artist":"Survivor","title":"Burning Heart","genre":"Metal","uuid":"78ef1be3-a28e-47d2-8b77-0aafb9e7bb6e"}
+{"artist":"Pat Benatar","title":"Shadows Of The Night","genre":"Metal","uuid":"fd79c418-4804-4d3a-beb5-84fd41a01f91"}
+{"artist":"Final Chapter","title":"Trace of Fate","genre":"Metal","uuid":"59d3c2f2-f51c-4d1d-8e52-1f2ea29cee46"}
+{"artist":"King Wraith","title":"Poseidon","genre":"Metal","uuid":"df22be07-f0eb-4ec2-bc1d-625f0022b92a"}
+{"artist":"King Wraith","title":"Iliad","genre":"Metal","uuid":"e41176d0-b07d-4b42-bc1c-22c1356345df"}
+{"artist":"King Wraith","title":"Evil and Skulls","genre":"Metal","uuid":"436d7e15-e0b2-4c7c-b386-a95693d26d75"}
+{"artist":"Messenger","title":"Novastorm","genre":"Metal","uuid":"dfc2d5f7-e1a5-4ea4-8831-e2ccf5cc860d"}
+{"artist":"Aldaria","title":"Symphony of the Night","genre":"Metal","uuid":"8de00267-6982-4fb2-a63f-358a735c546b"}
+{"artist":"Magic Kingdom","title":"Guardian angel","genre":"Metal","uuid":"b3223855-0ff5-44f3-87cc-14ce07a67b43"}
+{"artist":"Sinbreed","title":"Creation Of Reality","genre":"Metal","uuid":"fa4f835e-59e4-41da-96a0-aca8845e087a"}
+{"artist":"Sinbreed","title":"Salvation","genre":"Metal","uuid":"4ca569b4-4d8b-4ed7-a78c-42ec153c6ca0"}
+{"artist":"Wisdom","title":"Ravens' night","genre":"Metal","uuid":"ee1adac4-8bf3-4f00-8ccf-5bc361926e37"}
+{"artist":"Wisdom","title":"Marching for liberty","genre":"Metal","uuid":"6e818a71-a390-4684-bb5b-ee730a65ee7e"}
+{"artist":"Eternal of Sweden","title":"Surrounded by Shadows","genre":"Metal","uuid":"ab18c320-b765-4927-b583-2b23c39b034b"}
+{"artist":"Kansas","title":"Carry On Wayward Son","genre":"Metal","uuid":"b0df1eeb-97ee-4c66-8c31-7557cfccc7ef"}
+{"artist":"Iron Maiden","title":"Run To The Hills","genre":"Metal","uuid":"302baa33-9ed7-40ce-beb4-324f3676ffbf"}
+{"artist":"Sweet","title":"Fox On The Run","genre":"Metal","uuid":"1d6f1eaa-cadc-4670-a0c8-71e55b4f5e3f"}
+{"artist":"Blazon Stone","title":"Born to be Wild","genre":"Metal","uuid":"c94f3145-c9b7-4fa8-9683-caef7495ed15"}
+{"artist":"Blazon Stone","title":"Tavern of the Damned","genre":"Metal","uuid":"aee1fa5b-56d2-4a1e-8dae-3453fbe76b27"}
+{"artist":"Blazon Stone","title":"War of the Roses","genre":"Metal","uuid":"62fd0fce-62f7-448b-9163-8ef206f4df62"}
+{"artist":"Blazon Stone","title":"Wind in the Sails","genre":"Metal","uuid":"7255897f-d2c1-45ea-9876-c642186c34d6"}
+{"artist":"Blazon Stone","title":"Voic La Grande Peur","genre":"Metal","uuid":"c0302915-27a6-4b86-aba8-5172790f5f07"}
+{"artist":"Blazon Stone","title":"Stay in Hell","genre":"Metal","uuid":"be67fbb8-4254-40b1-9b56-ee98ca7af8d5"}
+{"artist":"Blazon Stone","title":"Soldier Blue","genre":"Metal","uuid":"ea7b1caa-bf44-4a24-aa86-f9ff1944d549"}
+{"artist":"Blazon Stone","title":"Rock Out!","genre":"Metal","uuid":"08e8f625-4dee-46eb-9e68-3f9428d95637"}
+{"artist":"Blazon Stone","title":"Return to Port Royal","genre":"Metal","uuid":"c36f977c-2f8d-4cb9-88bd-a41e24b34f3d"}
+{"artist":"Blazon Stone","title":"Raiders of Jolly Roger","genre":"Metal","uuid":"99f1de08-7f50-4a91-87d4-23e696e479dc"}
+{"artist":"Blazon Stone","title":"Mask of Gold","genre":"Metal","uuid":"33409617-03a0-4bd5-a03c-c970e68dc6cc"}
+{"artist":"Blazon Stone","title":"Lusitania","genre":"Metal","uuid":"881d1b2e-06ad-4253-80f7-45ff7daf6cf3"}
+{"artist":"Blazon Stone","title":"Into Victory","genre":"Metal","uuid":"1d16895f-72ca-4c16-9496-ceefec92d3ef"}
+{"artist":"Blazon Stone","title":"Heart of Stone","genre":"Metal","uuid":"03e3957a-b780-4c4c-b828-3f4bd37153ef"}
+{"artist":"Blazon Stone","title":"Hanged Drawn and Quartered","genre":"Metal","uuid":"b658a5f4-2553-452f-9221-d478209f1733"}
+{"artist":"Blazon Stone","title":"By Hook or by Crook","genre":"Metal","uuid":"bf95c1f3-151b-4467-a097-83b7a7fc049c"}
+{"artist":"Blazon Stone","title":"Blood of the Fallen","genre":"Metal","uuid":"83c9cd7b-ab84-4fa7-9b81-e2ea841974c3"}
+{"artist":"Blazon Stone","title":"Black Sails on the Horizon","genre":"Metal","uuid":"eeb5726a-cea4-4168-838a-567f62fa6121"}
+{"artist":"Blazon Stone","title":"Black Dawn of the Crossbones","genre":"Metal","uuid":"485b74aa-cdd5-45e2-b3f9-39e5be553925"}
+{"artist":"Blazon Stone","title":"Beasts of War","genre":"Metal","uuid":"74e70cc6-89e0-4f1b-8db4-ea6883db7115"}
+{"artist":"Blazon Stone","title":"Amistad Rebellion","genre":"Metal","uuid":"569d6b40-2c6f-4728-ac75-6e6a95a183b6"}
+{"artist":"Citadel","title":"Inside Four Walls","genre":"Metal","uuid":"b8930fd9-ee36-40cb-a7e7-7d3995a803a2"}
+{"artist":"Peter Crowley Fantasy Dream","title":"Conquest of the Seven Seas","genre":"Metal","uuid":"668f6718-ea70-4a6d-bc27-20d37741442c"}
+{"artist":"Aria","title":"All that has been","genre":"Metal","uuid":"9baa7b19-3ef2-4a32-9a79-114df05338f3"}
+{"artist":"Lost in Grey","title":"Road to Styx","genre":"Metal","uuid":"78b5cf01-5e58-4e05-9c64-9219857c85e1"}
+{"artist":"Grimgotts","title":"Calm Before the Storm","genre":"Metal","uuid":"5f8f8244-f42d-4b07-b6ad-57e208db40c7"}
+{"artist":"Elvellon","title":"Born From Hope","genre":"Metal","uuid":"52671d40-723a-4e5e-b9f6-ecdad1a4d0b1"}
+{"artist":"Crystal Gates","title":"Shadowborn","genre":"Metal","uuid":"f5fa0f8f-b80c-48fc-8c6f-533937a85213"}
+{"artist":"Crystal Gates","title":"Nightmares","genre":"Metal","uuid":"2a61981c-ce00-4e11-abf3-068642338176"}
+{"artist":"Crystal Gates","title":"Soul of Rain","genre":"Metal","uuid":"d659603a-7b22-488a-a46e-b98cd39c0b76"}
+{"artist":"Icewind Tales","title":"To The Stars","genre":"Metal","uuid":"4f07f8ac-f725-4e9e-ad0d-76ec59870bbb"}
+{"artist":"Pythia","title":"The Key","genre":"Metal","uuid":"7b64649c-3def-4bac-bc12-ff30e6a9349f"}
+{"artist":"Pythia","title":"Army of the Damned","genre":"Metal","uuid":"6d27b3a2-d440-4668-92a9-1bbffd854db9"}
+{"artist":"Pythia","title":"The Highwayman","genre":"Metal","uuid":"783a4b6f-6e78-4e6c-9534-7c54d9e4b3b2"}
+{"artist":"Pythia","title":"Eternal Darkness","genre":"Metal","uuid":"bad69fc6-d8f2-4d35-aa53-a4e6f96194b5"}
+{"artist":"Pythia","title":"Cry of our Nation","genre":"Metal","uuid":"723bb6ff-c0d4-4925-87e4-228b7a2947b7"}
+{"artist":"Claymorean","title":"Rage of the White Wolf","genre":"Metal","uuid":"c9864e41-51bb-4bdc-92c4-84572b6b027a"}
+{"artist":"Claymorean","title":"Gods of Chaos","genre":"Metal","uuid":"a170b5bb-3269-4453-b1a6-4600080bd745"}
+{"artist":"Claymorean","title":"Blood of the Dragon","genre":"Metal","uuid":"dfb6382e-30da-40cb-8eae-706c8ab7ee41"}
+{"artist":"Claymorean","title":"Mystical Realm (Deorum in absentia)","genre":"Metal","uuid":"a7b72eed-3752-4b14-a26e-5e92ebd88380"}
+{"artist":"Claymorean","title":"Old Mountain","genre":"Metal","uuid":"7005e917-ba5d-4d45-9bb6-0bced3d69943"}
+{"artist":"Claymorean","title":"Blood-Red Shield","genre":"Metal","uuid":"f46a43a7-6784-435e-be32-b054e9619775"}
+{"artist":"Claymorean","title":"Aeons of Revelation","genre":"Metal","uuid":"b024d756-d7b3-46c8-b5d4-7c2eb89a387d"}
+{"artist":"Claymorean","title":"Battle in the Sky","genre":"Metal","uuid":"636704c7-76bb-44cd-af24-af7995078605"}
+{"artist":"Nyame","title":"I Will Be","genre":"Metal","uuid":"469ecffd-dab7-49be-a46c-53e83c03a9b2"}
+{"artist":"Logar's Diary","title":"Return to Bartertown","genre":"Metal","uuid":"dfe06765-082a-4162-a5b5-2ca0484aa77d"}
+{"artist":"Veonity","title":"When Humanity is Gone","genre":"Metal","uuid":"279e8f64-2f1c-49e0-8ba8-f3fa82681b1d"}
+{"artist":"Soulitude","title":"We Rise","genre":"Metal","uuid":"32bfc1fb-cea5-430d-b2c2-59acb9328031"}
+{"artist":"Dyecrest","title":"First Born Angel","genre":"Metal","uuid":"8a57f4ac-1a8b-4001-af7d-83daf129b965"}
+{"artist":"Alkonost","title":"\u0420\u0435\u043a\u0430","genre":"Metal","uuid":"c0c7eb06-c412-4102-8883-f870bd8ab963"}
+{"artist":"Alkonost","title":"Rusalka","genre":"Metal","uuid":"e75f85b6-4064-4fa3-9065-ae3e0c52df9f"}
+{"artist":"ToxicRose","title":"Reckless Society","genre":"Metal","uuid":"cf976f67-9647-4a0b-9d6e-83a9a2c414b5"}
+{"artist":"Lonewolf","title":"A Call to Wolves","genre":"Metal","uuid":"34056302-9fed-4d3d-9410-40b3f755cccd"}
+{"artist":"Lonewolf","title":"Wolfsblut","genre":"Metal","uuid":"3e142a16-4b42-4950-b25e-867d69e10fd9"}
+{"artist":"Leaves' Eyes","title":"Jomsborg","genre":"Metal","uuid":"5c5e0f6e-cc94-4c0d-b6d0-eeaead184945"}
+{"artist":"Leaves' Eyes","title":"Across the Sea","genre":"Metal","uuid":"2f01a82a-f8aa-4717-b87c-34ea1f99b2e9"}
+{"artist":"Leaves' Eyes","title":"Sacred Vow","genre":"Metal","uuid":"c1aece1b-b6e0-4606-a8ce-f66d1f51e261"}
+{"artist":"Leaves' Eyes","title":"Edge of Steel","genre":"Metal","uuid":"b27f21f0-d21f-4758-a21d-18de7ed574c1"}
+{"artist":"Leaves' Eyes","title":"The Battle of Maldon","genre":"Metal","uuid":"6941890f-656d-401c-aeb2-de9871ae965f"}
+{"artist":"Nahtram","title":"Stormroad","genre":"Metal","uuid":"eedca1a3-f3a8-4517-ac54-5a94f3d08065"}
+{"artist":"Nahtram","title":"Autumnal Traces","genre":"Metal","uuid":"91f2ce15-3ef3-4190-b9a3-dc4caaf43c55"}
+{"artist":"Nahtram","title":"Into Crow's Woods","genre":"Metal","uuid":"322cdac0-7b6f-4828-9849-3491813bf9c3"}
+{"artist":"Grailknights","title":"Shadow of the Mountain","genre":"Metal","uuid":"3c53164c-3254-46e3-9fad-fe96f7047f8a"}
+{"artist":"Symphony of Tragedy","title":"Heroes of the World","genre":"Metal","uuid":"3ab14609-cb1a-4392-96a0-80ae67e620de"}
+{"artist":"Power Wolf","title":"Die, die, Crucicy","genre":"Metal","uuid":"b3a64649-2f56-404a-a1fe-8c12a2adad00"}
+{"artist":"Mystic Prophecy","title":"Ravenlord","genre":"Metal","uuid":"f6519251-6fd8-4163-8aee-791a23ac913f"}
+{"artist":"Black Sabbath","title":"Iron Man","genre":"Metal","uuid":"f59be3f6-90fd-425b-8a0f-7a9d33529899"}
+{"artist":"Alestorm","title":"Keelhauled","genre":"Metal","uuid":"373d3b46-f003-46c7-8392-6de4f5c82c8a"}
+{"artist":"Divine Ascension","title":"Bittersweet Divide","genre":"Metal","uuid":"cdece88e-2a2d-4f27-a4f4-0e2fb5f32354"}
+{"artist":"HMKids","title":"Blood of Sanguinius","genre":"Metal","uuid":"a44620a3-9cbd-4e96-8fc2-c4928b764656"}
+{"artist":"Tad Morose","title":"Sword of Retribution","genre":"Metal","uuid":"7f3b3f32-1d32-40da-9e6a-0def991ae176"}
+{"artist":"Count Raven","title":"Hippies Triumph","genre":"Metal","uuid":"8f1205b6-79a4-4569-9095-6bd0841dd707"}
+{"artist":"While Heaven Wept","title":"Vessel","genre":"Metal","uuid":"7e5cba19-0251-42bb-8031-4387598cf410"}
+{"artist":"Northern Flame","title":"Glimpse of Hope","genre":"Metal","uuid":"9edf9fb8-cc21-41a2-b523-958c4dbf4776"}
+{"artist":"Stargazery","title":"Judah The lion","genre":"Metal","uuid":"f7701d8c-e5ad-4b6f-bed8-044f8a564268"}
+{"artist":"Spellblast","title":"Goblin's Song","genre":"Metal","uuid":"a9b8931f-9a50-4cbf-ae95-422d2b468460"}
+{"artist":"Chastain","title":"Angel of mercy","genre":"Metal","cover":"HammerFall","uuid":"d1060a3a-d505-4bd0-98c8-a8c2d8dd95ea"}
+{"artist":"Wolf Holfmann","title":"Bolero","genre":"Metal","uuid":"2e494c22-0f91-43b7-9056-f5b06761f7be"}
+{"artist":"Wolf Holfmann","title":"In the Hall of the Mountain king","genre":"Metal","uuid":"73033b59-91e0-4705-bf90-2b77215fe4c2"}
+{"artist":"Everfrost","title":"Three Tier Terror","genre":"Metal","uuid":"be5bdc0a-9c07-416c-b40b-96e2d582ecaa"}
+{"artist":"Everfrost","title":"The Glades and the Cradle","genre":"Metal","uuid":"deae0518-981b-458b-af08-667cf7def520"}
+{"artist":"Everfrost","title":"Cold Night Remedy","genre":"Metal","uuid":"72ba7e71-881a-4e02-abe1-a3648ed689c0"}
+{"artist":"Everfrost","title":"Clockwork Wilderness","genre":"Metal","uuid":"c912feea-34f7-4cd0-a935-23c048208a60"}
+{"artist":"Evertale","title":"All Hail the Crimson","genre":"Metal","uuid":"8ae84a0e-4ff0-4c88-9ae3-5abe923d664a"}
+{"artist":"Evertale","title":"Chapter 666","genre":"Metal","uuid":"052bf521-fceb-47ed-9676-deba80faffd5"}
+{"artist":"Evertale","title":"The Great Brotherwar","genre":"Metal","uuid":"49d723a3-a2fe-4dc7-b119-f16de66c3fbd"}
+{"artist":"Evertale","title":"Empire Rising","genre":"Metal","uuid":"9adcb68a-e1ef-4edc-86b0-5f40e9ae765e"}
+{"artist":"Evertale","title":"The Swarm","genre":"Metal","uuid":"1bc4598e-406b-4731-adca-ff1b08e7a65d"}
+{"artist":"Evertale","title":"Take To The Sky","genre":"Metal","cover":"Van Canto","uuid":"c0b0055d-a264-47f1-a464-1aecf58a010f"}
+{"artist":"Dalriada","title":"Hajd\u00fat\u00e1nc","genre":"Metal","uuid":"4472f584-99dc-4555-9dff-2e203784cfaa"}
+{"artist":"Angra","title":"Carry on","genre":"Metal","uuid":"65e1a668-c6f0-4289-85be-5ee3f5203b48"}
+{"artist":"Angra","title":"Heroes of sand","genre":"Metal","uuid":"14d63b6b-6e27-4f9c-a5dd-627248ffbf04"}
+{"artist":"Angra","title":"Nova Era","genre":"Metal","uuid":"f066c2ba-7c3e-495f-8bc8-b9371debc454"}
+{"artist":"Angra","title":"Rebirth","genre":"Metal","uuid":"141d6956-3264-4998-b382-5a3725695deb"}
+{"artist":"Angra","title":"Spread your fire","genre":"Metal","uuid":"307796ad-a314-4679-9b7a-424cf0c79963"}
+{"artist":"Angra","title":"Waiting silence","genre":"Metal","uuid":"e66f4a47-8af0-4222-a198-2a248cc3d3fd"}
+{"artist":"Angra","title":"Wuthering Heights","genre":"Metal","uuid":"feddcc76-9f39-4ada-95da-142b610466c9"}
+{"artist":"Angra","title":"Evil Warning","genre":"Metal","uuid":"b3741109-4911-4afc-8e87-2ecd122f9c5c"}
+{"artist":"Angra","title":"Temple Of Hate","genre":"Metal","uuid":"1be1029d-cc83-4fed-9e75-3bf4207c19e7"}
+{"artist":"Almah","title":"Bullets on the Altar","genre":"Metal","uuid":"b9757c8e-ecc2-4589-8fc8-580753b7e416"}
+{"artist":"Almah","title":"Beyound tomorrow","genre":"Metal","uuid":"3132b117-b85d-4832-b5d7-c725eaa97702"}
+{"artist":"Almah","title":"All I am","genre":"Metal","uuid":"034604e8-b6e3-44bd-b5f2-97a09ab94624"}
+{"artist":"Almah","title":"Torn","genre":"Metal","uuid":"54057668-cb35-4d13-81de-1443dc759208"}
+{"artist":"Almah","title":"Late Night in '85","genre":"Metal","uuid":"e553a02a-1267-4e23-8cb4-7d4c1ba1e325"}
+{"artist":"Almah","title":"Supermind","genre":"Metal","uuid":"8a23fdd4-b85d-42e9-b87d-8ae4819a80e5"}
+{"artist":"Almah","title":"Break all the welds","genre":"Metal","uuid":"67a45b1b-38bf-4229-909b-ea80c2f0768b"}
+{"artist":"Apocalyptica","title":"The Unforgiven","genre":"Metal","uuid":"321d95d4-d5dd-4634-adcd-3e5a7faeacaa"}
+{"artist":"Apocalyptica","title":"Nothing else matters","genre":"Metal","uuid":"9000206a-95bc-416a-aee1-001c33df16a7"}
+{"artist":"Apocalyptica","title":"One","genre":"Metal","uuid":"92ab78d2-820b-419b-87f0-4ff487af34d3"}
+{"artist":"Apocalyptica","title":"Fade to black","genre":"Metal","uuid":"67ea1014-6645-4309-b6a8-9cfb1484989e"}
+{"artist":"Apocalyptica","title":"Somewhere around nothing","featuring":"Dave Lombardo","genre":"Metal","uuid":"a67046fc-8844-4da3-8f29-f0021a6165be"}
+{"artist":"Apocalyptica","title":"Drive","genre":"Metal","uuid":"ba4596e4-0720-4ffd-a753-82a7de3c0a36"}
+{"artist":"Demons & Wizards","title":"Blood on my hands","genre":"Metal","uuid":"26e2bf2c-3252-4bc9-916d-c40a33581316"}
+{"artist":"Demons & Wizards","title":"Crimson king","genre":"Metal","uuid":"96bf19c6-f2f6-416c-82f6-7caba2279ac0"}
+{"artist":"Demons & Wizards","title":"Dorian","genre":"Metal","uuid":"68f7eb8e-d020-47be-8515-4991df0a82ef"}
+{"artist":"Demons & Wizards","title":"Heavens Denies","genre":"Metal","uuid":"8c9b9241-4977-4308-a921-178d95f3fb01"}
+{"artist":"Demons & Wizards","title":"Love's Tragedy Asunder","genre":"Metal","uuid":"292384f7-92d4-4958-aae7-af480e950d50"}
+{"artist":"Demons & Wizards","title":"Path to Glory","genre":"Metal","uuid":"65bcb781-de4e-46a0-a857-2c34cf99bfbf"}
+{"artist":"Demons & Wizards","title":"Poor man's crusade","genre":"Metal","uuid":"53817fac-0352-40f4-b4c3-5eb5f9c0b0fc"}
+{"artist":"Demons & Wizards","title":"Spatial architects","genre":"Metal","uuid":"61c1526d-8ea8-457e-9c8a-2044c8dbab94"}
+{"artist":"Disturbed","title":"I'm Alive","genre":"Metal","uuid":"0f1c9119-1a85-4a77-ade6-05382171f371"}
+{"artist":"Disturbed","title":"Divide","genre":"Metal","uuid":"b3f2c7a8-5039-468b-a228-83b950503fba"}
+{"artist":"Disturbed","title":"Pain Redefined","genre":"Metal","uuid":"bf835231-db74-4511-8c32-dd37640cec21"}
+{"artist":"Disturbed","title":"Stricken","genre":"Metal","uuid":"49b01d80-fabe-4f78-be9a-88c779d3c4be"}
+{"artist":"Disturbed","title":"Indestructible","genre":"Metal","uuid":"8cc196b3-03df-41d6-8793-20348dfc956f"}
+{"artist":"Disturbed","title":"Never Again","genre":"Metal","uuid":"bf53c1d0-0e1a-4d0d-b831-913a3e959868"}
+{"artist":"Disturbed","title":"Cruified","genre":"Metal","uuid":"a0af5d04-eb23-417c-a577-f2e0339fd503"}
+{"artist":"Disturbed","title":"Believe","genre":"Metal","uuid":"63355443-4244-4dc8-909c-60c60e9c2a7e"}
+{"artist":"Edguy","title":"The piper never dies","genre":"Metal","uuid":"5aa196e4-f22e-419e-a007-15ead5c10a24"}
+{"artist":"Edguy","title":"King of fools","genre":"Metal","uuid":"110e7738-47db-42c3-9e49-631d86913da3"}
+{"artist":"Edguy","title":"Ministry of saints","genre":"Metal","uuid":"b51c6086-b7a3-40f0-a80d-ebb44dea3021"}
+{"artist":"Edguy","title":"Dragonfly","genre":"Metal","uuid":"b3a6d44d-0203-4d12-bcba-6b8a3b1dc9c5"}
+{"artist":"Edguy","title":"Down to the devil","genre":"Metal","uuid":"d3ddd7a8-ce35-41b7-8b6b-57dea1ffbcc6"}
+{"artist":"Emerald Sun","title":"We won't fall","genre":"Metal","uuid":"a332dbad-e086-43e2-b65f-fe36bcd4c6a8"}
+{"artist":"Emerald Sun","title":"Chasing the wind","genre":"Metal","uuid":"d35e206f-91c7-4208-9d45-3a0656ec4d62"}
+{"artist":"Emerald Sun","title":"planet metal","genre":"Metal","uuid":"fe56c3f5-a8bf-49d8-b2c7-2fff1aff00fc"}
+{"artist":"Firewind","title":"Insanity","genre":"Metal","uuid":"7e6c14f2-a19e-4ebf-ad6f-e40b59c45f7e"}
+{"artist":"Firewind","title":"Burning Earth","genre":"Metal","uuid":"2b48a795-e6fe-4d5e-9830-732019822ce4"}
+{"artist":"Firewind","title":"My loneliness","genre":"Metal","uuid":"f7ce12e1-53d6-4f81-bdfb-cfae38f9ae34"}
+{"artist":"Firewind","title":"Losing my mind","genre":"Metal","uuid":"8a4e413a-e0eb-4af4-821b-3b6dbf7214a6"}
+{"artist":"Firewind","title":"Into The Fire","genre":"Metal","uuid":"2e74c88e-864d-45f7-9613-b6ab16dcb30c"}
+{"artist":"Firewind","title":"Head Up High","genre":"Metal","uuid":"de1b1785-6374-4f2d-a436-9a3475e982c1"}
+{"artist":"Firewind","title":"Mercenary Man","genre":"Metal","uuid":"2f153385-48d0-444f-a8c4-84c93f653fa6"}
+{"artist":"Firewind","title":"Angels Forgive Me","genre":"Metal","uuid":"4b14954e-d3a3-4544-a902-62191cecb6c7"}
+{"artist":"Firewind","title":"Remembered","genre":"Metal","uuid":"76b3d79e-1300-4008-8fea-e29d4b7e6a78"}
+{"artist":"Firewind","title":"Life Foreclosed","genre":"Metal","uuid":"493d016a-c65b-4067-a514-61869e14726a"}
+{"artist":"Firewind","title":"I am the anger","genre":"Metal","uuid":"1e192fdc-fa35-4d97-9fe8-52883c7c563d"}
+{"artist":"Firewind","title":"Chariot","genre":"Metal","uuid":"539315d4-fed3-4b1a-991a-b94bd1cfb139"}
+{"artist":"Firewind","title":"Hate World Hero","genre":"Metal","uuid":"e5e48f3a-37f8-44ee-8c16-94de2d0f75eb"}
+{"artist":"Firewind","title":"Beware of the Beast","genre":"Metal","uuid":"293937b3-02ef-4dc7-bee6-89b2a05c64b9"}
+{"artist":"Firewind","title":"Hate World Hero","genre":"Metal","uuid":"0a338b47-8876-467f-9d56-7e152708c630"}
+{"artist":"Gamma ray","title":"Damn the machine","genre":"Metal","uuid":"cb80a198-9bdc-464b-9e4f-d698d1a78aac"}
+{"artist":"Gamma ray","title":"Valley of the kings","genre":"Metal","uuid":"a66bf376-e25d-44e8-877a-bcfaf134ed59"}
+{"artist":"Gamma ray","title":"Armageddon","genre":"Metal","uuid":"46e38fcc-1cfd-4989-8997-5f8902d592e3"}
+{"artist":"Gamma ray","title":"Lost Angels","genre":"Metal","uuid":"1dfc1fb4-19b4-4a89-af44-16d165042c47"}
+{"artist":"HammerFall","title":"A legend reborn","genre":"Metal","uuid":"27fc03e7-2cba-4b5e-a8a5-e82ef8041953"}
+{"artist":"HammerFall","title":"Always will be","genre":"Metal","uuid":"a3313f60-8c74-460f-acb6-163e7f51e192"}
+{"artist":"HammerFall","title":"Angel of mercy","genre":"Metal","uuid":"d0e34dd8-3053-427a-9aeb-f9385da9aa0c"}
+{"artist":"HammerFall","title":"Any means necessary","genre":"Metal","uuid":"2c2f31d6-4964-4ec2-8aa2-f466b1436fe5"}
+{"artist":"HammerFall","title":"Bushido","genre":"Metal","uuid":"b0ea5671-8ea9-4ce4-a1be-7d24ca587134"}
+{"artist":"HammerFall","title":"Crimson Thunder","genre":"Metal","uuid":"86461cc5-2dae-481f-bd86-0cb8d6912153"}
+{"artist":"HammerFall","title":"Genocide","genre":"Metal","uuid":"4df45021-0dcc-43ef-8ea8-1f08ff69de2d"}
+{"artist":"HammerFall","title":"Glory of the brave","genre":"Metal","uuid":"1735e401-56fe-4fbb-9cd0-051b44c49a20"}
+{"artist":"HammerFall","title":"Hearts on fire","genre":"Metal","uuid":"c2d8c70a-9e84-437c-bd0b-20ee147df3b6"}
+{"artist":"HammerFall","title":"Hero's return","genre":"Metal","uuid":"f78a93f2-c676-4860-b23c-0e6341c8133a"}
+{"artist":"HammerFall","title":"I believe","genre":"Metal","uuid":"69e17a4d-a688-4fff-83b1-7ee9248970df"}
+{"artist":"HammerFall","title":"Last man standing","genre":"Metal","uuid":"48cc2a9f-f259-43b3-8261-1ecb62f1d2e7"}
+{"artist":"HammerFall","title":"Keep the flame burning","genre":"Metal","uuid":"80ee6a57-83d2-4ac3-884f-58734d95cccf"}
+{"artist":"HammerFall","title":"Steel meets steel","genre":"Metal","uuid":"8fb03d5b-bf4e-4e5b-a3de-4a5ce416bc21"}
+{"artist":"HammerFall","title":"Stone cold","genre":"Metal","uuid":"3021229a-9fca-43f6-bcb1-893149e51cd4"}
+{"artist":"HammerFall","title":"Templars of steel","genre":"Metal","uuid":"f16c44d0-4839-4f0c-be79-14b8c26fe73a"}
+{"artist":"HammerFall","title":"The way of the warrior","genre":"Metal","uuid":"52d107fe-ba67-487b-8b87-04964bd90ded"}
+{"artist":"HammerFall","title":"I want out","genre":"Metal","cover":"Halloween","uuid":"4c073c2a-c2ac-4ad7-b427-106701944e85"}
+{"artist":"Iron Fire","title":"Metal Messiah","genre":"Metal","uuid":"3d78a466-3eaa-4592-8e32-5a9f963a3c79"}
+{"artist":"Iron Fire","title":"Break the speel","genre":"Metal","uuid":"5ed79ddb-f8d0-4fcb-80b3-c3112df67faf"}
+{"artist":"Iron Fire","title":"Tornado of Sickness","genre":"Metal","uuid":"a6ac0f8c-55e6-4412-aeed-3002dcc37715"}
+{"artist":"Metallica","title":"One","genre":"Metal","uuid":"2bc5d020-e0cc-4941-b8a6-10c60b3dd683"}
+{"artist":"Metallica","title":"Fade to black","genre":"Metal","uuid":"752a2a1d-fe2d-4275-b12f-704c33e57257"}
+{"artist":"Metallica","title":"Nothing Else Matters","genre":"Metal","uuid":"e981a9c0-e528-4672-a1cc-bf57b6cb53ff"}
+{"artist":"Nightwish","title":"Amaranth","genre":"Metal","uuid":"9af8291f-dfa6-4c24-b164-3ad835232f08"}
+{"artist":"Nightwish","title":"Dark Chest of Wonders","genre":"Metal","uuid":"fbc44a63-cd84-4bf0-8b4c-5856f8ebd1f1"}
+{"artist":"Nightwish","title":"The Islander","genre":"Metal","uuid":"32b66e13-5559-4632-8048-e14e4a587f72"}
+{"artist":"Nightwish","title":"Wishmaster","genre":"Metal","uuid":"9ab9c1e2-f6bc-436c-a7b1-0a9df9a74b3a"}
+{"artist":"Nightwish","title":"Sleeping sun","genre":"Metal","uuid":"6cdab254-193b-47f1-90c2-4a47aa5ac039"}
+{"artist":"Nightwish","title":"\u00c9lan","genre":"Metal","uuid":"0ada80f9-ad5c-4e71-a76e-c4dbe454de01"}
+{"artist":"Nightwish","title":"Storytime","genre":"Metal","uuid":"53d97d25-9873-43a2-891a-1eb866a58b96"}
+{"artist":"Rammstein","title":"Amerika","genre":"Metal","uuid":"ba2fe0ec-83a4-4522-a542-2f0bcc6aeb2e"}
+{"artist":"Rammstein","title":"Sonne","genre":"Metal","uuid":"69f81c69-157c-4f61-a60e-3f6ad331ac14"}
+{"artist":"Rammstein","title":"Reise, Reise","genre":"Metal","uuid":"6dc99d28-28e4-4ad2-a4a6-7d5d2b7882de"}
+{"artist":"Rammstein","title":"Mutter","genre":"Metal","uuid":"a23568ae-cf2a-4b2c-b131-f0c1a0175399"}
+{"artist":"Running Wild","title":"Bad to the Bone","genre":"Metal","uuid":"5e1f0786-ba79-4819-9721-a4a9b164c9c8"}
+{"artist":"Running Wild","title":"Conquistadores","genre":"Metal","uuid":"19a2ae01-e1e7-4a37-82a2-f3737e0141d3"}
+{"artist":"Running Wild","title":"Riding the storm","genre":"Metal","uuid":"50b02964-9a69-48b9-901e-b8773d29e280"}
+{"artist":"Running Wild","title":"Under Jolly Roger","genre":"Metal","uuid":"9ea281e8-059c-41f4-8a72-60a96e96055e"}
+{"artist":"Running Wild","title":"Libertalia","genre":"Metal","uuid":"1c449b97-f0a8-413b-a8d8-ae9981ee5e9a"}
+{"artist":"Running Wild","title":"Siberia Winter","genre":"Metal","uuid":"644eeddb-c865-4add-a271-9b4a1a74890b"}
+{"artist":"Running Wild","title":"The Hussar","genre":"Metal","uuid":"1eb4444d-ca57-4023-a066-38613c6b5aab"}
+{"artist":"Running Wild","title":"Blown to Kingdom Come","genre":"Metal","uuid":"f920f66c-5650-440b-a8f1-89603a50f736"}
+{"artist":"Running Wild","title":"Black Hand Inn","genre":"Metal","uuid":"6f3888bb-d083-4bcf-84b4-736b17f4380e"}
+{"artist":"Running Wild","title":"Pirate Song","genre":"Metal","uuid":"04b2a3c7-3ab8-4349-b9d0-e43264b8e016"}
+{"artist":"Running Wild","title":"War & Peace","genre":"Metal","uuid":"53350095-1782-4adc-bb44-30adfa872502"}
+{"artist":"Sabaton","title":"Aces in exile","genre":"Metal","uuid":"c53ee6f9-b4a4-4348-946e-e9fcfbf07444"}
+{"artist":"Sabaton","title":"Attero Dominatus","genre":"Metal","uuid":"72e6baf9-9fa6-4863-8a62-a1c193a3a43c"}
+{"artist":"Sabaton","title":"Carolus Rex","genre":"Metal","uuid":"edf6c7b4-be44-4a4c-b3c8-67dbdd5578e1"}
+{"artist":"Sabaton","title":"Coat of arms","genre":"Metal","uuid":"810a77d2-26c8-4c0e-acca-f25ed6d90e06"}
+{"artist":"Sabaton","title":"Ghost division","genre":"Metal","uuid":"90207afd-ccce-4969-b138-767be21fc9b8"}
+{"artist":"Sabaton","title":"Hearts of Iron","genre":"Metal","uuid":"3babb037-372d-412a-8bf6-80d61fc02383"}
+{"artist":"Sabaton","title":"In the name of god","genre":"Metal","uuid":"6cd99423-5272-450d-9636-94a5c1bedc02"}
+{"artist":"Sabaton","title":"Man of war","genre":"Metal","uuid":"cb3717d9-046c-4436-bd00-ed7aa1730502"}
+{"artist":"Sabaton","title":"Midway","genre":"Metal","uuid":"2f1eabc8-0738-4a19-a0c7-c06a89633f73"}
+{"artist":"Sabaton","title":"Nightchild","genre":"Metal","uuid":"18f2f38c-5f7f-4334-9eb0-c7ae00370b06"}
+{"artist":"Sabaton","title":"Panzerkampf","genre":"Metal","uuid":"535dcf50-0fe0-4dd6-ba61-8f57feb5e08e"}
+{"artist":"Sabaton","title":"Primo victoria","genre":"Metal","uuid":"4075b9c6-e2ae-44d5-a7ba-5c0b1e610371"}
+{"artist":"Sabaton","title":"Smoking snakes","genre":"Metal","uuid":"199ab3be-ccaf-4d21-8a3e-3877d01ccb03"}
+{"artist":"Sabaton","title":"The beast","genre":"Metal","uuid":"c7b5c311-e607-4eb9-953d-6cfcb8937748"}
+{"artist":"Sabaton","title":"The carolean's prayer","genre":"Metal","uuid":"2f2dca2d-23df-4748-b117-381a85d6e814"}
+{"artist":"Sabaton","title":"The final solution","genre":"Metal","uuid":"174f8415-f2b0-4805-a917-22a042f7a9fc"}
+{"artist":"Sabaton","title":"The Lion From The North","genre":"Metal","uuid":"7b677424-69ea-4040-b0bb-6d71d8589baa"}
+{"artist":"Sabaton","title":"The march to war","genre":"Metal","uuid":"cf6aa041-2308-4e72-8970-f55ff2a0c47d"}
+{"artist":"Sabaton","title":"Twilight of the thunder god","genre":"Metal","cover":"Amon amarth","uuid":"d616e2b6-7420-4f85-8516-24702d527b5f"}
+{"artist":"Sabaton","title":"Uprising","genre":"Metal","uuid":"b3d22793-c9e1-46de-90f0-43a7eaa887fd"}
+{"artist":"Sabaton","title":"Wolfpack","genre":"Metal","uuid":"c8bfb310-e85e-4aa0-bc48-ce4eae70ab09"}
+{"artist":"Sabaton","title":"Soldier of Heaven","genre":"Metal","uuid":"5332095d-a865-46cc-ae74-07ce861cbe08"}
+{"artist":"Shadowside","title":"Highlight","genre":"Metal","uuid":"538f557d-c1fa-4a7c-9bf5-f1bf5a4cb998"}
+{"artist":"Shadowside","title":"Life denied","genre":"Metal","uuid":"d84ed70d-3046-475c-b196-96600a9595c0"}
+{"artist":"Shadowside","title":"Red storm","genre":"Metal","uuid":"c4698455-c6a5-4bd2-837f-03ace89546b0"}
+{"artist":"Shadowside","title":"We want a miracle","genre":"Metal","uuid":"97ea6b35-54ed-44c9-8473-e05c747e6914"}
+{"artist":"Therion","title":"Abraxas","genre":"Metal","uuid":"97f3f697-962f-4edb-adfa-8b1a5c01f303"}
+{"artist":"Therion","title":"An arrow from the sun","genre":"Metal","uuid":"8a4e31da-0175-438c-acf5-fcff47c08ba0"}
+{"artist":"Therion","title":"Asgard","genre":"Metal","uuid":"74c5206c-29d7-4fd8-97eb-e9ff045d79f1"}
+{"artist":"Therion","title":"Lemuria","genre":"Metal","uuid":"4d8cc532-ea94-4431-9aeb-f636b5658285"}
+{"artist":"Therion","title":"Mon amour, mon ami","genre":"Metal","uuid":"75e40a19-2ad2-4f7f-ab56-9187d78e1685"}
+{"artist":"Therion","title":"Nifelheim","genre":"Metal","uuid":"e244d8fd-3037-4a7f-9b9c-61968b44cc07"}
+{"artist":"Therion","title":"O Fortuna","genre":"Metal","uuid":"b5709dc7-abef-47a6-89ed-7c563b65a0ef"}
+{"artist":"Therion","title":"The perennial Sophia","genre":"Metal","uuid":"3cf687f4-255c-4f42-a9e1-4ce45158fdca"}
+{"artist":"Tyr","title":"Regin Smidur","genre":"Metal","uuid":"1ccbc492-7fdf-4e8f-ae6f-ae58f37ddff2"}
+{"artist":"Tyr","title":"Torsteins Kvaedi","genre":"Metal","uuid":"ad610d2e-1c39-4930-a530-dd83bfd65693"}
+{"artist":"Tyr","title":"Wings of time","genre":"Metal","uuid":"02ffe1f0-0508-4037-b63f-08c137bb6108"}
+{"artist":"Tyr","title":"Hail to the hammer","genre":"Metal","uuid":"22991b5e-21e6-4aee-9fce-b467c82ff3db"}
+{"artist":"Tyr","title":"God of war","genre":"Metal","uuid":"ee2eeb34-e450-4594-85c9-61479cbcdec1"}
+{"artist":"Tyr","title":"ramund hin unge","genre":"Metal","uuid":"05e67919-c288-4104-bd17-a2ac13c5439e"}
+{"artist":"Tyr","title":"Brennivin","genre":"Metal","uuid":"7208df92-42a3-464b-970c-a7bcb5251e9a"}
+{"artist":"Tyr","title":"Lokka Tattur","genre":"Metal","uuid":"704dbc6f-e71b-479e-8ca0-521966e217b3"}
+{"artist":"Tyr","title":"Excavation","genre":"Metal","uuid":"4783d9a5-84b2-4cce-a73b-f0da437bbe0f"}
+{"artist":"Van Canto","title":"Badaboom","genre":"Metal","uuid":"23d7374e-d581-4a72-aed5-b051704869bf"}
+{"artist":"Van Canto","title":"Black Wings of Hate","genre":"Metal","uuid":"610be2fb-d1f2-4fb0-8423-c9587f2a4ed6"}
+{"artist":"Van Canto","title":"I am Human","genre":"Metal","uuid":"b2a9684f-d046-469e-a71e-579841131e6f"}
+{"artist":"Van Canto","title":"I stand alone","genre":"Metal","uuid":"59e57cc9-f98a-4f15-aa7c-ae6896d072c6"}
+{"artist":"Van Canto","title":"Lifetime","genre":"Metal","uuid":"0f10d7fe-be09-4a5b-a073-d838c4b9c19e"}
+{"artist":"Van Canto","title":"King","genre":"Metal","uuid":"e196aff3-9df9-48c1-aaf9-76a9b3bf758a"}
+{"artist":"Van Canto","title":"Kings of Metal","genre":"Metal","uuid":"243fcba5-035f-4025-8b1e-6a380ce34ce5"}
+{"artist":"Van Canto","title":"Quest for Roar","genre":"Metal","uuid":"90fdd138-c5dc-4858-a588-423a2f525c37"}
+{"artist":"Van Canto","title":"Rain","genre":"Metal","uuid":"f74262f7-930f-49e5-93b4-3fcf889475cd"}
+{"artist":"Van Canto","title":"Speed of Light","genre":"Metal","uuid":"bb81fb3d-9563-4e67-9124-85afc98ece7a"}
+{"artist":"Van Canto","title":"Stora R\u00f6verdansen","genre":"Metal","uuid":"05beae13-decb-4b0a-b1aa-bc5a11c0a182"}
+{"artist":"Van Canto","title":"Starlight","genre":"Metal","uuid":"85da2486-831a-47de-88ad-23a68a1db912"}
+{"artist":"Van Canto","title":"Take To The Sky","genre":"Metal","uuid":"cd1d187c-2160-4509-847a-52ac6d5dfb46"}
+{"artist":"Van Canto","title":"The bard's song","genre":"Metal","cover":"Blind Guardian","uuid":"779e5e61-b1cf-42f6-afa4-05889f979e2e"}
+{"artist":"Van Canto","title":"The Mission","genre":"Metal","uuid":"c87245e3-f9d3-4fc2-883d-b5f6b6fbcd00"}
+{"artist":"Van Canto","title":"To the mountains","genre":"Metal","uuid":"e2662976-2035-4365-b4de-d2c44e35d206"}
+{"artist":"Van Canto","title":"Water Fire Heaven Earth","genre":"Metal","uuid":"f20c8b30-b3dc-4288-897f-4de2c2e0d52a"}
+{"artist":"Van Canto","title":"Wishmaster","genre":"Metal","cover":"Nightwish","uuid":"8ecea425-9bfc-47c4-bcd8-0911012a31b9"}
+{"artist":"Van Canto","title":"My Voice","genre":"Metal","uuid":"0c915eef-b21e-4b51-8b67-3f55bff82d2b"}
+{"artist":"Van Canto","title":"To Sing a Metal Song","genre":"Metal","uuid":"b96e028f-eba7-49d8-be3f-c706dcb09223"}
+{"artist":"Van Canto","title":"The Seller of Souls","genre":"Metal","uuid":"b310216b-b92d-4a81-a467-972d6e9f1b50"}
+{"artist":"Van Canto","title":"The Higher flight","genre":"Metal","uuid":"43a2ab5b-c9c4-4276-8bf6-b73210fe3779"}
+{"artist":"Van Canto","title":"Carry on","genre":"Metal","cover":"Angra","uuid":"0a321d3a-ae99-4bfe-9e24-e5418859564a"}
+{"artist":"Van Canto","title":"Victoria's Secret","genre":"Metal","cover":"Sonata Arctica","uuid":"6364d019-695e-472c-9c64-5125e698c2c2"}
+{"artist":"Casey Edwards","featuring":"Ali Edwards","title":"Devil Trigger","genre":"Metal","soundtrack":"DMC 5","uuid":"6c03c396-7892-4413-8829-2fc57a42c279"}
+{"title":"Main Theme","artist":"Tweaker","soundtrack":"Doom 3","genre":"Metal","uuid":"d7d7d886-a389-4562-b8cc-eac168ae98a7"}
+{"title":"Joker Crashes Bruce's Party","soundtrack":"Batman Beyound","genre":"Metal","uuid":"66d3ddbc-a398-4af4-b0b0-0bc3b5b6fcc0"}
+{"title":"Batman defeats the Jokerz","soundtrack":"Batman Beyound","genre":"Metal","uuid":"ff2fe901-2af0-44d7-a526-bd2b3d3b047b"}
+{"title":"Joker Meets his End (Again)","soundtrack":"Batman Beyound","genre":"Metal","uuid":"9daf6fe9-468e-456a-9a73-9768e3712feb"}
+{"artist":"Solarus","title":"Embers in the Rain","genre":"Metal","uuid":"f396c43e-f398-4d54-88aa-2ea6f2ed52ed"}
+{"artist":"Dragon Force","title":"Disciples of Babylon","genre":"Metal","uuid":"3039ec7c-5a93-4abd-a28a-adda2a78a7d3"}
+{"artist":"Dragon Force","title":"Soldiers of the wasteland","genre":"Metal","uuid":"b6ef2d1b-1aee-4fd7-8ae3-5889b75ec9e8"}
+{"artist":"Dragon Force","title":"Through The fire and flames","genre":"Metal","uuid":"0443e761-ead0-49ff-95b7-6c823aeea0b0"}
+{"artist":"Dragon Force","title":"Heroes of our time","genre":"Metal","uuid":"829b11fa-5a3b-4ee0-9e2a-5e890d9f4653"}
+{"artist":"Dragon Force","title":"Fury of the storm","genre":"Metal","uuid":"7b7f4a21-429a-47e1-8582-ffb86f18679d"}
+{"artist":"Dragon Force","title":"Cry for Eternity","genre":"Metal","uuid":"c35c8c8a-b805-4247-9f24-21dec18f941c"}
+{"artist":"Dragon Force","title":"Cry of the brave","genre":"Metal","uuid":"2b336c34-36eb-49e6-ba41-0d5c779bdd78"}
+{"artist":"Dragon Force","title":"Prepare for war","genre":"Metal","uuid":"5ac74bb3-ac29-4b6f-bc21-9debedde12cb"}
+{"artist":"Dragon Force","title":"Strike of the Ninja","genre":"Metal","uuid":"65a291d3-5def-4a92-a851-7359b3f4f46a"}
+{"artist":"Dragon Force","title":"Valley of the Dead","genre":"Metal","uuid":"8360f353-e377-4d52-8bf6-ad03e4d33d8a"}
+{"artist":"Dragon Force","title":"Highway to Oblivion","genre":"Metal","uuid":"d4d38237-3c0d-4a65-bc97-98bf2f6947e0"}
+{"artist":"Power Quest","title":"Find My Heaven","genre":"Metal","uuid":"c20968fa-e2cd-4c1f-a16e-c793a991c0ef"}
+{"artist":"Power Quest","title":"Time to Burn","genre":"Metal","uuid":"735ef119-c583-4785-8639-1aadd61ad892"}
+{"artist":"Power Quest","title":"Far away","genre":"Metal","uuid":"3a9bb602-83ce-473e-adbe-148ddeb30ac2"}
+{"artist":"Power Quest","title":"Magic never dies","genre":"Metal","uuid":"e6e2fc23-4444-474d-9dc6-cbbedd8affdc"}
+{"artist":"Power Quest","title":"Temple of fire","genre":"Metal","uuid":"6029cc1a-f026-4936-acd2-5d21c385a793"}
+{"artist":"Kamelot","title":"Forever","genre":"Metal","uuid":"163e4ac1-8a12-4cb9-8486-b690526b5d21"}
+{"artist":"Dark Moor","title":"Wind Like Stroke","genre":"Metal","uuid":"903efab1-894c-4c02-b78d-7d6df31c1b88"}
+{"artist":"Dark Moor","title":"The emperor","genre":"Metal","uuid":"827f61f5-e15d-441d-bb7b-9127ad2019c2"}
+{"artist":"Dark Moor","title":"A truth for Me","genre":"Metal","uuid":"9547e1a6-df5d-445b-8425-f5ed778aeb86"}
+{"artist":"Dark Moor","title":"In the Heart of Stone","genre":"Metal","uuid":"3093c2e1-d5db-4d50-97c0-ba663da3689c"}
+{"artist":"Dark Moor","title":"Before the duel","genre":"Metal","uuid":"3851e916-07ae-4ab8-aadc-4d59c648822e"}
+{"artist":"Dark Moor","title":"Somewhere in Dreams","genre":"Metal","uuid":"8b065a74-5001-4e57-b515-4913d54c0e51"}
+{"artist":"Dark Moor","title":"Silver Lake","genre":"Metal","uuid":"d34ca69b-ea73-46d4-a1e3-5b22b9fb9754"}
+{"artist":"Dark Moor","title":"Mortal Sin","genre":"Metal","uuid":"f8fe731c-d6f9-423b-96bf-6f3f62766967"}
+{"artist":"Dark Moor","title":"Nevermore","genre":"Metal","uuid":"8aa97d12-2c02-4154-ab18-7d9810c24058"}
+{"artist":"Beast in Black","title":"Beast in Black","genre":"Metal","uuid":"9a61bb31-c3ac-43b2-abbe-52a19f0572af"}
+{"artist":"Beast in Black","title":"Ghost in the rain","genre":"Metal","uuid":"07327e65-aa1f-48b3-b1d6-cf2a0607beb4"}
+{"artist":"Follow the Cipher","title":"The Rising","genre":"Metal","uuid":"de2cadb9-94ad-46f5-bb0f-c0a011a4d203"}
+{"artist":"Freedom Call","title":"Metal Invasion","genre":"Metal","uuid":"40ae6200-ace3-4ab8-b904-fb088c6acc95"}
+{"artist":"Freedom Call","title":"Warriors","genre":"Metal","uuid":"250cbe65-dc17-4042-9f22-23a0ecb8baf8"}
+{"artist":"Freedom Call","title":"Masters of Light","genre":"Metal","uuid":"0c870fae-eac3-41d8-9947-e18e0decb876"}
+{"artist":"Freedom Call","title":"Hammer of the gods","genre":"Metal","uuid":"ebadd836-ddc4-4d6f-bedc-92537730230f"}
+{"artist":"Freedom Call","title":"Follow your Heart","genre":"Metal","uuid":"a243d1c4-ae34-48bd-bd8b-2abc897c769a"}
+{"artist":"Freedom Call","title":"Metal is for everyone","genre":"Metal","uuid":"496c5b58-161f-40fd-ac5a-0d72326746ab"}
+{"artist":"Freedom Call","title":"A World beyound","genre":"Metal","uuid":"b8d34a29-ee27-45ac-8da7-1e62e823421f"}
+{"artist":"Freedom Call","title":"Union of the Strong","genre":"Metal","uuid":"3bc2e1ec-f4ec-417b-a0a3-ecc8b5a3ec18"}
+{"artist":"Freedom Call","title":"Heart of a Warrior","genre":"Metal","uuid":"eb3a9ae7-40a6-4a3a-b2d2-b57d9967cefc"}
+{"artist":"Freedom Call","title":"Sole Survivor","genre":"Metal","uuid":"3306540d-bd00-47f7-8eeb-e0cff8957b25"}
+{"artist":"Freedom Call","title":"Far away","genre":"Metal","uuid":"b7967946-af34-4998-979f-db450474fa82"}
+{"artist":"Freedom Call","title":"Beyound Eternity","genre":"Metal","uuid":"44d0c241-a8ed-4aac-9db9-b1c1046e6a31"}
+{"artist":"Freedom Call","title":"Innocent World","genre":"Metal","uuid":"290d8ec7-3e3e-46e7-a629-7bb3f1c815c6"}
+{"artist":"Freedom Call","title":"Rhytm of Light","genre":"Metal","uuid":"606253e1-a433-429d-993b-352b43806ab7"}
+{"artist":"Freedom Call","title":"Spirit of Daedalus","genre":"Metal","uuid":"2ea209c3-967c-469b-9b03-8462f711fdbe"}
+{"artist":"Freedom Call","title":"Terra Liberty","genre":"Metal","uuid":"95311d27-9ea3-4ce6-b120-ea5aa51b92a9"}
+{"artist":"Freedom Call","title":"Wheel of Time","genre":"Metal","uuid":"b5fdf0ec-3a7a-48cc-ad19-98aed10d9994"}
+{"artist":"Freedom Call","title":"Days of Glory","genre":"Metal","uuid":"c09a5aa1-324e-469b-9848-8754561565b1"}
+{"artist":"Freedom Call","title":"Journey into Wonderland","genre":"Power Metal","uuid":"04dc047c-00d9-46c0-9af1-d504543c9880"}
+{"artist":"Cheap Trick","title":"Reach Out","genre":"Metal","uuid":"d1b109c1-6b24-42dd-9ba0-e66c42aa6e53"}
+{"artist":"Falconer","title":"Entering Eternity","genre":"Metal","uuid":"c5312c63-b91a-442a-9eae-82a3a3936fbf"}
+{"artist":"Falconer","title":"Upon the grave of guilt","genre":"Metal","uuid":"9530a8fe-ab1a-4a10-87b9-3374447ceb64"}
+{"artist":"Falconer","title":"Lament of a minstrel","genre":"Metal","uuid":"6ee2317f-8e60-46bb-9644-9e8e5b3d914b"}
+{"artist":"Validor","title":"Stealer Of Souls","genre":"Metal","uuid":"c8452374-d293-4c51-a333-cd5e943f77dc"}
+{"artist":"Symphony of Tragedy","title":"Rise Again","genre":"Metal","uuid":"029b6323-45eb-42a6-afe0-2979ea9325b8"}
+{"artist":"Vis Mystica","title":"Lux Et Veritas","genre":"Metal","uuid":"f00595be-07a8-49a3-9f8e-b7cdd2c9c55d"}
+{"artist":"Serenity","title":"Legacy of Tudors","genre":"Metal","uuid":"4ddb1839-d9e2-46cf-9c45-cb6d970d2da0"}
+{"artist":"Empyrean Sky","title":"Trauma and Tragedy","genre":"Metal","uuid":"68c201cd-657b-4f66-ac3e-c265447b46ba"}
+{"artist":"Death Dealer","title":"Warmaster","genre":"Metal","uuid":"9ff3c0d5-f066-4ed3-81b0-f9e896b627c4"}
+{"artist":"Battle Beast","title":"Touch in the Night","genre":"Metal","uuid":"8c6d151a-dab8-40e2-a9ba-7414c4dfa0ee"}
+{"artist":"Battle Beast","title":"King for a day","genre":"Metal","uuid":"c796043e-c747-4c08-a1c5-c51614af59e1"}
+{"artist":"Brothers of Metal","title":"Powersnake","genre":"Metal","uuid":"30e7b3a2-2f1e-4cc7-a633-5e797651de52"}
+{"artist":"Iron Mask","title":"Freedom's Blood","genre":"Metal","uuid":"c946b14b-1309-4b8b-847a-281d66395f52"}
+{"artist":"Iron Mask","title":"March of Victory","genre":"Metal","uuid":"1c790691-3898-4dde-926a-82275a992ab3"}
+{"artist":"Iron Mask","title":"The picture of Dorian Grey","genre":"Metal","uuid":"5e3be410-c3ed-4387-bf43-7ffcf13e26c1"}
+{"artist":"Iron Mask","title":"The Rebellion of Lucifer","genre":"Metal","uuid":"99857dab-15a1-422c-a94d-5e857a55571e"}
+{"artist":"Guardians of time","title":"Drawn in blood","genre":"Metal","uuid":"8ff4fd48-0438-467c-a1af-8b7af21dd6cc"}
+{"artist":"Twins crew","title":"Under my command","genre":"Metal","uuid":"4a9b6309-0b91-4c54-adab-ec36c1b71b93"}
+{"artist":"Twins crew","title":"Under the morningstar","genre":"Metal","uuid":"6d4d8e74-528d-45f8-8cc2-d81f7461a690"}
+{"artist":"ReinXeed","title":"Chalice of Time","genre":"Metal","uuid":"a52ac45a-bbf5-48c8-b666-b65c2e1aa368"}
+{"artist":"Mercyful fate","title":"Sold my soul","genre":"Metal","uuid":"07ed66bf-e917-4e1d-a8e6-d3f174cad624"}
+{"artist":"Brothers of Metal","title":"Hel","genre":"Metal","uuid":"634d32b2-0e34-49f5-a363-bb8063609c13"}
+{"artist":"Dawn of Destiny","title":"Heaven's Falling Down","genre":"Metal","uuid":"b3b7b989-35cb-48aa-af34-f94dfb7cedc0"}
+{"artist":"Hammer King","title":"Glory to the Hammer King","genre":"Metal","uuid":"7d430f3a-7f03-4314-990a-f1a316619ae0"}
+{"artist":"Children of the Reptile","title":"Cultist","genre":"Metal","uuid":"0f9b5bab-f725-41fc-9477-7fad226e03e5"}
+{"artist":"Children of the Reptile","title":"Mankind's Epitaph","genre":"Metal","uuid":"918c687f-0550-4971-bfc6-aa59b738f73f"}
+{"artist":"Children of the Reptile","title":"Cro-Magnon Combat","genre":"Metal","uuid":"a38749ff-5fdd-4c99-bbf2-f2edde8e48a3"}
+{"artist":"Slade","title":"Run Runaway","genre":"Metal","uuid":"95fd8082-3981-49f8-8946-217d6db2963f"}
+{"artist":"Marius Danielsens","title":"Seven Ancient Artefacts","genre":"Metal","uuid":"95dc81e6-8316-4b34-956c-0a3cfa1efcf1"}
+{"artist":"Marius Danielsens","title":"Rise of the Dark Empire","genre":"Metal","uuid":"9acf9806-1d30-4ca1-b301-9490a1432ec4"}
+{"artist":"Marius Danielsens","title":"Visions of the Night","genre":"Metal","uuid":"66beb01b-c953-426a-a28f-340cc3102a6c"}
+{"artist":"Marius Danielsens","title":"Angel of Light","genre":"Metal","uuid":"d24c5059-3da8-4b0c-a5c3-2e8f819d0ad2"}
+{"artist":"Marius Danielsens","title":"Temple of the Ancient God","genre":"Metal","uuid":"4bb739dd-31fc-4fec-8584-67dbb94be0b4"}
+{"artist":"Marius Danielsens","title":"Free as the Wind","genre":"Metal","uuid":"707eedb1-6ff1-46b9-a00c-0cdf6048499e"}
+{"artist":"Marius Danielsens","title":"Journey to the other side","genre":"Metal","uuid":"537e41dc-eeb9-4d32-9a12-143d3c6756c8"}
+{"artist":"Magic Opera","title":"The Golden Pentacle","genre":"Metal","uuid":"97662f56-cf70-4cba-bba8-86dcc3ca60ba"}
+{"artist":"Numenor","title":"Numenor","genre":"Metal","uuid":"809a902c-6427-4e82-a933-5f65b09c0dee"}
+{"artist":"Atlantean Kodex","title":"Sol Invictus","genre":"Metal","uuid":"b224adf6-f1ec-4777-8215-83caca764c51"}
+{"artist":"Space Cadets","title":"Kill All Xenos","genre":"Metal","uuid":"db239087-5556-4900-8914-6ec80e7fd1e6"}
+{"artist":"Space Cadets","title":"The Human Condition","genre":"Metal","uuid":"d6083887-6ade-43e9-825e-99601f7af870"}
+{"artist":"Ranthiel","title":"Herr Mannelig","genre":"Metal","uuid":"b0cd1d7a-4d81-4b7f-9ead-5491a48b47ee"}
+{"artist":"Magica","title":"The Sorcerer","genre":"Metal","uuid":"637aac0e-fa57-4fdc-ac6c-bc465c48de49"}
+{"artist":"Windir","title":"Journey to the End","genre":"Metal","uuid":"e26cf2af-4f6a-45db-8965-5837a494d212"}
+{"artist":"Dreamtale","title":"Angel of Light","genre":"Metal","uuid":"44a69092-c802-438d-ab0a-139f9a041f25"}
+{"artist":"Dreamtale","title":"For Our Future","genre":"Metal","uuid":"47c0a4c1-864f-4b2e-ab32-95b6582fd5a9"}
+{"artist":"Heavenly","title":"Flight for deliverance","genre":"Metal","uuid":"2a625b04-bd88-4b54-b860-6069040f8526"}
+{"artist":"Gloryhammer","title":"Angus Mcfife","genre":"Metal","uuid":"98d4b605-07f3-4ad4-812b-10a6b27ef6a7"}
+{"artist":"Unleash The Archers","title":"Dreamcrusher","genre":"Metal","uuid":"7d325d35-7b67-4f1d-90e7-76cb4d8c8b99"}
+{"artist":"Doro","title":"Love Me Forever","genre":"Metal","uuid":"0f5d7209-e717-4e8b-8ea4-7bcecb7d08d5"}
+{"title":"Orks Main Theme","genre":"Metal","soundtrack":"Dawn of War 3","uuid":"f2e3bd3d-94b0-4c5c-8055-5cab02d14fa1"}
+{"artist":"Pallbearer","title":"The Legend","genre":"metal","uuid":"06483d7e-d9bb-4333-9327-a28b8dd12bc5"}
+{"artist":"Pallbearer","title":"Devoid of Redemption","genre":"metal","uuid":"ff6c16bc-a67b-4c34-af13-e88e702ad448"}
+{"artist":"\u0421\u0432\u0430\u0440\u0433\u0430","title":"\u0417\u0430\u043a\u043b\u044f\u0442\u044c\u0435","genre":"metal","uuid":"a425793d-f190-4c54-91aa-cf2401cfff82"}
+{"title":"No False Metal","artist":"Skull Fist","genre":"Metal","uuid":"1a8ffb13-134f-4256-94dd-d558c3c9a948"}
+{"title":"Ice Queen","artist":"Within Temptation","genre":"Metal","uuid":"07a6a58d-469d-4061-900f-644bf9e99257"}
+{"artist":"Axxis","title":"Heaven is Black","genre":"Power Metal","uuid":"238f3680-427b-4c65-8348-c76309fcca9b"}
+{"artist":"Axxis","title":"Living in a World","genre":"Power Metal","uuid":"97d084df-c7ed-4ed0-9be1-7e5d46723a70"}
+{"artist":"Magic Kingdom","title":"I'm a lionheart","genre":"Power Metal","uuid":"6bd814da-6a38-418a-8ba9-e05b7ba9f206"}
+{"artist":"Fates Warning","title":"Guardian","genre":"Power Metal","uuid":"d9edc955-427e-4a10-b49c-cda67782399f"}
+{"artist":"Elvenking","title":"Neverending Nights","genre":"Power Metal","uuid":"8a032dcb-8e55-4d3a-a481-e237ed234767"}
+{"artist":"Elvenking","title":"The Regality Dance","genre":"Power Metal","uuid":"3719df36-167e-49a7-83f1-cef8fd619f41"}
+{"artist":"Elvenking","title":"Pagan Purity","genre":"Power Metal","uuid":"f5da5c7e-f65f-4620-8086-e0b177709ea0"}
+{"artist":"Elvenking","title":"The Voynich Manuscript","genre":"Power Metal","uuid":"6f956d34-c37f-4fb3-93c2-c566dcd5f46c"}
+{"artist":"Elvenking","title":"Invoking the Woodland Spirit","genre":"Power Metal","uuid":"d3e4716f-b8de-4a94-9205-bacee7ce6c92"}
+{"artist":"Nightwish","title":"Over the hills and far away","genre":"Power metal","uuid":"b8515c7d-043c-47ba-a78e-23300d713c06"}
+{"artist":"Blackbriar","title":"I'd Rather Burn","genre":"Power Metal","uuid":"820f25b0-7dc8-4bac-a266-9f61587f1486"}
+{"artist":"Fejd","title":"Offerrok","genre":"Power Metal","uuid":"3b304f11-deb2-4dd0-9f59-1cffa0051f5b"}
+{"artist":"Metal De Facto","title":"Germanicus","genre":"Power Metal","uuid":"6b883b73-97c1-4abb-b32a-3c5013511d9b"}
+{"artist":"Beorn","title":"The Chest of Deadman","genre":"Power Metal","uuid":"3f1327c9-d54f-4e65-8579-00239a589918"}
+{"artist":"Skiltron","title":"Skiltron","genre":"Power Metal","uuid":"62b85863-54d0-4c37-a0d1-6485a52b4d05"}
+{"artist":"Falconer","title":"Mindtraveller","genre":"Power Metal","uuid":"618f77be-9936-4d2a-aa00-130db7e8ec76"}
+{"artist":"Falconer","title":"The Clarion Call","genre":"Power Metal","uuid":"906c10cf-ba33-4850-a756-ddacd21b545a"}
+{"artist":"Torian","title":"Lost command","genre":"Power Metal","uuid":"35a70136-8999-4ed6-95e8-2995e6cf9eeb"}
+{"artist":"Saint Deamon","title":"No mans land","genre":"Power Metal","uuid":"b8f649ff-a940-4d5d-832c-bb5c61a59ae3"}
+{"artist":"Saint Deamon","title":"My Judas","genre":"Power Metal","uuid":"1811cb08-a89a-4174-bb42-cb65d5558a22"}
+{"artist":"Saint Deamon","title":"The only one Sane (Nevermore)","genre":"Power Metal","uuid":"1552ed98-2295-4a6a-9db0-c2012a38ab1e"}
+{"artist":"Saint Deamon","title":"Black Symphony","genre":"Power Metal","uuid":"9e40ed58-359c-40d8-8920-063e780521c4"}
+{"artist":"Saint Deamon","title":"Eyes of the Devil (Pyramid)","genre":"Power Metal","uuid":"4f7cce0e-215d-40e9-a331-c9c659f11379"}
+{"artist":"Elvenking","title":"Pagan revolution","genre":"Power Metal","uuid":"d4b8a0c7-a588-4b9d-ae46-051724320f9d"}
+{"artist":"Stormwarrior","title":"Heading Northe","genre":"Power Metal","uuid":"19fcc48c-01b3-430f-9789-641ed6633a2f"}
+{"artist":"Pure","title":"Lost Horizon","genre":"Power Metal","uuid":"9613870e-d977-4850-83b6-75a1ff084326"}
+{"artist":"Fairyland","title":"A Soldier's Letter","genre":"Power Metal","uuid":"4cef58f3-9c02-44a5-836a-00e92cb7e709"}
+{"artist":"Thunderstone","title":"The Riddle","cover":"Nik Kershaw","genre":"Power Metal","uuid":"f61a72eb-2f67-4f68-9173-3b7e74082e65"}
+{"artist":"Minotaurus","title":"Erlk\u00f6nig","genre":"Power Metal","uuid":"e56deb47-ee26-4db3-95d8-b7f56b97ad5b"}
+{"artist":"Histerica","title":"Breaking the walls","genre":"Power Metal","uuid":"37322376-e9f1-4396-813f-b585b5815ce3"}
+{"artist":"Guardians of Time","title":"As I Burn","genre":"Power Metal","uuid":"b2f9c70b-6747-49b5-95e7-aaed8b543098"}
+{"artist":"Dreamtale","title":"October is Mine","genre":"Power Metal","uuid":"8e4c3e6d-c127-4abe-9a5b-19a6f40fd8b3"}
+{"artist":"Avantasia","title":"Dying for an Angel","genre":"Power Metal","uuid":"c0dd8633-a767-45cd-8f58-6905c9f506b2"}
+{"artist":"Avantasia","title":"The Raven Child","genre":"Power Metal","uuid":"3943c5a4-217a-4d91-b3e7-73d31d924d44"}
+{"artist":"Avantasia","title":"Moonglow","genre":"Power Metal","uuid":"bb8fc857-56da-44d1-81ec-886770e7ca78"}
+{"artist":"Blind Guardian","title":"The Bard's Song The Hobbit","genre":"Power Metal","uuid":"fc141de8-5dd3-4209-93d9-4e9107f186da"}
+{"artist":"Blind Guardian","title":"Nightfall","genre":"Power Metal","uuid":"d880da91-5277-4306-9557-2b336bc44a3d"}
+{"artist":"Blind Guardian","title":"Valhalla","genre":"Power Metal","uuid":"bbfe7aa6-84d4-4afd-bc27-edcb40063610"}
+{"artist":"Blind Guardian","title":"Born In a mourning hall","genre":"Power Metal","uuid":"412b1f70-d7d1-4771-8d2e-d6802400f61d"}
+{"artist":"Blind Guardian","title":"And the story ends","genre":"Power Metal","uuid":"f8803214-a9ed-42d1-bc28-ef56b5e75158"}
+{"artist":"Blind Guardian","title":"Noldor","genre":"Power Metal","uuid":"86bfd8f6-2e37-46d3-bb18-b319873052f4"}
+{"artist":"Blind Guardian","title":"A past and a future secret","genre":"Power Metal","uuid":"6f8b777e-71ff-4a75-ac57-35c5961b6c5c"}
+{"artist":"Blind Guardian","title":"Bright Eyes","genre":"Power Metal","uuid":"e31959f7-294d-42da-abfa-8d30f0a48295"}
+{"artist":"Blind Guardian","title":"Journey Through the dark","genre":"Power Metal","uuid":"35717d4d-dc87-4f53-bdea-f9b51b749885"}
+{"artist":"Blind Guardian","title":"Mordred's song","genre":"Power Metal","uuid":"fc293048-aa4b-4717-978a-95111549bee7"}
+{"artist":"Blind Guardian","title":"The Bard's song In the forest","genre":"Power Metal","uuid":"aceee84c-72a6-46a1-8ad3-ee51563d17e5"}
+{"artist":"Blind Guardian","title":"Time what is time","genre":"Power Metal","uuid":"4b496ae7-6df6-4850-b2a9-199cea05adaf"}
+{"artist":"Blind Guardian","title":"The script for my requiem","genre":"Power Metal","uuid":"e55b3456-9487-4e16-b4c0-69c5a18ef382"}
+{"artist":"Blind Guardian","title":"Somewhere far beyound","genre":"Power Metal","uuid":"e7e44b3f-2554-454c-a5cb-c8cbd8889abf"}
+{"artist":"Blind Guardian","title":"Lord of the rings","genre":"Power Metal","uuid":"4ff9e3cf-f8ea-4619-ace0-b94b4e37719a"}
+{"artist":"Blind Guardian","title":"Mirror Mirror","genre":"Power Metal","uuid":"724036c4-fb95-4e42-9d9a-91e3a7b115d6"}
+{"artist":"Blind Guardian","title":"Curse My name","genre":"Power Metal","uuid":"9a4c60db-49ef-46e8-901a-455546e24f5f"}
+{"artist":"Blind Guardian","title":"Skalds and shadows","genre":"Power Metal","uuid":"979933b5-170a-4eb1-9226-074f7d520689"}
+{"artist":"Blind Guardian","title":"Time stands still","genre":"Power Metal","uuid":"61f70d80-e5dc-4e67-9a57-0ec6ec113d39"}
+{"artist":"Blind Guardian","title":"Ashes to ashes","genre":"Power Metal","uuid":"d3ada4f5-ca73-4c8f-9d1b-d2099e25090c"}
+{"artist":"Blind Guardian","title":"Banish from sanctuary","genre":"Power Metal","uuid":"0db8ce41-b52f-47e8-8329-42f607991e10"}
+{"artist":"Blind Guardian","title":"Prophecies","genre":"Power Metal","uuid":"bf83636c-ccf9-457e-9506-fa74c771c33b"}
+{"artist":"Blind Guardian","title":"Grand Parade","genre":"Power Metal","uuid":"1db35dde-d276-49db-abf8-477ee6be3619"}
+{"artist":"Blind Guardian","title":"The Soulforged","genre":"Power Metal","uuid":"ae24506b-bf60-40a0-9817-1289ae548070"}
+{"artist":"Solamnia","title":"Treasure Hunters","genre":"Power Metal","uuid":"d273f5e7-16b9-4bcf-b6bd-dc5a005284a1"}
+{"artist":"Beast in Black","title":"Sweet True Lies","genre":"Power Metal","uuid":"0c22e864-3f0c-4de1-92ad-e59af6521ecb"}
+{"artist":"Beast in Black","title":"Repentless","genre":"Power Metal","uuid":"40ba532b-0546-4453-895b-5abe6c861edc"}
+{"artist":"Beast in Black","title":"Die by the blade","genre":"Power Metal","uuid":"aec44f8f-0b78-4269-896e-203b67cc4e65"}
+{"artist":"Beast in Black","title":"Oceandeep","genre":"Power Metal","uuid":"c1add2e0-8196-44b4-9996-a94885205a0d"}
+{"artist":"Beast in Black","title":"Heart of Steel","genre":"Power Metal","uuid":"fffd65de-a985-4c4c-9a75-3c16c6358b3a"}
+{"artist":"Beast in Black","title":"Born Again","genre":"Power Metal","uuid":"38e637ad-8ff6-4c97-a145-306adcf8af9c"}
+{"artist":"Majestica","title":"Above The Sky","genre":"Power Metal","uuid":"7549e545-0f56-42ee-a3a9-82db3c194c77"}
+{"artist":"Majestica","title":"Rising the Tide","genre":"Power Metal","uuid":"95d7b1ad-9f80-484a-b046-06a886a1542e"}
+{"artist":"Majestica","title":"The Rat Pack","genre":"Power Metal","uuid":"6d2d5c8f-0310-44be-9444-71f7d2256a3b"}
+{"artist":"Majestica","title":"Rising Tide","genre":"Power Metal","uuid":"e1dd682f-70b2-4514-82d9-883f5334db4d"}
+{"artist":"Follow the Cipher","title":"Valkyria","genre":"Power Metal","uuid":"1f766266-3636-4904-a9c7-33988ec43cdd"}
+{"artist":"Sellsword","title":"The Courage to Die","genre":"Power Metal","uuid":"877eec5c-6f08-4feb-82a1-b2ed7096a695"}
+{"artist":"Wind Rose","title":"Drunken Dwarves","genre":"Power Metal","uuid":"771d9356-e42b-458c-b6a9-ed17650121b7"}
+{"artist":"Vexillum","title":"The Sentenced: Fire And Blood","genre":"Power Metal","uuid":"39c0a688-02fb-4cad-8776-faaf4b036826"}
+{"artist":"Amon Amarth","title":"Twilight of the thunder god","genre":"Power metal","uuid":"3a8f25d3-1db2-44ee-b0f0-537724210efc"}
+{"title":"Nobla Dezir","artist":"Barok Projekt","genre":"Power metal","uuid":"47246b76-b526-4c9d-988e-4f956d01a102"}
+{"artist":"Sonata Arctica","title":"Victorias Secret","genre":"Power metal","uuid":"f53bb38f-23a4-4a64-8e12-e5c76f7f2b33"}
+{"artist":"Sonata Arctica","title":"Fullmoon","genre":"Power metal","uuid":"8ff98844-3df4-4704-8515-2d1ab891d318"}
+{"artist":"Sonata Arctica","title":"White Pearl Black Oceans","genre":"Power metal","uuid":"8c4b3e23-863d-42ea-a2ef-3fe200d1703b"}
+{"artist":"Sonata Arctica","title":"Shy","genre":"Power metal","uuid":"930168de-d78d-4ad3-913c-8dd9a687f15a"}
+{"artist":"Sonata Arctica","title":"White Pearl, Black Oceans, Pt. II","genre":"Power metal","uuid":"a9be64f3-3942-4949-85c3-902744987afb"}
+{"artist":"Orden Ogan","title":"Gunman","genre":"Power metal","uuid":"0eea1e30-6569-4597-8a27-db7e5827e9a3"}
+{"artist":"Orden Ogan","title":"The Things We Believe In","genre":"Power metal","uuid":"3f3ad890-b226-426d-9880-a392c03ed771"}
+{"title":"Seven Seals","artist":"Primal fear","genre":"Power metal","uuid":"2e73c7f0-d9b8-45ed-bdcd-481505628c60"}
+{"title":"Knights in Shining Armor","artist":"Human Fortress","genre":"Power metal","uuid":"8788f242-3675-4241-a36c-82620465f0ec"}
+{"title":"Fly Far Away","artist":"Kliodna","genre":"Power metal","uuid":"b6872dc5-3ed6-4cbd-bc34-a3a93db63382"}
+{"artist":"Elvellon","title":"My Wings","genre":"Power metal","uuid":"c8f4d829-cac7-442e-8bc5-a939a34796a1"}
+{"artist":"Twilight Force","title":"The Power Of The Ancient Force","genre":"Power metal","uuid":"71b59af8-8025-4515-929d-79ec56b21146"}
+{"artist":"Twilight Force","title":"Enchanted Dragon Of Wisdom","genre":"Power metal","uuid":"7846b0a7-0b66-4e70-94fd-7d5cfeb8cee9"}
+{"artist":"Twilight Force","title":"Winds of Wisdom","genre":"Power metal","uuid":"2a47b9c4-23fc-499d-b509-cd2455d744ae"}
+{"artist":"Twilight Force","title":"Riders of the Dawn","genre":"Power metal","uuid":"3e8fb002-1e9f-4f12-90ff-9c4979b7d7c8"}
+{"artist":"Twilight Force","title":"Queen of Eternity","genre":"Power metal","uuid":"5ae7ce65-c1d8-4411-bb9f-5dbecae564a0"}
+{"artist":"Twilight Force","title":"Valley of the Vale","genre":"Power metal","uuid":"1402e742-0c3f-4caf-a46e-b5f0ca5825d2"}
+{"artist":"Luca Turilli","title":"Legend of Steel","genre":"Power metal","uuid":"68285b3f-0a4a-4af7-8ed8-041ce303e69d"}
+{"artist":"Luca Turilli","title":"The Ancient Forest of Elves","genre":"Power metal","uuid":"06e11ff5-6459-41f2-b366-9477a40d7e41"}
+{"artist":"Luca Turilli","title":"Demonheart","genre":"Power metal","uuid":"4f82e468-906d-4f6b-9f86-3235a874e445"}
+{"artist":"Luca Turilli","title":"Ascending to Infinity","genre":"Power metal","uuid":"2f8b3ba3-0cfc-4cd0-86f5-9d56a3f803f2"}
+{"artist":"Rhapsody of Fire","title":"Emerald Sword","genre":"Power metal","uuid":"c0299346-65e8-499a-bc1e-9b57ab053787"}
+{"artist":"Rhapsody of Fire","title":"Wisdom of the Kings","genre":"Power metal","uuid":"bc748928-1e50-4179-8dea-fffb02a144c8"}
+{"artist":"Rhapsody of Fire","title":"Distant Sky","genre":"Power metal","uuid":"2336e264-9d0c-41fe-89a9-2cf823d93d54"}
+{"artist":"Rhapsody of Fire","title":"Invernal Fury","genre":"Power metal","uuid":"01952c9d-7dbd-4888-aed9-83c657093648"}
+{"artist":"Rhapsody of Fire","title":"Warrior of Ice","genre":"Power metal","uuid":"88935d15-e279-471c-890a-de0411c1cc3b"}
+{"artist":"Rhapsody of Fire","title":"Unholy War Cry","genre":"Power metal","uuid":"35954b8a-13c2-4087-a8dd-9bb9c4c49412"}
+{"artist":"Rhapsody of Fire","title":"Land of Immortals","genre":"Power metal","uuid":"553d823f-0e20-4ec4-aabb-2ceffe6c2b6b"}
+{"artist":"Rhapsody of Fire","title":"Lord of the Thunder","genre":"Power metal","uuid":"8c344433-ca54-4aac-ba7d-3f7cbd0450e6"}
+{"artist":"Rhapsody of Fire","title":"Dawn of Victory","genre":"Power metal","uuid":"551a0423-aefb-4a3b-8ad3-85a32faba31a"}
+{"artist":"Rhapsody of Fire","title":"Triumph for My Magic Steel","genre":"Power metal","uuid":"19c3ed89-b23e-451e-82d5-c2de81656234"}
+{"artist":"Rhapsody of Fire","title":"Holy Thunderforce","genre":"Power metal","uuid":"978cdbc9-ff5d-4b31-9b0e-cac4627e5c51"}
+{"artist":"Rhapsody of Fire","title":"The Magic of the Wizard's Dream","genre":"Power metal","uuid":"f16bbab6-ac74-4bb1-9db8-035e804da973"}
+{"artist":"Rhapsody of Fire","title":"Chains of Destiny","genre":"Power metal","uuid":"6ff4d051-e048-4649-ba6c-a4fe6ab35e22"}
+{"artist":"Rhapsody of Fire","title":"I'll be your Hero","genre":"Power metal","uuid":"462f20b0-01f5-4deb-b6e4-243c1d08ad6c"}
+{"artist":"Rhapsody of Fire","title":"Terial the Hawk","genre":"Power metal","uuid":"a67831b5-a495-4508-8374-a4f48e08d32f"}
+{"artist":"Rhapsody of Fire","title":"Son Of Vengeance","genre":"Power metal","uuid":"fb0c457d-38eb-4134-9db8-b829926f4e0f"}
+{"artist":"Bloodbound","title":"Black devil","genre":"Power metal","uuid":"c64abd5f-be29-4070-823e-3bf1d1704993"}
+{"artist":"Bloodbound","title":"Bless the unholy","genre":"Power metal","uuid":"bee6da53-a7de-441f-9b53-bcfda3f0d091"}
+{"artist":"Bloodbound","title":"Book of the dead","genre":"Power metal","uuid":"7a21c152-e8f9-4e22-9bfb-122cb64cad0e"}
+{"artist":"Bloodbound","title":"Bonebreaker","genre":"Power metal","uuid":"ca17c6a8-3a67-40a8-95eb-07e106dfc4ac"}
+{"artist":"Bloodbound","title":"Bounded by blood","genre":"Power metal","uuid":"64b42663-34f8-45a4-9354-89b9c6d5c85e"}
+{"artist":"Bloodbound","title":"Fallen Heroes","genre":"Power metal","uuid":"aaacb157-218c-4d59-8515-6ae78e815c68"}
+{"artist":"Bloodbound","title":"Fallen from Grace","genre":"Power metal","uuid":"c908f0bb-aaf9-44e5-b0b4-26e13e3e632c"}
+{"artist":"Bloodbound","title":"For those we left behind","genre":"Power metal","uuid":"6c5de274-bff3-4b87-a5b3-833477e42d75"}
+{"artist":"Bloodbound","title":"Iron throne","genre":"Power metal","uuid":"45b2b991-81cd-4acc-9b0d-244a714af4d0"}
+{"artist":"Bloodbound","title":"In the name of metal","genre":"Power metal","uuid":"345503db-82ad-45ad-9f0c-f13c0235797a"}
+{"artist":"Bloodbound","title":"Into eternity","genre":"Power metal","uuid":"384725d6-bced-4e43-8358-a8d8ca97a633"}
+{"artist":"Bloodbound","title":"King of fallen grace","genre":"Power metal","uuid":"597384ba-a6bc-4e3d-aef8-24db090bab81"}
+{"artist":"Bloodbound","title":"Satanic panic","genre":"Power metal","uuid":"0a92d0e7-b46d-4627-949b-92cb647fdee0"}
+{"artist":"Bloodbound","title":"Seven angels","genre":"Power metal","uuid":"d73c37f5-ef36-40fc-a3d8-78aa910a41ae"}
+{"artist":"Bloodbound","title":"Seven hells","genre":"Power metal","uuid":"7e4d5c47-f182-4bb7-94b3-eccc125f3a60"}
+{"artist":"Bloodbound","title":"Silver Wings","genre":"Power metal","uuid":"6381360e-23aa-46ea-a814-619673823b44"}
+{"artist":"Bloodbound","title":"Son of babylon","genre":"Power metal","uuid":"ba3fe001-48fb-45fa-99c3-f61f459445eb"}
+{"artist":"Bloodbound","title":"Stormborn","genre":"Power metal","uuid":"de5fc246-0a7d-4c29-a7af-c52babeac8f0"}
+{"artist":"Bloodbound","title":"Made of steel","genre":"Power metal","uuid":"e16f2473-1a43-438a-b63c-0ab353c0d53e"}
+{"artist":"Bloodbound","title":"Metalheads unite","genre":"Power metal","uuid":"2789155b-ec57-428e-abbc-6f63bcadb90e"}
+{"artist":"Bloodbound","title":"Nightmares from the grave","genre":"Power metal","uuid":"1563422f-e93e-4672-88cc-d37494b10687"}
+{"artist":"Bloodbound","title":"The ones we left behind","genre":"Power metal","uuid":"4cf5daaa-d2e0-433d-bcf4-a5c531cddba8"}
+{"artist":"Bloodbound","title":"The tempter","genre":"Power metal","uuid":"5fcfe9a6-303b-4859-90d3-f22ad7b8f50d"}
+{"artist":"Bloodbound","title":"War of dragons","genre":"Power metal","uuid":"9970a419-ce2d-40b7-a52c-8a9be738575d"}
+{"artist":"Bloodbound","title":"We raise the dead","genre":"Power metal","uuid":"19316e5a-9a5f-40a8-b495-9edf202223ed"}
+{"artist":"Bloodbound","title":"When all lights fail","genre":"Power metal","uuid":"eb4b1a3c-c2dd-44d2-a6ef-ece9fc339006"}
+{"artist":"Bloodbound","title":"When demons collide","genre":"Power metal","uuid":"9bd6845b-5848-41b7-b8f5-cb1ecfa7057f"}
+{"artist":"Bloodbound","title":"When the kingdom will fall","genre":"Power metal","uuid":"7045413d-c332-4ddf-81f4-fbb719f11936"}
+{"artist":"Nightwish","title":"End of all hope","genre":"Power metal","uuid":"a12b3c59-66b2-4cb1-83ab-a6e2aae2191f"}
+{"artist":"Nightwish","title":"Last Ride Of The Day","genre":"Power Metal","uuid":"a0fb2bbe-77a2-4eb5-8c73-ac84a61abd09"}
+{"artist":"Nightwish","title":"Turn Loose the Mermaids","genre":"Power Metal","uuid":"f64bdb3b-3a06-4ad8-aa17-87de85e71482"}
+{"artist":"Nightwish","title":"Rest Calm","genre":"Power Metal","uuid":"550407b4-6444-40b7-8c08-bfee66345508"}
+{"artist":"Nightwish","title":"The Crow, the Owl and the Dove","genre":"Power Metal","uuid":"999ecf96-87e4-445c-82ae-92fea18ea9c6"}
+{"artist":"Power Quest","title":"Now is the Time","genre":"Power metal","uuid":"69d2758f-2273-426d-94b9-6af83e6ff366"}
+{"artist":"Dreamtale","title":"Blood of the Morning Star","genre":"Power metal","uuid":"ccaf902f-6f0a-4320-acbf-643e456cab78"}
+{"artist":"Cain's Offering","title":"I will build you a Rome","genre":"Power metal","uuid":"2ef33923-d7d0-4d69-80f2-6a070769197d"}
+{"artist":"Cain's Offering","title":"Constellation of Tears","genre":"Power metal","uuid":"d3b18c62-05ad-4620-a07f-269a3b91fbe9"}
+{"artist":"Cain's Offering","title":"Elegantly Broken","genre":"Power metal","uuid":"10ab4a01-ff2f-4175-a233-6f927423be22"}
+{"artist":"Cain's Offering","title":"A night to forget","genre":"Power metal","uuid":"843bdbc7-e1a0-45c0-9f86-863d419a6798"}
+{"artist":"Cain's Offering","title":"Stolen Waters","genre":"Power metal","uuid":"8a8fc087-a112-4630-8778-afa34df8abf6"}
+{"artist":"Cain's Offering","title":"Into the Blue","genre":"Power metal","uuid":"651a04ee-0bf6-47cb-b693-9fe79ea0be75"}
+{"artist":"Cain's Offering","title":"Stormcrow","genre":"Power metal","uuid":"d158bbfd-701a-4c0c-abe7-359c9cc711b8"}
+{"artist":"Cain's Offering","title":"Antemortem","genre":"Power metal","uuid":"5f54ecf5-5283-4f93-beea-c98c79444d12"}
+{"artist":"Heavenly","title":"Timemachine","genre":"Power metal","uuid":"6da97aa9-ba61-4e7f-813f-5007956bff2e"}
+{"artist":"Heavenly","title":"Kingdom Come","genre":"Power metal","uuid":"fe070a8b-55bb-4c60-b6ef-6a32d1c57609"}
+{"artist":"Heavenly","title":"The Angel","genre":"Power metal","uuid":"e85373d9-054c-4dc2-a8e8-415c8d7c06b0"}
+{"artist":"Heavenly","title":"Ashen Paradise","genre":"Power metal","uuid":"25f58560-01d2-448e-8504-f4cdbb62c5b1"}
+{"artist":"Heavenly","title":"...Dust to Dust","genre":"Power metal","uuid":"eae93d19-3c23-4c13-ad7c-49fe48a44626"}
+{"artist":"Heavenly","title":"Illusion, Pt. 2","genre":"Power metal","uuid":"cffc1a68-3aa9-4736-8760-82e7a3edd556"}
+{"artist":"Ancient Bards","title":"Broken Illusion","genre":"Power metal","uuid":"c8c108c4-b901-4b6e-9941-10fc610253b9"}
+{"artist":"Nocturna","title":"Daughters of the Night","genre":"Power metal","uuid":"7d3ed34e-1d54-4945-acd4-afbb825bfad4"}
+{"artist":"Memoira","title":"Coupe du Graal","genre":"Power metal","uuid":"7d41c4a9-2243-4bcb-ac95-5e62e9f1639d"}
+{"artist":"Mortemia","title":"My Demons and I","genre":"Power metal","uuid":"879e6098-c932-4cc2-a3e4-d8c5ef000556"}
+{"artist":"Elvenking","title":"The One We Shall Folow","genre":"Power metal","uuid":"2ae7e147-cbba-4463-9b03-e7967cd1fc7a"}
+{"artist":"Derdian","title":"Battleplan","genre":"Power metal","uuid":"25ed8489-df24-4b83-a152-ec676ac292d1"}
+{"artist":"Derdian","title":"Screams of Agony","genre":"Power metal","uuid":"6f00f57e-b312-4301-b5c1-6d920968091b"}
+{"artist":"Majestica","title":"Glory of christimas","genre":"Power metal","uuid":"de065335-2ca7-41df-97b2-eca85662569e"}
+{"artist":"Majestica","title":"Ghost of Marley","genre":"Power metal","uuid":"94990873-5908-4fed-b410-07d68e2096d9"}
+{"artist":"Majestica","title":"Ghost of Christmas Past","genre":"Power metal","uuid":"5355c8b6-7d60-4d75-b520-a3c60d5ac601"}
+{"artist":"Majestica","title":"Ghost of Christmas Presemt","genre":"Power metal","uuid":"ecea6806-92dc-4fb1-a094-829b745821a1"}
+{"artist":"Lost Horizon","title":"Cry of a restless soul","genre":"Power metal","uuid":"1f2e56de-22d8-41a2-8efb-54aebb8b502f"}
+{"artist":"Fairyland","title":"The Storyteller","genre":"Power metal","uuid":"1aab4068-48ee-4a6c-884e-f2e1a26d5296"}
+{"artist":"Fairyland","title":"Doryan the Enlighted","genre":"Power metal","uuid":"3c2386dc-767e-4419-9bf6-db9e92668865"}
+{"artist":"Fairyland","title":"Guardian Stones","genre":"Power metal","uuid":"1f25f35d-de57-4461-83bc-c6cd68750e4e"}
+{"artist":"Fairyland","title":"Fight for Your King","genre":"Power metal","uuid":"6373017a-88cf-429e-a238-95eea8942eb2"}
+{"artist":"Fairyland","title":"Of Wars in Osyrhia","genre":"Power metal","uuid":"23d45f36-5625-452e-9ee7-711429e7f469"}
+{"artist":"Fairyland","title":"Ride with the Sun","genre":"Power metal","uuid":"0c1a2c95-ec9e-41bb-bc9b-5f64628490cc"}
+{"artist":"Fairyland","title":"Rebirth","genre":"Power metal","uuid":"5fb93cc0-f827-4fde-b758-319140f72762"}
+{"artist":"Highland Glory","title":"Mindgame Masquerade","genre":"Power metal","uuid":"ee019b0c-6b70-4a2a-afcf-950a5add0a18"}
+{"artist":"Highland Glory","title":"From the Cradle to the Brave","genre":"Power metal","uuid":"8e5b8dd0-dd6b-43b0-b041-24733b910439"}
+{"artist":"Highland Glory","title":"Sacrifice","genre":"Power metal","uuid":"532de884-e77a-4104-b366-cc7cb4397b08"}
+{"artist":"Eclipse","title":"Roses on Your Grave","genre":"Power metal","uuid":"eb627aeb-28f5-4bc6-ac85-9a16287c2112"}
+{"artist":"Eclipse","title":"Twilight","genre":"Power metal","uuid":"f6e47a29-c609-4074-b7f6-b60542e35487"}
+{"artist":"Eclipse","title":"Viva la Victoria","genre":"Power metal","uuid":"b872063b-03b7-4b7f-8352-2d7305ae7b20"}
+{"artist":"Eclipse","title":"Saturday Night","genre":"Power metal","uuid":"3a91c7e4-effa-47d4-8bc3-4950c27a8de3"}
+{"artist":"Battlelore","title":"Sons of Riddlemark","genre":"Power metal","uuid":"3e676918-4aa0-44df-b255-388a91893238"}
+{"artist":"Galderia","title":"Celestial Harmony","genre":"Power metal","uuid":"4e5201f6-00fe-4b3c-bd98-f6a7566ce9e2"}
+{"artist":"Galderia","title":"Land of Galderia","genre":"Power metal","uuid":"d4207c4c-dea1-409b-a7fa-91f81b9d9263"}
+{"artist":["Orion's Reign","Minniva"],"title":"Nostos","genre":"Power metal","uuid":"09ce82a4-b302-443e-889f-95d371950e65"}
+{"artist":"Hysterica","title":"Heels","genre":"Power metal","uuid":"f5751a79-71ed-4d10-9d70-7b126435608b"}
+{"artist":"Grimwind","title":"Blood Of Sanguinius","cover":"HMKids","genre":"power metal","uuid":"d89ed1d2-3483-4511-a5bf-a93c812d6b17"}
+{"artist":"Revel In Flesh","title":"Warmaster","genre":"Death metal","uuid":"985687a6-0691-4021-b63c-fb1a14431f7f"}
+{"artist":"Davester2296","title":"Painful Dreams","cover":"CoTeCiO","soundtrack":"Doom 64 for Doom II","genre":"Metal","uuid":"9db06e45-f069-49cf-a9ba-eb6fb71098f0"}
+{"title":"Blood Shot","soundtrack":"Megas XLR","genre":"Metal","uuid":"82c1eaaf-1a09-436b-ba4a-a3f8a7899c42"}
+{"title":"Harsh Life","soundtrack":"Megas XLR","genre":"Metal","uuid":"e15fe718-9884-4681-998d-c5dc568aa52d"}
+{"title":"Ro-sham-Bo","soundtrack":"Megas XLR","genre":"Metal","uuid":"f66c3950-8aa2-4265-a0ce-22de5f46f290"}
+{"title":"Short Hair","soundtrack":"Megas XLR","genre":"Metal","uuid":"7e7407d9-30ce-4034-80c3-de7421159179"}
+{"title":"Chopping Spree","soundtrack":"Megas XLR","genre":"Metal","uuid":"949fddd7-1e93-47f8-8530-26d78e7a3cad"}
+{"title":"Tornado of Souls","artist":"Megadeth","genre":"Metal","uuid":"8f1b0b31-80a8-47a6-90c8-e25e45252d49"}

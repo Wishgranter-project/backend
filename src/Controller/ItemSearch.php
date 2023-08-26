@@ -42,6 +42,10 @@ class ItemSearch extends ControllerBase
     {
         $search = $this->playlistManager->search();
 
+        if ($request->get('playlist')) {
+            $search->playlists($request->get('playlist'));
+        }
+
         if ($request->get('title')) {
             $search->condition('title', $request->get('title'), 'LIKE');
         }

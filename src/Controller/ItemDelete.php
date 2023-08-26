@@ -15,16 +15,12 @@ class ItemDelete extends ControllerBase
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $playlistId = $request->getAttribute('playlist');
-        if (!$playlist = $this->playlistManager->getPlaylist($playlistId)) {
-            throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
-        }
-
         $uuid = $request->getAttribute('itemUuid');
-        if (!$item = $playlist->getItemByUuid($uuid)) {
+        if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId)) {
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
+        $playlist = $this->playlistManager->getPlaylist($playlistId);
         $playlist->deleteItem($item);
         $data = $this->describer->describe($item);
 

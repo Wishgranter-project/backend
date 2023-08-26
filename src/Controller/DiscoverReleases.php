@@ -11,13 +11,36 @@ class DiscoverReleases extends ControllerBase
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $releases = $this->listReleases($request);
+        $info  = $this->listReleases($request);
+        $data  = $this->getReleases($info);
+        $count = count($data);
 
         $resource = new JsonResource();
         return $resource
             ->setStatusCode(200)
-            ->setData($releases)
+            ->setData($data)
+            ->setMeta('total', $info->pagination->items)
+            ->setMeta('itensPerPage', $info->pagination->per_page)
+            ->setMeta('pages', $info->pagination->pages)
+            ->setMeta('page', $info->pagination->page)
+            ->setMeta('count', $count)
             ->renderResponse();
+    }
+
+    protected function getReleases($info) 
+    {
+        $releases = [];
+
+        foreach ($info->results as $r) {
+            $releases[] = [
+                'id' => $r->master_id,
+                'name' => $r->title, 
+                'thumb' => $r->thumb ?? null, 
+                'year' => $r->year
+            ];
+        }
+
+        return $releases;
     }
 
     protected function listReleases($request) 
@@ -27,19 +50,8 @@ class DiscoverReleases extends ControllerBase
             throw new \InvalidArgumentException('Provide a search term, you lackwit');
         }
 
-        $page = (int) $request->get('page', 0);
+        $page = (int) $request->get('page', 1);
 
-        $data = $this->discogs->getArtistAlbums($query, $page);
-
-        $releases = [];
-        foreach ($data->results as $r) {
-            $releases[] = [
-                'id' => $r->master_id,
-                'name' => $r->title, 
-                'thumb' => $r->thumb ?? null
-            ];
-        }
-
-        return $releases;
+        return $this->discogs->getArtistAlbums($query, $page);
     }
 }

@@ -11,14 +11,15 @@ class CacheManager
 
     public function __construct($directory = null) 
     {
-        $this->directory = CACHE_DIR;
-
+        $this->directory = $directory;
         $this->cache = new Cache($this->directory);
     }
 
     public static function create() 
     {
-        return new self(ROOT_DIR . 'cache/');
+        return defined(CACHE_DIR_TEST)
+            ? new self(CACHE_DIR_TEST)
+            : new self(CACHE_DIR);
     }
 
     public function get(array $tags, $default = null)

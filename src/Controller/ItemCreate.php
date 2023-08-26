@@ -11,18 +11,22 @@ use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
 
-class ItemUpdate extends ControllerBase 
+class ItemCreate extends ControllerBase 
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $uuid = $request->getAttribute('itemUuid');
-        if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId)) {
-            throw new NotFound('Item ' . $uuid . ' does not exist.');
+        $postData = $this->getPostData($request);
+        if (empty($postData['playlist']) || !is_string($postData['playlist'])) {
+            throw new \InvalidArgumentException('Inform a playlist');
+        }
+        $playlistId = $postData['playlist'];
+        unset($postData['playlist']);
+
+        if (!$playlist = $this->playlistManager->getPlaylist($playlistId)) {
+            throw new \InvalidArgumentException('Playlist ' . $playlistId . ' does not exist');
         }
 
-        $item->empty(['uuid']);
-
-        $postData = $this->getPostData($request);
+        $item = new PlaylistItem();
         foreach ($postData as $k => $v) {
             if ($item->isValidPropertyName($k)) {
                 $item->{$k} = $v;
@@ -30,15 +34,15 @@ class ItemUpdate extends ControllerBase
                 throw new \InvalidArgumentException('Unrecognized property ' . $k);
             }
         }
-
         $item->clear();
-        $this->playlistManager->setItem($playlistId, $item);
+        $playlist->setItem($item);
 
         $data = $this->describer->describe($item);
 
         $resource = new JsonResource();
         return $resource
-            ->addSuccess(200, 'Item updates sucessfully')
+            ->setStatusCode(201)
+            ->addSuccess(201, 'Item created')
             ->setData($data)
             ->renderResponse();
     }

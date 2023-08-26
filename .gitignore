@@ -1,5 +1,5 @@
-web/*
-!web/index.php
-!web/phpinfo.php
 vendor/*
 cache/*
+cache-test/*
+playlist-files/*
+playlist-files-test/*

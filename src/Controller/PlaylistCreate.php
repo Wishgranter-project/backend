@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Helper\JsonResource;
 
-class PlaylistAdd extends ControllerBase 
+class PlaylistCreate extends ControllerBase 
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
@@ -25,6 +25,8 @@ class PlaylistAdd extends ControllerBase
             foreach ($postData as $k => $v) {
                 if ($header->isValidPropertyName($k)) {
                     $header->{$k} = $v;
+                } else {
+                    throw new \InvalidArgumentException('Unrecognized property ' . $k);
                 }
             }
             $playlist->setHeader($header);

@@ -15,7 +15,7 @@ class JsonResource
 
     protected $meta      = [];
 
-    protected $data;
+    protected $data      = null;
 
     public function renderResponse() : ResponseInterface
     {
@@ -141,7 +141,7 @@ class JsonResource
             $array['meta'] = $this->meta;
         }
 
-        if ($this->data) {
+        if (!is_null($this->data)) {
             $array['data'] = $this->data;
         }
 

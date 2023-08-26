@@ -20,9 +20,8 @@ class Discogs
         return $this->getJson('masters/' . $releaseId);
     }
 
-    public function getArtistAlbums(string $artistName, $page = 0) : \stdClass
+    public function getArtistAlbums(string $artistName, $page = 1) : \stdClass
     {
-        $page++;
         return $this->getJson('database/search?type=master&artist=' . $artistName . '&page=' . $page);
     }
 
