@@ -15,7 +15,7 @@ class ControllerBase
 
     public function __construct() 
     {
-        $this->servicesManager = new ServicesManager();
+        $this->servicesManager = ServicesManager::singleton();
     }
 
     public function __get($var) {

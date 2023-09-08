@@ -60,7 +60,7 @@ $router->delete('#api/v1/collection/items/(?<itemUuid>[\w-]+)/?$#',            '
 $router->get(   '#api/v1/discover/artists$#',                                  'DiscoverArtists');
 $router->get(   '#api/v1/discover/releases$#',                                 'DiscoverReleases');
 $router->get(   '#api/v1/discover/releases/(?<releaseId>[\d]+)$#',             'ReleaseGet');
-$router->get(   '#api/v1/discover/sources$#',                                  'DiscoverSources');
+$router->get(   '#api/v1/discover/resources$#',                                'DiscoverResources');
 
 // ERRORS
 $router->setNotFoundHandler(function($request, $handler, $path) 

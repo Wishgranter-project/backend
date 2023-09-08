@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/descriptive-manager.git",
-                "reference": "5405072ddc8741365a408722970919c9b5314054"
+                "reference": "004804b2ef4d271f842708e7ca60dfe409ea7878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/5405072ddc8741365a408722970919c9b5314054",
-                "reference": "5405072ddc8741365a408722970919c9b5314054",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/004804b2ef4d271f842708e7ca60dfe409ea7878",
+                "reference": "004804b2ef4d271f842708e7ca60dfe409ea7878",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "source": "https://github.com/adinan-cenci/descriptive-manager/tree/master",
                 "issues": "https://github.com/adinan-cenci/descriptive-manager/issues"
             },
-            "time": "2023-08-26T14:56:10+00:00"
+            "time": "2023-08-27T11:30:03+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-playlist",
@@ -267,16 +267,16 @@
         },
         {
             "name": "adinan-cenci/psr-17",
-            "version": "v1.0.5",
+            "version": "v1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-17.git",
-                "reference": "712dbb189e33fd71742083b90be495e739cdbcb5"
+                "reference": "181a881171eaa96614914f880e59f73a48aafc39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/712dbb189e33fd71742083b90be495e739cdbcb5",
-                "reference": "712dbb189e33fd71742083b90be495e739cdbcb5",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/181a881171eaa96614914f880e59f73a48aafc39",
+                "reference": "181a881171eaa96614914f880e59f73a48aafc39",
                 "shasum": ""
             },
             "require": {
@@ -305,9 +305,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/psr-17/issues",
-                "source": "https://github.com/adinan-cenci/psr-17/tree/v1.0.5"
+                "source": "https://github.com/adinan-cenci/psr-17/tree/v1.0.8"
             },
-            "time": "2023-08-13T13:12:52+00:00"
+            "time": "2023-09-08T00:27:44+00:00"
         },
         {
             "name": "adinan-cenci/psr-7",

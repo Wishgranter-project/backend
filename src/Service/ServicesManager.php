@@ -5,6 +5,8 @@ class ServicesManager
 {
     protected $instances = [];
 
+    protected static $singleInstance = null;
+
     public function get(string $serviceId) 
     {
         if (! isset($this->instances[$serviceId])) {
@@ -27,8 +29,11 @@ class ServicesManager
             case 'cacheManager':
                 return CacheManager::create();
                 break;
-            case 'youtubeSearcher':
-                return YoutubeSearcher::create();
+            case 'sourceYoutube':
+                return SourceYoutube::create();
+                break;
+            case 'resourceFinder':
+                return ResourceFinder::create();
                 break;
             case 'discogs':
                 return Discogs::create();
@@ -39,5 +44,14 @@ class ServicesManager
         }
 
         return null;
+    }
+
+    public static function singleton() 
+    {
+        if (self::$singleInstance == null) {
+            self::$singleInstance = new self();
+        }
+
+        return self::$singleInstance;
     }
 }

@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 
 use AdinanCenci\Player\Helper\JsonResource;
 
-class DiscoverSources extends ControllerBase 
+class DiscoverResources extends ControllerBase 
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
@@ -21,34 +21,25 @@ class DiscoverSources extends ControllerBase
         return $response;
     }
 
-    protected function find($request) 
+    protected function find(ServerRequestInterface $request) 
     {
-        $query   = $this->getQuery($request);
-        $ids     = $this->youtubeSearcher->search($query);
-        $sources = [];
-
-        foreach ($ids as $id) {
-            $sources[] = [
-                'service' => 'youtube',
-                'id' => $id
-            ];
-        }
-
-        return $sources;
+        $parameters = $this->buildParameters($request);
+        $resources  = $this->resourceFinder->findResources($parameters);
+        return $resources;
     }
 
-    protected function getQuery($request) : string
+    protected function buildParameters(ServerRequestInterface $request) : array
     {
-        $query = $request->get('title');
+        $parameters['title'] = $request->get('title');
 
         if ($request->get('artist')) {
-            $query .= ' ' . $request->get('artist');
+            $parameters['artist'] = $request->get('artist');
         }
 
         if ($request->get('soundtrack')) {
-            $query .= ' ' . $request->get('soundtrack');
+            $parameters['soundtrack'] = $request->get('soundtrack');
         }
 
-        return $query;
+        return $parameters;
     }
 }
