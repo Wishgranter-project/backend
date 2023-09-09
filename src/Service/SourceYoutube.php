@@ -27,12 +27,13 @@ class SourceYoutube implements SourceInterface
                 continue;
             }
 
-            $resources[] = [
-                'service'   => 'youtube',
-                'id'        => 'youtube:' . $item['id']['videoId'],
-                'title'     => htmlspecialchars_decode($item['snippet']['title']),
-                'thumbnail' => $item['snippet']['thumbnails']['default']['url']
-            ];
+            $resources[] = new Resource(
+                'youtube',
+                'youtube:' . $item['id']['videoId'],
+                htmlspecialchars_decode($item['snippet']['title']),
+                htmlspecialchars_decode($item['snippet']['description']),
+                $item['snippet']['thumbnails']['default']['url']
+            );
         }
 
         return $resources;

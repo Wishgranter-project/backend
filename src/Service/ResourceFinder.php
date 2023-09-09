@@ -23,6 +23,11 @@ class ResourceFinder
         );
     }
 
+    /**
+     * @param string[] $parameters
+     *
+     * @return Resource[]
+     */
     public function findResources(array $parameters) : array
     {
         foreach ($this->sources as $source) {
@@ -34,6 +39,12 @@ class ResourceFinder
         return [];
     }
 
+    /**
+     * @param SourceInterface $source
+     * @param string[] $parameters
+     *
+     * @return Resource[]
+     */
     protected function searchOnSource(SourceInterface $source, array $parameters) : array
     {
         $resources = $source->search($parameters);
@@ -43,9 +54,17 @@ class ResourceFinder
         return array_values($resources);
     }
 
+    /**
+     * If the artist or soundtrack is present in the title or description,
+     * then sort the item higher.
+     *
+     * @param string[]
+     *
+     * @return callable
+     */
     public function sortResources(array $parameters) 
     {
-        $related = $parameters['artist'] ?? $parameters['soundtrack'] ?? '';
+        $related = $parameters['soundtrack'] ?? $parameters['artist'] ?? '';
 
         if (! $related) {
             return function($a, $b) 
@@ -54,13 +73,14 @@ class ResourceFinder
             };
         }
 
-        return function($a, $b) use($related) 
+        return function($r1, $r2) use($related) 
         {
-            if ($a['id'] == $b['id']) {
+            if ($r1->id == $r2->id) {
                 return 0;
             }
 
-            return substr_count($a['title'], $related)
+            return substr_count($r1->title, $related) ||
+              substr_count($r1->description, $related)
                 ? 1
                 : -1;
         };

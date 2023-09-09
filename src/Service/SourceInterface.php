@@ -5,15 +5,7 @@ interface SourceInterface
 {
     /**
      * @param string $query
-     * @return array
-     *
-     *  [
-     *    [
-     *      'id'        => 'service_id:vendor_id',
-     *      'title'     => '...',
-     *      'thumbnail' => '...',
-     *    ]
-     * ]
+     * @return Resource[]
      */
     public function search(array $parameters) : array;
 }

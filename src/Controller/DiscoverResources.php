@@ -11,11 +11,16 @@ class DiscoverResources extends ControllerBase
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $sources = $this->find($request);
+        $resources = $this->find($request);
+
+        $data = [];
+        foreach ($resources as $resource) {
+            $data[] = $this->describer->describe($resource);
+        }
 
         $resource = new JsonResource();
         return $resource
-            ->setData($sources)
+            ->setData($data)
             ->renderResponse();
 
         return $response;
