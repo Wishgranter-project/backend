@@ -67,6 +67,8 @@ class ResourceFinder
     {
         $related = $parameters['soundtrack'] ?? $parameters['artist'] ?? '';
 
+        $related = is_array($related) ? $related[0] : $related;
+
         if (! $related) {
             return function($a, $b) 
             {

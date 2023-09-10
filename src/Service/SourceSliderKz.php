@@ -72,7 +72,7 @@ class SourceSliderKz implements SourceInterface
         $query = $parameters['title'];
 
         if (isset($parameters['artist'])) {
-            $query .= ' ' . $parameters['artist'];
+            $query .= ' ' . (is_array($parameters['artist']) ? $parameters['artist'][0] : $parameters['artist']);
         }
 
         if (isset($parameters['soundtrack'])) {
