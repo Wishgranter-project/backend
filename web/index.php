@@ -3,6 +3,8 @@ use AdinanCenci\Router\Helper\Server;
 use AdinanCenci\Router\Helper\File;
 use AdinanCenci\Router\Router;
 
+session_start();
+
 if (! file_exists('../vendor/autoload.php')) {
     die('<h1>Autoload not found</h1>');
 }

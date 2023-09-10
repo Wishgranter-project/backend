@@ -13,13 +13,16 @@ class Resource
 
     protected string $thumbnail = '';
 
-    public function __construct(string $vendor, string $id, ?string $title, ?string $description = '', ?string $thumbnail = '') 
+    protected string $source = '';
+
+    public function __construct(string $vendor, string $id, ?string $title, ?string $description = '', ?string $thumbnail = '', $source = '') 
     {
         $this->vendor = $vendor;
         $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->thumbnail = $thumbnail;
+        $this->source = $source;
     }
 
     public function __get($var) 
@@ -58,6 +61,10 @@ class Resource
             $array['thumbnail'] = $this->thumbnail;
         }
 
+        if (!empty($this->source)) {
+            $array['source'] = $this->source;
+        }
+
         return $array;
     }
 
@@ -68,7 +75,8 @@ class Resource
             !empty($array['id']) ? $array['id'] : '',
             !empty($array['title']) ? $array['title'] : '',
             !empty($array['description']) ? $array['description'] : '',
-            !empty($array['thumbnail']) ? $array['thumbnail'] : ''
+            !empty($array['thumbnail']) ? $array['thumbnail'] : '',
+            !empty($array['source']) ? $array['source'] : ''
         );
     }
 }

@@ -18,6 +18,7 @@ class ResourceFinder
 
         return new self(
             [
+                $serviceManager->get('sourceSliderKz'),
                 $serviceManager->get('sourceYoutube')
             ]
         );

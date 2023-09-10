@@ -32,6 +32,9 @@ class ServicesManager
             case 'sourceYoutube':
                 return SourceYoutube::create();
                 break;
+            case 'sourceSliderKz':
+                return SourceSliderKz::create();
+                break;
             case 'resourceFinder':
                 return ResourceFinder::create();
                 break;
