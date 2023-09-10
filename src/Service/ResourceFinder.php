@@ -79,8 +79,14 @@ class ResourceFinder
                 return 0;
             }
 
-            return substr_count($r1->title, $related) ||
-              substr_count($r1->description, $related)
+            if (
+                substr_count($r1->title, $related) &&
+                substr_count($r2->title, $related)
+            ) {
+                return 0;
+            }
+
+            return substr_count($r1->title, $related)
                 ? 1
                 : -1;
         };
