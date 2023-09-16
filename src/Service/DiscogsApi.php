@@ -1,7 +1,7 @@
 <?php 
 namespace AdinanCenci\Player\Service;
 
-class Discogs 
+class DiscogsApi 
 {
     protected string $token;
 
@@ -10,11 +10,17 @@ class Discogs
         $this->token = $token;
     }
 
-    public function searchForArtist(string $artistName) : \stdClass
+    public static function create() : DiscogsApi
     {
-        return $this->getJson('database/search?type=artist&title=' . $artistName);
+        return new self('gcJQjhfYtloEsNKzFnbHlpktYxIheOlWmWRBGWTB');
     }
 
+    public function searchForArtist(string $artistName, int $page = 1, int $itensPerPage = 20) : \stdClass
+    {
+        return $this->getJson('database/search?type=artist&title=' . $artistName . '&page=' . $page . '&per_page=' . $itensPerPage);
+    }
+
+    // https://www.discogs.com/developers#page:database,header:database-master-release
     public function getRelease(string $releaseId) : \stdClass
     {
         return $this->getJson('masters/' . $releaseId);
@@ -25,11 +31,6 @@ class Discogs
         return $this->getJson('database/search?type=master&artist=' . $artistName . '&page=' . $page);
     }
 
-    public static function create() 
-    {
-        return new self('gcJQjhfYtloEsNKzFnbHlpktYxIheOlWmWRBGWTB');
-    }
-
     protected function getJson(string $url) : \stdClass
     {
         $url = 'https://api.discogs.com/' . $url;
@@ -37,7 +38,7 @@ class Discogs
         return json_decode($json);
     }
 
-    protected function request(string $url) 
+    protected function request(string $url) : string
     {
         $ch = curl_init();
         curl_setopt_array($ch, [

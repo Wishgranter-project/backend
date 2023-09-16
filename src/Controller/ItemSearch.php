@@ -8,12 +8,21 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Helper\SearchResults;
 
 class ItemSearch extends ControllerBase 
 {
     use PaginationTrait;
 
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    {
+        return $this
+          ->searchItems($request)
+          ->getJsonResource()
+          ->renderResponse();
+    }
+
+    protected function searchItems(ServerRequestInterface $request) : SearchResults
     {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $all   = $this->search($request);
@@ -22,20 +31,9 @@ class ItemSearch extends ControllerBase
         $list  = array_slice($all, $offset, $limit);
         $count = count($list);
 
-        $data = [];
-        foreach ($list as $item) {
-            $data[] = $this->describer->describe($item);
-        }
-
-        $resource = new JsonResource();
-        return $resource
-            ->setMeta('total', $total)
-            ->setMeta('itensPerPage', $itensPerPage)
-            ->setMeta('pages', $pages)
-            ->setMeta('page', $page)
-            ->setMeta('count', $count)
-            ->setData($data)
-            ->renderResponse();
+        return new SearchResults(
+            $list, $count, $page, $pages, $itensPerPage, $total
+        );
     }
 
     protected function search(ServerRequestInterface $request) : array

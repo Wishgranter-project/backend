@@ -1,6 +1,13 @@
 <?php 
 namespace AdinanCenci\Player\Service;
 
+use AdinanCenci\Player\Source\SourceYoutube;
+use AdinanCenci\Player\Source\SourceSliderKz;
+use AdinanCenci\Player\Source\ResourceFinder;
+
+use AdinanCenci\Player\Discography\DiscographyFinder;
+use AdinanCenci\Player\Discography\DiscographyDiscogs;
+
 class ServicesManager 
 {
     protected $instances = [];
@@ -38,8 +45,17 @@ class ServicesManager
             case 'resourceFinder':
                 return ResourceFinder::create();
                 break;
-            case 'discogs':
-                return Discogs::create();
+            case 'discographyFinder':
+                return DiscographyFinder::create();
+                break;
+            case 'discographyDiscogs':
+                return DiscographyDiscogs::create();
+                break;
+            case 'discogsApi':
+                return DiscogsApi::create();
+                break;
+            case 'youtubeApi':
+                return YoutubeApi::create();
                 break;
             case 'describer':
                 return Describer::create();

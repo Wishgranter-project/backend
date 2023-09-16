@@ -1,5 +1,5 @@
 <?php
-namespace AdinanCenci\Player\Service;
+namespace AdinanCenci\Player\Source;
 
 class Resource 
 {
@@ -68,6 +68,11 @@ class Resource
         return $array;
     }
 
+    /**
+     * @param string[] $array
+     *
+     * @return Resource
+     */
     public static function createFromArray(array $array) : Resource
     {
         return new self(

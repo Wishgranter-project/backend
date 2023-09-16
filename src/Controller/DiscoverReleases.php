@@ -11,47 +11,20 @@ class DiscoverReleases extends ControllerBase
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $info  = $this->listReleases($request);
-        $data  = $this->getReleases($info);
-        $count = count($data);
-
-        $resource = new JsonResource();
-        return $resource
-            ->setStatusCode(200)
-            ->setData($data)
-            ->setMeta('total', $info->pagination->items)
-            ->setMeta('itensPerPage', $info->pagination->per_page)
-            ->setMeta('pages', $info->pagination->pages)
-            ->setMeta('page', $info->pagination->page)
-            ->setMeta('count', $count)
-            ->renderResponse();
-    }
-
-    protected function getReleases($info) 
-    {
-        $releases = [];
-
-        foreach ($info->results as $r) {
-            $releases[] = [
-                'id' => $r->master_id,
-                'name' => $r->title, 
-                'thumb' => $r->thumb ?? null, 
-                'year' => $r->year
-            ];
-        }
-
-        return $releases;
+        $searchResults = $this->listReleases($request);
+        $resource = $searchResults->getJsonResource();
+        return $resource->renderResponse();
     }
 
     protected function listReleases($request) 
     {
-        $query = $request->get('artist');
-        if (empty($query) || !is_string($query)) {
+        $name = $request->get('artist');
+        if (empty($name) || !is_string($name)) {
             throw new \InvalidArgumentException('Provide a search term, you lackwit');
         }
 
         $page = (int) $request->get('page', 1);
 
-        return $this->discogs->getArtistAlbums($query, $page);
+        return $this->discographyFinder->searchForReleasesByArtistName($name, $page);
     }
 }

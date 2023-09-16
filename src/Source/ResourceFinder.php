@@ -1,7 +1,7 @@
 <?php
-namespace AdinanCenci\Player\Service;
+namespace AdinanCenci\Player\Source;
 
-use AdinanCenci\Player\Service\SourceInterface;
+use AdinanCenci\Player\Service\ServicesManager;
 
 class ResourceFinder 
 {
@@ -18,8 +18,8 @@ class ResourceFinder
 
         return new self(
             [
-                $serviceManager->get('sourceSliderKz'),
-                $serviceManager->get('sourceYoutube')
+                'sliderKz' => $serviceManager->get('sourceSliderKz'),
+                'youtube' => $serviceManager->get('sourceYoutube'),
             ]
         );
     }
@@ -50,7 +50,7 @@ class ResourceFinder
     {
         $resources = $source->search($parameters);
 
-        usort($resources, $this->sortResources($parameters));
+        // usort($resources, $this->sortResources($parameters));
 
         return array_values($resources);
     }
