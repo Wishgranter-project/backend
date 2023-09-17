@@ -7,6 +7,7 @@ use AdinanCenci\Player\Source\ResourceFinder;
 
 use AdinanCenci\Player\Discography\DiscographyFinder;
 use AdinanCenci\Player\Discography\DiscographyDiscogs;
+use AdinanCenci\Player\Discography\DiscographyLastFm;
 
 class ServicesManager 
 {
@@ -51,11 +52,17 @@ class ServicesManager
             case 'discographyDiscogs':
                 return DiscographyDiscogs::create();
                 break;
+            case 'discographyLastFm':
+                return DiscographyLastFm::create();
+                break;
             case 'discogsApi':
                 return DiscogsApi::create();
                 break;
             case 'youtubeApi':
                 return YoutubeApi::create();
+                break;
+            case 'lastFmApi':
+                return LastFmApi::create();
                 break;
             case 'describer':
                 return Describer::create();

@@ -20,6 +20,7 @@ class DiscographyFinder implements DiscographyInterface
 
         return new self(
             [
+                'lastfm' => $serviceManager->get('discographyLastFm'),
                 'discogs' => $serviceManager->get('discographyDiscogs'),
             ]
         );
@@ -66,7 +67,7 @@ class DiscographyFinder implements DiscographyInterface
 
         list($id, $source) = explode('@', $releaseId);
 
-        if (empty($id) || !is_numeric($id)) {
+        if (empty($id)) {
             throw new \InvalidArgumentException('Provide a valid release id, you cunt');
         }
 

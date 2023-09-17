@@ -46,7 +46,7 @@ trait PaginationTrait
         $pages += $total > $itensPerPage * $pages
             ? 1
             : 0;
-        
+
         return $pages;
     }
 }

@@ -88,7 +88,7 @@ class DiscographyDiscogs implements DiscographyInterface
 
         $release = Release::createFromArray([
             'source' => 'discogs',
-            'id' => $releaseId,
+            'id' => $releaseId . '@discogs',
             'title' => $data->title ?? '',
             'artist' => $data->artists[0]->name,
             'thumbnail' => isset($data->images[0]) ? $data->images[0]->uri : null,
