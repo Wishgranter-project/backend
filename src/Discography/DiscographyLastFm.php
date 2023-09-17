@@ -62,12 +62,12 @@ class DiscographyLastFm implements DiscographyInterface
         $info = $this->api->getArtistAlbums($artistName, $page, $itensPerPage);
 
         $results = [];
-        foreach ($info->topalbums->album as $r) {
+        foreach ($info->topalbums->album as $album) {
             $results[] = Release::createFromArray([
                 'source' => 'lastfm',
-                'id' => $r->mbid . '@lastfm',
-                'title' => $r->name, 
-                'thumbnail' => $r->image ? $r->image[2]->{'#text'} : null, 
+                'id' => ($album->mbid ? $album->mbid : $this->encodeBootlegId($album->artist->name, $album->name)) . '@lastfm',
+                'title' => $album->name, 
+                'thumbnail' => $album->image ? $album->image[2]->{'#text'} : null, 
                 'year' => 0
             ]);
         }
@@ -89,7 +89,12 @@ class DiscographyLastFm implements DiscographyInterface
      */
     public function getReleaseById(string $releaseId) : Release
     {
-        $data = $this->api->getRelease($releaseId);
+        if ($this->isLegitId($releaseId)) {
+            $data = $this->api->getRelease($releaseId);
+        } else {
+            list($artistName, $bootlegId) = $this->decodeBootlegId($releaseId);
+            $data = $this->api->getReleaseByArtistAndTitle($artistName, $bootlegId);
+        }
 
         $tracks = [];
         foreach ($data->album->tracks->track as $t) {
@@ -107,4 +112,20 @@ class DiscographyLastFm implements DiscographyInterface
 
         return $release;
     }
+
+    protected function isLegitId(string $string) : bool
+    {
+        return substr_count($string, '-') >= 3;
+    }
+
+    protected function encodeBootlegId(string $artistName, string $albumTitle) : string
+    {
+        return base64_encode($artistName . '/' . $albumTitle);
+    }
+
+    protected function decodeBootlegId(string $bootlegId) : array
+    {
+        return explode('/', base64_decode($bootlegId));
+    }
+
 }

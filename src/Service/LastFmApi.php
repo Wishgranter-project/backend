@@ -32,6 +32,11 @@ class LastFmApi
         return $this->getJson('2.0/?method=album.getinfo&mbid='. $id);
     }
 
+    public function getReleaseByArtistAndTitle(string $artistName, string $title) : \stdClass
+    {
+        return $this->getJson('2.0/?method=album.getinfo&artist='. urlencode($artistName) . '&album=' . urlencode($title));
+    }
+
     protected function getJson(string $url) : \stdClass
     {
         $url = 'http://ws.audioscrobbler.com/' . $url .'&api_key=' . $this->apiKey . '&format=json';
