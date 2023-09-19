@@ -20,7 +20,7 @@ class ItemUpdate extends ControllerBase
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
-        $item->empty(['uuid']);
+        $item->empty(['uuid', 'xxxOriginal']);
 
         $postData = $this->getPostData($request);
         foreach ($postData as $k => $v) {
