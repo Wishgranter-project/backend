@@ -34,7 +34,7 @@ class ServicesManager
             case 'playlistManager':
                 return PlaylistManager::create();
                 break;
-            case 'cacheManager':
+            case 'cache':
                 return CacheManager::create();
                 break;
             case 'sourceYoutube':

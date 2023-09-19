@@ -1,37 +1,54 @@
 <?php
 namespace AdinanCenci\Player\Service;
 
+use Psr\SimpleCache\CacheInterface;
+
 class YoutubeApi 
 {
     protected string $apiKey;
+    protected CacheInterface $cache;
 
-    public function __construct(string $apiKey) 
+    public function __construct(string $apiKey, CacheInterface $cache) 
     {
         $this->apiKey = $apiKey;
+        $this->cache = $cache;
     }
 
     public static function create() : YoutubeApi
     {
-        return new self('AIzaSyCHM5UA_kD9Bq-pONXOuAIQlBCOAWWRR18');
+        $manager = ServicesManager::singleton();
+
+        return new self(
+            'AIzaSyCHM5UA_kD9Bq-pONXOuAIQlBCOAWWRR18', 
+            $manager->get('cache')
+        );
     }
 
     /**
      * @param string $query
      *
-     * @return array
+     * @return \stdClass
      */
-    public function search(string $query) : array
+    public function searchVideos(string $query) : \stdClass
     {
-        $body  = $this->request($query);
-        $data  = json_decode($body, true);
-
-        return $data;
+        return $this->getJson('search?type=video&part=snippet&videoEmbeddable=true&q=' . urlencode($query));
     }
 
-    protected function request(string $query) : string
+    protected function getJson(string $url) : \stdClass
     {
-        $url = 'https://youtube.googleapis.com/youtube/v3/search?type=video&part=snippet&videoEmbeddable=true&q=' . urlencode($query) . '&key=' . $this->apiKey;
+        $cacheKey = md5($url);
 
+        if (!$json = $this->cache->get($cacheKey, false)) {
+            $url = 'https://youtube.googleapis.com/youtube/v3/' . $url . '&key=' . $this->apiKey;
+            $json = $this->request($url);
+            $this->cache->set($cacheKey, $json, 24 * 60 * 60 * 7);
+        }
+
+        return json_decode($json);
+    }
+
+    protected function request(string $url) : string 
+    {
         $ch = curl_init();
         curl_setopt_array($ch, [
             CURLOPT_URL => $url,

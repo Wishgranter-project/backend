@@ -9,7 +9,7 @@ use AdinanCenci\Player\Discography\Release;
 
 class Describer 
 {
-    public static function create() 
+    public static function create() : Describer
     {
         return new self();
     }

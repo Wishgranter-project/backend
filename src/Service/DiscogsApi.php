@@ -1,18 +1,27 @@
 <?php 
 namespace AdinanCenci\Player\Service;
 
+use Psr\SimpleCache\CacheInterface;
+
 class DiscogsApi 
 {
     protected string $token;
+    protected CacheInterface $cache;
 
-    public function __construct(string $token) 
+    public function __construct(string $token, CacheInterface $cache) 
     {
         $this->token = $token;
+        $this->cache = $cache;
     }
 
     public static function create() : DiscogsApi
     {
-        return new self('gcJQjhfYtloEsNKzFnbHlpktYxIheOlWmWRBGWTB');
+        $manager = ServicesManager::singleton();
+
+        return new self(
+            'gcJQjhfYtloEsNKzFnbHlpktYxIheOlWmWRBGWTB', 
+            $manager->get('cache')
+        );
     }
 
     public function searchForArtist(string $artistName, int $page = 1, int $itensPerPage = 20) : \stdClass
@@ -33,8 +42,14 @@ class DiscogsApi
 
     protected function getJson(string $url) : \stdClass
     {
-        $url = 'https://api.discogs.com/' . $url;
-        $json = $this->request($url);
+        $cacheKey = md5($url);
+
+        if (!$json = $this->cache->get($cacheKey, false)) {
+            $url = 'https://api.discogs.com/' . $url;
+            $json = $this->request($url);
+            $this->cache->set($cacheKey, $json, 24 * 60 * 60 * 7);
+        }
+
         return json_decode($json);
     }
 

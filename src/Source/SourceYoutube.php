@@ -21,20 +21,20 @@ class SourceYoutube extends SourceAbstract implements SourceInterface
     public function search(array $parameters) : array
     {
         $query = $this->buildQuery($parameters);
-        $data  = $this->api->search($query);
+        $data  = $this->api->searchVideos($query);
 
         $resources = [];
-        foreach ($data['items'] as $item) {
-            if ($item['id']['kind'] != 'youtube#video') {
+        foreach ($data->items as $item) {
+            if ($item->id->kind != 'youtube#video') {
                 continue;
             }
 
             $resources[] = new Resource(
                 'youtube',
-                $item['id']['videoId'] . '@youtube',
-                htmlspecialchars_decode($item['snippet']['title']),
-                htmlspecialchars_decode($item['snippet']['description']),
-                $item['snippet']['thumbnails']['default']['url']
+                $item->id->videoId . '@youtube',
+                htmlspecialchars_decode($item->snippet->title),
+                htmlspecialchars_decode($item->snippet->description),
+                $item->snippet->thumbnails->default->url
             );
         }
 

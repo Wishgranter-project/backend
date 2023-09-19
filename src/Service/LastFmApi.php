@@ -1,20 +1,30 @@
 <?php 
 namespace AdinanCenci\Player\Service;
 
+use Psr\SimpleCache\CacheInterface;
+
 class LastFmApi 
 {
     protected string $apiKey;
     protected string $secret;
+    protected CacheInterface $cache;
 
-    public function __construct(string $apiKey, string $secret) 
+    public function __construct(string $apiKey, string $secret, CacheInterface $cache) 
     {
-        $this->apiKey  = $apiKey;
+        $this->apiKey = $apiKey;
         $this->secret = $secret;
+        $this->cache  = $cache;
     }
 
     public static function create() : LastFmApi
     {
-        return new self('60110af4e0c43157f9678e2021519fd7', 'dc3f518e4428b48346723f13f64d8ff1');
+        $manager = ServicesManager::singleton();
+
+        return new self(
+            '60110af4e0c43157f9678e2021519fd7', 
+            'dc3f518e4428b48346723f13f64d8ff1', 
+            $manager->get('cache')
+        );
     }
 
     public function searchForArtist(string $artist, int $page = 1, int $itensPerPage = 20) : \stdClass 
@@ -39,8 +49,14 @@ class LastFmApi
 
     protected function getJson(string $url) : \stdClass
     {
-        $url = 'http://ws.audioscrobbler.com/' . $url .'&api_key=' . $this->apiKey . '&format=json';
-        $json = $this->request($url);
+        $cacheKey = md5($url);
+
+        if (!$json = $this->cache->get($cacheKey, false)) {
+            $url = 'http://ws.audioscrobbler.com/' . $url .'&api_key=' . $this->apiKey . '&format=json';
+            $json = $this->request($url);
+            $this->cache->set($cacheKey, $json, 24 * 60 * 60 * 7);
+        }
+
         return json_decode($json);
     }
 
