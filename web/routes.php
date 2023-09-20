@@ -43,10 +43,10 @@ $router->get(   '#api/v1/collection/artists/?$#',                              '
 // PLAYLIST
 $router->post(  '#api/v1/collection/playlists/?$#',                            'PlaylistCreate');
 $router->get(   '#api/v1/collection/playlists/(?<playlist>[\w-]+)$#',          'PlaylistRead');
-$router->get(   '#api/v1/collection/playlists/?$#',                            'PlaylistList');
+$router->get(   '#api/v1/collection/playlists/?$#',                            'PlaylistReadList');
+$router->get(   '#api/v1/collection/playlists/(?<playlist>[\w-]+)/items/?$#',  'PlaylistReadItems');
 $router->put(   '#api/v1/collection/playlists/(?<playlist>[\w-]+)$#',          'PlaylistUpdate');
 $router->delete('#api/v1/collection/playlists/(?<playlist>[\w-]+)$#',          'PlaylistDelete');
-$router->get(   '#api/v1/collection/playlists/(?<playlist>[\w-]+)/items/?$#',  'PlaylistItems');
 
 
 $router->post(  '#api/v1/collection/items/?$#',                                'ItemCreate');

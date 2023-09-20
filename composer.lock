@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7cb26ed1743ceb87799062bccbd3dfa",
+    "content-hash": "faba5b11fa5b98cb6f114a0bc4b0f460",
     "packages": [
         {
             "name": "adinan-cenci/descriptive-manager",
@@ -12,16 +12,16 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/descriptive-manager.git",
-                "reference": "004804b2ef4d271f842708e7ca60dfe409ea7878"
+                "reference": "75bc0777493de1eeb292e15658adf2e7a0189027"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/004804b2ef4d271f842708e7ca60dfe409ea7878",
-                "reference": "004804b2ef4d271f842708e7ca60dfe409ea7878",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/75bc0777493de1eeb292e15658adf2e7a0189027",
+                "reference": "75bc0777493de1eeb292e15658adf2e7a0189027",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/descriptive-playlist": "^3.0",
+                "adinan-cenci/descriptive-playlist": "^4.0",
                 "php": ">=7.0"
             },
             "require-dev": {
@@ -56,20 +56,20 @@
                 "source": "https://github.com/adinan-cenci/descriptive-manager/tree/master",
                 "issues": "https://github.com/adinan-cenci/descriptive-manager/issues"
             },
-            "time": "2023-08-27T11:30:03+00:00"
+            "time": "2023-09-20T12:03:18+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-playlist",
-            "version": "v3.1.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/descriptive-playlist.git",
-                "reference": "8e6af4bd346fe36db3d75af897449787ee9a8ece"
+                "reference": "303013f58ff5b63ed395ba81ba9e5a04b75a2065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-playlist/zipball/8e6af4bd346fe36db3d75af897449787ee9a8ece",
-                "reference": "8e6af4bd346fe36db3d75af897449787ee9a8ece",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-playlist/zipball/303013f58ff5b63ed395ba81ba9e5a04b75a2065",
+                "reference": "303013f58ff5b63ed395ba81ba9e5a04b75a2065",
                 "shasum": ""
             },
             "require": {
@@ -109,10 +109,10 @@
                 "json-lines"
             ],
             "support": {
-                "source": "https://github.com/adinan-cenci/descriptive-playlist/tree/v3.1.0",
+                "source": "https://github.com/adinan-cenci/descriptive-playlist/tree/v4.0.0",
                 "issues": "https://github.com/adinan-cenci/descriptive-playlist/issues"
             },
-            "time": "2023-08-26T14:51:48+00:00"
+            "time": "2023-09-20T11:31:00+00:00"
         },
         {
             "name": "adinan-cenci/file-cache",

@@ -27,6 +27,7 @@
     "require": {
         "adinan-cenci/descriptive-manager": "dev-master",
         "adinan-cenci/router": "dev-master",
-        "adinan-cenci/file-cache": "dev-master"
+        "adinan-cenci/file-cache": "dev-master",
+        "adinan-cenci/descriptive-playlist": "^4.0"
     }
 }

@@ -31,7 +31,7 @@ class ItemUpdate extends ControllerBase
             }
         }
 
-        $item->clear();
+        $item->sanitize();
         $this->playlistManager->setItem($playlistId, $item);
 
         $data = $this->describer->describe($item);

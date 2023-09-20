@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\Player\Helper\JsonResource;
 
-class PlaylistList extends ControllerBase 
+class PlaylistReadList extends ControllerBase 
 {
     use PaginationTrait;
 

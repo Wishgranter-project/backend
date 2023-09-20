@@ -9,7 +9,7 @@ use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\Player\Helper\JsonResource;
 use AdinanCenci\Player\Exception\NotFound;
 
-class PlaylistItems extends ControllerBase 
+class PlaylistReadItems extends ControllerBase 
 {
     use PaginationTrait;
 

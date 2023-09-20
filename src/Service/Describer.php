@@ -36,13 +36,13 @@ class Describer
             'id' => basename($playlist->fileName, '.dpls'),
         ];
 
-        $data += (array) $playlist->getHeader()->getData();
+        $data += (array) $playlist->getHeader()->getCopyOfTheData();
         return $data;
     }
 
     protected function describePlaylistItem(PlaylistItem $playlistItem) 
     {
-        return $playlistItem->getData();
+        return $playlistItem->getCopyOfTheData();
     }
 
     protected function describeResource(Resource $resource) 

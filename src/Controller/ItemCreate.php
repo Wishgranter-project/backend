@@ -19,23 +19,21 @@ class ItemCreate extends ControllerBase
         if (empty($postData['playlist']) || !is_string($postData['playlist'])) {
             throw new \InvalidArgumentException('Inform a playlist');
         }
+
         $playlistId = $postData['playlist'];
         unset($postData['playlist']);
 
-        if (!$playlist = $this->playlistManager->getPlaylist($playlistId)) {
+        if (!$this->playlistManager->playlistExists($playlistId)) {
             throw new \InvalidArgumentException('Playlist ' . $playlistId . ' does not exist');
         }
 
-        $item = new PlaylistItem();
-        foreach ($postData as $k => $v) {
-            if ($item->isValidPropertyName($k)) {
-                $item->{$k} = $v;
-            } else {
-                throw new \InvalidArgumentException('Unrecognized property ' . $k);
-            }
-        }
-        $item->clear();
-        $playlist->setItem($item);
+        $uuid = isset($postData['uuid'])
+            ? $postData['uuid']
+            : null;
+
+        $item = $uuid
+            ? $this->createItemByCopying($playlistId, $uuid)
+            : $this->createItemFromScratch($playlistId, $postData);
 
         $data = $this->describer->describe($item);
 
@@ -45,5 +43,31 @@ class ItemCreate extends ControllerBase
             ->addSuccess(201, 'Item created')
             ->setData($data)
             ->renderResponse();
+    }
+
+    protected function createItemByCopying(string $playlistId, string $uuid) : PlaylistItem
+    {
+        $original = $this->playlistManager->getItemByUuid($uuid);
+
+        if (!$original) {
+            throw new \InvalidArgumentException('Item ' . $uuid . ' does not exist');
+        }
+
+        return $this->playlistManager->addItem($playlistId, $original);
+    }
+
+    protected function createItemFromScratch(string $playlistId, array $postData) : PlaylistItem
+    {
+        $item = new PlaylistItem();
+        foreach ($postData as $k => $v) {
+            if ($item->isValidPropertyName($k)) {
+                $item->{$k} = $v;
+            } else {
+                throw new \InvalidArgumentException('Unrecognized property ' . $k);
+            }
+        }
+        $item->sanitize();
+
+        return $this->playlistManager->addItem($playlistId, $item);
     }
 }
