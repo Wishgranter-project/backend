@@ -50,7 +50,7 @@ class ResourceFinder
     {
         $resources = $source->search($parameters);
 
-        // usort($resources, $this->sortResources($parameters));
+        usort($resources, $this->sortResources($parameters));
 
         return array_values($resources);
     }
@@ -76,22 +76,37 @@ class ResourceFinder
             };
         }
 
-        return function($r1, $r2) use($related) 
+        return function($resource1, $resource2) use($related) 
         {
-            if ($r1->id == $r2->id) {
+            if ($resource1->id == $resource2->id) {
                 return 0;
             }
 
+            $related = ResourceFinder::normalizeString($related);
+            $title1  = ResourceFinder::normalizeString($resource1->title);
+            $title2  = ResourceFinder::normalizeString($resource2->title);
+
             if (
-                substr_count($r1->title, $related) &&
-                substr_count($r2->title, $related)
+                substr_count($title1, $related) &&
+                substr_count($title2, $related)
             ) {
                 return 0;
             }
 
-            return substr_count($r1->title, $related)
-                ? 1
-                : -1;
+            $count = substr_count($title1, $related);
+
+            return $count > 0
+                ? -1
+                :  1;
         };
+    }
+
+    public static function normalizeString(string $string) 
+    {
+        $string = str_replace('the', '', $string);
+        $string = str_replace(' ', '', $string);
+        $string = strtolower($string);
+
+        return $string;
     }
 }
