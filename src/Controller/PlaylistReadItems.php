@@ -8,6 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\Player\Helper\JsonResource;
 use AdinanCenci\Player\Exception\NotFound;
+use AdinanCenci\Player\Helper\SearchResults;
 
 class PlaylistReadItems extends ControllerBase 
 {
@@ -20,27 +21,72 @@ class PlaylistReadItems extends ControllerBase
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
         }
 
+        $results = $this->filterParametersPresent($request)
+            ? $this->searchItems($request, $playlistId)
+            : $this->simpleList($request, $playlistId);
+
+        return $results
+            ->getJsonResource()
+            ->renderResponse();
+    }
+
+    protected function simpleList(ServerRequestInterface $request, $playlistId) : SearchResults
+    {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        $playlist = $this->playlistManager->getPlaylist($playlistId);
+        $total    = $playlist->lineCount - 1;
+        $pages    = $this->numberPages($total, $itensPerPage);
+        $list     = $playlist->getItems(range($offset, $offset + $limit - 1));
+        $count    = count($list);
 
-        $playlist      = $this->playlistManager->getPlaylist($playlistId);
-        $total         = $playlist->lineCount - 1;
-        $pages         = $this->numberPages($total, $itensPerPage);
+        return new SearchResults(
+            $list, $count, $page, $pages, $itensPerPage, $total
+        );
+    }
 
-        $list          = $playlist->getItems(range($offset, $offset + $limit - 1));
-        $count         = count($list);
+    protected function searchItems(ServerRequestInterface $request, $playlistId) : SearchResults 
+    {
+        list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        $playlist = $this->playlistManager->getPlaylist($playlistId);
 
-        foreach ($list as $item) {
-            $data[] = $this->describer->describe($item);
+        $search = $playlist->search();
+
+        if ($request->get('title')) {
+            $search->condition('title', $request->get('title'), 'LIKE');
         }
 
-        $resource = new JsonResource();
-        return $resource
-            ->setMeta('total', $total)
-            ->setMeta('itensPerPage', $itensPerPage)
-            ->setMeta('pages', $pages)
-            ->setMeta('page', $page)
-            ->setMeta('count', $count)
-            ->setData($data)
-            ->renderResponse();
+        if ($request->get('genre')) {
+            $search->condition('genre', $request->get('genre'), 'LIKE');
+        }
+
+        if ($request->get('artist')) {
+            $search->condition('artist', $request->get('artist'), 'LIKE');
+        }
+
+        if ($request->get('soundtrack')) {
+            $search->condition('soundtrack', $request->get('soundtrack'), 'LIKE');
+        }
+
+        $results = $search->find();
+
+        $total = count($results);
+        $pages = $this->numberPages($total, $itensPerPage);
+        $list  = array_slice($results, $offset, $limit);
+        $count = count($list);
+
+        return new SearchResults(
+            $list, $count, $page, $pages, $itensPerPage, $total
+        );
+    }
+
+    protected function filterParametersPresent(ServerRequestInterface $request) : bool
+    {
+        $params = $request->getQueryParams();
+
+        return 
+            !empty($params['title']) ||
+            !empty($params['genre']) ||
+            !empty($params['artist']) ||
+            !empty($params['soundtrack']);
     }
 }
