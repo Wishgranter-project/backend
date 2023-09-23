@@ -56,8 +56,7 @@ class ResourceFinder
     }
 
     /**
-     * If the artist or soundtrack is present in the title or description,
-     * then sort the item higher.
+     * Sort resources based on the music's description.
      *
      * @param string[]
      *
@@ -65,43 +64,11 @@ class ResourceFinder
      */
     public function sortResources(array $parameters) 
     {
-        $related = $parameters['soundtrack'] ?? $parameters['artist'] ?? '';
-
-        $related = is_array($related) ? $related[0] : $related;
-
-        if (! $related) {
-            return function($a, $b) 
-            {
-                return 0;
-            };
-        }
-
-        return function($resource1, $resource2) use($related) 
-        {
-            if ($resource1->id == $resource2->id) {
-                return 0;
-            }
-
-            $related = ResourceFinder::normalizeString($related);
-            $title1  = ResourceFinder::normalizeString($resource1->title);
-            $title2  = ResourceFinder::normalizeString($resource2->title);
-
-            if (
-                substr_count($title1, $related) &&
-                substr_count($title2, $related)
-            ) {
-                return 0;
-            }
-
-            $count = substr_count($title1, $related);
-
-            return $count > 0
-                ? -1
-                :  1;
-        };
+        $sorter = new Sorter($parameters);
+        return [$sorter, 'compare'];
     }
 
-    public static function normalizeString(string $string) 
+    public static function normalizeString(string $string) : string
     {
         $string = str_replace('the', '', $string);
         $string = str_replace(' ', '', $string);
