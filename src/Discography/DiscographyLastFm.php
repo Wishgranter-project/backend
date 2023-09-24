@@ -5,6 +5,8 @@ use AdinanCenci\Player\Helper\SearchResults;
 use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Service\LastFmApi;
 
+use AdinanCenci\Player\Exception\NotFound;
+
 class DiscographyLastFm implements DiscographyInterface 
 {
     protected LastFmApi $api;
@@ -60,6 +62,10 @@ class DiscographyLastFm implements DiscographyInterface
     public function searchForReleasesByArtistName(string $artistName, int $page = 1, int $itensPerPage = 20) : SearchResults
     {
         $info = $this->api->getArtistAlbums($artistName, $page, $itensPerPage);
+
+        if (!isset($info->topalbums->album)) {
+            throw new NotFound("No albuns for $artistName found");
+        }
 
         $results = [];
         foreach ($info->topalbums->album as $album) {

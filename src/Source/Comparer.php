@@ -40,20 +40,25 @@ class Comparer
 
     protected function scoreOnTitle() : int
     {
-        return $this->title 
-            ? $this->substrCount($this->resourceTitle, (array) $this->title)
-            : 0;
+        if (!$this->title) {
+            return 0;
+        }
+
+        return $this->substrCount($this->resourceTitle, (array) $this->title) ?: -1;
     }
 
     protected function scoreOnArtist() : int
     {
-        return $this->artist 
-            ? $this->substrCount($this->resourceTitle, $this->artist)
-            : 0;
+        if (!$this->artist) {
+            return 0;
+        }
+
+        return $this->substrCount($this->resourceTitle, $this->artist) ?: -1;
     }
 
     protected function scoreOnSoundtrack() : int
     {
+        // hummm ... should soundtrack matter more or less if artist has been specified ? ...
         return $this->sountrack 
             ? $this->substrCount($this->resourceTitle, $this->sountrack)
             : 0;
@@ -102,6 +107,7 @@ class Comparer
     public function normalizeString(string $string) : string
     {
         $string = trim(strtolower($string));
+        $string = str_replace([' '], '', $string);
         return $string;
     }
 }

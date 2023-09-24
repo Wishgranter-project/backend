@@ -50,6 +50,9 @@ class ResourceFinder
     {
         $resources = $source->search($parameters);
 
+        $filter = new Filter($parameters);
+        $resources = array_filter($resources, [$filter, 'filter']);
+
         usort($resources, $this->sortResources($parameters));
 
         return array_values($resources);
