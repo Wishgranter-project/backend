@@ -5,9 +5,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 
-use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-
-use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
 

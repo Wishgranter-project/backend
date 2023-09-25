@@ -19,19 +19,19 @@ $router->options('#^.*$#', function($request, $handler)
     $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
     $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
-    $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS');
+    $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     return $response;
 });
 
 // Add CORS headers to all responses.
-$router->before('GET|POST|PUT|PATCH', '#^.*$#', function($request, $handler) 
+$router->before('GET|POST|PUT|PATCH|DELETE', '#^.*$#', function($request, $handler) 
 {
     $response = $handler->handle($request);
     if (!$response->hasHeader('Access-Control-Allow-Origin')) {
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
         $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
-        $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS');
+        $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     }
     return $response;
 });
