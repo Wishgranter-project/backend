@@ -14,6 +14,11 @@ class Filter
 
     public function filter(Resource $resource) : bool
     {
+        // Some resources from sliderkz will be relative instead of absolute.
+        if ($resource->source && !substr_count($resource->source, 'https:')) {
+            return false;
+        }
+
         $resourceTitle = $this->normalizeString($resource->title);
 
         if ($this->title) {
