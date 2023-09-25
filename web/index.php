@@ -21,6 +21,7 @@ define('PLAYLISTS_DIR', $parentDirectory . 'playlist-files/');
 
 $router = new Router();
 
+require 'settings.php';
 require 'routes.php';
 
 $router->run();

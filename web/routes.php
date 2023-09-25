@@ -12,11 +12,13 @@ $router->before('*', '#^.*$#', function($request, $handler)
     }
 });
 
+
+
 /** CORS Pre-flight */
 $router->options('#^.*$#', function($request, $handler) 
 {
     $response = $handler->responseFactory->ok('');
-    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', getAllowedDomain($request, $GLOBALS['settings']));
     $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
     $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
     $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
@@ -28,12 +30,17 @@ $router->before('GET|POST|PUT|PATCH|DELETE', '#^.*$#', function($request, $handl
 {
     $response = $handler->handle($request);
     if (!$response->hasHeader('Access-Control-Allow-Origin')) {
-        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', getAllowedDomain($request, $GLOBALS['settings']));
         $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
         $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
         $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
     }
     return $response;
+});
+
+$router->get('#^$#', function($request, $handler) 
+{
+    echo 'back end home page';
 });
 
 // COLLECTION
