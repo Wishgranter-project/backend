@@ -22,12 +22,41 @@ class PlaylistReadList extends ControllerBase
         $list  = array_slice($all, $offset, $limit);
         $count = count($list);
 
+        return $request->get('download')
+            ? $this->download($handler, $list)
+            : $this->read($list, $total, $itensPerPage, $pages, $page, $count);
+    }
+
+    protected function download(RequestHandlerInterface $handler, array $playlists) : ResponseInterface
+    {
+        $zipFile = tempnam(sys_get_temp_dir(), 'zip');
+        register_shutdown_function('unlink', $zipFile);
+
+        $zip = new \ZipArchive();
+        $zip->open($zipFile, \ZipArchive::OVERWRITE);
+
+        foreach ($playlists as $playlist) {
+            $zip->addFile($playlist->fileName, basename($playlist->fileName));
+        }
+
+        $zip->close();
+
+        $response = $handler->responseFactory->ok(file_get_contents($zipFile));
+        $response = $response->withAddedHeader('content-type', 'application/zip');
+        $response = $response->withAddedHeader('Content-Disposition', 'attachment; filename="your-collection.zip"');
+
+        return $response;
+    }
+
+    protected function read($playlists, $total, $itensPerPage, $pages, $page, $count) : ResponseInterface
+    {
         $data  = [];
-        foreach ($list as $playlistId => $playlist) {
+        foreach ($playlists as $playlistId => $playlist) {
             $data[] = $this->describer->describe($playlist);
         }
 
         $resource = new JsonResource();
+
         return $resource
             ->setMeta('total', $total)
             ->setMeta('itensPerPage', $itensPerPage)
