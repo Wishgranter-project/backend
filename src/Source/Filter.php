@@ -19,6 +19,9 @@ class Filter
             return false;
         }
 
+        return true;
+        // Needs to revise this shit.
+
         $resourceTitle = $this->normalizeString($resource->title);
 
         if ($this->title) {
