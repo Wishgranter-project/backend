@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/descriptive-manager.git",
-                "reference": "75bc0777493de1eeb292e15658adf2e7a0189027"
+                "reference": "e0a1a4384cc38165ff458c9a19f3b65408982933"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/75bc0777493de1eeb292e15658adf2e7a0189027",
-                "reference": "75bc0777493de1eeb292e15658adf2e7a0189027",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/e0a1a4384cc38165ff458c9a19f3b65408982933",
+                "reference": "e0a1a4384cc38165ff458c9a19f3b65408982933",
                 "shasum": ""
             },
             "require": {
@@ -56,7 +56,7 @@
                 "source": "https://github.com/adinan-cenci/descriptive-manager/tree/master",
                 "issues": "https://github.com/adinan-cenci/descriptive-manager/issues"
             },
-            "time": "2023-09-20T12:03:18+00:00"
+            "time": "2023-10-03T22:08:36+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-playlist",
