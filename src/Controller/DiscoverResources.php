@@ -5,6 +5,9 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 
+use AdinanCenci\AetherMusic\Description;
+
+use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Helper\JsonResource;
 
 class DiscoverResources extends ControllerBase 
@@ -26,25 +29,19 @@ class DiscoverResources extends ControllerBase
         return $response;
     }
 
-    protected function find(ServerRequestInterface $request) 
+    protected function find(ServerRequestInterface $request) : array
     {
-        $parameters = $this->buildParameters($request);
-        $resources  = $this->resourceFinder->findResources($parameters);
+        $description = $this->buildDescription($request);
+        $resources   = $this->aether->search($description);
         return $resources;
     }
 
-    protected function buildParameters(ServerRequestInterface $request) : array
+    protected function buildDescription(ServerRequestInterface $request) : Description
     {
-        $parameters['title'] = $request->get('title');
-
-        if ($request->get('artist')) {
-            $parameters['artist'] = $request->get('artist');
-        }
-
-        if ($request->get('soundtrack')) {
-            $parameters['soundtrack'] = $request->get('soundtrack');
-        }
-
-        return $parameters;
+        return Description::createFromArray([
+            'title'      => $request->get('title'),
+            'artist'     => $request->get('artist'),
+            'soundtrack' => $request->get('soundtrack')
+        ]);
     }
 }

@@ -3,9 +3,9 @@ namespace AdinanCenci\Player\Service;
 
 use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-use AdinanCenci\Player\Source\Resource;
 use AdinanCenci\Player\Discography\Artist;
 use AdinanCenci\Player\Discography\Release;
+use AdinanCenci\AetherMusic\Source\Resource;
 
 class Describer 
 {

@@ -1,13 +1,14 @@
 <?php 
 namespace AdinanCenci\Player\Service;
-
-use AdinanCenci\Player\Source\SourceYoutube;
-use AdinanCenci\Player\Source\SourceSliderKz;
-use AdinanCenci\Player\Source\ResourceFinder;
-
 use AdinanCenci\Player\Discography\DiscographyFinder;
 use AdinanCenci\Player\Discography\DiscographyDiscogs;
 use AdinanCenci\Player\Discography\DiscographyLastFm;
+
+use AdinanCenci\AetherMusic\Api\ApiYouTube;
+use AdinanCenci\AetherMusic\Api\ApiSliderKz;
+use AdinanCenci\AetherMusic\Source\SourceYouTube;
+use AdinanCenci\AetherMusic\Source\SourceSliderKz;
+use AdinanCenci\AetherMusic\Aether;
 
 class ServicesManager 
 {
@@ -37,12 +38,6 @@ class ServicesManager
             case 'cache':
                 return CacheManager::create();
                 break;
-            case 'sourceYoutube':
-                return SourceYoutube::create();
-                break;
-            case 'sourceSliderKz':
-                return SourceSliderKz::create();
-                break;
             case 'resourceFinder':
                 return ResourceFinder::create();
                 break;
@@ -58,14 +53,24 @@ class ServicesManager
             case 'discogsApi':
                 return DiscogsApi::create();
                 break;
-            case 'youtubeApi':
-                return YoutubeApi::create();
-                break;
             case 'lastFmApi':
                 return LastFmApi::create();
                 break;
             case 'describer':
                 return Describer::create();
+                break;
+            case 'aether':
+                $apiYouTube  = new ApiYouTube('AIzaSyCHM5UA_kD9Bq-pONXOuAIQlBCOAWWRR18', [], $this->get('cache'));
+                $youTube     = new SourceYouTube($apiYouTube);
+
+                $apiSliderKz = new ApiSliderKz([], $this->get('cache'));
+                $sliderKz    = new SourceSliderKz($apiSliderKz);
+
+                $aether = new Aether();
+                $aether->addSource($youTube, 1);
+                $aether->addSource($sliderKz, 10);
+
+                return $aether;
                 break;
         }
 

@@ -10,6 +10,14 @@
         {
             "type": "vcs",
             "url": "https://github.com/adinan-cenci/descriptive-manager"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/aether-music"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/psr-18"
         }
     ],
     "authors": [
@@ -28,6 +36,7 @@
         "adinan-cenci/descriptive-manager": "dev-master",
         "adinan-cenci/router": "dev-master",
         "adinan-cenci/file-cache": "dev-master",
-        "adinan-cenci/descriptive-playlist": "^4.0"
+        "adinan-cenci/descriptive-playlist": "^4.0",
+        "adinan-cenci/aether-music": "dev-master"
     }
 }
