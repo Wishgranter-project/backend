@@ -51,6 +51,7 @@ class PlaylistReadList extends ControllerBase
     protected function read($playlists, $total, $itensPerPage, $pages, $page, $count) : ResponseInterface
     {
         $data  = [];
+        usort($playlists, [$this, 'sortPlaylistByTitle']);
         foreach ($playlists as $playlistId => $playlist) {
             $data[] = $this->describer->describe($playlist);
         }
@@ -65,5 +66,14 @@ class PlaylistReadList extends ControllerBase
             ->setMeta('count', $count)
             ->setData($data)
             ->renderResponse();
+    }
+
+    public function sortPlaylistByTitle($p1, $p2) 
+    {
+        if (!$p1->title || !$p2->title) {
+            return 0;
+        }
+
+        return strcasecmp($p1->title, $p2->title);
     }
 }
