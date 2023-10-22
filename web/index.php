@@ -18,6 +18,7 @@ $parentDirectory  = File::getParentDirectory($currentDirectory);
 define('ROOT_DIR', $currentDirectory);
 define('CACHE_DIR', $parentDirectory . 'cache/');
 define('PLAYLISTS_DIR', $parentDirectory . 'playlist-files/');
+define('LOCAL_FILES_DIR', $currentDirectory . 'local-files/');
 
 $router = new Router();
 

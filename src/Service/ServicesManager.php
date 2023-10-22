@@ -8,6 +8,7 @@ use AdinanCenci\AetherMusic\Api\ApiYouTube;
 use AdinanCenci\AetherMusic\Api\ApiSliderKz;
 use AdinanCenci\AetherMusic\Source\SourceYouTube;
 use AdinanCenci\AetherMusic\Source\SourceSliderKz;
+use AdinanCenci\AetherMusic\Source\SourceLocalFiles;
 use AdinanCenci\AetherMusic\Aether;
 
 class ServicesManager 
@@ -60,13 +61,19 @@ class ServicesManager
                 return Describer::create();
                 break;
             case 'aether':
+                $aether = new Aether();
+
                 $apiYouTube  = new ApiYouTube('AIzaSyCHM5UA_kD9Bq-pONXOuAIQlBCOAWWRR18', [], $this->get('cache'));
                 $youTube     = new SourceYouTube($apiYouTube);
 
                 $apiSliderKz = new ApiSliderKz([], $this->get('cache'));
                 $sliderKz    = new SourceSliderKz($apiSliderKz);
 
-                $aether = new Aether();
+                if (file_exists(LOCAL_FILES_DIR)) {
+                    $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
+                    $aether->addSource($localFiles, 20);
+                }
+
                 $aether->addSource($youTube, 1);
                 $aether->addSource($sliderKz, 10);
 

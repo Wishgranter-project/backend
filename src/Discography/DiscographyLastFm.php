@@ -69,6 +69,9 @@ class DiscographyLastFm implements DiscographyInterface
 
         $results = [];
         foreach ($info->topalbums->album as $album) {
+            if ($album->name == '(null)') {
+                continue;
+            }
             $results[] = Release::createFromArray([
                 'source' => 'lastfm',
                 'id' => ($album->mbid ? $album->mbid : $this->encodeBootlegId($album->artist->name, $album->name)) . '@lastfm',
@@ -102,8 +105,16 @@ class DiscographyLastFm implements DiscographyInterface
             $data = $this->api->getReleaseByArtistAndTitle($artistName, $bootlegId);
         }
 
+        if (isset($data->album->tracks->track)) {
+            $albumTracks = is_array($data->album->tracks->track)
+                ? $data->album->tracks->track
+                : [$data->album->tracks->track];
+        } else {
+            $albumTracks = [];
+        }
+
         $tracks = [];
-        foreach ($data->album->tracks->track as $t) {
+        foreach ($albumTracks as $t) {
             $tracks[] = $t->name;
         }
 

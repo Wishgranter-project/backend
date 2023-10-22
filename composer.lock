@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/aether-music.git",
-                "reference": "b7126aa083353b67f600cf1f5eb6f4fd8653f303"
+                "reference": "a1d63752417c712ab47b71233d83781cd653ad0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/aether-music/zipball/b7126aa083353b67f600cf1f5eb6f4fd8653f303",
-                "reference": "b7126aa083353b67f600cf1f5eb6f4fd8653f303",
+                "url": "https://api.github.com/repos/adinan-cenci/aether-music/zipball/a1d63752417c712ab47b71233d83781cd653ad0a",
+                "reference": "a1d63752417c712ab47b71233d83781cd653ad0a",
                 "shasum": ""
             },
             "require": {
@@ -42,7 +42,7 @@
                 "source": "https://github.com/adinan-cenci/aether-music/tree/master",
                 "issues": "https://github.com/adinan-cenci/aether-music/issues"
             },
-            "time": "2023-10-08T23:45:53+00:00"
+            "time": "2023-10-16T00:11:54+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-manager",
@@ -829,7 +829,8 @@
     "stability-flags": {
         "adinan-cenci/descriptive-manager": 20,
         "adinan-cenci/router": 20,
-        "adinan-cenci/file-cache": 20
+        "adinan-cenci/file-cache": 20,
+        "adinan-cenci/aether-music": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
