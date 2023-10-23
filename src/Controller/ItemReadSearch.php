@@ -10,7 +10,7 @@ use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
 use AdinanCenci\Player\Helper\SearchResults;
 
-class ItemSearch extends ControllerBase 
+class ItemReadSearch extends ControllerBase 
 {
     use PaginationTrait;
 

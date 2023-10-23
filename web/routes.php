@@ -58,7 +58,7 @@ $router->delete('#api/v1/collection/playlists/(?<playlist>[\w-]+)$#',          '
 
 $router->post(  '#api/v1/collection/items/?$#',                                'ItemCreate');
 $router->get(   '#api/v1/collection/items/(?<itemUuid>[\w-]+)/?$#',            'ItemRead');
-$router->get(   '#api/v1/collection/items/?$#',                                'ItemSearch');
+$router->get(   '#api/v1/collection/items/?$#',                                'ItemReadSearch');
 $router->put(   '#api/v1/collection/items/(?<itemUuid>[\w-]+)/?$#',            'ItemUpdate');
 $router->delete('#api/v1/collection/items/(?<itemUuid>[\w-]+)/?$#',            'ItemDelete');
 

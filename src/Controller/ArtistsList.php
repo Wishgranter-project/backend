@@ -9,18 +9,20 @@ use AdinanCenci\Player\Helper\JsonResource;
 
 class ArtistsList extends ControllerBase 
 {
+    protected array $artists = [];
+
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        $data = $this->listArtists($request);
+        $this->listArtists($request);
 
         $resource = new JsonResource();
         return $resource
             ->setStatusCode(200)
-            ->setData($data)
+            ->setData($this->artists)
             ->renderResponse();
     }
 
-    public function listArtists($request) 
+    protected function listArtists($request) 
     {
         $artists = [];
         foreach ($this->playlistManager->getAllPlaylists() as $playlistId => $playlist) {
@@ -28,13 +30,22 @@ class ArtistsList extends ControllerBase
                 if (! $item->artist) {
                     continue;
                 }
-                $artists = array_merge($artists, (array) $item->artist);
+                $this->countArtists((array) $item->artist);
             }
         }
 
-        $artists = array_values(array_unique($artists));
-        sort($artists);
+        krsort($this->artists);
+        arsort($this->artists);
+    }
 
-        return $artists;
+    protected function countArtists(array $artists) 
+    {
+        foreach ($artists as $a) {
+            if (!isset($this->artists[$a])) {
+                $this->artists[$a] = 1;
+            } else {
+                $this->artists[$a]++;
+            }
+        }
     }
 }
