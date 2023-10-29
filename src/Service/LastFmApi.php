@@ -21,8 +21,8 @@ class LastFmApi
         $manager = ServicesManager::singleton();
 
         return new self(
-            '60110af4e0c43157f9678e2021519fd7', 
-            'dc3f518e4428b48346723f13f64d8ff1', 
+            $manager->get('config')->get('lastFmApiKey'), 
+            $manager->get('config')->get('lastFmApiSecret'), 
             $manager->get('cache')
         );
     }

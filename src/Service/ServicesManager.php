@@ -11,26 +11,24 @@ use AdinanCenci\AetherMusic\Source\SourceSliderKz;
 use AdinanCenci\AetherMusic\Source\SourceLocalFiles;
 use AdinanCenci\AetherMusic\Aether;
 
-class ServicesManager 
+class ServicesManager extends Singleton 
 {
-    protected $instances = [];
-
-    protected static $singleInstance = null;
+    protected $services = [];
 
     public function get(string $serviceId) 
     {
-        if (! isset($this->instances[$serviceId])) {
-            $this->instances[$serviceId] = $this->isntantiate($serviceId);
+        if (! isset($this->services[$serviceId])) {
+            $this->services[$serviceId] = $this->isntantiate($serviceId);
         }
 
-        if (is_null($this->instances[$serviceId])) {
+        if (is_null($this->services[$serviceId])) {
             throw new \InvalidArgumentException('Service ' . $serviceId . ' not found.');
         }
 
-        return $this->instances[$serviceId];
+        return $this->services[$serviceId];
     }
 
-    protected function isntantiate($serviceId) 
+    protected function isntantiate(string $serviceId) 
     {
         switch ($serviceId) {
             case 'playlistManager':
@@ -61,9 +59,12 @@ class ServicesManager
                 return Describer::create();
                 break;
             case 'aether':
+                $config = $this->get('config');
+                $youtubeApiKey = $config->get('youtubeApiKey');
+
                 $aether = new Aether();
 
-                $apiYouTube  = new ApiYouTube('AIzaSyCHM5UA_kD9Bq-pONXOuAIQlBCOAWWRR18', [], $this->get('cache'));
+                $apiYouTube  = new ApiYouTube($youtubeApiKey, [], $this->get('cache'));
                 $youTube     = new SourceYouTube($apiYouTube);
 
                 $apiSliderKz = new ApiSliderKz([], $this->get('cache'));
@@ -79,17 +80,12 @@ class ServicesManager
 
                 return $aether;
                 break;
+            case 'config':
+            case 'configuration':
+                return Configurations::singleton();
+                break;
         }
 
         return null;
-    }
-
-    public static function singleton() 
-    {
-        if (self::$singleInstance == null) {
-            self::$singleInstance = new self();
-        }
-
-        return self::$singleInstance;
     }
 }

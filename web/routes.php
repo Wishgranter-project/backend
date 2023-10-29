@@ -12,8 +12,6 @@ $router->before('*', '#^.*$#', function($request, $handler)
     }
 });
 
-
-
 /** CORS Pre-flight */
 $router->options('#^.*$#', function($request, $handler) 
 {

@@ -4,3 +4,4 @@ cache-test/*
 playlist-files/*
 playlist-files-test/*
 web/local-files/*
+web/configurations.json

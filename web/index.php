@@ -20,6 +20,10 @@ define('CACHE_DIR', $parentDirectory . 'cache/');
 define('PLAYLISTS_DIR', $parentDirectory . 'playlist-files/');
 define('LOCAL_FILES_DIR', $currentDirectory . 'local-files/');
 
+if (!file_exists(ROOT_DIR . 'configurations.json')) {
+    copy(ROOT_DIR . 'configurations.template.json', ROOT_DIR . 'configurations.json');
+}
+
 $router = new Router();
 
 require 'settings.php';
