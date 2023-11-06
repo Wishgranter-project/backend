@@ -37,6 +37,6 @@
         "adinan-cenci/router": "dev-master",
         "adinan-cenci/file-cache": "dev-master",
         "adinan-cenci/descriptive-playlist": "^4.0",
-        "adinan-cenci/aether-music": "dev-master"
+        "adinan-cenci/aether-music": "^1.0.0-alpha"
     }
 }

@@ -67,8 +67,8 @@ class ServicesManager extends Singleton
                 $apiYouTube  = new ApiYouTube($youtubeApiKey, [], $this->get('cache'));
                 $youTube     = new SourceYouTube($apiYouTube);
 
-                $apiSliderKz = new ApiSliderKz([], $this->get('cache'));
-                $sliderKz    = new SourceSliderKz($apiSliderKz);
+                //$apiSliderKz = new ApiSliderKz([], $this->get('cache'));
+                //$sliderKz    = new SourceSliderKz($apiSliderKz);
 
                 if (file_exists(LOCAL_FILES_DIR)) {
                     $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
@@ -76,7 +76,7 @@ class ServicesManager extends Singleton
                 }
 
                 $aether->addSource($youTube, 1);
-                $aether->addSource($sliderKz, 10);
+                //$aether->addSource($sliderKz, 10);
 
                 return $aether;
                 break;

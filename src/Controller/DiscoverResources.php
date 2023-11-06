@@ -7,8 +7,15 @@ use Psr\Http\Message\ResponseInterface;
 
 use AdinanCenci\AetherMusic\Description;
 
-use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Helper\JsonResource;
+
+use AdinanCenci\AetherMusic\Sorting\LikenessTally;
+use AdinanCenci\AetherMusic\Sorting\CriteriaInterface;
+use AdinanCenci\AetherMusic\Sorting\TitleCriteria;
+use AdinanCenci\AetherMusic\Sorting\SoundtrackCriteria;
+use AdinanCenci\AetherMusic\Sorting\ArtistCriteria;
+use AdinanCenci\AetherMusic\Sorting\UndesirablesCriteria;
+use AdinanCenci\AetherMusic\Sorting\LeftOverCriteria;
 
 class DiscoverResources extends ControllerBase 
 {
@@ -32,7 +39,30 @@ class DiscoverResources extends ControllerBase
     protected function find(ServerRequestInterface $request) : array
     {
         $description = $this->buildDescription($request);
-        $resources   = $this->aether->search($description);
+        $search      = $this->aether->search($description);
+
+        $undesirables = [
+            'cover'    => -1,
+            'acoustic' => -1,
+            'live'     => -20,
+            'demotape' => -1,
+            'demo'     => -1,
+            'remixed'  => -1,
+            'remix'    => -1,
+        ];
+
+        if ($description->cover) {
+            unset($undesirables['cover']);
+        }
+
+        $search
+        ->addCriteria(new TitleCriteria(10))
+        ->addCriteria(new ArtistCriteria(10))
+        ->addCriteria(new SoundtrackCriteria(10))
+        ->addCriteria(new UndesirablesCriteria(1, $undesirables))
+        ->addCriteria(new LeftoverCriteria(1));
+
+        $resources = $search->find();
         return $resources;
     }
 

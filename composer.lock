@@ -4,33 +4,35 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eefc0a6eacd2d74dbae429eec15a9138",
+    "content-hash": "1f69f37e058b96e6482d69f4869e5c30",
     "packages": [
         {
             "name": "adinan-cenci/aether-music",
-            "version": "dev-master",
+            "version": "v1.0.0-alpha",
             "source": {
                 "type": "git",
-                "url": "git@github.com:adinan-cenci/aether-music.git",
-                "reference": "a1d63752417c712ab47b71233d83781cd653ad0a"
+                "url": "https://github.com/adinan-cenci/aether-music.git",
+                "reference": "a7e1ad79c2883785900df4452897cfd54e8280dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/aether-music/zipball/a1d63752417c712ab47b71233d83781cd653ad0a",
-                "reference": "a1d63752417c712ab47b71233d83781cd653ad0a",
+                "url": "https://api.github.com/repos/adinan-cenci/aether-music/zipball/a7e1ad79c2883785900df4452897cfd54e8280dd",
+                "reference": "a7e1ad79c2883785900df4452897cfd54e8280dd",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/file-cache": "dev-master",
                 "adinan-cenci/psr-18": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "AdinanCenci\\AetherMusic\\": "src/"
                 }
             },
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "Adinan Cenci",
@@ -39,10 +41,10 @@
             ],
             "description": "Eather music",
             "support": {
-                "source": "https://github.com/adinan-cenci/aether-music/tree/master",
+                "source": "https://github.com/adinan-cenci/aether-music/tree/v1.0.0-alpha",
                 "issues": "https://github.com/adinan-cenci/aether-music/issues"
             },
-            "time": "2023-10-16T00:11:54+00:00"
+            "time": "2023-11-04T13:08:49+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-manager",
@@ -829,8 +831,7 @@
     "stability-flags": {
         "adinan-cenci/descriptive-manager": 20,
         "adinan-cenci/router": 20,
-        "adinan-cenci/file-cache": 20,
-        "adinan-cenci/aether-music": 20
+        "adinan-cenci/file-cache": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
