@@ -41,26 +41,7 @@ class DiscoverResources extends ControllerBase
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
 
-        $undesirables = [
-            'cover'    => -1,
-            'acoustic' => -1,
-            'live'     => -20,
-            'demotape' => -1,
-            'demo'     => -1,
-            'remixed'  => -1,
-            'remix'    => -1,
-        ];
-
-        if ($description->cover) {
-            unset($undesirables['cover']);
-        }
-
-        $search
-        ->addCriteria(new TitleCriteria(10))
-        ->addCriteria(new ArtistCriteria(10))
-        ->addCriteria(new SoundtrackCriteria(10))
-        ->addCriteria(new UndesirablesCriteria(1, $undesirables))
-        ->addCriteria(new LeftoverCriteria(1));
+        $search->addDefaultCriteria();
 
         $resources = $search->find();
         return $resources;

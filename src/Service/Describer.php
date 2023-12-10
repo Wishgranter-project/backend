@@ -5,7 +5,7 @@ use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\DescriptivePlaylist\PlaylistItem;
 use AdinanCenci\Player\Discography\Artist;
 use AdinanCenci\Player\Discography\Release;
-use AdinanCenci\AetherMusic\Source\Resource;
+use AdinanCenci\AetherMusic\Resource\Resource;
 
 class Describer 
 {
