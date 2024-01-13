@@ -51,13 +51,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:adinan-cenci/descriptive-manager.git",
-                "reference": "e0a1a4384cc38165ff458c9a19f3b65408982933"
+                "url": "https://github.com/adinan-cenci/descriptive-manager.git",
+                "reference": "73f88777c5b2fa35a2ebd93c47e71b771fc7114d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/e0a1a4384cc38165ff458c9a19f3b65408982933",
-                "reference": "e0a1a4384cc38165ff458c9a19f3b65408982933",
+                "url": "https://api.github.com/repos/adinan-cenci/descriptive-manager/zipball/73f88777c5b2fa35a2ebd93c47e71b771fc7114d",
+                "reference": "73f88777c5b2fa35a2ebd93c47e71b771fc7114d",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                 "source": "https://github.com/adinan-cenci/descriptive-manager/tree/master",
                 "issues": "https://github.com/adinan-cenci/descriptive-manager/issues"
             },
-            "time": "2023-10-03T22:08:36+00:00"
+            "time": "2023-10-29T16:39:08+00:00"
         },
         {
             "name": "adinan-cenci/descriptive-playlist",
@@ -354,13 +354,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:adinan-cenci/psr-18.git",
-                "reference": "f7c95e17f66043b5a179292a213b5ea3a12a7a93"
+                "url": "https://github.com/adinan-cenci/psr-18.git",
+                "reference": "9bc13673f8f0d523b4c8a37a426bf35d8ea09697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-18/zipball/f7c95e17f66043b5a179292a213b5ea3a12a7a93",
-                "reference": "f7c95e17f66043b5a179292a213b5ea3a12a7a93",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-18/zipball/9bc13673f8f0d523b4c8a37a426bf35d8ea09697",
+                "reference": "9bc13673f8f0d523b4c8a37a426bf35d8ea09697",
                 "shasum": ""
             },
             "require": {
@@ -394,10 +394,10 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/adinan-cenci/psr-18/tree/v1.0.0",
+                "source": "https://github.com/adinan-cenci/psr-18/tree/master",
                 "issues": "https://github.com/adinan-cenci/psr-18/issues"
             },
-            "time": "2023-10-04T22:17:49+00:00"
+            "time": "2023-10-29T20:22:57+00:00"
         },
         {
             "name": "adinan-cenci/psr-7",
@@ -555,12 +555,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "6d70f402f0eddb2b154b22950b5381bbf5b28469"
+                "reference": "7037f4b0950474e9d1350e8df89b15f1842085f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/6d70f402f0eddb2b154b22950b5381bbf5b28469",
-                "reference": "6d70f402f0eddb2b154b22950b5381bbf5b28469",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/7037f4b0950474e9d1350e8df89b15f1842085f6",
+                "reference": "7037f4b0950474e9d1350e8df89b15f1842085f6",
                 "shasum": ""
             },
             "require": {
@@ -601,9 +601,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/master"
+                "source": "https://github.com/php-fig/http-factory"
             },
-            "time": "2023-05-17T18:32:11+00:00"
+            "time": "2023-09-22T11:16:44+00:00"
         },
         {
             "name": "psr/http-message",
@@ -664,12 +664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-handler.git",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
+                "reference": "13403d43196ab3382d0a4ca28be32984282641f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
-                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/13403d43196ab3382d0a4ca28be32984282641f9",
+                "reference": "13403d43196ab3382d0a4ca28be32984282641f9",
                 "shasum": ""
             },
             "require": {
@@ -711,9 +711,9 @@
                 "server"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-server-handler"
             },
-            "time": "2023-04-10T20:06:20+00:00"
+            "time": "2023-11-16T18:17:39+00:00"
         },
         {
             "name": "psr/http-server-middleware",
@@ -721,12 +721,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-middleware.git",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
+                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
-                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
+                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
                 "shasum": ""
             },
             "require": {
@@ -769,9 +769,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/http-server-middleware/issues",
-                "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-server-middleware"
             },
-            "time": "2023-04-11T06:14:47+00:00"
+            "time": "2023-09-22T11:17:21+00:00"
         },
         {
             "name": "psr/simple-cache",

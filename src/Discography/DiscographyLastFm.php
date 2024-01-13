@@ -74,6 +74,7 @@ class DiscographyLastFm implements DiscographyInterface
             }
             $results[] = Release::createFromArray([
                 'source' => 'lastfm',
+                // 'id' => $this->encodeBootlegId($album->artist->name, $album->name) . '@lastfm', // last fm oftem returns nothing related to mbid
                 'id' => ($album->mbid ? $album->mbid : $this->encodeBootlegId($album->artist->name, $album->name)) . '@lastfm',
                 'title' => $album->name, 
                 'thumbnail' => $album->image ? $album->image[2]->{'#text'} : null, 
