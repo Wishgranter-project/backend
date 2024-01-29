@@ -3,8 +3,8 @@ namespace AdinanCenci\Player\Service;
 
 use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-use AdinanCenci\Player\Discography\Artist;
-use AdinanCenci\Player\Discography\Release;
+use AdinanCenci\Discography\Artist;
+use AdinanCenci\Discography\Album;
 use AdinanCenci\AetherMusic\Resource\Resource;
 
 class Describer 
@@ -24,8 +24,8 @@ class Describer
             return $this->describeResource($object);
         } else if ($object instanceof Artist) {
             return $this->describeArtist($object);
-        } else if ($object instanceof Release) {
-            return $this->describeRelease($object);
+        } else if ($object instanceof Album) {
+            return $this->describeAlbum($object);
         }
     }
 
@@ -55,8 +55,8 @@ class Describer
         return ['type' => 'artist'] + $artist->toArray();
     }
 
-    protected function describeRelease(Release $release) 
+    protected function describeAlbum(Album $album) 
     {
-        return ['type' => 'release'] + $release->toArray();
+        return ['type' => 'album'] + $album->toArray();
     }
 }

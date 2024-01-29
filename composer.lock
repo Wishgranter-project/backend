@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8eebaea5ceadca3880ed6dfa25e97990",
+    "content-hash": "745749a5c7364f5c9f4bebbe1342ddb7",
     "packages": [
         {
             "name": "adinan-cenci/aether-music",
@@ -155,6 +155,48 @@
             "time": "2023-09-20T11:31:00+00:00"
         },
         {
+            "name": "adinan-cenci/discography",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:adinan-cenci/discography.git",
+                "reference": "4fe6102aab580987447d1f444779aa89354af5e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adinan-cenci/discography/zipball/4fe6102aab580987447d1f444779aa89354af5e4",
+                "reference": "4fe6102aab580987447d1f444779aa89354af5e4",
+                "shasum": ""
+            },
+            "require": {
+                "adinan-cenci/file-cache": "dev-master",
+                "adinan-cenci/generic-rest-api": "dev-master",
+                "adinan-cenci/psr-18": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AdinanCenci\\Discography\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adinan Cenci",
+                    "email": "adinancenci@protonmail.com"
+                }
+            ],
+            "description": "Discography",
+            "support": {
+                "source": "https://github.com/adinan-cenci/discography/tree/master",
+                "issues": "https://github.com/adinan-cenci/discography/issues"
+            },
+            "time": "2024-01-28T20:54:51+00:00"
+        },
+        {
             "name": "adinan-cenci/file-cache",
             "version": "dev-master",
             "source": {
@@ -251,6 +293,48 @@
                 "source": "https://github.com/adinan-cenci/file-editor/tree/v1.1.1"
             },
             "time": "2023-07-22T14:29:54+00:00"
+        },
+        {
+            "name": "adinan-cenci/generic-rest-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adinan-cenci/generic-rest-api.git",
+                "reference": "8d3fad4dd72346edc0522e1a91d0ea73466ca662"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adinan-cenci/generic-rest-api/zipball/8d3fad4dd72346edc0522e1a91d0ea73466ca662",
+                "reference": "8d3fad4dd72346edc0522e1a91d0ea73466ca662",
+                "shasum": ""
+            },
+            "require": {
+                "adinan-cenci/file-cache": "dev-master",
+                "adinan-cenci/psr-18": "dev-master"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AdinanCenci\\GenericRestApi\\": "src/",
+                    "AdinanCenci\\GenericRestApi\\Exception\\": "src/Exception/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adinan Cenci",
+                    "email": "adinancenci@protonmail.com"
+                }
+            ],
+            "description": "Generic library to build integration with rest APIs",
+            "support": {
+                "source": "https://github.com/adinan-cenci/generic-rest-api/tree/master",
+                "issues": "https://github.com/adinan-cenci/generic-rest-api/issues"
+            },
+            "time": "2024-01-28T17:03:24+00:00"
         },
         {
             "name": "adinan-cenci/json-lines",

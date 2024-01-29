@@ -13,6 +13,14 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/adinan-cenci/generic-rest-api"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/adinan-cenci/discography"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/adinan-cenci/aether-music"
         },
         {
@@ -37,6 +45,7 @@
         "adinan-cenci/router": "dev-master",
         "adinan-cenci/file-cache": "dev-master",
         "adinan-cenci/descriptive-playlist": "^4.0",
-        "adinan-cenci/aether-music": "2.0.0-alpha"
+        "adinan-cenci/aether-music": "2.0.0-alpha",
+        "adinan-cenci/discography": "dev-master"
     }
 }

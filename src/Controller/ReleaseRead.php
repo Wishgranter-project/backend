@@ -1,8 +1,8 @@
 <?php 
 namespace AdinanCenci\Player\Controller;
 
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
 use AdinanCenci\Player\Helper\JsonResource;
@@ -22,10 +22,9 @@ class ReleaseRead extends ControllerBase
             ->renderResponse();
     }
 
-    protected function getRelease($request) 
+    protected function getRelease(ServerRequestInterface $request) 
     {
         $releaseId = $request->getAttribute('releaseId');
-
-        return $this->discographyFinder->getReleaseById($releaseId);
+        return $this->discographyDiscogs->getAlbumById($releaseId);
     }
 }

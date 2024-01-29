@@ -6,14 +6,14 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 
 use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Helper\SearchResults;
+use AdinanCenci\Discography\Source\SearchResults;
 
 class DiscoverArtists extends ControllerBase 
 {
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
         $searchResults = $this->searchArtists($request);
-        $resource = $searchResults->getJsonResource();
+        $resource = JsonResource::fromSearchResults($searchResults);
         return $resource->renderResponse();
     }
 

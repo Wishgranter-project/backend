@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Player\Controller\ControllerBase;
 use AdinanCenci\Player\Exception\NotFound;
 use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Helper\SearchResults;
+use AdinanCenci\Discography\Source\SearchResults;
 
 class ItemReadSearch extends ControllerBase 
 {
@@ -16,9 +16,9 @@ class ItemReadSearch extends ControllerBase
 
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
-        return $this
-          ->searchItems($request)
-          ->getJsonResource()
+        $searchResults = $this->searchItems($request);
+
+        return JsonResource::fromSearchResults($searchResults)
           ->renderResponse();
     }
 

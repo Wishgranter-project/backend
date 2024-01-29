@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\DescriptivePlaylist\Playlist;
 use AdinanCenci\Player\Helper\JsonResource;
 use AdinanCenci\Player\Exception\NotFound;
-use AdinanCenci\Player\Helper\SearchResults;
+use AdinanCenci\Discography\Source\SearchResults;
 
 class PlaylistReadItems extends ControllerBase 
 {
@@ -25,8 +25,7 @@ class PlaylistReadItems extends ControllerBase
             ? $this->searchItems($request, $playlistId)
             : $this->simpleList($request, $playlistId);
 
-        return $results
-            ->getJsonResource()
+        return JsonResource::fromSearchResults($results)
             ->renderResponse();
     }
 

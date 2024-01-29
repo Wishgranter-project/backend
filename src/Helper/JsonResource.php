@@ -1,6 +1,8 @@
 <?php 
 namespace AdinanCenci\Player\Helper;
 
+use AdinanCenci\Player\Service\ServicesManager;
+
 use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Psr17\ResponseFactory;
 
@@ -146,5 +148,28 @@ class JsonResource
         }
 
         return json_encode($array);
+    }
+
+    public static function fromSearchResults($searchResult) : JsonResource
+    {
+        $describer = ServicesManager::singleton()->get('describer');
+
+        $resource = new JsonResource();
+
+        $data = [];
+        foreach ($searchResult->items as $item) {
+            $data[] = $describer->describe($item);
+        }
+
+        $resource
+            ->setStatusCode(200)
+            ->setData($data)
+            ->setMeta('total', $searchResult->total)
+            ->setMeta('itensPerPage', $searchResult->itensPerPage)
+            ->setMeta('pages', $searchResult->pages)
+            ->setMeta('page', $searchResult->page)
+            ->setMeta('count', $searchResult->count);
+
+        return $resource;
     }
 }
