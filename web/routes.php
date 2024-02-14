@@ -67,6 +67,9 @@ $router->get(   '#api/v1/discover/releases$#',                                 '
 $router->get(   '#api/v1/discover/releases/(?<releaseId>.+)$#',                'ReleaseRead');
 $router->get(   '#api/v1/discover/resources$#',                                'DiscoverResources');
 
+
+$router->get(   '#api/v1/discover/album$#',                                    'AlbumRead');
+
 // ERRORS
 $router->setNotFoundHandler(function($request, $handler, $path) 
 {

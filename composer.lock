@@ -160,12 +160,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:adinan-cenci/discography.git",
-                "reference": "4fe6102aab580987447d1f444779aa89354af5e4"
+                "reference": "a2c692e9dcf791daa36512f063fad9a509db5bb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/discography/zipball/4fe6102aab580987447d1f444779aa89354af5e4",
-                "reference": "4fe6102aab580987447d1f444779aa89354af5e4",
+                "url": "https://api.github.com/repos/adinan-cenci/discography/zipball/a2c692e9dcf791daa36512f063fad9a509db5bb4",
+                "reference": "a2c692e9dcf791daa36512f063fad9a509db5bb4",
                 "shasum": ""
             },
             "require": {
@@ -194,7 +194,7 @@
                 "source": "https://github.com/adinan-cenci/discography/tree/master",
                 "issues": "https://github.com/adinan-cenci/discography/issues"
             },
-            "time": "2024-01-28T20:54:51+00:00"
+            "time": "2024-02-14T23:39:58+00:00"
         },
         {
             "name": "adinan-cenci/file-cache",
@@ -915,7 +915,8 @@
     "stability-flags": {
         "adinan-cenci/descriptive-manager": 20,
         "adinan-cenci/router": 20,
-        "adinan-cenci/file-cache": 20
+        "adinan-cenci/file-cache": 20,
+        "adinan-cenci/discography": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

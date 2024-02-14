@@ -12,7 +12,10 @@ class DiscoverReleases extends ControllerBase
     public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
         $searchResults = $this->listReleases($request);
-        $resource = JsonResource::fromSearchResults($searchResults);
+        $resource = new JsonResource();
+        $data = $this->describer->describeAll($searchResults);        
+
+        $resource->setData($data);
         return $resource->renderResponse();
     }
 
@@ -23,7 +26,6 @@ class DiscoverReleases extends ControllerBase
             throw new \InvalidArgumentException('Provide a search term, you lackwit');
         }
 
-        $page = (int) $request->get('page', 1);
-        return $this->discographyDiscogs->searchForAlbumsByArtistName($artistName, $page);
+        return $this->discographyMusicBrainz->getArtistsAlbums($artistName);
     }
 }

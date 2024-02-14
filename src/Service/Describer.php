@@ -29,6 +29,17 @@ class Describer
         }
     }
 
+    public function describeAll(array $array) 
+    {
+        $described = [];
+
+        foreach ($array as $k => $v) {
+            $described[] = $this->describe($v);
+        }
+
+        return $described;
+    }
+
     protected function describePlaylist($playlist) 
     {
         $data = [

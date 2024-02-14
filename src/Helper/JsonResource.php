@@ -156,10 +156,7 @@ class JsonResource
 
         $resource = new JsonResource();
 
-        $data = [];
-        foreach ($searchResult->items as $item) {
-            $data[] = $describer->describe($item);
-        }
+        $data = $describer->describeAll($searchResult->items);
 
         $resource
             ->setStatusCode(200)

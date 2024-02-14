@@ -1,7 +1,7 @@
 <?php 
 namespace AdinanCenci\Player\Service;
-use AdinanCenci\Discography\Api\DiscogsApi;
-use AdinanCenci\Discography\Source\SourceDiscogs;
+use AdinanCenci\Discography\Api\ApiMusicBrainz;
+use AdinanCenci\Discography\Source\SourceMusicBrainz;
 
 use AdinanCenci\AetherMusic\Api\ApiYouTube;
 use AdinanCenci\AetherMusic\Api\ApiSliderKz;
@@ -39,13 +39,11 @@ class ServicesManager extends Singleton
             case 'resourceFinder':
                 return ResourceFinder::create();
                 break;
-            case 'discographyDiscogs':
-                return new SourceDiscogs($this->get('discogsApi'));
+            case 'discographyMusicBrainz':
+                return new SourceMusicBrainz($this->get('musicBrainzApi'));
                 break;
-            case 'discogsApi':                
-                $configs = $this->get('config');
-                $token = $configs->get('discogsToken');
-                return new DiscogsApi($token, [], $this->get('cache'));
+            case 'musicBrainzApi':                
+                return new ApiMusicBrainz([], $this->get('cache'));
                 break;
             case 'describer':
                 return Describer::create();
