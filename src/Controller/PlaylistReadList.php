@@ -1,19 +1,58 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use Psr\Http\Server\RequestHandlerInterface;
 use AdinanCenci\DescriptivePlaylist\Playlist;
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Service\Describer;
+use AdinanCenci\Player\Service\ServicesManager;
 
-class PlaylistReadList extends ControllerBase 
+class PlaylistReadList extends ControllerBase
 {
     use PaginationTrait;
 
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     */
+    protected PlaylistManager $playlistManager;
+
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
+        $this->playlistManager = $playlistManager;
+        $this->describer       = $describer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new static(
+            $servicesManager->get('playlistManager'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
 
         $all   = $this->playlistManager->getAllPlaylists();
@@ -27,7 +66,7 @@ class PlaylistReadList extends ControllerBase
             : $this->read($list, $total, $itensPerPage, $pages, $page, $count);
     }
 
-    protected function download(RequestHandlerInterface $handler, array $playlists) : ResponseInterface
+    protected function download(RequestHandlerInterface $handler, array $playlists): ResponseInterface
     {
         $zipFile = tempnam(sys_get_temp_dir(), 'zip');
         register_shutdown_function('unlink', $zipFile);
@@ -48,7 +87,7 @@ class PlaylistReadList extends ControllerBase
         return $response;
     }
 
-    protected function read($playlists, $total, $itensPerPage, $pages, $page, $count) : ResponseInterface
+    protected function read($playlists, $total, $itensPerPage, $pages, $page, $count): ResponseInterface
     {
         $data  = [];
         usort($playlists, [$this, 'sortPlaylistByTitle']);
@@ -68,7 +107,7 @@ class PlaylistReadList extends ControllerBase
             ->renderResponse();
     }
 
-    public function sortPlaylistByTitle($p1, $p2) 
+    public function sortPlaylistByTitle($p1, $p2)
     {
         if (!$p1->title || !$p2->title) {
             return 0;

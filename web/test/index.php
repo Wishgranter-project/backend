@@ -1,27 +1,48 @@
-<?php 
-use AdinanCenci\Router\Helper\Server;
-use AdinanCenci\Router\Helper\File;
-use AdinanCenci\Router\Router;
+<?php
+
+/**
+ * This file is intended for testing.
+ */
+
+use AdinanCenci\Player\Server;
 
 if (! file_exists('../../vendor/autoload.php')) {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
     die('<h1>Autoload not found</h1>');
 }
 
+session_start();
 require '../../vendor/autoload.php';
 
-$currentFile           = Server::getCurrentFile();
-$currentDirectory      = File::getParentDirectory($currentFile);
-$parentDirectory       = File::getParentDirectory($currentDirectory);
-$grandParentDirectory  = File::getParentDirectory($parentDirectory);
+//=============================================================================
 
-define('ROOT_DIR', $grandParentDirectory);
-define('CACHE_DIR_TEST', $grandParentDirectory . 'cache-test/');
-define('PLAYLISTS_DIR_TEST', $grandParentDirectory . 'playlist-files-test/');
-define('PLAYLISTS_DIR_TEST_TEMPLATES', $grandParentDirectory . 'playlist-files-test-templates/');
+require '../functions.php';
+require 'settings.php';
 
-$router = new Router();
+if (!file_exists(ROOT_DIR . 'configurations.json')) {
+    copy(ROOT_DIR . 'configurations.template.json', ROOT_DIR . 'configurations.json');
+}
 
-require '../routes.php';
-require 'routes.php';
+if (!file_exists(PLAYLISTS_DIR_TEST)) {
+    mkdir(PLAYLISTS_DIR_TEST);
+}
+
+if (!file_exists(CACHE_DIR_TEST)) {
+    mkdir(CACHE_DIR_TEST);
+}
+
+// Reset the playlist files at every request.
+foreach (scandir(PLAYLISTS_DIR_TEST_TEMPLATES) as $entry) {
+    if (is_file(PLAYLISTS_DIR_TEST_TEMPLATES . $entry)) {
+        copy(PLAYLISTS_DIR_TEST_TEMPLATES . $entry, PLAYLISTS_DIR_TEST . $entry);
+    }
+}
+
+//=============================================================================
+
+$server = new Server();
+
+/** @var AdinanCenci\Router\Router */
+$router = $server->getRouter(ROOT_DIR . 'routes.php');
 
 $router->run();

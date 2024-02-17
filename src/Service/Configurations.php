@@ -1,9 +1,10 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Service;
 
-class Configurations extends Singleton 
+class Configurations extends Singleton
 {
-    public function get(string $key, $default = null) 
+    public function get(string $key, $default = null)
     {
         $config = $this->loadConfig();
 
@@ -12,7 +13,7 @@ class Configurations extends Singleton
             : $default;
     }
 
-    public function set(string $key, $value) 
+    public function set(string $key, $value)
     {
         $config = $this->loadConfig();
 
@@ -21,7 +22,7 @@ class Configurations extends Singleton
         $this->saveConfig($config);
     }
 
-    protected function loadConfig() 
+    protected function loadConfig()
     {
         $file = ROOT_DIR . 'configurations.json';
 
@@ -35,7 +36,7 @@ class Configurations extends Singleton
         return $data;
     }
 
-    protected function saveConfig(array $data) 
+    protected function saveConfig(array $data)
     {
         $file = ROOT_DIR . 'configurations.json';
 

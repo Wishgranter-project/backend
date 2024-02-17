@@ -1,20 +1,58 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-
-use AdinanCenci\Player\Controller\ControllerBase;
-use AdinanCenci\Player\Exception\NotFound;
+use AdinanCenci\Player\Service\ServicesManager;
+use AdinanCenci\Player\Service\Describer;
 use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Exception\NotFound;
 
-class ItemCreate extends ControllerBase 
+class ItemCreate extends ControllerBase
 {
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     */
+    protected PlaylistManager $playlistManager;
+
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
+        $this->playlistManager = $playlistManager;
+        $this->describer       = $describer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new static(
+            $servicesManager->get('playlistManager'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
+
         $postData = $this->getPostData($request);
         if (empty($postData['playlist']) || !is_string($postData['playlist'])) {
             throw new \InvalidArgumentException('Inform a playlist');
@@ -45,7 +83,7 @@ class ItemCreate extends ControllerBase
             ->renderResponse();
     }
 
-    protected function createItemByCopying(string $playlistId, string $uuid) : PlaylistItem
+    protected function createItemByCopying(string $playlistId, string $uuid): PlaylistItem
     {
         $original = $this->playlistManager->getItemByUuid($uuid);
 
@@ -56,7 +94,7 @@ class ItemCreate extends ControllerBase
         return $this->playlistManager->addItem($playlistId, $original);
     }
 
-    protected function createItemFromScratch(string $playlistId, array $postData) : PlaylistItem
+    protected function createItemFromScratch(string $playlistId, array $postData): PlaylistItem
     {
         $item = new PlaylistItem();
         foreach ($postData as $k => $v) {

@@ -1,32 +1,37 @@
-<?php 
-use AdinanCenci\Router\Helper\Server;
-use AdinanCenci\Router\Helper\File;
-use AdinanCenci\Router\Router;
+<?php
 
-session_start();
+use AdinanCenci\Player\Server;
 
 if (! file_exists('../vendor/autoload.php')) {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
     die('<h1>Autoload not found</h1>');
 }
 
+session_start();
 require '../vendor/autoload.php';
 
-$currentFile      = Server::getCurrentFile();
-$currentDirectory = File::getParentDirectory($currentFile);
-$parentDirectory  = File::getParentDirectory($currentDirectory);
+//=============================================================================
 
-define('ROOT_DIR', $currentDirectory);
-define('CACHE_DIR', $parentDirectory . 'cache/');
-define('PLAYLISTS_DIR', $parentDirectory . 'playlist-files/');
-define('LOCAL_FILES_DIR', $currentDirectory . 'local-files/');
+require 'functions.php';
+require 'settings.php';
 
 if (!file_exists(ROOT_DIR . 'configurations.json')) {
     copy(ROOT_DIR . 'configurations.template.json', ROOT_DIR . 'configurations.json');
 }
 
-$router = new Router();
+if (!file_exists(PLAYLISTS_DIR)) {
+    mkdir(PLAYLISTS_DIR);
+}
 
-require 'settings.php';
-require 'routes.php';
+if (!file_exists(CACHE_DIR)) {
+    mkdir(CACHE_DIR);
+}
+
+//=============================================================================
+
+$server = new Server();
+
+/** @var AdinanCenci\Router\Router */
+$router = $server->getRouter(ROOT_DIR . 'routes.php');
 
 $router->run();

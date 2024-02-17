@@ -1,21 +1,60 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
 use AdinanCenci\DescriptivePlaylist\Playlist;
-use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Exception\NotFound;
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 use AdinanCenci\Discography\Source\SearchResults;
+use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Service\ServicesManager;
+use AdinanCenci\Player\Service\Describer;
+use AdinanCenci\Player\Exception\NotFound;
 
-class PlaylistReadItems extends ControllerBase 
+class PlaylistReadItems extends ControllerBase
 {
     use PaginationTrait;
 
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     */
+    protected PlaylistManager $playlistManager;
+
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
+        $this->playlistManager = $playlistManager;
+        $this->describer       = $describer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new static(
+            $servicesManager->get('playlistManager'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
         $playlistId = $request->getAttribute('playlist');
         if (! $this->playlistManager->playlistExists($playlistId)) {
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
@@ -29,7 +68,7 @@ class PlaylistReadItems extends ControllerBase
             ->renderResponse();
     }
 
-    protected function simpleList(ServerRequestInterface $request, $playlistId) : SearchResults
+    protected function simpleList(ServerRequestInterface $request, $playlistId): SearchResults
     {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $playlist = $this->playlistManager->getPlaylist($playlistId);
@@ -39,11 +78,16 @@ class PlaylistReadItems extends ControllerBase
         $count    = count($list);
 
         return new SearchResults(
-            $list, $count, $page, $pages, $itensPerPage, $total
+            $list,
+            $count,
+            $page,
+            $pages,
+            $itensPerPage,
+            $total
         );
     }
 
-    protected function searchItems(ServerRequestInterface $request, $playlistId) : SearchResults 
+    protected function searchItems(ServerRequestInterface $request, $playlistId): SearchResults
     {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $playlist = $this->playlistManager->getPlaylist($playlistId);
@@ -74,15 +118,20 @@ class PlaylistReadItems extends ControllerBase
         $count = count($list);
 
         return new SearchResults(
-            $list, $count, $page, $pages, $itensPerPage, $total
+            $list,
+            $count,
+            $page,
+            $pages,
+            $itensPerPage,
+            $total
         );
     }
 
-    protected function filterParametersPresent(ServerRequestInterface $request) : bool
+    protected function filterParametersPresent(ServerRequestInterface $request): bool
     {
         $params = $request->getQueryParams();
 
-        return 
+        return
             !empty($params['title']) ||
             !empty($params['genre']) ||
             !empty($params['artist']) ||

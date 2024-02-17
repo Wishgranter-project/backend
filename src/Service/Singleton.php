@@ -1,11 +1,12 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Service;
 
-abstract class Singleton 
+abstract class Singleton
 {
     public static $instances = [];
 
-    public static function singleton() 
+    public static function singleton()
     {
         $class = get_called_class();
 

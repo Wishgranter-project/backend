@@ -1,50 +1,80 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Service\ServicesManager;
 
-class ArtistsList extends ControllerBase 
+class ArtistsList extends ControllerBase
 {
-    protected array $artists = [];
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     *   The service to manage playlists.
+     */
+    protected PlaylistManager $playlistManager;
 
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     */
+    public function __construct(PlaylistManager $playlistManager)
     {
-        $this->listArtists($request);
+        $this->playlistManager = $playlistManager;
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new self($servicesManager->get('playlistManager'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
+        $artists  = $this->listArtists($request);
         $resource = new JsonResource();
+
         return $resource
             ->setStatusCode(200)
-            ->setData($this->artists)
+            ->setData($artists)
             ->renderResponse();
     }
 
-    protected function listArtists($request) 
+    protected function listArtists(ServerRequestInterface $request): array
     {
-        $artists = [];
+        $list = [];
+
         foreach ($this->playlistManager->getAllPlaylists() as $playlistId => $playlist) {
             foreach ($playlist->items as $key => $item) {
                 if (! $item->artist) {
                     continue;
                 }
-                $this->countArtists((array) $item->artist);
+                $this->countArtists((array) $item->artist, $list);
             }
         }
 
-        krsort($this->artists);
-        arsort($this->artists);
+        krsort($list);
+        arsort($list);
+
+        return $list;
     }
 
-    protected function countArtists(array $artists) 
+    protected function countArtists(array $itemArtists, &$list): void
     {
-        foreach ($artists as $a) {
-            if (!isset($this->artists[$a])) {
-                $this->artists[$a] = 1;
+        foreach ($itemArtists as $a) {
+            if (!isset($list[$a])) {
+                $list[$a] = 1;
             } else {
-                $this->artists[$a]++;
+                $list[$a]++;
             }
         }
     }

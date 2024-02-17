@@ -1,25 +1,57 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
 use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Service\ServicesManager;
+use AdinanCenci\Player\Service\Describer;
 use AdinanCenci\DescriptivePlaylist\Playlist;
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 
-class PlaylistCreate extends ControllerBase 
+class PlaylistCreate extends ControllerBase
 {
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     */
+    protected PlaylistManager $playlistManager;
+
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
-        return !empty($request->getUploadedFiles())
-            ? $this->upload($request, $handler)
-            : $this->fromScratch($request, $handler);
+        $this->playlistManager = $playlistManager;
+        $this->describer       = $describer;
     }
 
-    protected function fromScratch(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
+        return new static(
+            $servicesManager->get('playlistManager'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
         $title    = (string) $request->post('title');
         if (empty($title)) {
             throw new \InvalidArgumentException('Inform a title for the playlist');
@@ -53,7 +85,7 @@ class PlaylistCreate extends ControllerBase
             ->renderResponse();
     }
 
-    protected function upload(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    protected function upload(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $uploadedFiles = $request->getUploadedFiles();
 
@@ -83,13 +115,14 @@ class PlaylistCreate extends ControllerBase
                 $data[] = $this->describer->describe($p);
             }
 
+            $pData = count($data) > 1
+                ? $data
+                : $data[0];
+
             $resource
                 ->setStatusCode(201)
                 ->addSuccess(201, count($playlists) . ' file(s) uploaded.')
-                ->setData(count($data) > 1
-                    ? $data
-                    : $data[0]
-                );
+                ->setData($pData);
         } else {
             $resource
                 ->setStatusCode(400)
@@ -100,8 +133,11 @@ class PlaylistCreate extends ControllerBase
             ->renderResponse();
     }
 
-    protected function handleFile(UploadedFileInterface $file, bool $replaceExisting = false, array &$errors = []) : ?array
-    {
+    protected function handleFile(
+        UploadedFileInterface $file,
+        bool $replaceExisting = false,
+        array &$errors = []
+    ): ?array {
         $extension = $this->getExtension($file->getClientFilename());
 
         switch ($extension) {
@@ -118,13 +154,16 @@ class PlaylistCreate extends ControllerBase
         }
     }
 
-    protected function handleSinglePlaylist(UploadedFileInterface $file, bool $replaceExisting = false, array &$errors = []) : Playlist
-    {
+    protected function handleSinglePlaylist(
+        UploadedFileInterface $file,
+        bool $replaceExisting = false,
+        array &$errors = []
+    ): Playlist {
         $destiny = PLAYLISTS_DIR . $file->getClientFilename();
 
         if (file_exists($destiny) && $replaceExisting) {
             unlink($destiny);
-        } else if (file_exists($destiny)) {
+        } elseif (file_exists($destiny)) {
             $base = basename($destiny, '.dpls');
             $destiny = PLAYLISTS_DIR . $this->playlistManager->getAvailableFilename($base) . '.dpls';
         }
@@ -134,7 +173,7 @@ class PlaylistCreate extends ControllerBase
         return new Playlist($destiny);
     }
 
-    protected function handleZip(UploadedFileInterface $file, bool $replaceExisting = false, array &$errors = []) : array 
+    protected function handleZip(UploadedFileInterface $file, bool $replaceExisting = false, array &$errors = []): array
     {
         $zipFile = tempnam(sys_get_temp_dir(), 'zip');
         unlink($zipFile);
@@ -159,7 +198,7 @@ class PlaylistCreate extends ControllerBase
             $destiny = PLAYLISTS_DIR . $basename;
             if (file_exists($destiny) && $replaceExisting) {
                 unlink($destiny);
-            } else if (file_exists($destiny)) {
+            } elseif (file_exists($destiny)) {
                 $base = basename($destiny, '.dpls');
                 $destiny = PLAYLISTS_DIR . $this->playlistManager->getAvailableFilename($base) . '.dpls';
             }
@@ -172,9 +211,9 @@ class PlaylistCreate extends ControllerBase
         return $playlists;
     }
 
-    protected function getExtension(string $filename) : string
+    protected function getExtension(string $filename): string
     {
-        return preg_match('#(\.[a-zA-Z]+)$#', $filename, $matches) 
+        return preg_match('#(\.[a-zA-Z]+)$#', $filename, $matches)
             ? strtolower($matches[1])
             : '';
     }

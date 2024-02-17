@@ -1,22 +1,19 @@
-<?php 
-function isLocalEnvironment() : bool 
-{
-    return isset($_SERVER['HTTP_X_LANDO']);
-}
+<?php
 
-if (isLocalEnvironment()) {
-    $settings['corsAllowedDomain'] = 'player-frontend.lndo.site';
-} else {
-    $settings['corsAllowedDomain'] = 'adinancenci.com.br';
-}
+use AdinanCenci\Router\Helper\Server;
+use AdinanCenci\Router\Helper\File;
 
-function getAllowedDomain($request, $settings) : string
-{
-    $host = $request->getHeaderLine('origin');
+$currentFile      = Server::getCurrentFile();
+$currentDirectory = File::getParentDirectory($currentFile);
+$parentDirectory  = File::getParentDirectory($currentDirectory);
 
-    $allowedDomain = substr_count($host, $settings['corsAllowedDomain']) > 0
-        ? $host
-        : 'self';
+//=============================================================================
 
-    return $allowedDomain;
-}
+$settings['corsAllowedDomain'] = isLocalEnvironment()
+    ? 'player-frontend.lndo.site'
+    : 'adinancenci.com.br';
+
+define('ROOT_DIR',        $currentDirectory);
+define('CACHE_DIR',       $parentDirectory . 'cache/');
+define('PLAYLISTS_DIR',   $parentDirectory . 'playlist-files/');
+define('LOCAL_FILES_DIR', $currentDirectory . 'local-files/');

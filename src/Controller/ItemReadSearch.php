@@ -1,28 +1,66 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
-use AdinanCenci\Player\Controller\ControllerBase;
-use AdinanCenci\Player\Exception\NotFound;
-use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\DescriptiveManager\PlaylistManager;
 use AdinanCenci\Discography\Source\SearchResults;
+use AdinanCenci\Player\Service\ServicesManager;
+use AdinanCenci\Player\Service\Describer;
+use AdinanCenci\Player\Helper\JsonResource;
+use AdinanCenci\Player\Exception\NotFound;
 
-class ItemReadSearch extends ControllerBase 
+class ItemReadSearch extends ControllerBase
 {
     use PaginationTrait;
 
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     */
+    protected PlaylistManager $playlistManager;
+
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
+        $this->playlistManager = $playlistManager;
+        $this->describer       = $describer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new static(
+            $servicesManager->get('playlistManager'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
         $searchResults = $this->searchItems($request);
 
         return JsonResource::fromSearchResults($searchResults)
           ->renderResponse();
     }
 
-    protected function searchItems(ServerRequestInterface $request) : SearchResults
+    protected function searchItems(ServerRequestInterface $request): SearchResults
     {
         list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $all   = $this->search($request);
@@ -32,11 +70,16 @@ class ItemReadSearch extends ControllerBase
         $count = count($list);
 
         return new SearchResults(
-            $list, $count, $page, $pages, $itensPerPage, $total
+            $list,
+            $count,
+            $page,
+            $pages,
+            $itensPerPage,
+            $total
         );
     }
 
-    protected function search(ServerRequestInterface $request) : array
+    protected function search(ServerRequestInterface $request): array
     {
         $search = $this->playlistManager->search();
 

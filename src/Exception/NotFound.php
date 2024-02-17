@@ -1,7 +1,8 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Exception;
 
-class NotFound extends \Exception 
+class NotFound extends \Exception
 {
 
 }

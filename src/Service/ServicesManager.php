@@ -1,8 +1,11 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Service;
+
 use AdinanCenci\Discography\Api\ApiMusicBrainz;
 use AdinanCenci\Discography\Source\SourceMusicBrainz;
-
+use AdinanCenci\DescriptiveManager\PlaylistManager;
+use AdinanCenci\FileCache\Cache;
 use AdinanCenci\AetherMusic\Api\ApiYouTube;
 use AdinanCenci\AetherMusic\Api\ApiSliderKz;
 use AdinanCenci\AetherMusic\Source\SourceYouTube;
@@ -10,11 +13,11 @@ use AdinanCenci\AetherMusic\Source\SourceSliderKz;
 use AdinanCenci\AetherMusic\Source\SourceLocalFiles;
 use AdinanCenci\AetherMusic\Aether;
 
-class ServicesManager extends Singleton 
+class ServicesManager extends Singleton
 {
     protected $services = [];
 
-    public function get(string $serviceId) 
+    public function get(string $serviceId)
     {
         if (! isset($this->services[$serviceId])) {
             $this->services[$serviceId] = $this->isntantiate($serviceId);
@@ -27,14 +30,22 @@ class ServicesManager extends Singleton
         return $this->services[$serviceId];
     }
 
-    protected function isntantiate(string $serviceId) 
+    protected function isntantiate(string $serviceId)
     {
         switch ($serviceId) {
             case 'playlistManager':
-                return PlaylistManager::create();
+                $dir = defined('PLAYLISTS_DIR_TEST')
+                    ? PLAYLISTS_DIR_TEST
+                    : PLAYLISTS_DIR;
+
+                return new PlaylistManager($dir);
                 break;
             case 'cache':
-                return CacheManager::create();
+                $dir = defined('CACHE_DIR_TEST')
+                    ? CACHE_DIR_TEST
+                    : CACHE_DIR;
+
+                return new Cache($dir);
                 break;
             case 'resourceFinder':
                 return ResourceFinder::create();
@@ -42,7 +53,7 @@ class ServicesManager extends Singleton
             case 'discographyMusicBrainz':
                 return new SourceMusicBrainz($this->get('musicBrainzApi'));
                 break;
-            case 'musicBrainzApi':                
+            case 'musicBrainzApi':
                 return new ApiMusicBrainz([], $this->get('cache'));
                 break;
             case 'describer':

@@ -1,26 +1,51 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use AdinanCenci\AetherMusic\Aether;
 use AdinanCenci\AetherMusic\Description;
-
+use AdinanCenci\Player\Service\ServicesManager;
+use AdinanCenci\Player\Service\Describer;
 use AdinanCenci\Player\Helper\JsonResource;
 
-use AdinanCenci\AetherMusic\Sorting\LikenessTally;
-use AdinanCenci\AetherMusic\Sorting\CriteriaInterface;
-use AdinanCenci\AetherMusic\Sorting\TitleCriteria;
-use AdinanCenci\AetherMusic\Sorting\SoundtrackCriteria;
-use AdinanCenci\AetherMusic\Sorting\ArtistCriteria;
-use AdinanCenci\AetherMusic\Sorting\UndesirablesCriteria;
-use AdinanCenci\AetherMusic\Sorting\LeftOverCriteria;
-
-class DiscoverResources extends ControllerBase 
+class DiscoverResources extends ControllerBase
 {
-    public function formResponse(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * @var AdinanCenci\Player\Service\Describer
+     */
+    protected Describer $describer;
+
+    /**
+     * @param AdinanCenci\AetherMusic\Aether $aether
+     * @param AdinanCenci\Player\Service\Describer $describer
+     */
+    public function __construct(Aether $aether, Describer $describer)
     {
+        $this->aether    = $aether;
+        $this->describer = $describer;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    {
+        return new self(
+            $servicesManager->get('aether'),
+            $servicesManager->get('describer')
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
         $resources = $this->find($request);
 
         $data = [];
@@ -36,7 +61,7 @@ class DiscoverResources extends ControllerBase
         return $response;
     }
 
-    protected function find(ServerRequestInterface $request) : array
+    protected function find(ServerRequestInterface $request): array
     {
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
@@ -47,7 +72,7 @@ class DiscoverResources extends ControllerBase
         return $resources;
     }
 
-    protected function buildDescription(ServerRequestInterface $request) : Description
+    protected function buildDescription(ServerRequestInterface $request): Description
     {
         return Description::createFromArray([
             'title'      => $request->get('title'),

@@ -1,64 +1,89 @@
-<?php 
+<?php
+
 namespace AdinanCenci\Player\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-
+use Psr\Http\Server\RequestHandlerInterface;
 use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Helper\JsonResource;
 use AdinanCenci\Player\Exception\NotFound;
 
-class ControllerBase 
+abstract class ControllerBase
 {
-    protected ServicesManager $servicesManager;
-
-    public function __construct() 
+    /**
+     * @param AdinanCenci\Player\Service\ServicesManager $serviceManager
+     *   The service manager.
+     *
+     * @return AdinanCenci\Player\Controller\ControllerBase
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        $this->servicesManager = ServicesManager::singleton();
+        return new (\get_called_class());
     }
 
-    public function __get($var) {
-        return $this->servicesManager->get($var);
+    /**
+     * Instantiate and invoke the controler.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     */
+    public static function respond(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $servicesManager = ServicesManager::singleton();
+        $controller = get_called_class()::instantiate($servicesManager);
+        return $controller($request, $handler);
     }
 
-    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
+    /**
+     * Invoke the controler to generate a response.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     */
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        try {
-            $response = $this->formResponse($request, $handler);
-        } catch(\Exception $e) {
-            $response = $this->handleException($e);
-        }
+        $response = $this->generateResponse($request, $handler);
 
         if (! $response instanceof ResponseInterface) {
-            $response = $this->handleException(new \Exception('Controller failed to return a response'));
+            throw new \Exception('Controller failed to return a response');
         }
 
         return $response;
     }
 
-    protected function handleException(\Exception $exception) : ResponseInterface
+    public function __construct()
     {
-        $resource = new JsonResource();
-
-        if ($exception instanceof NotFound) {
-            $resource
-                ->setStatusCode(404)
-                ->addError(404, $exception->getMessage());
-        } else if ($exception instanceof \InvalidArgumentException) {
-            $resource
-                ->setStatusCode(400)
-                ->addError(400, $exception->getMessage());
-        } else {
-            $resource
-                ->setStatusCode(500)
-                ->addError(500, $exception->getMessage());
-        }
-
-        return $resource->renderResponse();
+        // Controller specific.
     }
 
-    protected function getPostData(ServerRequestInterface $request) : array
+    /**
+     * Generate a response.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     */
+    protected function generateResponse(
+        ServerRequestInterface $request,
+        RequestHandlerInterface $handler
+    ): ResponseInterface {
+        // Controller specific.
+    }
+
+    /**
+     * Just like $_POST.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *
+     * @return array
+     */
+    protected function getPostData(ServerRequestInterface $request): array
     {
         $contentType = $request->getHeaderLine('content-type');
 
@@ -75,7 +100,14 @@ class ControllerBase
         return $request->getParsedBody();
     }
 
-    protected static function getMime(string $contentType) : string
+    /**
+     * Extract the mime from a content-type header.
+     *
+     * @param string $contentType
+     *
+     * @return string
+     */
+    private static function getMime(string $contentType): string
     {
         return preg_match('#^([^;]+)#', $contentType, $matches)
             ? trim(strtolower($matches[1]))

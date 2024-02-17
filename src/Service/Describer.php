@@ -1,4 +1,5 @@
 <?php
+
 namespace AdinanCenci\Player\Service;
 
 use AdinanCenci\DescriptivePlaylist\Playlist;
@@ -7,29 +8,29 @@ use AdinanCenci\Discography\Artist;
 use AdinanCenci\Discography\Album;
 use AdinanCenci\AetherMusic\Resource\Resource;
 
-class Describer 
+class Describer
 {
-    public static function create() : Describer
+    public static function create(): Describer
     {
         return new self();
     }
 
-    public function describe($object) 
+    public function describe($object)
     {
         if ($object instanceof Playlist) {
             return $this->describePlaylist($object);
-        } else if ($object instanceof PlaylistItem) {
+        } elseif ($object instanceof PlaylistItem) {
             return $this->describePlaylistItem($object);
-        } else if ($object instanceof Resource) {
+        } elseif ($object instanceof Resource) {
             return $this->describeResource($object);
-        } else if ($object instanceof Artist) {
+        } elseif ($object instanceof Artist) {
             return $this->describeArtist($object);
-        } else if ($object instanceof Album) {
+        } elseif ($object instanceof Album) {
             return $this->describeAlbum($object);
         }
     }
 
-    public function describeAll(array $array) 
+    public function describeAll(array $array)
     {
         $described = [];
 
@@ -40,7 +41,7 @@ class Describer
         return $described;
     }
 
-    protected function describePlaylist($playlist) 
+    protected function describePlaylist($playlist)
     {
         $data = [
             'type' => 'playlist',
@@ -51,22 +52,22 @@ class Describer
         return $data;
     }
 
-    protected function describePlaylistItem(PlaylistItem $playlistItem) 
+    protected function describePlaylistItem(PlaylistItem $playlistItem)
     {
         return $playlistItem->getCopyOfTheData();
     }
 
-    protected function describeResource(Resource $resource) 
+    protected function describeResource(Resource $resource)
     {
         return ['type' => 'resource'] + $resource->toArray();
     }
 
-    protected function describeArtist(Artist $artist) 
+    protected function describeArtist(Artist $artist)
     {
         return ['type' => 'artist'] + $artist->toArray();
     }
 
-    protected function describeAlbum(Album $album) 
+    protected function describeAlbum(Album $album)
     {
         return ['type' => 'album'] + $album->toArray();
     }

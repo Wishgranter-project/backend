@@ -2,16 +2,15 @@
 
 namespace AdinanCenci\Player\Controller;
 
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\Discography\Source\SearchResults;
 use AdinanCenci\Discography\Source\SourceMusicBrainz;
-use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Service\Describer;
+use AdinanCenci\Player\Service\ServicesManager;
 use AdinanCenci\Player\Helper\JsonResource;
 
-class DiscoverArtists extends ControllerBase
+class DiscoverAlbum extends ControllerBase
 {
     /**
      * @var AdinanCenci\Discography\Source\SourceMusicBrainz
@@ -51,19 +50,17 @@ class DiscoverArtists extends ControllerBase
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        $searchResults = $this->searchArtists($request);
-        $resource      = JsonResource::fromSearchResults($searchResults);
-        return $resource->renderResponse();
-    }
 
-    protected function searchArtists(ServerRequestInterface $request): SearchResults
-    {
-        $name = $request->get('name');
+        $artistName = $request->get('artist');
+        $albumTitle = $request->get('title');
+        $album      = $this->discography->getAlbum($artistName, $albumTitle);
+        $data       = $this->describer->describe($album);
 
-        if (empty($name) || !is_string($name)) {
-            throw new \InvalidArgumentException('Provide a search term, you lackwit');
-        }
+        $resource = new JsonResource();
 
-        return $this->discography->searchForArtistByName($name);
+        return $resource
+            ->setStatusCode(200)
+            ->setData($data)
+            ->renderResponse();
     }
 }
