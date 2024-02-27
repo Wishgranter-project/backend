@@ -1,6 +1,6 @@
 <?php
 
-namespace AdinanCenci\Player\Exception;
+namespace WishgranterProject\Backend\Exception;
 
 class NotFound extends \Exception
 {

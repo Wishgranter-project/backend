@@ -1,24 +1,24 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\DescriptiveManager\PlaylistManager;
-use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Service\ServicesManager;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Service\ServicesManager;
 
 class ArtistsList extends ControllerBase
 {
     /**
-     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     * @var WishgranterProject\DescriptiveManager\PlaylistManager
      *   The service to manage playlists.
      */
     protected PlaylistManager $playlistManager;
 
     /**
-     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
      */
     public function __construct(PlaylistManager $playlistManager)
     {

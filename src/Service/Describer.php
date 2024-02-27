@@ -1,12 +1,12 @@
 <?php
 
-namespace AdinanCenci\Player\Service;
+namespace WishgranterProject\Backend\Service;
 
-use AdinanCenci\DescriptivePlaylist\Playlist;
-use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-use AdinanCenci\Discography\Artist;
-use AdinanCenci\Discography\Album;
-use AdinanCenci\AetherMusic\Resource\Resource;
+use WishgranterProject\DescriptivePlaylist\Playlist;
+use WishgranterProject\DescriptivePlaylist\PlaylistItem;
+use WishgranterProject\Discography\Artist;
+use WishgranterProject\Discography\Album;
+use WishgranterProject\AetherMusic\Resource\Resource;
 
 class Describer
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 

@@ -1,7 +1,7 @@
 <?php 
-namespace AdinanCenci\Player\Helper;
+namespace WishgranterProject\Backend\Helper;
 
-use AdinanCenci\Player\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServicesManager;
 
 use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Psr17\ResponseFactory;

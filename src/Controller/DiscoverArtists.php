@@ -1,31 +1,31 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\Discography\Source\SearchResults;
-use AdinanCenci\Discography\Source\SourceMusicBrainz;
-use AdinanCenci\Player\Service\ServicesManager;
-use AdinanCenci\Player\Service\Describer;
-use AdinanCenci\Player\Helper\JsonResource;
+use WishgranterProject\Discography\Source\SearchResults;
+use WishgranterProject\Discography\Source\SourceMusicBrainz;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\Describer;
+use WishgranterProject\Backend\Helper\JsonResource;
 
 class DiscoverArtists extends ControllerBase
 {
     /**
-     * @var AdinanCenci\Discography\Source\SourceMusicBrainz
+     * @var WishgranterProject\Discography\Source\SourceMusicBrainz
      */
     protected SourceMusicBrainz $discography;
 
     /**
-     * @var AdinanCenci\Player\Service\Describer
+     * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
-     * @param AdinanCenci\Discography\Source\SourceMusicBrainz $discography
-     * @param AdinanCenci\Player\Service\Describer $describer
+     * @param WishgranterProject\Discography\Source\SourceMusicBrainz $discography
+     * @param WishgranterProject\Backend\Service\Describer $describer
      */
     public function __construct(SourceMusicBrainz $discography, Describer $describer)
     {

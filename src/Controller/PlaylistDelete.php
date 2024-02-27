@@ -1,25 +1,25 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\DescriptivePlaylist\Playlist;
-use AdinanCenci\DescriptiveManager\PlaylistManager;
-use AdinanCenci\Player\Service\ServicesManager;
-use AdinanCenci\Player\Exception\NotFound;
-use AdinanCenci\Player\Helper\JsonResource;
+use WishgranterProject\DescriptivePlaylist\Playlist;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Exception\NotFound;
+use WishgranterProject\Backend\Helper\JsonResource;
 
 class PlaylistDelete extends ControllerBase
 {
     /**
-     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     * @var WishgranterProject\DescriptiveManager\PlaylistManager
      */
     protected PlaylistManager $playlistManager;
 
     /**
-     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
      */
     public function __construct(PlaylistManager $playlistManager)
     {

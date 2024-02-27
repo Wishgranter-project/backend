@@ -1,32 +1,32 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\DescriptiveManager\PlaylistManager;
-use AdinanCenci\DescriptivePlaylist\PlaylistItem;
-use AdinanCenci\Player\Service\ServicesManager;
-use AdinanCenci\Player\Service\Describer;
-use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Exception\NotFound;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\DescriptivePlaylist\PlaylistItem;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\Describer;
+use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Exception\NotFound;
 
 class ItemCreate extends ControllerBase
 {
     /**
-     * @var AdinanCenci\DescriptiveManager\PlaylistManager
+     * @var WishgranterProject\DescriptiveManager\PlaylistManager
      */
     protected PlaylistManager $playlistManager;
 
     /**
-     * @var AdinanCenci\Player\Service\Describer
+     * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
-     * @param AdinanCenci\DescriptiveManager\PlaylistManager $playlistManager
-     * @param AdinanCenci\Player\Service\Describer $describer
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
+     * @param WishgranterProject\Backend\Service\Describer $describer
      */
     public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {

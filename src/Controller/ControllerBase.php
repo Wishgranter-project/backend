@@ -1,21 +1,21 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use AdinanCenci\Player\Service\ServicesManager;
-use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Exception\NotFound;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Exception\NotFound;
 
 abstract class ControllerBase
 {
     /**
-     * @param AdinanCenci\Player\Service\ServicesManager $serviceManager
+     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
      *   The service manager.
      *
-     * @return AdinanCenci\Player\Controller\ControllerBase
+     * @return WishgranterProject\Backend\Controller\ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {

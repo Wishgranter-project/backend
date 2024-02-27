@@ -1,11 +1,11 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use AdinanCenci\Player\Helper\JsonResource;
+use WishgranterProject\Backend\Helper\JsonResource;
 
 class HomePage extends ControllerBase
 {

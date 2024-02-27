@@ -1,27 +1,27 @@
 {
-    "name": "adinan-cenci/player-backend",
+    "name": "wishgranter-project/backend",
     "description": "Backend of my player",
     "type": "project",
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/adinan-cenci/descriptive-playlist"
+            "url": "https://github.com/wishgranter-project/descriptive-playlist"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/adinan-cenci/descriptive-manager"
+            "url": "https://github.com/wishgranter-project/descriptive-manager"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wishgranter-project/discography"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wishgranter-project/aether-music"
         },
         {
             "type": "vcs",
             "url": "https://github.com/adinan-cenci/generic-rest-api"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/adinan-cenci/discography"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/adinan-cenci/aether-music"
         },
         {
             "type": "vcs",
@@ -37,15 +37,15 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "AdinanCenci\\Player\\": "src/"
+            "WishgranterProject\\Backend\\": "src/"
         }
     },
     "require": {
-        "adinan-cenci/descriptive-manager": "dev-master",
+        "wishgranter-project/descriptive-manager": "^1.0",
+        "wishgranter-project/descriptive-playlist": "^5.0",
+        "wishgranter-project/discography": "^1.0.0-alpha",
         "adinan-cenci/router": "dev-master",
         "adinan-cenci/file-cache": "dev-master",
-        "adinan-cenci/descriptive-playlist": "^4.0",
-        "adinan-cenci/aether-music": "2.0.0-alpha",
-        "adinan-cenci/discography": "dev-master"
+        "wishgranter-project/aether-music": "dev-master"
     }
 }

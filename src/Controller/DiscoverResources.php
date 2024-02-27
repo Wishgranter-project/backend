@@ -1,26 +1,26 @@
 <?php
 
-namespace AdinanCenci\Player\Controller;
+namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use AdinanCenci\AetherMusic\Aether;
-use AdinanCenci\AetherMusic\Description;
-use AdinanCenci\Player\Service\ServicesManager;
-use AdinanCenci\Player\Service\Describer;
-use AdinanCenci\Player\Helper\JsonResource;
+use WishgranterProject\AetherMusic\Aether;
+use WishgranterProject\AetherMusic\Description;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\Describer;
+use WishgranterProject\Backend\Helper\JsonResource;
 
 class DiscoverResources extends ControllerBase
 {
     /**
-     * @var AdinanCenci\Player\Service\Describer
+     * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
-     * @param AdinanCenci\AetherMusic\Aether $aether
-     * @param AdinanCenci\Player\Service\Describer $describer
+     * @param WishgranterProject\AetherMusic\Aether $aether
+     * @param WishgranterProject\Backend\Service\Describer $describer
      */
     public function __construct(Aether $aether, Describer $describer)
     {

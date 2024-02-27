@@ -1,6 +1,6 @@
 <?php
 
-namespace AdinanCenci\Player\Service;
+namespace WishgranterProject\Backend\Service;
 
 class Configurations extends Singleton
 {

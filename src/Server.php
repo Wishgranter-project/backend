@@ -1,13 +1,13 @@
 <?php
 
-namespace AdinanCenci\Player;
+namespace WishgranterProject\Backend;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use AdinanCenci\Router\Router;
-use AdinanCenci\Player\Helper\JsonResource;
-use AdinanCenci\Player\Exception\NotFound;
+use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Exception\NotFound;
 
 final class Server
 {

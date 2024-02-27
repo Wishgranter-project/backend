@@ -1,17 +1,17 @@
 <?php
 
-namespace AdinanCenci\Player\Service;
+namespace WishgranterProject\Backend\Service;
 
-use AdinanCenci\Discography\Api\ApiMusicBrainz;
-use AdinanCenci\Discography\Source\SourceMusicBrainz;
-use AdinanCenci\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Discography\Api\ApiMusicBrainz;
+use WishgranterProject\Discography\Source\SourceMusicBrainz;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\AetherMusic\Api\ApiYouTube;
+use WishgranterProject\AetherMusic\Api\ApiSliderKz;
+use WishgranterProject\AetherMusic\Source\SourceYouTube;
+use WishgranterProject\AetherMusic\Source\SourceSliderKz;
+use WishgranterProject\AetherMusic\Source\SourceLocalFiles;
+use WishgranterProject\AetherMusic\Aether;
 use AdinanCenci\FileCache\Cache;
-use AdinanCenci\AetherMusic\Api\ApiYouTube;
-use AdinanCenci\AetherMusic\Api\ApiSliderKz;
-use AdinanCenci\AetherMusic\Source\SourceYouTube;
-use AdinanCenci\AetherMusic\Source\SourceSliderKz;
-use AdinanCenci\AetherMusic\Source\SourceLocalFiles;
-use AdinanCenci\AetherMusic\Aether;
 
 class ServicesManager extends Singleton
 {

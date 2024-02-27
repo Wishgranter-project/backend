@@ -1,6 +1,6 @@
 <?php
 
-$router->setDefaultNamespace('\\AdinanCenci\\Player\\Controller');
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller');
 
 $router->get(   '#^$#',                                                        'HomePage::respond');
 
