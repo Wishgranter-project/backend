@@ -5,7 +5,7 @@ namespace WishgranterProject\Backend\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\Discography\Source\SourceMusicBrainz;
+use WishgranterProject\Backend\Service\Discography;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
@@ -13,9 +13,9 @@ use WishgranterProject\Backend\Helper\JsonResource;
 class DiscoverAlbums extends ControllerBase
 {
     /**
-     * @var WishgranterProject\Discography\Source\SourceMusicBrainz
+     * @var WishgranterProject\Backend\Service\Discography
      */
-    protected SourceMusicBrainz $discography;
+    protected Discography $discography;
 
     /**
      * @var WishgranterProject\Backend\Service\Describer
@@ -23,10 +23,10 @@ class DiscoverAlbums extends ControllerBase
     protected Describer $describer;
 
     /**
-     * @param WishgranterProject\Discography\Source\SourceMusicBrainz $discography
+     * @param WishgranterProject\Backend\Service\Discography $discography
      * @param WishgranterProject\Backend\Service\Describer $describer
      */
-    public function __construct(SourceMusicBrainz $discography, Describer $describer)
+    public function __construct(Discography $discography, Describer $describer)
     {
         $this->discography = $discography;
         $this->describer   = $describer;
@@ -38,7 +38,7 @@ class DiscoverAlbums extends ControllerBase
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
         return new self(
-            $servicesManager->get('discographyMusicBrainz'),
+            $servicesManager->get('discography'),
             $servicesManager->get('describer')
         );
     }
@@ -50,15 +50,13 @@ class DiscoverAlbums extends ControllerBase
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        $searchResults = $this->listReleases($request);
-        $resource      = new JsonResource();
-        $data          = $this->describer->describeAll($searchResults);
-
-        $resource->setData($data);
+        $searchResults = $this->listAlbums($request);
+        $array         = $this->describer->describeAll($searchResults);
+        $resource      = new JsonResource($array);
         return $resource->renderResponse();
     }
 
-    protected function listReleases(ServerRequestInterface $request)
+    protected function listAlbums(ServerRequestInterface $request)
     {
         $artistName = $request->get('artist');
 

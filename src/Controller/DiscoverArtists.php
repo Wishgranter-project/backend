@@ -5,8 +5,8 @@ namespace WishgranterProject\Backend\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\Discography\Source\SearchResults;
-use WishgranterProject\Discography\Source\SourceMusicBrainz;
+use WishgranterProject\Backend\Helper\SearchResults;
+use WishgranterProject\Backend\Service\Discography;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
@@ -14,9 +14,9 @@ use WishgranterProject\Backend\Helper\JsonResource;
 class DiscoverArtists extends ControllerBase
 {
     /**
-     * @var WishgranterProject\Discography\Source\SourceMusicBrainz
+     * @var WishgranterProject\Backend\Service\Discography
      */
-    protected SourceMusicBrainz $discography;
+    protected Discography $discography;
 
     /**
      * @var WishgranterProject\Backend\Service\Describer
@@ -24,10 +24,10 @@ class DiscoverArtists extends ControllerBase
     protected Describer $describer;
 
     /**
-     * @param WishgranterProject\Discography\Source\SourceMusicBrainz $discography
+     * @param WishgranterProject\Backend\Service\Discography $discography
      * @param WishgranterProject\Backend\Service\Describer $describer
      */
-    public function __construct(SourceMusicBrainz $discography, Describer $describer)
+    public function __construct(Discography $discography, Describer $describer)
     {
         $this->discography = $discography;
         $this->describer   = $describer;
@@ -39,7 +39,7 @@ class DiscoverArtists extends ControllerBase
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
         return new self(
-            $servicesManager->get('discographyMusicBrainz'),
+            $servicesManager->get('discography'),
             $servicesManager->get('describer')
         );
     }
@@ -52,11 +52,12 @@ class DiscoverArtists extends ControllerBase
         RequestHandlerInterface $handler
     ): ResponseInterface {
         $searchResults = $this->searchArtists($request);
-        $resource      = JsonResource::fromSearchResults($searchResults);
+        $array         = $this->describer->describeAll($searchResults);
+        $resource      = new JsonResource($array);
         return $resource->renderResponse();
     }
 
-    protected function searchArtists(ServerRequestInterface $request): SearchResults
+    protected function searchArtists(ServerRequestInterface $request): array
     {
         $name = $request->get('name');
 
@@ -64,6 +65,6 @@ class DiscoverArtists extends ControllerBase
             throw new \InvalidArgumentException('Provide a search term, you lackwit');
         }
 
-        return $this->discography->searchForArtistByName($name);
+        return $this->discography->searchForArtist($name);
     }
 }

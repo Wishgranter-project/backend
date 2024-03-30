@@ -2,8 +2,10 @@
 
 namespace WishgranterProject\Backend\Service;
 
-use WishgranterProject\Discography\Api\ApiMusicBrainz;
-use WishgranterProject\Discography\Source\SourceMusicBrainz;
+use WishgranterProject\Discography\Discogs\ApiDiscogs;
+use WishgranterProject\Discography\Discogs\SourceDiscogs;
+use WishgranterProject\Discography\MusicBrainz\ApiMusicBrainz;
+use WishgranterProject\Discography\MusicBrainz\SourceMusicBrainz;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\AetherMusic\Api\ApiYouTube;
 use WishgranterProject\AetherMusic\Api\ApiSliderKz;
@@ -50,11 +52,14 @@ class ServicesManager extends Singleton
             case 'resourceFinder':
                 return ResourceFinder::create();
                 break;
-            case 'discographyMusicBrainz':
-                return new SourceMusicBrainz($this->get('musicBrainzApi'));
-                break;
-            case 'musicBrainzApi':
-                return new ApiMusicBrainz([], $this->get('cache'));
+            case 'discography':
+                $cache          = $this->get('cache');
+                $discogsApi     = new ApiDiscogs($this->get('config')->get('discogsToken', ''), [], $cache);
+                $discogs        = new SourceDiscogs($discogsApi);
+                $musicBrainzApi = new ApiMusicBrainz([], $cache);
+                $musicBrainz    = new SourceMusicBrainz($musicBrainzApi);
+
+                return new Discography([$discogs, $musicBrainz]);
                 break;
             case 'describer':
                 return Describer::create();

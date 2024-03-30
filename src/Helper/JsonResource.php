@@ -1,25 +1,32 @@
-<?php 
+<?php
+
 namespace WishgranterProject\Backend\Helper;
 
 use WishgranterProject\Backend\Service\ServicesManager;
-
+use WishgranterProject\Backend\Helper\SearchResults;
 use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Psr17\ResponseFactory;
 
-class JsonResource 
+class JsonResource
 {
     protected $statusCode = 200;
 
-    protected $errors    = [];
-    protected $warnings  = [];
-    protected $successes = [];
-    protected $infos     = [];
+    protected $errors     = [];
+    protected $warnings   = [];
+    protected $successes  = [];
+    protected $infos      = [];
 
-    protected $meta      = [];
+    protected $meta       = [];
 
-    protected $data      = null;
+    protected $data       = null;
 
-    public function renderResponse() : ResponseInterface
+    public function __construct($data = null, int $statusCode = 200)
+    {
+        $this->data       = $data;
+        $this->statusCode = $statusCode;
+    }
+
+    public function renderResponse(): ResponseInterface
     {
         $factory = new ResponseFactory();
         $json = $this->renderJson();
@@ -62,49 +69,49 @@ class JsonResource
         return $response;
     }
 
-    public function setStatusCode(int $statusCode) 
+    public function setStatusCode(int $statusCode)
     {
         $this->statusCode = $statusCode;
         return $this;
     }
 
-    public function setMeta(string $variable, $value) : JsonResource 
+    public function setMeta(string $variable, $value): JsonResource
     {
         $this->meta[$variable] = $value;
         return $this;
     }
 
-    public function setData($data) : JsonResource
+    public function setData($data): JsonResource
     {
         $this->data = $data;
         return $this;
     }
 
-    public function addError(int $code, string $title, ?string $detail = NULL) : JsonResource
+    public function addError(int $code, string $title, ?string $detail = null): JsonResource
     {
         $this->errors[] = $this->createMessage('error', $code, $title, $detail);
         return $this;
     }
 
-    public function addSuccess(int $code, string $title, ?string $detail = NULL) : JsonResource
+    public function addSuccess(int $code, string $title, ?string $detail = null): JsonResource
     {
         $this->successes[] = $this->createMessage('success', $code, $title, $detail);
         return $this;
     }
 
-    public function addWarning(int $code, string $title, ?string $detail = NULL) : JsonResource
+    public function addWarning(int $code, string $title, ?string $detail = null): JsonResource
     {
         $this->warnings[] = $this->createMessage('warning', $code, $title, $detail);
         return $this;
     }
 
-    public function addInfo(int $code, string $title, ?string $detail = NULL) : JsonResource
+    public function addInfo(int $code, string $title, ?string $detail = null): JsonResource
     {
         $this->infos[] = $this->createMessage('info', $code, $title, $detail);
         return $this;
     }
 
-    protected function createMessage(string $type, int $code, string $title, ?string $detail = null) : array
+    protected function createMessage(string $type, int $code, string $title, ?string $detail = null): array
     {
         $message = [
             'type'  => $type,
@@ -119,7 +126,7 @@ class JsonResource
         return $message;
     }
 
-    protected function renderJson() : string 
+    protected function renderJson(): string
     {
         $array = [];
 
@@ -150,7 +157,7 @@ class JsonResource
         return json_encode($array);
     }
 
-    public static function fromSearchResults($searchResult) : JsonResource
+    public static function fromSearchResults(SearchResults $searchResult): JsonResource
     {
         $describer = ServicesManager::singleton()->get('describer');
 

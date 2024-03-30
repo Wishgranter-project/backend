@@ -6,7 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
-use WishgranterProject\Discography\Source\SearchResults;
+use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;

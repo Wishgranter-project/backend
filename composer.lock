@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cd06ffd6e888dc3f4df575ab3721ce4",
+    "content-hash": "c83b2a9a1a1461f8cbd01461d256493f",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -868,16 +868,16 @@
         },
         {
             "name": "wishgranter-project/discography",
-            "version": "v1.0.0-alpha",
+            "version": "v2.0.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/discography.git",
-                "reference": "5aabfdca0fa7a85bc47920c3cf83de43f3e4d63d"
+                "reference": "7572f508aa423f56c9a8646ed0e898801cefd456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/5aabfdca0fa7a85bc47920c3cf83de43f3e4d63d",
-                "reference": "5aabfdca0fa7a85bc47920c3cf83de43f3e4d63d",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/7572f508aa423f56c9a8646ed0e898801cefd456",
+                "reference": "7572f508aa423f56c9a8646ed0e898801cefd456",
                 "shasum": ""
             },
             "require": {
@@ -902,10 +902,10 @@
             ],
             "description": "Discography",
             "support": {
-                "source": "https://github.com/Wishgranter-project/discography/tree/v1.0.0-alpha",
+                "source": "https://github.com/Wishgranter-project/discography/tree/v2.0.0-alpha",
                 "issues": "https://github.com/Wishgranter-project/discography/issues"
             },
-            "time": "2024-02-27T15:37:45+00:00"
+            "time": "2024-03-30T00:09:03+00:00"
         }
     ],
     "packages-dev": [],
@@ -913,7 +913,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "adinan-cenci/router": 20,
-        "adinan-cenci/file-cache": 20
+        "adinan-cenci/file-cache": 20,
+        "wishgranter-project/aether-music": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

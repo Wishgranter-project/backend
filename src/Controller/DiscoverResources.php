@@ -74,10 +74,18 @@ class DiscoverResources extends ControllerBase
 
     protected function buildDescription(ServerRequestInterface $request): Description
     {
+        $title      = $request->get('title');
+        $artist     = $request->get('artist');
+        $soundtrack = $request->get('soundtrack');
+
+        if (!$title) {
+            throw new \InvalidArgumentException('Inform a valid title');
+        }
+
         return Description::createFromArray([
-            'title'      => $request->get('title'),
-            'artist'     => $request->get('artist'),
-            'soundtrack' => $request->get('soundtrack')
+            'title'      => $title,
+            'artist'     => $artist,
+            'soundtrack' => $soundtrack,
         ]);
     }
 }
