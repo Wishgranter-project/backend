@@ -54,15 +54,20 @@ class ItemUpdate extends ControllerBase
         RequestHandlerInterface $handler
     ): ResponseInterface {
         $uuid = $request->getAttribute('itemUuid');
-        if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId)) {
+        $currentPosition = null;
+        if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId, $currentPosition)) {
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
+        // Clears everything except for those two.
         $item->empty(['uuid', 'xxxOriginal']);
 
+        $newPosition = null;
         $postData = $this->getPostData($request);
         foreach ($postData as $k => $v) {
-            if ($item->isValidPropertyName($k)) {
+            if ($k == 'position') {
+                $newPosition = is_numeric($v) ? (int) $v : null;
+            } elseif ($item->isValidPropertyName($k)) {
                 $item->{$k} = $v;
             } else {
                 throw new \InvalidArgumentException('Unrecognized property ' . $k);
@@ -70,7 +75,7 @@ class ItemUpdate extends ControllerBase
         }
 
         $item->sanitize();
-        $this->playlistManager->setItem($playlistId, $item);
+        $this->playlistManager->setItem($playlistId, $item, $newPosition);
 
         $data = $this->describer->describe($item);
 
