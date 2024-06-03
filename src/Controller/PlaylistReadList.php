@@ -13,7 +13,10 @@ use WishgranterProject\Backend\Service\ServicesManager;
 
 class PlaylistReadList extends ControllerBase
 {
+    // I can't remember why I made this controller paginable.
     use PaginationTrait;
+
+    protected $defaultItemsPerPage = 100;
 
     /**
      * @var WishgranterProject\DescriptiveManager\PlaylistManager

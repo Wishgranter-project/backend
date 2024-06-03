@@ -16,10 +16,10 @@ trait PaginationTrait
 
     protected function getItensPerPage(ServerRequestInterface $request): int
     {
-        $default = 20;
+        $default = $this->defaultItemsPerPage ?? 20;
 
         $itensPerPage = (int) $request->get('itensPerPage', $default);
-        $acceptable = [2, $default, 40, 100];
+        $acceptable = [2, 20, 40, 100];
 
         return in_array($itensPerPage, $acceptable)
             ? $itensPerPage
