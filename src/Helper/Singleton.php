@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Service;
+namespace WishgranterProject\Backend\Helper;
 
 abstract class Singleton
 {

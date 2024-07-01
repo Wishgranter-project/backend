@@ -2,6 +2,7 @@
 
 namespace WishgranterProject\Backend\Service;
 
+use WishgranterProject\Backend\Helper\Singleton;
 use WishgranterProject\Discography\Discogs\ApiDiscogs;
 use WishgranterProject\Discography\Discogs\SourceDiscogs;
 use WishgranterProject\Discography\MusicBrainz\ApiMusicBrainz;

@@ -2,6 +2,8 @@
 
 namespace WishgranterProject\Backend\Service;
 
+use WishgranterProject\Backend\Helper\Singleton;
+
 class Configurations extends Singleton
 {
     public function get(string $key, $default = null)

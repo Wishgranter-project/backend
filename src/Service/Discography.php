@@ -3,6 +3,7 @@
 namespace WishgranterProject\Backend\Service;
 
 use WishgranterProject\Discography\Album;
+use WishgranterProject\Backend\Helper\Singleton;
 
 class Discography extends Singleton
 {
