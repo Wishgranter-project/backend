@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da8be703f8c6ae3d59a1126ecc210343",
+    "content-hash": "e5f81495887b0c13184f4e7d68453435",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -720,23 +720,23 @@
         },
         {
             "name": "wishgranter-project/aether-music",
-            "version": "dev-master",
+            "version": "v4.0.0-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/aether-music.git",
-                "reference": "5e170a7c424ad32e4609a62e04bd243fef88b875"
+                "reference": "47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/5e170a7c424ad32e4609a62e04bd243fef88b875",
-                "reference": "5e170a7c424ad32e4609a62e04bd243fef88b875",
+                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7",
+                "reference": "47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/file-cache": "dev-master",
+                "adinan-cenci/generic-rest-api": "dev-master",
                 "adinan-cenci/psr-18": "dev-master"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -754,10 +754,10 @@
             ],
             "description": "Eather music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/aether-music/tree/v3.0.0-alpha",
+                "source": "https://github.com/Wishgranter-project/aether-music/tree/v4.0.0-alpha",
                 "issues": "https://github.com/Wishgranter-project/aether-music/issues"
             },
-            "time": "2024-02-27T17:56:11+00:00"
+            "time": "2024-07-22T23:19:53+00:00"
         },
         {
             "name": "wishgranter-project/descriptive-manager",
@@ -913,8 +913,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "adinan-cenci/router": 20,
-        "adinan-cenci/file-cache": 20,
-        "wishgranter-project/aether-music": 20
+        "adinan-cenci/file-cache": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

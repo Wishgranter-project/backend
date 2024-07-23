@@ -7,6 +7,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\AetherMusic\Aether;
 use WishgranterProject\AetherMusic\Description;
+use WishgranterProject\AetherMusic\Search\SearchResults;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
@@ -46,11 +47,11 @@ class DiscoverResources extends ControllerBase
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        $resources = $this->find($request);
+        $searchResults = $this->find($request);
 
         $data = [];
-        foreach ($resources as $resource) {
-            $data[] = $this->describer->describe($resource);
+        foreach ($searchResults as $item) {
+            $data[] = $this->describer->describe($item->resource);
         }
 
         $resource = new JsonResource();
@@ -61,15 +62,15 @@ class DiscoverResources extends ControllerBase
         return $response;
     }
 
-    protected function find(ServerRequestInterface $request): array
+    protected function find(ServerRequestInterface $request): SearchResults
     {
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
 
         $search->addDefaultCriteria();
 
-        $resources = $search->find();
-        return $resources;
+        $searchResults = $search->find();
+        return $searchResults;
     }
 
     protected function buildDescription(ServerRequestInterface $request): Description
