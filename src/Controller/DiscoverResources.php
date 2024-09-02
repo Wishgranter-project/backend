@@ -78,6 +78,7 @@ class DiscoverResources extends ControllerBase
         $title      = $request->get('title');
         $artist     = $request->get('artist');
         $soundtrack = $request->get('soundtrack');
+        $genre      = $request->get('genre');
 
         if (!$title) {
             throw new \InvalidArgumentException('Inform a valid title');
@@ -87,6 +88,7 @@ class DiscoverResources extends ControllerBase
             'title'      => $title,
             'artist'     => $artist,
             'soundtrack' => $soundtrack,
+            'genre'      => $genre,
         ]);
     }
 }
