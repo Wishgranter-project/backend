@@ -4,9 +4,9 @@ namespace WishgranterProject\Backend\Service;
 
 use WishgranterProject\Backend\Helper\Singleton;
 use WishgranterProject\Discography\Discogs\ApiDiscogs;
-use WishgranterProject\Discography\Discogs\SourceDiscogs;
+use WishgranterProject\Discography\Discogs\Source\SourceDiscogs;
 use WishgranterProject\Discography\MusicBrainz\ApiMusicBrainz;
-use WishgranterProject\Discography\MusicBrainz\SourceMusicBrainz;
+use WishgranterProject\Discography\MusicBrainz\Source\SourceMusicBrainz;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\AetherMusic\Api\ApiYouTube;
 use WishgranterProject\AetherMusic\Api\ApiSliderKz;

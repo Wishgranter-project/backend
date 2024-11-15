@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5f81495887b0c13184f4e7d68453435",
+    "content-hash": "3bace671c91983bd1a2e4065677d6db6",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -868,16 +868,16 @@
         },
         {
             "name": "wishgranter-project/discography",
-            "version": "v2.1.0-alpha",
+            "version": "v2.1.1-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/discography.git",
-                "reference": "488de0f1731fde77e609ad92e98e826c6ca5efc7"
+                "reference": "f9432e06a7abda2396cdf4c5b8e22620124c884d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/488de0f1731fde77e609ad92e98e826c6ca5efc7",
-                "reference": "488de0f1731fde77e609ad92e98e826c6ca5efc7",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/f9432e06a7abda2396cdf4c5b8e22620124c884d",
+                "reference": "f9432e06a7abda2396cdf4c5b8e22620124c884d",
                 "shasum": ""
             },
             "require": {
@@ -902,10 +902,10 @@
             ],
             "description": "Discography",
             "support": {
-                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.0-alpha",
+                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.1-alpha",
                 "issues": "https://github.com/Wishgranter-project/discography/issues"
             },
-            "time": "2024-04-10T23:13:54+00:00"
+            "time": "2024-11-06T09:22:41+00:00"
         }
     ],
     "packages-dev": [],
