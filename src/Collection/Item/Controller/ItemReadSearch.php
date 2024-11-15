@@ -1,51 +1,19 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller;
+namespace WishgranterProject\Backend\Collection\Item\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
-use WishgranterProject\Backend\Helper\SearchResults;
-use WishgranterProject\Backend\Service\ServicesManager;
-use WishgranterProject\Backend\Service\Describer;
-use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Collection\Controller\CollectionController;
+use WishgranterProject\Backend\Controller\PaginationTrait;
 use WishgranterProject\Backend\Exception\NotFound;
+use WishgranterProject\Backend\Helper\SearchResults;
+use WishgranterProject\Backend\Helper\JsonResource;
 
-class ItemReadSearch extends ControllerBase
+class ItemReadSearch extends CollectionController
 {
     use PaginationTrait;
-
-    /**
-     * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     */
-    protected PlaylistManager $playlistManager;
-
-    /**
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
-    /**
-     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     */
-    public function __construct(PlaylistManager $playlistManager, Describer $describer)
-    {
-        $this->playlistManager = $playlistManager;
-        $this->describer       = $describer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
-    {
-        return new static(
-            $servicesManager->get('playlistManager'),
-            $servicesManager->get('describer')
-        );
-    }
 
     /**
      * {@inheritdoc}
@@ -60,12 +28,21 @@ class ItemReadSearch extends ControllerBase
           ->renderResponse();
     }
 
+    /**
+     * Returns a page of search results.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return WishgranterProject\Backend\Helper\SearchResults
+     *   The search results.
+     */
     protected function searchItems(ServerRequestInterface $request): SearchResults
     {
-        list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $all   = $this->search($request);
         $total = count($all);
-        $pages = $this->numberPages($total, $itensPerPage);
+        $pages = $this->numberPages($total, $itemsPerPage);
         $list  = array_slice($all, $offset, $limit);
         $count = count($list);
 
@@ -74,11 +51,20 @@ class ItemReadSearch extends ControllerBase
             $count,
             $page,
             $pages,
-            $itensPerPage,
+            $itemsPerPage,
             $total
         );
     }
 
+    /**
+     * Searches for all matching items.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return WishgranterProject\DescriptivePlaylist\PlaylistItem[]
+     *   Array of playlist items.
+     */
     protected function search(ServerRequestInterface $request): array
     {
         $search = $this->playlistManager->search();

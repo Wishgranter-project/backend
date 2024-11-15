@@ -169,7 +169,7 @@ class JsonResource
             ->setStatusCode(200)
             ->setData($data)
             ->setMeta('total', $searchResult->total)
-            ->setMeta('itensPerPage', $searchResult->itensPerPage)
+            ->setMeta('itemsPerPage', $searchResult->itemsPerPage)
             ->setMeta('pages', $searchResult->pages)
             ->setMeta('page', $searchResult->page)
             ->setMeta('count', $searchResult->count);

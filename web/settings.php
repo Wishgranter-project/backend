@@ -7,6 +7,7 @@ $currentFile      = Server::getCurrentFile();
 $currentDirectory = File::getParentDirectory($currentFile);
 $parentDirectory  = File::getParentDirectory($currentDirectory);
 
+
 //=============================================================================
 
 $settings['corsAllowedDomain'] = isLocalEnvironment()
@@ -14,6 +15,7 @@ $settings['corsAllowedDomain'] = isLocalEnvironment()
     : 'adinancenci.com.br';
 
 define('ROOT_DIR',        $currentDirectory);
-define('CACHE_DIR',       $parentDirectory . 'cache/');
-define('PLAYLISTS_DIR',   $parentDirectory . 'playlist-files/');
-define('LOCAL_FILES_DIR', $currentDirectory . 'local-files/');
+define('FILES_DIR',       $parentDirectory . 'files/');
+define('LOCAL_FILES_DIR', FILES_DIR . 'local-files/');
+define('CACHE_DIR',       FILES_DIR . 'cache/');
+define('PLAYLISTS_DIR',   FILES_DIR . 'playlist-files/');

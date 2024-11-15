@@ -1,7 +1,6 @@
 vendor/*
-cache/*
-cache-test/*
-playlist-files/*
-playlist-files-test/*
-web/local-files/*
+files/cache/*
+files/cache-test/*
+files/playlist-files/*
+files/playlist-files-test/*
 web/configurations.json

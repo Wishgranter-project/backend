@@ -12,38 +12,23 @@ use WishgranterProject\Backend\Exception\NotFound;
 abstract class ControllerBase
 {
     /**
-     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
-     *   The service manager.
-     *
-     * @return WishgranterProject\Backend\Controller\ControllerBase
+     * Constructor.
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public function __construct()
     {
-        return new (\get_called_class());
-    }
-
-    /**
-     * Instantiate and invoke the controler.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     */
-    public static function respond(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        $servicesManager = ServicesManager::singleton();
-        $controller = get_called_class()::instantiate($servicesManager);
-        return $controller($request, $handler);
+        // Implementation specific.
     }
 
     /**
      * Invoke the controler to generate a response.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response object.
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
@@ -56,32 +41,66 @@ abstract class ControllerBase
         return $response;
     }
 
-    public function __construct()
+    /**
+     * Instantiates a new controller.
+     *
+     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
+     *   The service manager for dependency injection.
+     *
+     * @return WishgranterProject\Backend\Controller\ControllerBase
+     *   The instantiated controller.
+     */
+    public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        // Controller specific.
+        return new \get_called_class();
+    }
+
+    /**
+     * Instantiates and invokes the controller.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     *   The response object.
+     */
+    public static function respond(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        $servicesManager = ServicesManager::singleton();
+        $controller = get_called_class()::instantiate($servicesManager);
+
+        return $controller($request, $handler);
     }
 
     /**
      * Generate a response.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response object.
      */
     protected function generateResponse(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        // Controller specific.
+        // Implementation specific.
     }
 
     /**
-     * Just like $_POST.
+     * Returns the parsed body of the request.
+     * Most of the time will return the contents of $_POST.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      *
      * @return array
+     *   The parsed body.
      */
     protected function getPostData(ServerRequestInterface $request): array
     {
@@ -104,8 +123,10 @@ abstract class ControllerBase
      * Extract the mime from a content-type header.
      *
      * @param string $contentType
+     *   The content type header.
      *
      * @return string
+     *   The mime.
      */
     private static function getMime(string $contentType): string
     {

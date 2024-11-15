@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller;
+namespace WishgranterProject\Backend\Discover\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -8,20 +8,31 @@ use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\AetherMusic\Aether;
 use WishgranterProject\AetherMusic\Description;
 use WishgranterProject\AetherMusic\Search\SearchResults;
+use WishgranterProject\Backend\Controller\ControllerBase;
+use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
-use WishgranterProject\Backend\Helper\JsonResource;
 
 class DiscoverResources extends ControllerBase
 {
     /**
+     * @var WishgranterProject\AetherMusic\Aether
+     *   The aether service.
+     */
+    protected Aether $aether;
+
+    /**
+     * The describer service.
+     *
      * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
      * @param WishgranterProject\AetherMusic\Aether $aether
+     *   The aether service.
      * @param WishgranterProject\Backend\Service\Describer $describer
+     *   The describer service.
      */
     public function __construct(Aether $aether, Describer $describer)
     {
@@ -47,7 +58,11 @@ class DiscoverResources extends ControllerBase
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        $searchResults = $this->find($request);
+        $description = $this->buildDescription($request);
+        $search      = $this->aether->search($description);
+        $search->addDefaultCriteria();
+
+        $searchResults = $search->find();
 
         $data = [];
         foreach ($searchResults as $item) {
@@ -60,17 +75,6 @@ class DiscoverResources extends ControllerBase
             ->renderResponse();
 
         return $response;
-    }
-
-    protected function find(ServerRequestInterface $request): SearchResults
-    {
-        $description = $this->buildDescription($request);
-        $search      = $this->aether->search($description);
-
-        $search->addDefaultCriteria();
-
-        $searchResults = $search->find();
-        return $searchResults;
     }
 
     protected function buildDescription(ServerRequestInterface $request): Description

@@ -1,30 +1,43 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller;
+namespace WishgranterProject\Backend\Discover\Controller;
 
-use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\Backend\Service\Discography;
-use WishgranterProject\Backend\Service\Describer;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Helper\SearchResults;
+use WishgranterProject\Backend\Service\Discography;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\Describer;
 
-class DiscoverAlbum extends ControllerBase
+/**
+ * Searches for artists by name.
+ */
+class DiscoverArtists extends ControllerBase
 {
     /**
+     * The discography service.
+     *
      * @var WishgranterProject\Backend\Service\Discography
      */
     protected Discography $discography;
 
     /**
+     * The describer service.
+     *
      * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\Backend\Service\Discography $discography
+     *   The discography service.
      * @param WishgranterProject\Backend\Service\Describer $describer
+     *   The describer service.
      */
     public function __construct(Discography $discography, Describer $describer)
     {
@@ -37,7 +50,8 @@ class DiscoverAlbum extends ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        return new self(
+        $called = get_called_class();
+        return new $called(
             $servicesManager->get('discography'),
             $servicesManager->get('describer')
         );
@@ -50,14 +64,15 @@ class DiscoverAlbum extends ControllerBase
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
+        $artistName = $request->get('name');
 
-        $artistName = $request->get('artist');
-        $albumTitle = $request->get('title');
-        $album      = $this->discography->getAlbum($artistName, $albumTitle);
-        $data       = $this->describer->describe($album);
+        if (empty($artistName) || !is_string($artistName)) {
+            throw new \InvalidArgumentException('Provide the name of an artist or band.');
+        }
 
-        $resource = new JsonResource($data, 200);
-
+        $searchResults = $this->discography->searchForArtist($artistName);
+        $array         = $this->describer->describeAll($searchResults);
+        $resource      = new JsonResource($array);
         return $resource->renderResponse();
     }
 }

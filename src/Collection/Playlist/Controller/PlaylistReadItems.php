@@ -1,52 +1,22 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller;
+namespace WishgranterProject\Backend\Collection\Playlist\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\DescriptivePlaylist\Playlist;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Backend\Collection\Controller\CollectionController;
+use WishgranterProject\Backend\Controller\PaginationTrait;
+use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServicesManager;
-use WishgranterProject\Backend\Service\Describer;
-use WishgranterProject\Backend\Exception\NotFound;
 
-class PlaylistReadItems extends ControllerBase
+/**
+ * Retrieve items from a specific playlist.
+ */
+class PlaylistReadItems extends CollectionController
 {
     use PaginationTrait;
-
-    /**
-     * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     */
-    protected PlaylistManager $playlistManager;
-
-    /**
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
-    /**
-     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     */
-    public function __construct(PlaylistManager $playlistManager, Describer $describer)
-    {
-        $this->playlistManager = $playlistManager;
-        $this->describer       = $describer;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
-    {
-        return new static(
-            $servicesManager->get('playlistManager'),
-            $servicesManager->get('describer')
-        );
-    }
 
     /**
      * {@inheritdoc}
@@ -60,7 +30,7 @@ class PlaylistReadItems extends ControllerBase
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
         }
 
-        $results = $this->filterParametersPresent($request)
+        $results = $this->areFilterParametersPresent($request)
             ? $this->searchItems($request, $playlistId)
             : $this->simpleList($request, $playlistId);
 
@@ -68,12 +38,23 @@ class PlaylistReadItems extends ControllerBase
             ->renderResponse();
     }
 
-    protected function simpleList(ServerRequestInterface $request, $playlistId): SearchResults
+    /**
+     * Simply lists the items of the playlist.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     * @param string $playlistId
+     *   The id of the playlist.
+     *
+     * @return WishgranterProject\Backend\Helper\SearchResults
+     *   Search results.
+     */
+    protected function simpleList(ServerRequestInterface $request, string $playlistId): SearchResults
     {
-        list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $playlist = $this->playlistManager->getPlaylist($playlistId);
         $total    = $playlist->lineCount - 1;
-        $pages    = $this->numberPages($total, $itensPerPage);
+        $pages    = $this->numberPages($total, $itemsPerPage);
         $list     = $playlist->getItems(range($offset, $offset + $limit - 1));
         $count    = count($list);
 
@@ -82,14 +63,25 @@ class PlaylistReadItems extends ControllerBase
             $count,
             $page,
             $pages,
-            $itensPerPage,
+            $itemsPerPage,
             $total
         );
     }
 
+    /**
+     * Conduct a search in the playlist.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     * @param string $playlistId
+     *   The id of the playlist.
+     *
+     * @return WishgranterProject\Backend\Helper\SearchResults
+     *   Search results.
+     */
     protected function searchItems(ServerRequestInterface $request, $playlistId): SearchResults
     {
-        list($page, $itensPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $playlist = $this->playlistManager->getPlaylist($playlistId);
 
         $search = $playlist->search();
@@ -113,7 +105,7 @@ class PlaylistReadItems extends ControllerBase
         $results = $search->find();
 
         $total = count($results);
-        $pages = $this->numberPages($total, $itensPerPage);
+        $pages = $this->numberPages($total, $itemsPerPage);
         $list  = array_slice($results, $offset, $limit);
         $count = count($list);
 
@@ -122,12 +114,21 @@ class PlaylistReadItems extends ControllerBase
             $count,
             $page,
             $pages,
-            $itensPerPage,
+            $itemsPerPage,
             $total
         );
     }
 
-    protected function filterParametersPresent(ServerRequestInterface $request): bool
+    /**
+     * Checks if there are filter patameters in the request.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return bool
+     *   If there are filter parameters.
+     */
+    protected function areFilterParametersPresent(ServerRequestInterface $request): bool
     {
         $params = $request->getQueryParams();
 

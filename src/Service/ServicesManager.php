@@ -18,8 +18,23 @@ use AdinanCenci\FileCache\Cache;
 
 class ServicesManager extends Singleton
 {
-    protected $services = [];
+    /**
+     * @var array
+     *   The instances of different services.
+     *   Instanciated as needed.
+     */
+    protected array $services = [];
 
+    /**
+     * Retrieves a service object.
+     *
+     * Attempts to instantiate if necessary.
+     *
+     * @param string $serviceId
+     *   String identifying the service.
+     *
+     * @throws \InvalidArgumentException
+     */
     public function get(string $serviceId)
     {
         if (! isset($this->services[$serviceId])) {
@@ -33,66 +48,92 @@ class ServicesManager extends Singleton
         return $this->services[$serviceId];
     }
 
+    /**
+     * Attempts to instantiate a service.
+     *
+     * @param string $serviceId
+     *   String identifying the service.
+     *
+     * @return mixed|null
+     *   Returns null if it cannot instantiate the service.
+     */
     protected function isntantiate(string $serviceId)
     {
-        switch ($serviceId) {
-            case 'playlistManager':
-                $dir = defined('PLAYLISTS_DIR_TEST')
-                    ? PLAYLISTS_DIR_TEST
-                    : PLAYLISTS_DIR;
+        $method = 'isntantiate' . ucfirst($serviceId);
 
-                return new PlaylistManager($dir);
-                break;
-            case 'cache':
-                $dir = defined('CACHE_DIR_TEST')
-                    ? CACHE_DIR_TEST
-                    : CACHE_DIR;
-
-                return new Cache($dir);
-                break;
-            case 'resourceFinder':
-                return ResourceFinder::create();
-                break;
-            case 'discography':
-                $cache          = $this->get('cache');
-                $discogsApi     = new ApiDiscogs($this->get('config')->get('discogsToken', ''), [], $cache);
-                $discogs        = new SourceDiscogs($discogsApi);
-                $musicBrainzApi = new ApiMusicBrainz([], $cache);
-                $musicBrainz    = new SourceMusicBrainz($musicBrainzApi);
-
-                return new Discography([$discogs, $musicBrainz]);
-                break;
-            case 'describer':
-                return Describer::create();
-                break;
-            case 'aether':
-                $config = $this->get('config');
-                $youtubeApiKey = $config->get('youtubeApiKey');
-
-                $aether = new Aether();
-
-                $apiYouTube  = new ApiYouTube($youtubeApiKey, [], $this->get('cache'));
-                $youTube     = new SourceYouTube($apiYouTube);
-
-                //$apiSliderKz = new ApiSliderKz([], $this->get('cache'));
-                //$sliderKz    = new SourceSliderKz($apiSliderKz);
-
-                if (file_exists(LOCAL_FILES_DIR)) {
-                    $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
-                    $aether->addSource($localFiles, 20);
-                }
-
-                $aether->addSource($youTube, 1);
-                //$aether->addSource($sliderKz, 10);
-
-                return $aether;
-                break;
-            case 'config':
-            case 'configuration':
-                return Configurations::singleton();
-                break;
+        if (method_exists($this, $method)) {
+            return $this->$method();
         }
 
         return null;
+    }
+
+    protected function isntantiatePlaylistManager()
+    {
+        $dir = defined('PLAYLISTS_DIR_TEST')
+            ? PLAYLISTS_DIR_TEST
+            : PLAYLISTS_DIR;
+
+        return new PlaylistManager($dir);
+    }
+
+    protected function isntantiateCache()
+    {
+        $dir = defined('CACHE_DIR_TEST')
+            ? CACHE_DIR_TEST
+            : CACHE_DIR;
+
+        return new Cache($dir);
+    }
+
+    protected function isntantiateResourceFinder()
+    {
+        return ResourceFinder::create();
+    }
+
+    protected function isntantiateDiscography()
+    {
+        $cache          = $this->get('cache');
+        $discogsApi     = new ApiDiscogs($this->get('config')->get('discogsToken', ''), [], $cache);
+        $discogs        = new SourceDiscogs($discogsApi);
+
+        $musicBrainzApi = new ApiMusicBrainz([], $cache);
+        $musicBrainz    = new SourceMusicBrainz($musicBrainzApi);
+
+        return new Discography([$discogs, $musicBrainz]);
+    }
+
+    protected function isntantiateDescriber()
+    {
+        return Describer::create();
+    }
+
+    protected function isntantiateAether()
+    {
+        $config = $this->get('config');
+        $youtubeApiKey = $config->get('youtubeApiKey');
+
+        $aether = new Aether();
+
+        $apiYouTube  = new ApiYouTube($youtubeApiKey, [], $this->get('cache'));
+        $youTube     = new SourceYouTube($apiYouTube);
+
+        if (file_exists(LOCAL_FILES_DIR)) {
+            $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
+            $aether->addSource($localFiles, 20);
+        }
+
+        $aether->addSource($youTube, 1);
+        return $aether;
+    }
+
+    protected function isntantiateConfig()
+    {
+        return $this->get('configuration');
+    }
+
+    protected function isntantiateConfiguration()
+    {
+        return Configurations::singleton();
     }
 }

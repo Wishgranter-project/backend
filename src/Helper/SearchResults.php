@@ -35,7 +35,7 @@ class SearchResults implements \ArrayAccess, \Iterator
      * @var int
      *   The maximum number of items there should be in a page.
      */
-    protected int $itensPerPage;
+    protected int $itemsPerPage;
 
     /**
      * @var int
@@ -54,7 +54,7 @@ class SearchResults implements \ArrayAccess, \Iterator
      *   The page $items can be find in.
      * @param int $pages
      *   How many pages of search results are there.
-     * @param int $itensPerPage
+     * @param int $itemsPerPage
      *   The maximum number of items there should be in a page.
      * @param int $total
      *   How many results are there.
@@ -64,14 +64,14 @@ class SearchResults implements \ArrayAccess, \Iterator
         int $count,
         int $page,
         int $pages,
-        int $itensPerPage,
+        int $itemsPerPage,
         int $total
     ) {
         $this->items        = $items;
         $this->count        = $count;
         $this->page         = $page;
         $this->pages        = $pages;
-        $this->itensPerPage = $itensPerPage;
+        $this->itemsPerPage = $itemsPerPage;
         $this->total        = $total;
     }
 

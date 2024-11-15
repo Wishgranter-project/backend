@@ -1,25 +1,32 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller;
+namespace WishgranterProject\Backend\Collection\Playlist\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\DescriptivePlaylist\Playlist;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\DescriptivePlaylist\Playlist;
 
+/**
+ * Deletes a playlist an all its items.
+ */
 class PlaylistDelete extends ControllerBase
 {
     /**
+     * The playlist manager.
+     *
      * @var WishgranterProject\DescriptiveManager\PlaylistManager
      */
     protected PlaylistManager $playlistManager;
 
     /**
      * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
+     *   The playlist manager.
      */
     public function __construct(PlaylistManager $playlistManager)
     {
