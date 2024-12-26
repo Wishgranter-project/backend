@@ -45,7 +45,7 @@
         "wishgranter-project/descriptive-playlist": "^5.0",
         "wishgranter-project/discography": "^2.1.0-alpha",
         "wishgranter-project/aether-music": "^4.0.0-alpha",
-        "adinan-cenci/router": "dev-master",
+        "adinan-cenci/router": "^5.0",
         "adinan-cenci/file-cache": "dev-master"
     }
 }

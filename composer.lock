@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bace671c91983bd1a2e4065677d6db6",
+    "content-hash": "24ed999633e0bb8e90c2e24db033378d",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -339,16 +339,16 @@
         },
         {
             "name": "adinan-cenci/router",
-            "version": "dev-master",
+            "version": "v5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/router.git",
-                "reference": "4972013d89801d2d05a2dbebe2e4a5b918131a70"
+                "reference": "10430cd133ea6ea5b7dc29c7efc054d9e053f215"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/router/zipball/4972013d89801d2d05a2dbebe2e4a5b918131a70",
-                "reference": "4972013d89801d2d05a2dbebe2e4a5b918131a70",
+                "url": "https://api.github.com/repos/adinan-cenci/router/zipball/10430cd133ea6ea5b7dc29c7efc054d9e053f215",
+                "reference": "10430cd133ea6ea5b7dc29c7efc054d9e053f215",
                 "shasum": ""
             },
             "require": {
@@ -357,7 +357,6 @@
                 "psr/http-server-handler": "1.0.x-dev",
                 "psr/http-server-middleware": "1.0.x-dev"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -386,9 +385,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/router/issues",
-                "source": "https://github.com/adinan-cenci/router/tree/v4.0.1"
+                "source": "https://github.com/adinan-cenci/router/tree/v5.0.0"
             },
-            "time": "2023-01-08T12:38:31+00:00"
+            "time": "2024-12-26T21:53:47+00:00"
         },
         {
             "name": "psr/http-client",
@@ -912,7 +911,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "adinan-cenci/router": 20,
         "adinan-cenci/file-cache": 20
     },
     "prefer-stable": false,
