@@ -32,13 +32,7 @@ abstract class ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $response = $this->generateResponse($request, $handler);
-
-        if (! $response instanceof ResponseInterface) {
-            throw new \Exception('Controller failed to return a response');
-        }
-
-        return $response;
+        return $handler->responseFactory->ok('-');
     }
 
     /**
@@ -53,43 +47,6 @@ abstract class ControllerBase
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
         return new \get_called_class();
-    }
-
-    /**
-     * Instantiates and invokes the controller.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *   The request handler object.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response object.
-     */
-    public static function respond(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
-    {
-        $servicesManager = ServicesManager::singleton();
-        $controller = get_called_class()::instantiate($servicesManager);
-
-        return $controller($request, $handler);
-    }
-
-    /**
-     * Generate a response.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *   The request handler object.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response object.
-     */
-    protected function generateResponse(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-        // Implementation specific.
     }
 
     /**

@@ -25,7 +25,7 @@ class PlaylistReadList extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function generateResponse(
+    public function __invoke(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {

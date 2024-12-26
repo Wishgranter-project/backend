@@ -5,9 +5,11 @@ namespace WishgranterProject\Backend;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use AdinanCenci\Router\Caller\Caller as DefaultCaller;
 use AdinanCenci\Router\Router;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
+use WishgranterProject\Backend\Service\ServicesManager;
 
 final class Server
 {
@@ -19,7 +21,9 @@ final class Server
      */
     public function getRouter(string $routes): Router
     {
-        $router = new Router();
+        $instantiator = new ControllerInstantiator(ServicesManager::singleton());
+        $caller       = DefaultCaller::withDefaultHandlers($instantiator);
+        $router       = new Router(null, null, null, $caller);
         $router->setNotFoundHandler([$this, 'handleNotFoundError']);
         $router->setExceptionHandler([$this, 'handleException']);
         // CORS Pre-flight.
@@ -33,6 +37,8 @@ final class Server
     }
 
     /**
+     * Cors pre-flight controller for CORS.
+     *
      * @param Psr\Http\Message\ServerRequestInterface $request
      * @param Psr\Http\Server\RequestHandlerInterface $handler
      *
@@ -52,6 +58,9 @@ final class Server
     }
 
     /**
+     * Gets the response from whatever controller we hit
+     * and add the CORS headers.
+     *
      * @param Psr\Http\Message\ServerRequestInterface $request
      * @param Psr\Http\Server\RequestHandlerInterface $handler
      *

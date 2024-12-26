@@ -5,18 +5,14 @@ namespace WishgranterProject\Backend\Discover\Controller;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\Discography;
-use WishgranterProject\Backend\Service\Describer;
-use WishgranterProject\Backend\Service\ServicesManager;
 
 class DiscoverAlbum extends DiscoverArtists
 {
     /**
      * {@inheritdoc}
      */
-    public function generateResponse(
+    public function __invoke(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {

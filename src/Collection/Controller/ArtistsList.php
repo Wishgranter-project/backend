@@ -37,7 +37,7 @@ class ArtistsList extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function generateResponse(
+    public function __invoke(
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
