@@ -89,12 +89,13 @@ class ItemReadSearch extends CollectionController
             $search->condition('soundtrack', $request->get('soundtrack'), 'LIKE');
         }
 
+        if ($request->get('orderBy')) {
+            $search->orderBy($request->get('orderBy'), $request->get('order', 'ASC'));
+        }
+
         $results = $search->find();
 
-        $all = [];
-        foreach ($results as $playlistId => $items) {
-            $all = array_merge($all, $items);
-        }
+        $all = array_values($results);
 
         return $all;
     }
