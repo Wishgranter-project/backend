@@ -41,7 +41,7 @@
         }
     },
     "require": {
-        "wishgranter-project/descriptive-manager": "^2.0",
+        "wishgranter-project/descriptive-manager": "^2.1",
         "wishgranter-project/discography": "^2.1.0-alpha",
         "wishgranter-project/aether-music": "^4.0.0-alpha",
         "adinan-cenci/router": "^5.0",

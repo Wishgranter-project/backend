@@ -102,6 +102,10 @@ class PlaylistReadItems extends CollectionController
             $search->condition('soundtrack', $request->get('soundtrack'), 'LIKE');
         }
 
+        if ($request->get('orderBy')) {
+            $search->orderBy($request->get('orderBy'), $request->get('order', 'ASC'));
+        }
+
         $results = $search->find();
 
         $total = count($results);
@@ -136,6 +140,7 @@ class PlaylistReadItems extends CollectionController
             !empty($params['title']) ||
             !empty($params['genre']) ||
             !empty($params['artist']) ||
-            !empty($params['soundtrack']);
+            !empty($params['soundtrack']) ||
+            !empty($params['orderBy']);
     }
 }
