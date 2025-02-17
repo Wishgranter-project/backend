@@ -7,6 +7,7 @@ use WishgranterProject\DescriptivePlaylist\PlaylistItem;
 use WishgranterProject\Discography\Artist;
 use WishgranterProject\Discography\Album;
 use WishgranterProject\AetherMusic\Resource\Resource;
+use WishgranterProject\AetherMusic\Description;
 
 class Describer
 {
@@ -23,6 +24,8 @@ class Describer
             return $this->describePlaylistItem($object);
         } elseif ($object instanceof Resource) {
             return $this->describeResource($object);
+        } elseif ($object instanceof Description) {
+            return $this->describeDescription($object);
         } elseif ($object instanceof Artist) {
             return $this->describeArtist($object);
         } elseif ($object instanceof Album) {
@@ -60,6 +63,11 @@ class Describer
     protected function describeResource(Resource $resource)
     {
         return ['type' => 'resource'] + $resource->toArray();
+    }
+
+    protected function describeDescription(Description $description)
+    {
+        return ['type' => 'description'] + $description->toArray();
     }
 
     protected function describeArtist(Artist $artist)

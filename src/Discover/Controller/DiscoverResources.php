@@ -69,9 +69,14 @@ class DiscoverResources extends ControllerBase
             $data[] = $this->describer->describe($item->resource);
         }
 
+        $debug = [
+            'description' => $this->describer->describe($description)
+        ];
+
         $resource = new JsonResource();
         return $resource
             ->setData($data)
+            ->setMeta('debug', $debug)
             ->renderResponse();
 
         return $response;

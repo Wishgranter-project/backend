@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d48684d71a3107cda3f57ab75413f1fd",
+    "content-hash": "25eb48fdd5b65e8e4468ffc6de36cfd4",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -719,16 +719,16 @@
         },
         {
             "name": "wishgranter-project/aether-music",
-            "version": "v4.0.0-alpha",
+            "version": "v5.0.2-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/aether-music.git",
-                "reference": "47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7"
+                "reference": "eae28cb52a27c3d7f1934cfec1c91b151c5a10f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7",
-                "reference": "47d29ef178b7e6cf4769318cc6d3bf9f7b3205e7",
+                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/eae28cb52a27c3d7f1934cfec1c91b151c5a10f6",
+                "reference": "eae28cb52a27c3d7f1934cfec1c91b151c5a10f6",
                 "shasum": ""
             },
             "require": {
@@ -736,11 +736,19 @@
                 "adinan-cenci/generic-rest-api": "dev-master",
                 "adinan-cenci/psr-18": "dev-master"
             },
+            "require-dev": {
+                "php-http/psr7-integration-tests": "1.x-dev"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "WishgranterProject\\AetherMusic\\": "src/"
                 }
+            },
+            "scripts": {
+                "unit-tests": [
+                    "./vendor/bin/phpunit tests"
+                ]
             },
             "license": [
                 "MIT"
@@ -753,10 +761,10 @@
             ],
             "description": "Eather music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/aether-music/tree/v4.0.0-alpha",
+                "source": "https://github.com/Wishgranter-project/aether-music/tree/v5.0.2-alpha",
                 "issues": "https://github.com/Wishgranter-project/aether-music/issues"
             },
-            "time": "2024-07-22T23:19:53+00:00"
+            "time": "2025-02-17T22:11:51+00:00"
         },
         {
             "name": "wishgranter-project/descriptive-manager",

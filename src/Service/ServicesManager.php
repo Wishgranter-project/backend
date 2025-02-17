@@ -8,11 +8,10 @@ use WishgranterProject\Discography\Discogs\Source\SourceDiscogs;
 use WishgranterProject\Discography\MusicBrainz\ApiMusicBrainz;
 use WishgranterProject\Discography\MusicBrainz\Source\SourceMusicBrainz;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
-use WishgranterProject\AetherMusic\Api\ApiYouTube;
-use WishgranterProject\AetherMusic\Api\ApiSliderKz;
-use WishgranterProject\AetherMusic\Source\SourceYouTube;
-use WishgranterProject\AetherMusic\Source\SourceSliderKz;
-use WishgranterProject\AetherMusic\Source\SourceLocalFiles;
+use WishgranterProject\AetherMusic\YouTube\YouTubeApi;
+use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTube;
+use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTubeLax;
+use WishgranterProject\AetherMusic\LocalFiles\Source\SourceLocalFiles;
 use WishgranterProject\AetherMusic\Aether;
 use AdinanCenci\FileCache\Cache;
 
@@ -115,8 +114,9 @@ class ServicesManager extends Singleton
 
         $aether = new Aether();
 
-        $apiYouTube  = new ApiYouTube($youtubeApiKey, [], $this->get('cache'));
+        $apiYouTube  = new YouTubeApi($youtubeApiKey, [], $this->get('cache'));
         $youTube     = new SourceYouTube($apiYouTube);
+        $youTubeLax  = new SourceYouTubeLax($apiYouTube);
 
         if (file_exists(LOCAL_FILES_DIR)) {
             $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
@@ -124,6 +124,7 @@ class ServicesManager extends Singleton
         }
 
         $aether->addSource($youTube, 1);
+        $aether->addSource($youTubeLax, 2);
         return $aether;
     }
 
