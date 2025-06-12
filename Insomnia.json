@@ -1,1 +1,1204 @@
-{"_type":"export","__export_format":4,"__export_date":"2025-02-17T22:06:52.332Z","__export_source":"insomnia.desktop.app:v9.3.2","resources":[{"_id":"req_f286ba011a794fb5a92dc0a8334d1e43","parentId":"fld_12a134e96e72469a81010e9e485b2937","modified":1693056764463,"created":1693051562770,"url":"{{ _.base_url }}/test/api/v1/collection/artists","name":"ARTISTS: READ: LIST","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1693051376443.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_12a134e96e72469a81010e9e485b2937","parentId":"wrk_scratchpad","modified":1731682573932,"created":1693056694513,"name":"Collection","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1693056694513,"_type":"request_group"},{"_id":"wrk_scratchpad","parentId":null,"modified":1721772960182,"created":1721772960182,"name":"Scratch Pad","description":"","scope":"collection","_type":"workspace"},{"_id":"req_dd6e6e98fc9a417b92593c44feb03702","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693048490767,"created":1692528175313,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 1: CREATE","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_da6d61ab46264bd6aeab280f385b3be3","name":"title","value":"random name for a playlist","description":""},{"id":"pair_a4558a6bbf604defb0f83d25e1a078f9","name":"description","value":"detailed description","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210334,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_fac647463ad7412eb7f43d7386fa9ff5","parentId":"fld_12a134e96e72469a81010e9e485b2937","modified":1735242047951,"created":1692559450623,"name":"Playlists","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1693051376431,"_type":"request_group"},{"_id":"req_4cf841710e774231861eb03b8de3c7ee","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693056998207,"created":1693056994428,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 1: CREATE ( 400 )","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210309,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_5c2abef613aa43a188b86c3773d75ba5","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693062256529,"created":1693062235121,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 1: CREATE ( 400 [2] )","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_4b5fdb322fd34ac7b673001c63b0eb95","name":"title","value":"test playlist","description":""},{"id":"pair_3cff3a89ec3048e88927e36faa7bc33d","name":"random","value":"nonsense","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210296.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_08bc4b623a8e4104967b59def2e47ffb","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693048497489,"created":1692528215337,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 2: READ: ALL","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1692528210284,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_9a8e89aab2564b959454a786b93a8c80","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1731696158913,"created":1731696135880,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 2: READ: ALL ( DOWNLOAD )","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_f5447dc224e3402ea0433df22f1c0b09","name":"Accept","value":"application/zip","description":"","disabled":false}],"authentication":{},"metaSortKey":-1692528210271.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e6611f9c51994a35a66cd54d6ad6a351","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1731694144834,"created":1693057047621,"url":"{{ _.base_url }}/test/api/v1/collection/playlists","name":"PLAYLIST - 2: READ: ALL ( 2nd PAGE )","description":"","method":"GET","body":{},"parameters":[{"id":"pair_3c6f5236727740f38e5ca18363f07188","name":"itemsPerPage","value":"2","description":"","disabled":false},{"id":"pair_cec3c9c8c52549a5887e111ea9d48d57","name":"page","value":"2","description":"","disabled":false}],"headers":[],"authentication":{},"metaSortKey":-1692528210259,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e65985df20ac442bb91c1a7c3feeafd6","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693048503211,"created":1692552560436,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal","name":"PLAYLIST - 3: READ: INDIVIDUAL","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1692528210234,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_7bbae650bfa549b695fab462deee4427","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1731695530918,"created":1731695472521,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal","name":"PLAYLIST - 3: READ: INDIVIDUAL ( DOWNLOAD )","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_9efbe655705142f09a3711c899474bec","name":"Accept","value":"application/jsonl","description":"","disabled":false}],"authentication":{},"metaSortKey":-1692528210221.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_139c24e815af4b7a8ff5c6cdd58f0731","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693057160277,"created":1693057154485,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist","name":"PLAYLIST - 3: READ: INDIVIDUAL ( 404 )","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1692528210209,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_2f8aa05057204d19a12d3980b431164b","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693057220573,"created":1692552679924,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items","name":"PLAYLIST - 4: READ: ITEMS","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210184,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e24acc3a3635444dbba944869ec4e0e6","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1738014098627,"created":1738014039660,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items","name":"PLAYLIST - 4: READ: ITEMS ( RANDOM ORDER )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_2fb6fd77f95142058142a0e0b643f4db","name":"orderBy","value":"RAND()","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210171.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_2260027152a54f5a87459675cc776725","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1738014223382,"created":1738014183505,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items","name":"PLAYLIST - 4: READ: ITEMS ( SEED ORDER )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_2fb6fd77f95142058142a0e0b643f4db","name":"orderBy","value":"RAND(french-fries)","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210165.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_03fcedbd61384e17a316272ee89899ff","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1731694284793,"created":1693057207021,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items","name":"PLAYLIST - 4: READ: ITEMS ( 2nd PAGE )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_f88ada604bdf40dcbfa22e9eb501156d","name":"itemsPerPage","value":"2","description":"","disabled":false},{"id":"pair_74c0a8a205c347508bfd8374ecd1f7fd","name":"page","value":"2","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210159,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_3301c161d14948b5979c6da99f4399a2","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693057277114,"created":1693057264326,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist/items","name":"PLAYLIST - 4: READ: ITEMS ( 404 )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210146.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_940f4bd24afe48dda51d449d93333a14","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693048514552,"created":1692529781264,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-country","name":"PLAYLIST - 5: UPDATE","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_da6d61ab46264bd6aeab280f385b3be3","name":"title","value":"Country ( updated )","description":""},{"id":"pair_a4558a6bbf604defb0f83d25e1a078f9","name":"description","value":"hyeha!","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210134,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_1574abf647fd424eb71ce70b91d03d08","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693062121000,"created":1693057448402,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-country","name":"PLAYLIST - 5: UPDATE ( 400 )","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_77c308fcfcc5471babae7099c32ef309","name":"fuck","value":"this","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210121.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_a65b9a2966744bd5b6ed425a4ee59c63","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693057330253,"created":1693057321910,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist","name":"PLAYLIST - 5: UPDATE ( 404 )","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_da6d61ab46264bd6aeab280f385b3be3","name":"title","value":"Country ( updated )","description":""},{"id":"pair_a4558a6bbf604defb0f83d25e1a078f9","name":"description","value":"hyeha!","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210109,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_fbcc2e0fdbe84015a609cf022684ac86","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693051057297,"created":1692531538554,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/music-soundtracks","name":"PLAYLIST - 6: DELETE","description":"","method":"DELETE","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210084,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0459eb53abe5471db2563a472031eb69","parentId":"fld_fac647463ad7412eb7f43d7386fa9ff5","modified":1693057355773,"created":1693057348135,"url":"{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist","name":"PLAYLIST - 6: DELETE ( 404 )","description":"","method":"DELETE","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692528210034,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_78b3154e27d44ea4a41570091a24f07c","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693064998221,"created":1692560991728,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 1: CREATE","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_4e3ac248246e4a3d941c2195d9f86cfd","name":"title","value":"music title","description":""},{"id":"pair_9249c2789a744590ae6be76585d870bc","name":"playlist","value":"music-metal","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692543825398,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_0aa92aae2e5c42de8e609d422d07ec0d","parentId":"fld_12a134e96e72469a81010e9e485b2937","modified":1693056722430,"created":1692559440512,"name":"Items","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1693051376406,"_type":"request_group"},{"_id":"req_ce2bf09ec4af4169a8fe43858080bfff","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693065072145,"created":1693062292068,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 1: CREATE ( 400 )","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_9249c2789a744590ae6be76585d870bc","name":"title","value":"music title","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692543825373,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_6c5f938b40b0414f958cd94dcf76fb18","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693065092063,"created":1693062305480,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 1: CREATE ( 400 [2] )","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_9249c2789a744590ae6be76585d870bc","name":"title","value":"music title","description":""},{"id":"pair_986b555066214b42872743b765e9ac59","name":"playlist","value":"music-metal","description":""},{"id":"pair_74a8ed442c0c4a4ebd5c684f7ccaa8b2","name":"not-a-thing","value":"this is","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692543825360.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_dd2414a7679b49e1b9c088c174ecfa4b","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693065321849,"created":1693062344998,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 1: CREATE ( 400 [3] )","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_9249c2789a744590ae6be76585d870bc","name":"title","value":"music title","description":""},{"id":"pair_4f2d18a0915f451db2c62e895925983a","name":"playlist","value":"non-existent","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692543825354.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e6134090555544db9bc75091c71eb67c","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693056902671,"created":1692557216066,"url":"{{ _.base_url }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880","name":"ITEMS - 2: READ: INDIVIDUAL","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692543825348,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_fbd2d8190fa544c8b3b4939cc66ee7cf","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693062404921,"created":1693062391084,"url":"{{ _.base_url }}/test/api/v1/collection/items/666","name":"ITEMS - 2: READ: INDIVIDUAL ( 404 )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692541873458.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_5532ee0e93494d529c2382b98e2b31a7","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1721773294696,"created":1692567464294,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 3: READ: SEARCH","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_15de1779ac214cd499ff85edf8ab6271","name":"title","value":"law","description":"","disabled":false},{"id":"pair_d4d690c630bc4d9b83499d5a200974c9","name":"playlist","value":"music-rock","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692539921569.5,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e31d6f3a67ef4ed88af958a30022aac7","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1738013853716,"created":1737917474931,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 3: READ: SEARCH ( RANDOM ORDER )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_d4d690c630bc4d9b83499d5a200974c9","name":"genre","value":"power metal","description":"","disabled":false},{"id":"pair_5488093e3d59489fbf222ca3ff5018ae","name":"orderBy","value":"RAND()","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692538945624.875,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_6c6f167be7fa4f96b1ed2d25d36a3c53","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1738013836761,"created":1738013836761,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 3: READ: SEARCH ( SEED ORDER )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_d4d690c630bc4d9b83499d5a200974c9","name":"genre","value":"power metal","description":"","disabled":false},{"id":"pair_5488093e3d59489fbf222ca3ff5018ae","name":"orderBy","value":"RAND(95ebf4da-fb08-48e5-9721-52e324f73f06)","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692538457652.5625,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_92b7168d05e44e219aa1f36bc6910841","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1721773330281,"created":1693135633591,"url":"{{ _.base_url }}/test/api/v1/collection/items","name":"ITEMS - 3: READ: SEARCH ( restrict playlist )","description":"","method":"GET","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[{"id":"pair_9ed9645f7028495cbda120d1a5251a41","name":"playlist","value":"music-metal","description":"","disabled":false}],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692537969680.25,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_738d4179b9004c9b98e01d69814ecbb5","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693063672388,"created":1692561917066,"url":"{{ _.base_url }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880","name":"ITEMS - 4: UPDATE","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_4e3ac248246e4a3d941c2195d9f86cfd","name":"artist","value":"Valanja","description":""},{"id":"pair_fb4164de6a1d42e382f200d77ccfb6b2","name":"title","value":"Nek Militema ( updated )","description":""},{"id":"pair_ecf2bbc6605d4888bb2d898ac31800f7","name":"genre","value":"Metal","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692536017791,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b4438c6f87e148daae80359d17059c71","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693063917475,"created":1693060440193,"url":"{{ _.base_url }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880","name":"ITEMS - 4: UPDATE ( 400 )","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692534065926.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b982dfc913624373985800e4b101b3b1","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693063927712,"created":1693062158993,"url":"{{ _.base_url }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880","name":"ITEMS - 4: UPDATE ( 400 [2] )","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_048bd0bfc52741b89d065ebaa937c475","name":"fuck","value":"all","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692533089994.625,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_23a73d737fc94debb20d3e8eae916d1c","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693064296230,"created":1693062511894,"url":"{{ _.base_url }}/test/api/v1/collection/items/6666","name":"ITEMS - 4: UPDATE ( 404 )","description":"","method":"PUT","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_048bd0bfc52741b89d065ebaa937c475","name":"artist","value":"Valanja","description":""},{"id":"pair_81e4981d59c84ab8aae62030648d46ff","name":"title","value":"Nek Militema ( updated )","description":""}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692532602028.5625,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_136b3d5f95354b4390e5fe75a1981540","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693064118814,"created":1692565897745,"url":"{{ _.base_url }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880","name":"ITEMS - 5: DELETE","description":"","method":"DELETE","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692532114062.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_fa8651099ce047f5a9dd51968b7b15b5","parentId":"fld_0aa92aae2e5c42de8e609d422d07ec0d","modified":1693064159962,"created":1693057517850,"url":"{{ _.base_url }}/test/api/v1/collection/items/666","name":"ITEMS - 5: DELETE ( 404 )","description":"","method":"DELETE","body":{"mimeType":"multipart/form-data","params":[]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data"}],"authentication":{},"metaSortKey":-1692530162198.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_cedbac64f2364b5bbf54a93a4f7e6a73","parentId":"fld_e72a762a03474e838746ff57ca845216","modified":1721773357240,"created":1693051989362,"url":"{{ _.base_url }}/test/api/v1/discover/artists","name":"DISCOVER: ARTISTS","description":"","method":"GET","body":{},"parameters":[{"id":"pair_874577d2c34f45319ab8824f6d475a1c","name":"name","value":"Blind Guardian","description":"","disabled":false}],"headers":[],"authentication":{},"metaSortKey":-1693051989362,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_e72a762a03474e838746ff57ca845216","parentId":"wrk_scratchpad","modified":1693051985224,"created":1693051985224,"name":"Discover","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1693051985224,"_type":"request_group"},{"_id":"req_2f13568b89c649ad9482db606a972de8","parentId":"fld_e72a762a03474e838746ff57ca845216","modified":1721773373005,"created":1693052469413,"url":"{{ _.base_url }}/test/api/v1/discover/albums","name":"DISCOVER: ALBUMS","description":"","method":"GET","body":{},"parameters":[{"id":"pair_f2d03e011c76405b948f2e7f73a6ff81","name":"artist","value":"Blind Guardian","description":"","disabled":false}],"headers":[],"authentication":{},"metaSortKey":-1693051776066,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_2f05a8c8b6514217a9b0180cf99febe5","parentId":"fld_e72a762a03474e838746ff57ca845216","modified":1721773416099,"created":1693054168443,"url":"{{ _.base_url }}/test/api/v1/discover/album","name":"DISCOVER: ALBUM: READ","description":"","method":"GET","body":{},"parameters":[{"id":"pair_686324a1ff6e4030894c0c901663c9b0","name":"artist","value":"Blind Guardian","description":"","disabled":false},{"id":"pair_80fa3f3598574f0aab830d58f3899dcd","name":"title","value":"Beyond the Red Mirror","description":"","disabled":false}],"headers":[],"authentication":{},"metaSortKey":-1693051722742,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d6e6852abcc24d87bf46268c4a1ff3dc","parentId":"fld_e72a762a03474e838746ff57ca845216","modified":1739829652255,"created":1693055229213,"url":"{{ _.base_url }}/test/api/v1/discover/resources","name":"DISCOVER: RESOURCES","description":"","method":"GET","body":{},"parameters":[{"id":"pair_56990cda51814f22aa46622f88649411","name":"title","value":"Blood of the Morning Star","description":"","disabled":false},{"id":"pair_4a1a7a62ca9648978db216ead2eded06","name":"genre","value":"Power metal","description":"","disabled":false}],"headers":[],"authentication":{},"metaSortKey":-1693051669418,"isPrivate":false,"pathParameters":[],"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1721772979448,"created":1721772979448,"name":"Base Environment","data":{},"dataPropertyOrder":null,"color":null,"isPrivate":false,"metaSortKey":1721772979448,"_type":"environment"},{"_id":"jar_99d30891da4bdcebc63947a8fc17f076de878684","parentId":"wrk_scratchpad","modified":1721773090792,"created":1721772979578,"name":"Default Jar","cookies":[{"key":"PHPSESSID","value":"5b141ba4b0e0b3cecf63d4dbdb15d627","domain":"player-backend.lndo.site","path":"/","hostOnly":true,"creation":"2024-07-23T22:18:10.792Z","lastAccessed":"2024-07-23T22:18:10.792Z","id":"879016ac-5cfa-442c-a80e-0c32b20e1807"}],"_type":"cookie_jar"},{"_id":"uts_1645e42ab19749dbbb28c7c565081541","parentId":"wrk_scratchpad","modified":1693048723748,"created":1690716541195,"name":"PLAYLIST - 1: CREATE","metaSortKey":-1721773031496,"_type":"unit_test_suite"},{"_id":"env_af10a55d617640af930d03d98b4a1248","parentId":"env_99d30891da4bdcebc63947a8fc17f076de878684","modified":1721773219622,"created":1690716626688,"name":"Local","data":{"base_url":"https://player-backend.lndo.site"},"dataPropertyOrder":{"&":["base_url"]},"color":"#ffea00","isPrivate":false,"metaSortKey":1690716626688,"_type":"environment"},{"_id":"ut_e8b914cff13e451a825a6892ced25dfe","parentId":"uts_1645e42ab19749dbbb28c7c565081541","modified":1693048757152,"created":1690716854296,"requestId":"req_dd6e6e98fc9a417b92593c44feb03702","name":"Returns 200","code":"const response = await insomnia.send();\nconst data = JSON.parse(response.data);\n\nexpect(response.status).to.equal(201);\nexpect(data.successes).to.be.an('array');\nexpect(data.data.type).to.equal('playlist');","metaSortKey":-1721773031497,"_type":"unit_test"}]}
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1749768776656
+  modified: 1749768776656
+  description: ""
+collection:
+  - name: Discover
+    meta:
+      id: fld_a07b5679db324e2d8ab400aee5144e79
+      created: 1693051985224
+      modified: 1693051985224
+      sortKey: -1693051985224
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/test/api/v1/discover/artists"
+        name: "DISCOVER: ARTISTS"
+        meta:
+          id: req_e512094c589946319df4b056280c366c
+          created: 1693051989362
+          modified: 1721773357240
+          isPrivate: false
+          description: ""
+          sortKey: -1693051989362
+        method: GET
+        parameters:
+          - id: pair_874577d2c34f45319ab8824f6d475a1c
+            name: name
+            value: Blind Guardian
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/test/api/v1/discover/albums"
+        name: "DISCOVER: ALBUMS"
+        meta:
+          id: req_252bcfa560ca48eb91246663707b7bde
+          created: 1693052469413
+          modified: 1721773373005
+          isPrivate: false
+          description: ""
+          sortKey: -1693051776066
+        method: GET
+        parameters:
+          - id: pair_f2d03e011c76405b948f2e7f73a6ff81
+            name: artist
+            value: Blind Guardian
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/test/api/v1/discover/album"
+        name: "DISCOVER: ALBUM: READ"
+        meta:
+          id: req_5a58e77c7af449b695778afa27ccf242
+          created: 1693054168443
+          modified: 1721773416099
+          isPrivate: false
+          description: ""
+          sortKey: -1693051722742
+        method: GET
+        parameters:
+          - id: pair_686324a1ff6e4030894c0c901663c9b0
+            name: artist
+            value: Blind Guardian
+            description: ""
+            disabled: false
+          - id: pair_80fa3f3598574f0aab830d58f3899dcd
+            name: title
+            value: Beyond the Red Mirror
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/test/api/v1/discover/resources"
+        name: "DISCOVER: RESOURCES"
+        meta:
+          id: req_35c13dcd7f704360bf0d742ca30a865e
+          created: 1693055229213
+          modified: 1739829652255
+          isPrivate: false
+          description: ""
+          sortKey: -1693051669418
+        method: GET
+        parameters:
+          - id: pair_56990cda51814f22aa46622f88649411
+            name: title
+            value: Blood of the Morning Star
+            description: ""
+            disabled: false
+          - id: pair_4a1a7a62ca9648978db216ead2eded06
+            name: genre
+            value: Power metal
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Collection
+    meta:
+      id: fld_aabd42044f814ba985e55a558f3d9dde
+      created: 1693056694513
+      modified: 1731682573932
+      sortKey: -1693056694513
+      description: ""
+    children:
+      - name: Items
+        meta:
+          id: fld_6f7cda5d872c4cc48704e9c9afee9002
+          created: 1692559440512
+          modified: 1693056722430
+          sortKey: -1693051376406
+          description: ""
+        children:
+          - url: "{{ _.base_url
+              }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1\
+              880"
+            name: "ITEMS - 2: READ: INDIVIDUAL"
+            meta:
+              id: req_a29be60202254d10908a0e31c5d0b030
+              created: 1692557216066
+              modified: 1749769573310
+              isPrivate: false
+              description: ""
+              sortKey: -1692543825348
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - id: pair_53fe421716194420aee9506f9d867885
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 1: CREATE"
+            meta:
+              id: req_2d85fb1cb17641e38fa629ef37b08ba7
+              created: 1692560991728
+              modified: 1693064998221
+              isPrivate: false
+              description: ""
+              sortKey: -1692543825398
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_4e3ac248246e4a3d941c2195d9f86cfd
+                  name: title
+                  value: music title
+                  description: ""
+                - id: pair_9249c2789a744590ae6be76585d870bc
+                  name: playlist
+                  value: music-metal
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url
+              }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1\
+              880"
+            name: "ITEMS - 4: UPDATE"
+            meta:
+              id: req_99c24c64aa16485eba4b83957c197b28
+              created: 1692561917066
+              modified: 1693063672388
+              isPrivate: false
+              description: ""
+              sortKey: -1692536017791
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_4e3ac248246e4a3d941c2195d9f86cfd
+                  name: artist
+                  value: Valanja
+                  description: ""
+                - id: pair_fb4164de6a1d42e382f200d77ccfb6b2
+                  name: title
+                  value: Nek Militema ( updated )
+                  description: ""
+                - id: pair_ecf2bbc6605d4888bb2d898ac31800f7
+                  name: genre
+                  value: Metal
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url
+              }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1\
+              880"
+            name: "ITEMS - 5: DELETE"
+            meta:
+              id: req_1a32632694cb4f349c0d3522819b9964
+              created: 1692565897745
+              modified: 1693064118814
+              isPrivate: false
+              description: ""
+              sortKey: -1692532114062.5
+            method: DELETE
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 3: READ: SEARCH"
+            meta:
+              id: req_3a4ec3e24b524ce58519b424925a7ae4
+              created: 1692567464294
+              modified: 1749769599102
+              isPrivate: false
+              description: ""
+              sortKey: -1692539921569.5
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_15de1779ac214cd499ff85edf8ab6271
+                name: title
+                value: law
+                description: ""
+                disabled: false
+              - id: pair_d4d690c630bc4d9b83499d5a200974c9
+                name: playlist
+                value: music-rock
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_4367994256b2416392f915e14f65a5f3
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items/666"
+            name: "ITEMS - 5: DELETE ( 404 )"
+            meta:
+              id: req_76b4cb124a8b4dbf99d639dbaabcc29c
+              created: 1693057517850
+              modified: 1693064159962
+              isPrivate: false
+              description: ""
+              sortKey: -1692530162198.25
+            method: DELETE
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url
+              }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1\
+              880"
+            name: "ITEMS - 4: UPDATE ( 400 )"
+            meta:
+              id: req_58030e9d5ae242faadae0fd684a3c743
+              created: 1693060440193
+              modified: 1693063917475
+              isPrivate: false
+              description: ""
+              sortKey: -1692534065926.75
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url
+              }}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1\
+              880"
+            name: "ITEMS - 4: UPDATE ( 400 [2] )"
+            meta:
+              id: req_ea164ba2c1774008a1cecc712503ee9b
+              created: 1693062158993
+              modified: 1693063927712
+              isPrivate: false
+              description: ""
+              sortKey: -1692533089994.625
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_048bd0bfc52741b89d065ebaa937c475
+                  name: fuck
+                  value: all
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 1: CREATE ( 400 )"
+            meta:
+              id: req_91a9d51539a045379353cc34f7eb736f
+              created: 1693062292068
+              modified: 1693065072145
+              isPrivate: false
+              description: ""
+              sortKey: -1692543825373
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_9249c2789a744590ae6be76585d870bc
+                  name: title
+                  value: music title
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 1: CREATE ( 400 [2] )"
+            meta:
+              id: req_5c4e7a865d7f4b41adfafe1b6e91a126
+              created: 1693062305480
+              modified: 1693065092063
+              isPrivate: false
+              description: ""
+              sortKey: -1692543825360.5
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_9249c2789a744590ae6be76585d870bc
+                  name: title
+                  value: music title
+                  description: ""
+                - id: pair_986b555066214b42872743b765e9ac59
+                  name: playlist
+                  value: music-metal
+                  description: ""
+                - id: pair_74a8ed442c0c4a4ebd5c684f7ccaa8b2
+                  name: not-a-thing
+                  value: this is
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 1: CREATE ( 400 [3] )"
+            meta:
+              id: req_9723800c09b54f2b91089216f9657914
+              created: 1693062344998
+              modified: 1693065321849
+              isPrivate: false
+              description: ""
+              sortKey: -1692543825354.25
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_9249c2789a744590ae6be76585d870bc
+                  name: title
+                  value: music title
+                  description: ""
+                - id: pair_4f2d18a0915f451db2c62e895925983a
+                  name: playlist
+                  value: non-existent
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items/666"
+            name: "ITEMS - 2: READ: INDIVIDUAL ( 404 )"
+            meta:
+              id: req_be45e56e06344a478db6e9ed6cc979a9
+              created: 1693062391084
+              modified: 1749769576217
+              isPrivate: false
+              description: ""
+              sortKey: -1692541873458.75
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - id: pair_80ef0a86344d4e56962ce8e8c3082978
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items/6666"
+            name: "ITEMS - 4: UPDATE ( 404 )"
+            meta:
+              id: req_211b9a823f78496985cd42422b31d5bd
+              created: 1693062511894
+              modified: 1693064296230
+              isPrivate: false
+              description: ""
+              sortKey: -1692532602028.5625
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_048bd0bfc52741b89d065ebaa937c475
+                  name: artist
+                  value: Valanja
+                  description: ""
+                - id: pair_81e4981d59c84ab8aae62030648d46ff
+                  name: title
+                  value: Nek Militema ( updated )
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 3: READ: SEARCH ( restrict playlist )"
+            meta:
+              id: req_30a203393dd54e47adf25f3c31e37090
+              created: 1693135633591
+              modified: 1749769583969
+              isPrivate: false
+              description: ""
+              sortKey: -1692537969680.25
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_9ed9645f7028495cbda120d1a5251a41
+                name: playlist
+                value: music-metal
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_ca9b39457ef14c75b132a3c1a223f9c2
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 3: READ: SEARCH ( RANDOM ORDER )"
+            meta:
+              id: req_20e2bccb09214f37b4dc270a4dc1156e
+              created: 1737917474931
+              modified: 1749769578837
+              isPrivate: false
+              description: ""
+              sortKey: -1692538945624.875
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_d4d690c630bc4d9b83499d5a200974c9
+                name: genre
+                value: power metal
+                description: ""
+                disabled: false
+              - id: pair_5488093e3d59489fbf222ca3ff5018ae
+                name: orderBy
+                value: RAND()
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_79d42407be1641c390d5248a14c6a9bf
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/items"
+            name: "ITEMS - 3: READ: SEARCH ( SEED ORDER )"
+            meta:
+              id: req_2efbd341d9fb40bd8241c7a4c4b29fe4
+              created: 1738013836761
+              modified: 1749769581225
+              isPrivate: false
+              description: ""
+              sortKey: -1692538457652.5625
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_d4d690c630bc4d9b83499d5a200974c9
+                name: genre
+                value: power metal
+                description: ""
+                disabled: false
+              - id: pair_5488093e3d59489fbf222ca3ff5018ae
+                name: orderBy
+                value: RAND(95ebf4da-fb08-48e5-9721-52e324f73f06)
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_e778cd1565214607afaaea5d4aa7de7c
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Playlists
+        meta:
+          id: fld_4284014f94784590b0e57a421a10ff14
+          created: 1692559450623
+          modified: 1735242047951
+          sortKey: -1693051376431
+          description: ""
+        children:
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 1: CREATE"
+            meta:
+              id: req_1f8400b008364c79b4465cb0bf322256
+              created: 1692528175313
+              modified: 1693048490767
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210334
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_da6d61ab46264bd6aeab280f385b3be3
+                  name: title
+                  value: random name for a playlist
+                  description: ""
+                - id: pair_a4558a6bbf604defb0f83d25e1a078f9
+                  name: description
+                  value: detailed description
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 2: READ: ALL"
+            meta:
+              id: req_d1b11d53832644c0a104b1f0866643cf
+              created: 1692528215337
+              modified: 1693048497489
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210284
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-country"
+            name: "PLAYLIST - 5: UPDATE"
+            meta:
+              id: req_4444986b23f046918d5d58b6eb03bbe9
+              created: 1692529781264
+              modified: 1693048514552
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210134
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_da6d61ab46264bd6aeab280f385b3be3
+                  name: title
+                  value: Country ( updated )
+                  description: ""
+                - id: pair_a4558a6bbf604defb0f83d25e1a078f9
+                  name: description
+                  value: hyeha!
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-soundtracks"
+            name: "PLAYLIST - 6: DELETE"
+            meta:
+              id: req_497bea1ab1154e44a06c7cdb056b67be
+              created: 1692531538554
+              modified: 1693051057297
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210084
+            method: DELETE
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal"
+            name: "PLAYLIST - 3: READ: INDIVIDUAL"
+            meta:
+              id: req_340ea6ed8241437e957245baaeaa020e
+              created: 1692552560436
+              modified: 1693048503211
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210234
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items"
+            name: "PLAYLIST - 4: READ: ITEMS"
+            meta:
+              id: req_fb60dddf6e7c44aa9c6fa5d0faa8d5e7
+              created: 1692552679924
+              modified: 1749769399994
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210184
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - id: pair_c2df938054b34e4a88a264d54ad01dc1
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 1: CREATE ( 400 )"
+            meta:
+              id: req_31618cc02e16474fbef65a9298e9c55c
+              created: 1693056994428
+              modified: 1693056998207
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210309
+            method: POST
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 2: READ: ALL ( 2nd PAGE )"
+            meta:
+              id: req_6fa7bc2f8d2f47758b29a70b594ea296
+              created: 1693057047621
+              modified: 1731694144834
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210259
+            method: GET
+            parameters:
+              - id: pair_3c6f5236727740f38e5ca18363f07188
+                name: itemsPerPage
+                value: "2"
+                description: ""
+                disabled: false
+              - id: pair_cec3c9c8c52549a5887e111ea9d48d57
+                name: page
+                value: "2"
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist"
+            name: "PLAYLIST - 3: READ: INDIVIDUAL ( 404 )"
+            meta:
+              id: req_514202f6364f4abfa3885a0ab7498f72
+              created: 1693057154485
+              modified: 1693057160277
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210209
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items"
+            name: "PLAYLIST - 4: READ: ITEMS ( 2nd PAGE )"
+            meta:
+              id: req_34d6af83029a4f3cb31d315d71b14f21
+              created: 1693057207021
+              modified: 1749769418247
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210159
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_f88ada604bdf40dcbfa22e9eb501156d
+                name: itemsPerPage
+                value: "2"
+                description: ""
+                disabled: false
+              - id: pair_74c0a8a205c347508bfd8374ecd1f7fd
+                name: page
+                value: "2"
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_c8a333afdf4c4a73b7d467b8977237e5
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist/items"
+            name: "PLAYLIST - 4: READ: ITEMS ( 404 )"
+            meta:
+              id: req_df2aceb297304a55a258b3a871b46b27
+              created: 1693057264326
+              modified: 1749769421616
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210146.5
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - id: pair_a8b1110fe44446b59ea51209909a6e0d
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist"
+            name: "PLAYLIST - 5: UPDATE ( 404 )"
+            meta:
+              id: req_7ac61be145cd44e98b6f0574de359870
+              created: 1693057321910
+              modified: 1693057330253
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210109
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_da6d61ab46264bd6aeab280f385b3be3
+                  name: title
+                  value: Country ( updated )
+                  description: ""
+                - id: pair_a4558a6bbf604defb0f83d25e1a078f9
+                  name: description
+                  value: hyeha!
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/does-not-exist"
+            name: "PLAYLIST - 6: DELETE ( 404 )"
+            meta:
+              id: req_31335c0b5dcf4dc0b16a27d02dcc930d
+              created: 1693057348135
+              modified: 1693057355773
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210034
+            method: DELETE
+            body:
+              mimeType: multipart/form-data
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-country"
+            name: "PLAYLIST - 5: UPDATE ( 400 )"
+            meta:
+              id: req_8d6eeb49d5c349989e8895671fcf9adf
+              created: 1693057448402
+              modified: 1693062121000
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210121.5
+            method: PUT
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_77c308fcfcc5471babae7099c32ef309
+                  name: fuck
+                  value: this
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 1: CREATE ( 400 [2] )"
+            meta:
+              id: req_156d66caf00b438aa5c6ca7cee9d987f
+              created: 1693062235121
+              modified: 1693062256529
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210296.5
+            method: POST
+            body:
+              mimeType: multipart/form-data
+              params:
+                - id: pair_4b5fdb322fd34ac7b673001c63b0eb95
+                  name: title
+                  value: test playlist
+                  description: ""
+                - id: pair_3cff3a89ec3048e88927e36faa7bc33d
+                  name: random
+                  value: nonsense
+                  description: ""
+            headers:
+              - name: Content-Type
+                value: multipart/form-data
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal"
+            name: "PLAYLIST - 3: READ: INDIVIDUAL ( DOWNLOAD )"
+            meta:
+              id: req_041a96637b69445aa307dcc3c54d4a0b
+              created: 1731695472521
+              modified: 1731695530918
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210221.5
+            method: GET
+            headers:
+              - id: pair_9efbe655705142f09a3711c899474bec
+                name: Accept
+                value: application/jsonl
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists"
+            name: "PLAYLIST - 2: READ: ALL ( DOWNLOAD )"
+            meta:
+              id: req_2443a8a860df49a3aaa6dd2d849f214b
+              created: 1731696135880
+              modified: 1731696158913
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210271.5
+            method: GET
+            headers:
+              - id: pair_f5447dc224e3402ea0433df22f1c0b09
+                name: Accept
+                value: application/zip
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items"
+            name: "PLAYLIST - 4: READ: ITEMS ( RANDOM ORDER )"
+            meta:
+              id: req_fe3808ca51dd42fe9fc859419b52b49b
+              created: 1738014039660
+              modified: 1749769410248
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210171.5
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_2fb6fd77f95142058142a0e0b643f4db
+                name: orderBy
+                value: RAND()
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_f6fa26a93d17455eb597cfee7a7ad6f2
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.base_url }}/test/api/v1/collection/playlists/music-metal/items"
+            name: "PLAYLIST - 4: READ: ITEMS ( SEED ORDER )"
+            meta:
+              id: req_0055494411a34e138028263316e15776
+              created: 1738014183505
+              modified: 1749769413092
+              isPrivate: false
+              description: ""
+              sortKey: -1692528210165.25
+            method: GET
+            body:
+              mimeType: multipart/form-data
+            parameters:
+              - id: pair_2fb6fd77f95142058142a0e0b643f4db
+                name: orderBy
+                value: RAND(french-fries)
+                description: ""
+                disabled: false
+            headers:
+              - id: pair_4ab1cdc25ce04867afd4d9f5be17b510
+                name: ""
+                value: ""
+                description: ""
+                disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - url: "{{ _.base_url }}/test/api/v1/collection/artists"
+        name: "ARTISTS: READ: LIST"
+        meta:
+          id: req_021d38937fdd4901b145c4788c8a4725
+          created: 1693051562770
+          modified: 1693056764463
+          isPrivate: false
+          description: ""
+          sortKey: -1693051376443.5
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1749768789004
+    modified: 1749768934506
+  cookies:
+    - key: PHPSESSID
+      value: 3502ca14500dff50a900a58698159964
+      domain: player-backend.lndo.site
+      path: /
+      hostOnly: true
+      creation: 2025-06-12T22:55:34.506Z
+      lastAccessed: 2025-06-12T22:55:34.506Z
+      id: c8bd45f3-7c5e-47f3-a9c8-d960f0c42a72
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1749768788988
+    modified: 1749768788988
+    isPrivate: false
+  subEnvironments:
+    - name: Local
+      meta:
+        id: env_ed3466cea2714b06b24819c34823e988
+        created: 1690716626688
+        modified: 1721773219622
+        isPrivate: false
+        sortKey: 1690716626688
+      data:
+        base_url: https://player-backend.lndo.site
+      color: "#ffea00"
