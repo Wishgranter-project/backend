@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25eb48fdd5b65e8e4468ffc6de36cfd4",
+    "content-hash": "dcc8ae6fbc2d3e6da799e00c6f61a76a",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
-            "version": "dev-master",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/file-cache.git",
@@ -27,7 +27,6 @@
             "require-dev": {
                 "phpunit/phpunit": "6.3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -106,23 +105,24 @@
         },
         {
             "name": "adinan-cenci/generic-rest-api",
-            "version": "dev-master",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/generic-rest-api.git",
-                "reference": "8d3fad4dd72346edc0522e1a91d0ea73466ca662"
+                "reference": "2aa370fe87247f1fbf78d27b32bd12aa4709bdfe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/generic-rest-api/zipball/8d3fad4dd72346edc0522e1a91d0ea73466ca662",
-                "reference": "8d3fad4dd72346edc0522e1a91d0ea73466ca662",
+                "url": "https://api.github.com/repos/adinan-cenci/generic-rest-api/zipball/2aa370fe87247f1fbf78d27b32bd12aa4709bdfe",
+                "reference": "2aa370fe87247f1fbf78d27b32bd12aa4709bdfe",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/file-cache": "dev-master",
-                "adinan-cenci/psr-18": "dev-master"
+                "adinan-cenci/psr-18": "^1.0"
             },
-            "default-branch": true,
+            "suggest": {
+                "adinan-cenci/file-cache": "PSR-16 compliant cache library"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -139,12 +139,12 @@
                     "email": "adinancenci@protonmail.com"
                 }
             ],
-            "description": "Generic library to build integration with rest APIs",
+            "description": "Generic library to integrate with rest APIs",
             "support": {
-                "source": "https://github.com/adinan-cenci/generic-rest-api/tree/master",
+                "source": "https://github.com/adinan-cenci/generic-rest-api/tree/v1.0.0",
                 "issues": "https://github.com/adinan-cenci/generic-rest-api/issues"
             },
-            "time": "2024-01-28T17:03:24+00:00"
+            "time": "2025-06-16T22:50:00+00:00"
         },
         {
             "name": "adinan-cenci/json-lines",
@@ -201,7 +201,7 @@
         },
         {
             "name": "adinan-cenci/psr-17",
-            "version": "dev-master",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-17.git",
@@ -220,7 +220,6 @@
             "require-dev": {
                 "phpunit/phpunit": "9.5.x-dev"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -246,7 +245,7 @@
         },
         {
             "name": "adinan-cenci/psr-18",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-18.git",
@@ -266,7 +265,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^10.3"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -340,23 +338,23 @@
         },
         {
             "name": "adinan-cenci/router",
-            "version": "v5.0.1",
+            "version": "v5.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/router.git",
-                "reference": "8d203bff068a38f20e8b13acc7cfa2955fb05529"
+                "reference": "3748285fb7c026a1f7997e0a59c5d44ed2abb8b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/router/zipball/8d203bff068a38f20e8b13acc7cfa2955fb05529",
-                "reference": "8d203bff068a38f20e8b13acc7cfa2955fb05529",
+                "url": "https://api.github.com/repos/adinan-cenci/router/zipball/3748285fb7c026a1f7997e0a59c5d44ed2abb8b2",
+                "reference": "3748285fb7c026a1f7997e0a59c5d44ed2abb8b2",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/psr-17": ">=1.0",
                 "php": ">=7.4",
-                "psr/http-server-handler": "1.0.x-dev",
-                "psr/http-server-middleware": "1.0.x-dev"
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -386,13 +384,13 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/router/issues",
-                "source": "https://github.com/adinan-cenci/router/tree/v5.0.1"
+                "source": "https://github.com/adinan-cenci/router/tree/v5.0.2"
             },
-            "time": "2025-06-12T21:26:42+00:00"
+            "time": "2025-06-22T13:43:02+00:00"
         },
         {
             "name": "psr/http-client",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
@@ -408,7 +406,6 @@
                 "php": "^7.0 || ^8.0",
                 "psr/http-message": "^1.0 || ^2.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -500,7 +497,7 @@
         },
         {
             "name": "psr/http-message",
-            "version": "dev-master",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
@@ -515,7 +512,6 @@
             "require": {
                 "php": "^7.2 || ^8.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -554,23 +550,22 @@
         },
         {
             "name": "psr/http-server-handler",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-handler.git",
-                "reference": "13403d43196ab3382d0a4ca28be32984282641f9"
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/13403d43196ab3382d0a4ca28be32984282641f9",
-                "reference": "13403d43196ab3382d0a4ca28be32984282641f9",
+                "url": "https://api.github.com/repos/php-fig/http-server-handler/zipball/84c4fb66179be4caaf8e97bd239203245302e7d4",
+                "reference": "84c4fb66179be4caaf8e97bd239203245302e7d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
                 "psr/http-message": "^1.0 || ^2.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -605,22 +600,22 @@
                 "server"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-server-handler"
+                "source": "https://github.com/php-fig/http-server-handler/tree/1.0.2"
             },
-            "time": "2023-11-16T18:17:39+00:00"
+            "time": "2023-04-10T20:06:20+00:00"
         },
         {
             "name": "psr/http-server-middleware",
-            "version": "dev-master",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-server-middleware.git",
-                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f"
+                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
-                "reference": "459eeb7efeae55b4102a951c4ecc93a11ce58d0f",
+                "url": "https://api.github.com/repos/php-fig/http-server-middleware/zipball/c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
+                "reference": "c1481f747daaa6a0782775cd6a8c26a1bf4a3829",
                 "shasum": ""
             },
             "require": {
@@ -628,7 +623,6 @@
                 "psr/http-message": "^1.0 || ^2.0",
                 "psr/http-server-handler": "^1.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -663,9 +657,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-fig/http-server-middleware/issues",
-                "source": "https://github.com/php-fig/http-server-middleware"
+                "source": "https://github.com/php-fig/http-server-middleware/tree/1.0.2"
             },
-            "time": "2023-09-22T11:17:21+00:00"
+            "time": "2023-04-11T06:14:47+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -720,36 +714,29 @@
         },
         {
             "name": "wishgranter-project/aether-music",
-            "version": "v5.0.2-alpha",
+            "version": "v5.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/aether-music.git",
-                "reference": "eae28cb52a27c3d7f1934cfec1c91b151c5a10f6"
+                "reference": "eca5e925b9bf95567ba4a376945dc638287be528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/eae28cb52a27c3d7f1934cfec1c91b151c5a10f6",
-                "reference": "eae28cb52a27c3d7f1934cfec1c91b151c5a10f6",
+                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/eca5e925b9bf95567ba4a376945dc638287be528",
+                "reference": "eca5e925b9bf95567ba4a376945dc638287be528",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/file-cache": "dev-master",
-                "adinan-cenci/generic-rest-api": "dev-master",
-                "adinan-cenci/psr-18": "dev-master"
-            },
-            "require-dev": {
-                "php-http/psr7-integration-tests": "1.x-dev"
+                "adinan-cenci/file-cache": "^2.0",
+                "adinan-cenci/generic-rest-api": "^1.0",
+                "adinan-cenci/psr-17": "^2.1",
+                "adinan-cenci/psr-7": "^2.0"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "WishgranterProject\\AetherMusic\\": "src/"
                 }
-            },
-            "scripts": {
-                "unit-tests": [
-                    "./vendor/bin/phpunit tests"
-                ]
             },
             "license": [
                 "MIT"
@@ -762,10 +749,10 @@
             ],
             "description": "Eather music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/aether-music/tree/v5.0.2-alpha",
+                "source": "https://github.com/Wishgranter-project/aether-music/tree/v5.0.4",
                 "issues": "https://github.com/Wishgranter-project/aether-music/issues"
             },
-            "time": "2025-02-17T22:11:51+00:00"
+            "time": "2025-06-22T12:40:43+00:00"
         },
         {
             "name": "wishgranter-project/descriptive-manager",
@@ -876,22 +863,22 @@
         },
         {
             "name": "wishgranter-project/discography",
-            "version": "v2.1.1-alpha",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/discography.git",
-                "reference": "f9432e06a7abda2396cdf4c5b8e22620124c884d"
+                "reference": "f8d3104a0c92361405f58cbd98dca0644c0e7203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/f9432e06a7abda2396cdf4c5b8e22620124c884d",
-                "reference": "f9432e06a7abda2396cdf4c5b8e22620124c884d",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/f8d3104a0c92361405f58cbd98dca0644c0e7203",
+                "reference": "f8d3104a0c92361405f58cbd98dca0644c0e7203",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/file-cache": "dev-master",
-                "adinan-cenci/generic-rest-api": "dev-master",
-                "adinan-cenci/psr-18": "dev-master"
+                "adinan-cenci/file-cache": "^2.0",
+                "adinan-cenci/generic-rest-api": "^1.0",
+                "adinan-cenci/psr-18": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -910,18 +897,16 @@
             ],
             "description": "Discography",
             "support": {
-                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.1-alpha",
+                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.2",
                 "issues": "https://github.com/Wishgranter-project/discography/issues"
             },
-            "time": "2024-11-06T09:22:41+00:00"
+            "time": "2025-06-22T13:31:03+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "adinan-cenci/file-cache": 20
-    },
+    "minimum-stability": "stable",
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

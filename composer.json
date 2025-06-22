@@ -34,7 +34,7 @@
             "email": "adinancenci@protonmail.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "WishgranterProject\\Backend\\": "src/"
@@ -42,9 +42,9 @@
     },
     "require": {
         "wishgranter-project/descriptive-manager": "^2.1",
-        "wishgranter-project/discography": "^2.1.0-alpha",
-        "wishgranter-project/aether-music": "^5.0.0-alpha",
+        "wishgranter-project/discography": "^2.1",
+        "wishgranter-project/aether-music": "^5.0",
         "adinan-cenci/router": "^5.0",
-        "adinan-cenci/file-cache": "dev-master"
+        "adinan-cenci/file-cache": "^2.0"
     }
 }
