@@ -11,6 +11,9 @@ use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\Backend\Helper\JsonResource;
 
+/**
+ * Searches for an item within the entire collection.
+ */
 class ItemReadSearch extends CollectionController
 {
     use PaginationTrait;

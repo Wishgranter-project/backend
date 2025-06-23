@@ -8,44 +8,59 @@ namespace WishgranterProject\Backend\Helper;
 class SearchResults implements \ArrayAccess, \Iterator
 {
     /**
+     * The actual results.
+     *
      * @var array
-     *   The actual results.
      */
     protected array $items;
 
     /**
+     * How many items are in $items.
+     *
      * @var int
-     *   How many items are in $items.
      */
     protected int $count;
 
     /**
+     * The page $items can be find in.
+     *
      * @var int
-     *   The page $items can be find in.
      */
     protected int $page;
 
     /**
+     * How many pages of search results are there.
+     *
      * @var int
-     *   How many pages of search results are there.
      */
     protected int $pages;
 
     /**
+     * The maximum number of items there should be in a page.
+     *
      * @var int
-     *   The maximum number of items there should be in a page.
      */
     protected int $itemsPerPage;
 
     /**
+     * How many results are there.
+     *
      * @var int
-     *   How many results are there.
      */
     protected int $total;
 
+    /**
+     * Internal pointer.
+     *
+     * To keep track of during iterations.
+     *
+     * @var int
+     */
     protected int $pointer;
 
     /**
+     * Constructor.
+     *
      * @param array $items
      *   The actual results.
      * @param int $count
@@ -80,6 +95,12 @@ class SearchResults implements \ArrayAccess, \Iterator
         return $this->{$var};
     }
 
+    /**
+     * Returns a new empty search results object.
+     *
+     * @return WishgranterProject\Backend\Helper\SearchResults
+     *   New search results object.
+     */
     public static function empty(): SearchResults
     {
         return new self([], 0, 0, 0, 0, 0);

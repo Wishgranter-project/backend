@@ -51,6 +51,7 @@ abstract class ControllerBase
 
     /**
      * Returns the parsed body of the request.
+     *
      * Most of the time will return the contents of $_POST.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
@@ -59,7 +60,7 @@ abstract class ControllerBase
      * @return array
      *   The parsed body.
      */
-    protected function getPostData(ServerRequestInterface $request): array
+    public static function getPostData(ServerRequestInterface $request): array
     {
         $contentType = $request->getHeaderLine('content-type');
 
@@ -67,13 +68,13 @@ abstract class ControllerBase
             return [];
         }
 
-        $mime = $this->getMime((string) $contentType);
+        $mime = self::getMime((string) $contentType);
 
         if (! in_array($mime, ['application/x-www-form-urlencoded', 'multipart/form-data', ''])) {
             return [];
         }
 
-        return $request->getParsedBody();
+        return $request->getParsedBody() ?? [];
     }
 
     /**
@@ -85,7 +86,7 @@ abstract class ControllerBase
      * @return string
      *   The mime.
      */
-    private static function getMime(string $contentType): string
+    public static function getMime(string $contentType): string
     {
         return preg_match('#^([^;]+)#', $contentType, $matches)
             ? trim(strtolower($matches[1]))

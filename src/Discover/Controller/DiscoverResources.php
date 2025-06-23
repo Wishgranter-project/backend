@@ -13,11 +13,15 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\Describer;
 
+/**
+ * Given the description of a music, searches for playable media.
+ */
 class DiscoverResources extends ControllerBase
 {
     /**
+     * The aether service.
+     *
      * @var WishgranterProject\AetherMusic\Aether
-     *   The aether service.
      */
     protected Aether $aether;
 
@@ -29,6 +33,8 @@ class DiscoverResources extends ControllerBase
     protected Describer $describer;
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\AetherMusic\Aether $aether
      *   The aether service.
      * @param WishgranterProject\Backend\Service\Describer $describer
@@ -82,6 +88,15 @@ class DiscoverResources extends ControllerBase
         return $response;
     }
 
+    /**
+     * Builds a music description from the request's properties.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return WishgranterProject\AetherMusic\Description
+     *   The music description.
+     */
     protected function buildDescription(ServerRequestInterface $request): Description
     {
         $title      = $request->get('title');

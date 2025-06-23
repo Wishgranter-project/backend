@@ -13,7 +13,7 @@ use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
- * Deletes a playlist an all its items.
+ * Deletes a playlist and all its items.
  */
 class PlaylistDelete extends ControllerBase
 {
@@ -25,6 +25,8 @@ class PlaylistDelete extends ControllerBase
     protected PlaylistManager $playlistManager;
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
      *   The playlist manager.
      */

@@ -8,7 +8,7 @@ use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
- * Collection controller..
+ * Base collection controller.
  */
 abstract class CollectionController extends ControllerBase
 {

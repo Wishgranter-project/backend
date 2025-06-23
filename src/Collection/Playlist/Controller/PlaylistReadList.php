@@ -59,7 +59,18 @@ class PlaylistReadList extends CollectionController
             ->renderResponse();
     }
 
-    public function sortPlaylistByTitle($p1, $p2)
+    /**
+     * Sort playlist objects by their titles.
+     *
+     * @param WishgranterProject\DescriptivePlaylist\Playlist $p1
+     *   Playlist.
+     * @param WishgranterProject\DescriptivePlaylist\Playlist $p2
+     *   Playlist.
+     *
+     * @return int
+     *   To sort.
+     */
+    public function sortPlaylistByTitle($p1, $p2): int
     {
         if (!$p1->title || !$p2->title) {
             return 0;

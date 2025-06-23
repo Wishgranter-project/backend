@@ -11,7 +11,9 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
- * Adds playlists by upload.
+ * Adds playlists by upload it.
+ *
+ * @todo Refactor and document this. I don't remember where I was going with it.
  */
 class PlaylistUpload extends CollectionController
 {

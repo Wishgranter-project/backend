@@ -14,10 +14,13 @@ use WishgranterProject\Backend\Service\ServicesManager;
 final class Server
 {
     /**
+     * Returns the router object.
+     *
      * @param string $routes
      *   The file containing the defined routes.
      *
      * @return AdinanCenci\Router\Router
+     *   The PSR-15 compliant router to handle requests and responses.
      */
     public function getRouter(string $routes): Router
     {
@@ -40,9 +43,12 @@ final class Server
      * Cors pre-flight controller for CORS.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response for the request.
      */
     public function preFlight(
         ServerRequestInterface $request,
@@ -58,13 +64,15 @@ final class Server
     }
 
     /**
-     * Gets the response from whatever controller we hit
-     * and add the CORS headers.
+     * Generates a response and adds CORS headers.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response for the request.
      */
     public function decorator(
         ServerRequestInterface $request,
@@ -82,13 +90,17 @@ final class Server
     }
 
     /**
-     * Method to handle not found errors.
+     * Method called when no mathing router is found for the request.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      * @param string $path
+     *   The path of the request.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response for the request.
      */
     public function handleNotFoundError(
         ServerRequestInterface $request,
@@ -107,11 +119,16 @@ final class Server
      * Method to handle exceptions.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
      * @param Psr\Http\Server\RequestHandlerInterface $handler
+     *   The request handler object.
      * @param string $path
+     *   The path of the request.
      * @param Exception $exception
+     *   The exception to handle.
      *
      * @return Psr\Http\Message\ResponseInterface
+     *   The response for the request.
      */
     public function handleException(
         ServerRequestInterface $request,

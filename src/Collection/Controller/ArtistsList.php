@@ -10,16 +10,23 @@ use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 
+/**
+ * Lists all the artists within the collection.
+ */
 class ArtistsList extends ControllerBase
 {
     /**
+     * The service to manage playlists.
+     *
      * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     *   The service to manage playlists.
      */
     protected PlaylistManager $playlistManager;
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
+     *   The playlist manager service.
      */
     public function __construct(PlaylistManager $playlistManager)
     {
@@ -50,6 +57,15 @@ class ArtistsList extends ControllerBase
             ->renderResponse();
     }
 
+    /**
+     * Lists all artist's names.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request.
+     *
+     * @return array
+     *   An array of strings with all the artist's names.
+     */
     protected function listArtists(ServerRequestInterface $request): array
     {
         $list = [];
@@ -59,7 +75,7 @@ class ArtistsList extends ControllerBase
                 if (! $item->artist) {
                     continue;
                 }
-                $this->countArtists((array) $item->artist, $list);
+                $this->countArtistsApperances((array) $item->artist, $list);
             }
         }
 
@@ -69,7 +85,15 @@ class ArtistsList extends ControllerBase
         return $list;
     }
 
-    protected function countArtists(array $itemArtists, &$list): void
+    /**
+     * Counts how many times the artist appears in the collection.
+     *
+     * @param array $itemArtists
+     *   Artists names.
+     * @param array
+     *   Number of occurances, indexed by the artist's names.
+     */
+    protected function countArtistsApperances(array $itemArtists, &$list): void
     {
         foreach ($itemArtists as $a) {
             if (!isset($list[$a])) {

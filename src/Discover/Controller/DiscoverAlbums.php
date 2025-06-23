@@ -7,6 +7,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\Backend\Helper\JsonResource;
 
+/**
+ * Searches for albums by their artist's names.
+ */
 class DiscoverAlbums extends DiscoverArtists
 {
     /**

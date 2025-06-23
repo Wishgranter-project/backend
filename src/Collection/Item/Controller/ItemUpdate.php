@@ -34,7 +34,9 @@ class ItemUpdate extends CollectionController
         $post = $this->getPostData($request);
         foreach ($post as $key => $v) {
             if ($key == 'position') {
-                $newPosition = is_numeric($v) ? (int) $v : null;
+                $newPosition = is_numeric($v)
+                    ? (int) $v
+                    : null;
             } elseif ($item->isValidPropertyName($key)) {
                 $item->{$key} = $v;
             } else {

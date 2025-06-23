@@ -10,21 +10,32 @@ use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 
+/**
+ * Fetches information about a release.
+ */
 class ReleaseRead extends ControllerBase
 {
     /**
+     * The playlist manager.
+     *
      * @var WishgranterProject\DescriptiveManager\PlaylistManager
      */
     protected PlaylistManager $playlistManager;
 
     /**
+     * The describer service.
+     *
      * @var WishgranterProject\Backend\Service\Describer
      */
     protected Describer $describer;
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
+     *   The playlist manager.
      * @param WishgranterProject\Backend\Service\Describer $describer
+     *   The describer service.
      */
     public function __construct(PlaylistManager $playlistManager, Describer $describer)
     {
@@ -61,6 +72,15 @@ class ReleaseRead extends ControllerBase
             ->renderResponse();
     }
 
+    /**
+     * Get the album.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return WishgranterProject\Discography\Album
+     *   The album object.
+     */
     protected function getRelease(ServerRequestInterface $request)
     {
         $releaseId = $request->getAttribute('releaseId');
