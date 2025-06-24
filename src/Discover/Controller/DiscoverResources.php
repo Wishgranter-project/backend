@@ -60,10 +60,8 @@ class DiscoverResources extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
         $search->addDefaultCriteria();
@@ -79,13 +77,9 @@ class DiscoverResources extends ControllerBase
             'description' => $this->describer->describe($description)
         ];
 
-        $resource = new JsonResource();
-        return $resource
-            ->setData($data)
+        return $this->jsonResource($data)
             ->setMeta('debug', $debug)
             ->renderResponse();
-
-        return $response;
     }
 
     /**

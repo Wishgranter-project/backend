@@ -20,10 +20,8 @@ class PlaylistUpload extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $title    = (string) $request->post('title');
         if (empty($title)) {
             throw new \InvalidArgumentException('Inform a valid title for the playlist.');

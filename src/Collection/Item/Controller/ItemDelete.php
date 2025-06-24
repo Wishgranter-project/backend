@@ -17,10 +17,8 @@ class ItemDelete extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
 
         $uuid = $request->getAttribute('itemUuid');
         if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId)) {
@@ -31,8 +29,7 @@ class ItemDelete extends CollectionController
         $playlist->deleteItem($item);
         $data = $this->describer->describe($item);
 
-        $resource = new JsonResource();
-        return $resource
+        return $this->jsonResource()
             ->addSuccess(200, 'Item deleted')
             ->renderResponse();
     }

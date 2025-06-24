@@ -21,10 +21,8 @@ class ItemReadSearch extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $searchResults = $this->searchItems($request);
 
         return JsonResource::fromSearchResults($searchResults)

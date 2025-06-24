@@ -4,8 +4,22 @@ namespace WishgranterProject\Backend\Service;
 
 use WishgranterProject\Backend\Helper\Singleton;
 
+/**
+ * Very basic class to manage configuration.
+ */
 class Configurations extends Singleton
 {
+    /**
+     * Retrieves a setting.
+     *
+     * @param string $key
+     *   The setting to retrieve.
+     * @param mixed $default
+     *   The value to return in case $get does not exist.
+     *
+     * @return mixed
+     *   The setting's value.
+     */
     public function get(string $key, $default = null)
     {
         $config = $this->loadConfig();
@@ -15,7 +29,15 @@ class Configurations extends Singleton
             : $default;
     }
 
-    public function set(string $key, $value)
+    /**
+     * Updates/inserts a setting.
+     *
+     * @param string $key
+     *   The setting.
+     * @param mixed $value
+     *   The value to set.
+     */
+    public function set(string $key, $value): void
     {
         $config = $this->loadConfig();
 
@@ -24,7 +46,13 @@ class Configurations extends Singleton
         $this->saveConfig($config);
     }
 
-    protected function loadConfig()
+    /**
+     * Loads configuration into memory.
+     *
+     * @return array
+     *   The configuration object.
+     */
+    protected function loadConfig(): array
     {
         $file = ROOT_DIR . 'configurations.json';
 
@@ -38,7 +66,13 @@ class Configurations extends Singleton
         return $data;
     }
 
-    protected function saveConfig(array $data)
+    /**
+     * Saves the configuration into file.
+     *
+     * @param array $data
+     *   THe configuration.
+     */
+    protected function saveConfig(array $data): void
     {
         $file = ROOT_DIR . 'configurations.json';
 

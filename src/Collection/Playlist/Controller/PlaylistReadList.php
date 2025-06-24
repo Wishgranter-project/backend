@@ -25,10 +25,8 @@ class PlaylistReadList extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
 
         $all   = $this->playlistManager->getAllPlaylists();
@@ -47,15 +45,12 @@ class PlaylistReadList extends CollectionController
             $data[] = $this->describer->describe($playlist);
         }
 
-        $resource = new JsonResource();
-
-        return $resource
+        return $this->jsonResource($data)
             ->setMeta('total', $total)
             ->setMeta('itemsPerPage', $itemsPerPage)
             ->setMeta('pages', $pages)
             ->setMeta('page', $page)
             ->setMeta('count', $count)
-            ->setData($data)
             ->renderResponse();
     }
 

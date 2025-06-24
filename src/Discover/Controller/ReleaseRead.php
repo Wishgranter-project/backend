@@ -57,18 +57,13 @@ class ReleaseRead extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $release = $this->getRelease($request);
 
         $data = $this->describer->describe($release);
 
-        $resource = new JsonResource();
-        return $resource
-            ->setStatusCode(200)
-            ->setData($data)
+        return $this->jsonResource($data)
             ->renderResponse();
     }
 

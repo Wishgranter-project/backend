@@ -46,10 +46,8 @@ class PlaylistDelete extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $playlistId = $request->getAttribute('playlist');
 
         if (! $this->playlistManager->playlistExists($playlistId)) {
@@ -58,8 +56,7 @@ class PlaylistDelete extends ControllerBase
 
         $this->playlistManager->deletePlaylist($playlistId);
 
-        $resource = new JsonResource();
-        return $resource
+        return $this->jsonResource()
             ->addSuccess(200, 'Playlist deleted')
             ->renderResponse();
     }

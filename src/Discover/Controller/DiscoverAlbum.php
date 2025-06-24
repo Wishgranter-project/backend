@@ -15,18 +15,14 @@ class DiscoverAlbum extends DiscoverArtists
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $artistName = $request->get('artist');
         $albumTitle = $request->get('title');
         $album      = $this->discography->getAlbum($artistName, $albumTitle);
         $data       = $this->describer->describe($album);
 
-        $resource = new JsonResource($data, 200);
-
-        return $resource->renderResponse();
+        return $this->jsonResource($data)
+            ->renderResponse();
     }
 }

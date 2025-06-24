@@ -17,10 +17,8 @@ class PlaylistCreate extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $title    = (string) $request->post('title');
         if (empty($title)) {
             throw new \InvalidArgumentException('Inform a valid title for the playlist.');
@@ -44,13 +42,10 @@ class PlaylistCreate extends CollectionController
             throw $e;
         }
 
-        $resource = new JsonResource();
         $data = $this->describer->describe($playlist);
 
-        return $resource
-            ->setStatusCode(201)
+        return $this->jsonResource($data, 201)
             ->addSuccess(201, 'Playlist created')
-            ->setData($data)
             ->renderResponse();
     }
 }

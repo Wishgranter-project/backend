@@ -15,10 +15,8 @@ class PlaylistRead extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $playlistId = $request->getAttribute('playlist');
 
         if (! $this->playlistManager->playlistExists($playlistId)) {
@@ -53,10 +51,8 @@ class PlaylistRead extends CollectionController
         Playlist $playlist
     ): ResponseInterface {
         $data = $this->describer->describe($playlist);
-        $resource = new JsonResource();
 
-        return $resource
-            ->setData($data)
+        return $this->jsonResource($data)
             ->renderResponse();
     }
 

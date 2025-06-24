@@ -17,10 +17,8 @@ class ItemUpdate extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $uuid = $request->getAttribute('itemUuid');
         $currentPosition = null;
         if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId, $currentPosition)) {
@@ -49,10 +47,8 @@ class ItemUpdate extends CollectionController
 
         $data = $this->describer->describe($item);
 
-        $resource = new JsonResource();
-        return $resource
+        return $this->jsonResource($data)
             ->addSuccess(200, 'Item updated sucessfully.')
-            ->setData($data)
             ->renderResponse();
     }
 }

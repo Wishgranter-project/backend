@@ -60,10 +60,8 @@ class DiscoverArtists extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $artistName = $request->get('name');
 
         if (empty($artistName) || !is_string($artistName)) {
@@ -72,7 +70,8 @@ class DiscoverArtists extends ControllerBase
 
         $searchResults = $this->discography->searchForArtist($artistName);
         $array         = $this->describer->describeAll($searchResults);
-        $resource      = new JsonResource($array);
-        return $resource->renderResponse();
+
+        return $this->jsonResource($array)
+            ->renderResponse();
     }
 }

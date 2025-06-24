@@ -55,10 +55,7 @@ final class Server
         RequestHandlerInterface $handler
     ): ResponseInterface {
         $response = $handler->responseFactory->ok('');
-        $response = $response->withAddedHeader('Access-Control-Allow-Origin', getCorsAllowedDomain($request, $GLOBALS['settings']));
-        $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
-        $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
-        $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+        $response = $this->withAddedCorsHeaders($request, $response);
 
         return $response;
     }
@@ -81,11 +78,30 @@ final class Server
 
         $response = $handler->handle($request);
         if (!$response->hasHeader('Access-Control-Allow-Origin')) {
-            $response = $response->withAddedHeader('Access-Control-Allow-Origin', getCorsAllowedDomain($request, $GLOBALS['settings']));
-            $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
-            $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
-            $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+            $response = $this->withAddedCorsHeaders($request, $response);
         }
+        return $response;
+    }
+
+    /**
+     * Returns a response with CORS headers added.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     * @param Psr\Http\Server\ResponseInterface $response
+     *   The response for the request.
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     *   The response for the request with CORS headers.
+     */
+    public function withAddedCorsHeaders(
+        ServerRequestInterface $request,
+        ResponseInterface $response
+    ): ResponseInterface {
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', getCorsAllowedDomain($request, $GLOBALS['settings']));
+        $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
+        $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
+        $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
         return $response;
     }
 

@@ -17,11 +17,8 @@ class ItemRead extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $uuid = $request->getAttribute('itemUuid');
 
         if (!$item = $this->playlistManager->getItemByUuid($uuid)) {
@@ -30,9 +27,7 @@ class ItemRead extends CollectionController
 
         $data = $this->describer->describe($item);
 
-        $resource = new JsonResource();
-        return $resource
-            ->setData($data)
+        return $this->jsonResource($data)
             ->renderResponse();
     }
 }

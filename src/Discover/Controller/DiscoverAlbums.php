@@ -15,10 +15,8 @@ class DiscoverAlbums extends DiscoverArtists
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $artistName = $request->get('artist');
         if (empty($artistName) || !is_string($artistName)) {
             throw new \InvalidArgumentException('Provide the name of an artist or band.');
@@ -26,7 +24,8 @@ class DiscoverAlbums extends DiscoverArtists
 
         $searchResults = $this->discography->getArtistsAlbums($artistName);
         $array         = $this->describer->describeAll($searchResults);
-        $resource      = new JsonResource($array);
-        return $resource->renderResponse();
+
+        return $this->jsonResource($array)
+            ->renderResponse();
     }
 }

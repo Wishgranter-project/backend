@@ -18,10 +18,8 @@ class ItemCreate extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $post = $this->getPostData($request);
 
         $playlistId = $post['playlist'] ?? null;
@@ -42,11 +40,8 @@ class ItemCreate extends CollectionController
 
         $data = $this->describer->describe($item);
 
-        $resource = new JsonResource();
-        return $resource
-            ->setStatusCode(201)
+        return $this->jsonResource($data, 201)
             ->addSuccess(201, 'Item created')
-            ->setData($data)
             ->renderResponse();
     }
 

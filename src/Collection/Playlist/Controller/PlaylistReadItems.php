@@ -21,10 +21,8 @@ class PlaylistReadItems extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $playlistId = $request->getAttribute('playlist');
         if (! $this->playlistManager->playlistExists($playlistId)) {
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
@@ -130,7 +128,7 @@ class PlaylistReadItems extends CollectionController
      *   The HTTP request object.
      *
      * @return bool
-     *   If there are filter parameters.
+     *   True if there are filter parameters.
      */
     protected function areFilterParametersPresent(ServerRequestInterface $request): bool
     {

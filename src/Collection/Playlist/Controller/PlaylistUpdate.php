@@ -17,10 +17,8 @@ class PlaylistUpdate extends CollectionController
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $playlistId = $request->getAttribute('playlist');
 
         $playlist = $this->playlistManager->getPlaylist($playlistId);
@@ -43,13 +41,10 @@ class PlaylistUpdate extends CollectionController
 
         $playlist->setHeader($header);
 
-        $resource = new JsonResource();
         $data = $this->describer->describe($playlist);
 
-        return $resource
-            ->setStatusCode(200)
+        return $this->jsonResource($data)
             ->addSuccess(200, 'Changes saved')
-            ->setData($data)
             ->renderResponse();
     }
 }

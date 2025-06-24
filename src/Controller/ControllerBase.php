@@ -36,6 +36,15 @@ abstract class ControllerBase
     }
 
     /**
+     * @return WishgranterProject\Backend\Helper\JsonResource
+     *   JsonResource object.
+     */
+    public function jsonResource(null|array|\stdClass $data = null, int $statusCode = 200): JsonResource
+    {
+        return new JsonResource($data, $statusCode);
+    }
+
+    /**
      * Instantiates a new controller.
      *
      * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager

@@ -44,16 +44,11 @@ class ArtistsList extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
         $artists  = $this->listArtists($request);
-        $resource = new JsonResource();
 
-        return $resource
-            ->setStatusCode(200)
-            ->setData($artists)
+        return $this->jsonResource($artists)
             ->renderResponse();
     }
 

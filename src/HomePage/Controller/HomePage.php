@@ -12,14 +12,9 @@ class HomePage extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public function __invoke(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-        $resource = new JsonResource();
-
-        return $resource
-            ->setData('home page')
+    public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    {
+        return $this->jsonResource('home page')
             ->renderResponse();
     }
 }
