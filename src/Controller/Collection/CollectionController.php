@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Collection\Controller;
+namespace WishgranterProject\Backend\Controller\Collection;
 
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServicesManager;

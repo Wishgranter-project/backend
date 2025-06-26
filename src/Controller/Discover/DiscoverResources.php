@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Discover\Controller;
+namespace WishgranterProject\Backend\Controller\Discover;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

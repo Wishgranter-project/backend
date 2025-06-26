@@ -1,11 +1,11 @@
 <?php
 
-namespace WishgranterProject\Backend\Collection\Item\Controller;
+namespace WishgranterProject\Backend\Controller\Collection\Item;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Collection\Controller\CollectionController;
+use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Controller\PaginationTrait;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;

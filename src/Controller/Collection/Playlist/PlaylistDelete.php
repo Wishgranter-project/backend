@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Collection\Playlist\Controller;
+namespace WishgranterProject\Backend\Controller\Collection\Playlist;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
