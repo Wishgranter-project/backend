@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dcc8ae6fbc2d3e6da799e00c6f61a76a",
+    "content-hash": "d6d5fe89fd16feda2c5abad694fea240",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -201,16 +201,16 @@
         },
         {
             "name": "adinan-cenci/psr-17",
-            "version": "v2.1.0",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-17.git",
-                "reference": "c10a66711b823e67d65d968e147b570f1c1ebd17"
+                "reference": "f168dc8dfa7dc6ec355546261e33a532a3ba8f71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/c10a66711b823e67d65d968e147b570f1c1ebd17",
-                "reference": "c10a66711b823e67d65d968e147b570f1c1ebd17",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/f168dc8dfa7dc6ec355546261e33a532a3ba8f71",
+                "reference": "f168dc8dfa7dc6ec355546261e33a532a3ba8f71",
                 "shasum": ""
             },
             "require": {
@@ -239,9 +239,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/psr-17/issues",
-                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.0"
+                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.1"
             },
-            "time": "2025-06-11T00:10:21+00:00"
+            "time": "2025-06-26T23:48:29+00:00"
         },
         {
             "name": "adinan-cenci/psr-18",
