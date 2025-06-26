@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Collection\Controller;
+namespace WishgranterProject\Backend\Controller\Collection;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
