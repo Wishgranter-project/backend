@@ -21,7 +21,9 @@ class ItemUpdate extends CollectionController
     {
         $uuid = $request->getAttribute('itemUuid');
         $currentPosition = null;
-        if (!$item = $this->playlistManager->findItemByUuid($uuid, $playlistId, $currentPosition)) {
+        $item = $this->playlistManager->findItemByUuid($uuid, $playlistId, $currentPosition);
+
+        if (!$item) {
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 

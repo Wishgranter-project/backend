@@ -15,12 +15,19 @@ use WishgranterProject\AetherMusic\LocalFiles\Source\SourceLocalFiles;
 use WishgranterProject\AetherMusic\Aether;
 use AdinanCenci\FileCache\Cache;
 
+/**
+ * Service manager.
+ *
+ * Vary simple, very crude.
+ */
 class ServicesManager extends Singleton
 {
     /**
+     * The instances of different services.
+     *
+     * Instanciated as needed.
+     *
      * @var array
-     *   The instances of different services.
-     *   Instanciated as needed.
      */
     protected array $services = [];
 
@@ -67,6 +74,12 @@ class ServicesManager extends Singleton
         return null;
     }
 
+    /**
+     * Instantiates the playlist manager service.
+     *
+     * @return WishgranterProject\DescriptiveManager\PlaylistManager
+     *   The service to manage playlists.
+     */
     protected function isntantiatePlaylistManager()
     {
         $dir = defined('PLAYLISTS_DIR_TEST')
@@ -76,6 +89,12 @@ class ServicesManager extends Singleton
         return new PlaylistManager($dir);
     }
 
+    /**
+     * Instantiates the cache service.
+     *
+     * @return Psr\SimpleCache\CacheInterface
+     *   Cache service.
+     */
     protected function isntantiateCache()
     {
         $dir = defined('CACHE_DIR_TEST')
@@ -85,11 +104,12 @@ class ServicesManager extends Singleton
         return new Cache($dir);
     }
 
-    protected function isntantiateResourceFinder()
-    {
-        return ResourceFinder::create();
-    }
-
+    /**
+     * Instantiates the discography service.
+     *
+     * @return WishgranterProject\Backend\Service\Discography
+     *   The discography service.
+     */
     protected function isntantiateDiscography()
     {
         $cache          = $this->get('cache');
@@ -102,15 +122,26 @@ class ServicesManager extends Singleton
         return new Discography([$discogs, $musicBrainz]);
     }
 
+    /**
+     * Instantiates the describer service.
+     *
+     * @return WishgranterProject\Backend\Service\Describer
+     *   The describer service.
+     */
     protected function isntantiateDescriber()
     {
         return Describer::create();
     }
 
+    /**
+     * Instantiates the service to find playable media.
+     *
+     * @return WishgranterProject\AetherMusic\Aether
+     *   Aether service.
+     */
     protected function isntantiateAether()
     {
-        $config = $this->get('config');
-        $youtubeApiKey = $config->get('youtubeApiKey');
+        $youtubeApiKey = $this->get('config')->get('youtubeApiKey');
 
         $aether = new Aether();
 
@@ -128,11 +159,23 @@ class ServicesManager extends Singleton
         return $aether;
     }
 
+    /**
+     * Alias for ::isntantiateConfiguration().
+     *
+     * @return WishgranterProject\Backend\Service\Configurations
+     *   Configuration service.
+     */
     protected function isntantiateConfig()
     {
         return $this->get('configuration');
     }
 
+    /**
+     * Instantiates the configuration service.
+     *
+     * @return WishgranterProject\Backend\Service\Configurations
+     *   Configuration service.
+     */
     protected function isntantiateConfiguration()
     {
         return Configurations::singleton();

@@ -5,15 +5,21 @@ namespace WishgranterProject\Backend\Service;
 use WishgranterProject\Discography\Album;
 use WishgranterProject\Backend\Helper\Singleton;
 
+/**
+ * Service to search for discography information.
+ */
 class Discography extends Singleton
 {
     /**
+     * Sources of discographic information.
+     *
      * @var WishgranterProject\Discography\Source\SourceInterface[]
-     *   Sources of discographic information.
      */
     protected array $sources = [];
 
     /**
+     * Constructor.
+     *
      * @param WishgranterProject\Discography\Source\SourceInterface[] $sources
      *   Sources of discographic information.
      */

@@ -20,16 +20,26 @@ class Describer
     {
         if ($object instanceof Playlist) {
             return $this->describePlaylist($object);
-        } elseif ($object instanceof PlaylistItem) {
+        }
+
+        if ($object instanceof PlaylistItem) {
             return $this->describePlaylistItem($object);
-        } elseif ($object instanceof Resource) {
-            return $this->describeResource($object);
-        } elseif ($object instanceof Description) {
-            return $this->describeDescription($object);
-        } elseif ($object instanceof Artist) {
-            return $this->describeArtist($object);
-        } elseif ($object instanceof Album) {
-            return $this->describeAlbum($object);
+        }
+
+        if ($object instanceof Resource) {
+            return $this->toArray($object, 'resource');
+        }
+
+        if ($object instanceof Description) {
+            return $this->toArray($object, 'description');
+        }
+
+        if ($object instanceof Artist) {
+            return $this->toArray($object, 'artist');
+        }
+
+        if ($object instanceof Album) {
+            return $this->toArray($object, 'album');
         }
     }
 
@@ -46,37 +56,23 @@ class Describer
 
     protected function describePlaylist($playlist)
     {
-        $data = [
+        $data = (array) $playlist->getHeader()->getCopyOfTheData();
+
+        $data += [
             'type' => 'playlist',
             'id' => basename($playlist->fileName, '.dpls'),
         ];
 
-        $data += (array) $playlist->getHeader()->getCopyOfTheData();
         return $data;
     }
 
     protected function describePlaylistItem(PlaylistItem $playlistItem)
     {
-        return $playlistItem->getCopyOfTheData();
+        return (array) $playlistItem->getCopyOfTheData();
     }
 
-    protected function describeResource(Resource $resource)
+    protected function toArray($object, $type): array
     {
-        return ['type' => 'resource'] + $resource->toArray();
-    }
-
-    protected function describeDescription(Description $description)
-    {
-        return ['type' => 'description'] + $description->toArray();
-    }
-
-    protected function describeArtist(Artist $artist)
-    {
-        return ['type' => 'artist'] + $artist->toArray();
-    }
-
-    protected function describeAlbum(Album $album)
-    {
-        return ['type' => 'album'] + $album->toArray();
+        return ['type' => $type] + $object->toArray();
     }
 }
