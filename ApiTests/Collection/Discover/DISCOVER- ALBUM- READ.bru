@@ -1,0 +1,21 @@
+meta {
+  name: DISCOVER: ALBUM: READ
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{base_url}}/test/api/v1/discover/album?artist=Blind Guardian&title=Beyond the Red Mirror
+  body: none
+  auth: inherit
+}
+
+params:query {
+  artist: Blind Guardian
+  title: Beyond the Red Mirror
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

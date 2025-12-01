@@ -1,0 +1,20 @@
+meta {
+  name: ITEMS - 3: READ: SEARCH ( restrict playlist )
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{base_url}}/test/api/v1/collection/items?playlist=music-metal
+  body: none
+  auth: inherit
+}
+
+params:query {
+  playlist: music-metal
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

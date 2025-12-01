@@ -1,0 +1,21 @@
+meta {
+  name: ITEMS - 1: CREATE
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/test/api/v1/collection/items
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  title: music title
+  playlist: music-metal
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

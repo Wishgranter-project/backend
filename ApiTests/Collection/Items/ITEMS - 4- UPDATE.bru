@@ -1,0 +1,22 @@
+meta {
+  name: ITEMS - 4: UPDATE
+  type: http
+  seq: 10
+}
+
+put {
+  url: {{base_url}}/test/api/v1/collection/items/be360728-4ada-4ab8-adef-c15f303a1880
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  artist: Valanja
+  title: Nek Militema ( updated )
+  genre: Metal
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

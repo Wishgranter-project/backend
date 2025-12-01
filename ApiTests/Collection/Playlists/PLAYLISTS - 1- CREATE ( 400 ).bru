@@ -1,0 +1,16 @@
+meta {
+  name: PLAYLISTS - 1: CREATE ( 400 )
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{base_url}}/test/api/v1/collection/playlists
+  body: multipartForm
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

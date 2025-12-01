@@ -1,0 +1,21 @@
+meta {
+  name: ITEMS - 3: READ: SEARCH ( RANDOM ORDER )
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{base_url}}/test/api/v1/collection/items?genre=power metal&orderBy=RAND()
+  body: none
+  auth: inherit
+}
+
+params:query {
+  genre: power metal
+  orderBy: RAND()
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

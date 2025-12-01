@@ -1,0 +1,21 @@
+meta {
+  name: PLAYLIST - 5: UPDATE
+  type: http
+  seq: 15
+}
+
+put {
+  url: {{base_url}}/test/api/v1/collection/playlists/music-country
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  title: Country ( updated )
+  description: hyeha!
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,16 @@
+meta {
+  name: PLAYLIST - 4: READ: ITEMS
+  type: http
+  seq: 10
+}
+
+get {
+  url: {{base_url}}/test/api/v1/collection/playlists/music-metal/items
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
