@@ -20,3 +20,4 @@ define('LOCAL_FILES_DIR',              FILES_DIR . 'local-files/');
 define('CACHE_DIR_TEST',               FILES_DIR . 'cache-test/');
 define('PLAYLISTS_DIR_TEST',           FILES_DIR . 'playlist-files-test/');
 define('PLAYLISTS_DIR_TEST_TEMPLATES', FILES_DIR . 'playlist-files-test-templates/');
+define('USERS_DIR',                    FILES_DIR . 'users-files-test/');

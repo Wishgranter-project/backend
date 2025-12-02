@@ -2,42 +2,35 @@
 
 namespace WishgranterProject\Backend\Controller\Collection;
 
+use Psr\Http\Message\ServerRequestInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\CollectionManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Base collection controller.
  */
-abstract class CollectionController extends ControllerBase
+abstract class CollectionController extends AuthenticatedController
 {
-    /**
-     * The playlist manager.
-     *
-     * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     */
-    protected PlaylistManager $playlistManager;
-
-    /**
-     * The describer service.
-     *
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
     /**
      * Constructor.
      *
-     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
-     *   The playlist manager.
+     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     *   Authentication service.
+     * @param WishgranterProject\Backend\Service\CollectionManager $collectionManager
+     *   Collection manager service.
      * @param WishgranterProject\Backend\Service\Describer $describer
      *   The describer service.
      */
-    public function __construct(PlaylistManager $playlistManager, Describer $describer)
-    {
-        $this->playlistManager = $playlistManager;
-        $this->describer       = $describer;
+    public function __construct(
+        protected AuthenticationInterface $authentication,
+        protected CollectionManager $collectionManager,
+        protected Describer $describer
+    ) {
     }
 
     /**
@@ -45,10 +38,16 @@ abstract class CollectionController extends ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        $called = get_called_class();
-        return new $called(
-            $servicesManager->get('playlistManager'),
+        return new (get_called_class())(
+            $servicesManager->get('authentication'),
+            $servicesManager->get('collectionManager'),
             $servicesManager->get('describer')
         );
+    }
+
+    public function getCollection(ServerRequestInterface $request)
+    {
+        $user = $this->needsAnUser($request);
+        return $this->collectionManager->getCollection($user);
     }
 }

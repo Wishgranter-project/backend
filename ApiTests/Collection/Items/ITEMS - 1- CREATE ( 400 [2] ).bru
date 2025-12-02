@@ -16,6 +16,10 @@ body:multipart-form {
   not-a-thing: this is
 }
 
+assert {
+  res.status: eq 400
+}
+
 settings {
   encodeUrl: true
   timeout: 0

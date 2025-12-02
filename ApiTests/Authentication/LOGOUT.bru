@@ -1,0 +1,21 @@
+meta {
+  name: LOGOUT
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{base_url}}/test/api/v1/logout
+  body: none
+  auth: inherit
+}
+
+script:post-response {
+  bru.setVar('session', '');
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

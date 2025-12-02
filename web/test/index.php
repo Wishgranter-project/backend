@@ -34,7 +34,7 @@ if (!file_exists(CACHE_DIR_TEST)) {
 // Reset the playlist files at every request.
 foreach (scandir(PLAYLISTS_DIR_TEST_TEMPLATES) as $entry) {
     if (is_file(PLAYLISTS_DIR_TEST_TEMPLATES . $entry)) {
-        copy(PLAYLISTS_DIR_TEST_TEMPLATES . $entry, PLAYLISTS_DIR_TEST . $entry);
+        copy(PLAYLISTS_DIR_TEST_TEMPLATES . $entry, PLAYLISTS_DIR_TEST . 'adinan/' . $entry);
     }
 }
 

@@ -19,9 +19,11 @@ class PlaylistUpdate extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $playlistId = $request->getAttribute('playlist');
 
-        $playlist = $this->playlistManager->getPlaylist($playlistId);
+        $playlist = $collection->getPlaylist($playlistId);
         if (! $playlist) {
             throw new NotFound('Playlist ' . $playlistName . ' not found.');
         }

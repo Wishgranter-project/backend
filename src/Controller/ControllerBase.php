@@ -55,7 +55,7 @@ abstract class ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        return new \get_called_class();
+        return new (get_called_class());
     }
 
     /**

@@ -3,11 +3,11 @@
 namespace WishgranterProject\Backend\Service;
 
 use WishgranterProject\Backend\Helper\Singleton;
+use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\Discography\Discogs\ApiDiscogs;
 use WishgranterProject\Discography\Discogs\Source\SourceDiscogs;
 use WishgranterProject\Discography\MusicBrainz\ApiMusicBrainz;
 use WishgranterProject\Discography\MusicBrainz\Source\SourceMusicBrainz;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\AetherMusic\YouTube\YouTubeApi;
 use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTube;
 use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTubeLax;
@@ -44,7 +44,7 @@ class ServicesManager extends Singleton
     public function get(string $serviceId)
     {
         if (! isset($this->services[$serviceId])) {
-            $this->services[$serviceId] = $this->isntantiate($serviceId);
+            $this->services[$serviceId] = $this->instantiate($serviceId);
         }
 
         if (is_null($this->services[$serviceId])) {
@@ -63,9 +63,9 @@ class ServicesManager extends Singleton
      * @return mixed|null
      *   Returns null if it cannot instantiate the service.
      */
-    protected function isntantiate(string $serviceId)
+    protected function instantiate(string $serviceId)
     {
-        $method = 'isntantiate' . ucfirst($serviceId);
+        $method = 'instantiate' . ucfirst($serviceId);
 
         if (method_exists($this, $method)) {
             return $this->$method();
@@ -75,18 +75,18 @@ class ServicesManager extends Singleton
     }
 
     /**
-     * Instantiates the playlist manager service.
+     * Instantiates the collection manager service.
      *
-     * @return WishgranterProject\DescriptiveManager\PlaylistManager
+     * @return WishgranterProject\Backend\Service\CollectionManager
      *   The service to manage playlists.
      */
-    protected function isntantiatePlaylistManager()
+    protected function instantiateCollectionManager()
     {
         $dir = defined('PLAYLISTS_DIR_TEST')
             ? PLAYLISTS_DIR_TEST
             : PLAYLISTS_DIR;
 
-        return new PlaylistManager($dir);
+        return new CollectionManager($dir);
     }
 
     /**
@@ -95,7 +95,7 @@ class ServicesManager extends Singleton
      * @return Psr\SimpleCache\CacheInterface
      *   Cache service.
      */
-    protected function isntantiateCache()
+    protected function instantiateCache()
     {
         $dir = defined('CACHE_DIR_TEST')
             ? CACHE_DIR_TEST
@@ -110,7 +110,7 @@ class ServicesManager extends Singleton
      * @return WishgranterProject\Backend\Service\Discography
      *   The discography service.
      */
-    protected function isntantiateDiscography()
+    protected function instantiateDiscography()
     {
         $cache          = $this->get('cache');
         $discogsApi     = new ApiDiscogs($this->get('config')->get('discogsToken', ''), [], $cache);
@@ -128,7 +128,7 @@ class ServicesManager extends Singleton
      * @return WishgranterProject\Backend\Service\Describer
      *   The describer service.
      */
-    protected function isntantiateDescriber()
+    protected function instantiateDescriber()
     {
         return Describer::create();
     }
@@ -139,7 +139,7 @@ class ServicesManager extends Singleton
      * @return WishgranterProject\AetherMusic\Aether
      *   Aether service.
      */
-    protected function isntantiateAether()
+    protected function instantiateAether()
     {
         $youtubeApiKey = $this->get('config')->get('youtubeApiKey');
 
@@ -160,12 +160,12 @@ class ServicesManager extends Singleton
     }
 
     /**
-     * Alias for ::isntantiateConfiguration().
+     * Alias for ::instantiateConfiguration().
      *
      * @return WishgranterProject\Backend\Service\Configurations
      *   Configuration service.
      */
-    protected function isntantiateConfig()
+    protected function instantiateConfig()
     {
         return $this->get('configuration');
     }
@@ -176,8 +176,30 @@ class ServicesManager extends Singleton
      * @return WishgranterProject\Backend\Service\Configurations
      *   Configuration service.
      */
-    protected function isntantiateConfiguration()
+    protected function instantiateConfiguration()
     {
         return Configurations::singleton();
+    }
+
+    /**
+     * Instantiates the user manager service.
+     *
+     * @return WishgranterProject\Backend\User\UserManager
+     *   User manager service.
+     */
+    protected function instantiateUserManager()
+    {
+        return new UserManager(\USERS_DIR);
+    }
+
+    /**
+     * Instantiates the authentication service.
+     *
+     * @return WishgranterProject\Backend\Authentication\Authentication
+     *   Authentication service.
+     */
+    protected function instantiateAuthentication()
+    {
+        return new \WishgranterProject\Backend\Authentication\Authentication($this);
     }
 }

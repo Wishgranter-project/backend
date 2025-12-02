@@ -19,12 +19,14 @@ class PlaylistCreate extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $title    = (string) $request->post('title');
+        $collection = $this->getCollection($request);
+
+        $title = (string) $request->post('title');
         if (empty($title)) {
             throw new \InvalidArgumentException('Inform a valid title for the playlist.');
         }
 
-        $playlist = $this->playlistManager->createPlaylist($title, null, $title, $playlistId);
+        $playlist = $collection->createPlaylist($title, null, $title, $playlistId);
         $header   = $playlist->getHeader();
 
         try {
@@ -38,7 +40,7 @@ class PlaylistCreate extends CollectionController
             }
             $playlist->setHeader($header);
         } catch (\Exception $e) {
-            $this->playlistManager->deletePlaylist($playlistId);
+            $collection->deletePlaylist($playlistId);
             throw $e;
         }
 

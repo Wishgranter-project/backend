@@ -15,6 +15,10 @@ body:multipart-form {
   playlist: non-existent
 }
 
+assert {
+  res.status: eq 400
+}
+
 settings {
   encodeUrl: true
   timeout: 0

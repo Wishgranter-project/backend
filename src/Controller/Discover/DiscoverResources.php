@@ -8,6 +8,8 @@ use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\AetherMusic\Aether;
 use WishgranterProject\AetherMusic\Description;
 use WishgranterProject\AetherMusic\Search\SearchResults;
+use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
@@ -16,34 +18,23 @@ use WishgranterProject\Backend\Service\Describer;
 /**
  * Given the description of a music, searches for playable media.
  */
-class DiscoverResources extends ControllerBase
+class DiscoverResources extends AuthenticatedController
 {
-    /**
-     * The aether service.
-     *
-     * @var WishgranterProject\AetherMusic\Aether
-     */
-    protected Aether $aether;
-
-    /**
-     * The describer service.
-     *
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
     /**
      * Constructor.
      *
+     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     *   Authentication service.
      * @param WishgranterProject\AetherMusic\Aether $aether
      *   The aether service.
      * @param WishgranterProject\Backend\Service\Describer $describer
      *   The describer service.
      */
-    public function __construct(Aether $aether, Describer $describer)
-    {
-        $this->aether    = $aether;
-        $this->describer = $describer;
+    public function __construct(
+        protected AuthenticationInterface $authentication,
+        protected Aether $aether,
+        protected Describer $describer
+    ) {
     }
 
     /**
@@ -52,6 +43,7 @@ class DiscoverResources extends ControllerBase
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
         return new self(
+            $servicesManager->get('authentication'),
             $servicesManager->get('aether'),
             $servicesManager->get('describer')
         );
@@ -62,6 +54,8 @@ class DiscoverResources extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->needsAnUser($request);
+
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
         $search->addDefaultCriteria();

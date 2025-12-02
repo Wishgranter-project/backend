@@ -19,9 +19,11 @@ class ItemUpdate extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $uuid = $request->getAttribute('itemUuid');
         $currentPosition = null;
-        $item = $this->playlistManager->findItemByUuid($uuid, $playlistId, $currentPosition);
+        $item = $collection->findItemByUuid($uuid, $playlistId, $currentPosition);
 
         if (!$item) {
             throw new NotFound('Item ' . $uuid . ' does not exist.');
@@ -45,7 +47,7 @@ class ItemUpdate extends CollectionController
         }
 
         $item->sanitize();
-        $this->playlistManager->setItem($playlistId, $item, $newPosition);
+        $collection->setItem($playlistId, $item, $newPosition);
 
         $data = $this->describer->describe($item);
 

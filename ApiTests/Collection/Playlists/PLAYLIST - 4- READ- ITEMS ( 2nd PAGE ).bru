@@ -5,14 +5,17 @@ meta {
 }
 
 get {
-  url: {{base_url}}/test/api/v1/collection/playlists/music-metal/items?itemsPerPage=2&page=2
+  url: {{base_url}}/test/api/v1/collection/playlists/music-metal/items?page=2
   body: none
   auth: inherit
 }
 
 params:query {
-  itemsPerPage: 2
   page: 2
+}
+
+assert {
+  res.status: eq 200
 }
 
 settings {

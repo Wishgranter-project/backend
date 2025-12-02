@@ -11,7 +11,11 @@ get {
 }
 
 headers {
-  Accept: application/zip
+  Accept: application/jsonl
+}
+
+assert {
+  res.status: eq 200
 }
 
 settings {

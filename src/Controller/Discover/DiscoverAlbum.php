@@ -17,6 +17,8 @@ class DiscoverAlbum extends DiscoverArtists
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->needsAnUser($request);
+
         $artistName = $request->get('artist');
         $albumTitle = $request->get('title');
         $album      = $this->discography->getAlbum($artistName, $albumTitle);

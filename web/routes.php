@@ -31,3 +31,8 @@ $router->get(   '#api/v1/discover/artists$#',                                  '
 $router->get(   '#api/v1/discover/albums$#',                                   'DiscoverAlbums');
 $router->get(   '#api/v1/discover/album$#',                                    'DiscoverAlbum');
 $router->get(   '#api/v1/discover/resources$#',                                'DiscoverResources');
+
+// USER
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\User');
+$router->post(  '#api/v1/login$#',                                             'Login');
+$router->get(   '#api/v1/logout$#',                                            'Logout');

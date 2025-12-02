@@ -17,6 +17,8 @@ class DiscoverAlbums extends DiscoverArtists
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->needsAnUser($request);
+
         $artistName = $request->get('artist');
         if (empty($artistName) || !is_string($artistName)) {
             throw new \InvalidArgumentException('Provide the name of an artist or band.');

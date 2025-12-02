@@ -9,6 +9,7 @@ use AdinanCenci\Router\Caller\Caller as DefaultCaller;
 use AdinanCenci\Router\Router;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
+use WishgranterProject\Backend\Exception\Unauthorized;
 use WishgranterProject\Backend\Service\ServicesManager;
 
 final class Server
@@ -159,6 +160,10 @@ final class Server
             $resource
                 ->setStatusCode(404)
                 ->addError(404, $exception->getMessage());
+        } elseif ($exception instanceof Unauthorized) {
+            $resource
+                ->setStatusCode(403)
+                ->addError(403, $exception->getMessage());
         } elseif ($exception instanceof \InvalidArgumentException) {
             $resource
                 ->setStatusCode(400)

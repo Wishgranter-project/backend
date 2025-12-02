@@ -10,6 +10,7 @@ use WishgranterProject\Backend\Controller\PaginationTrait;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Retrieve items from a specific playlist.
@@ -23,14 +24,16 @@ class PlaylistReadItems extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $playlistId = $request->getAttribute('playlist');
-        if (! $this->playlistManager->playlistExists($playlistId)) {
+        if (! $collection->playlistExists($playlistId)) {
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
         }
 
         $results = $this->areFilterParametersPresent($request)
-            ? $this->searchItems($request, $playlistId)
-            : $this->simpleList($request, $playlistId);
+            ? $this->searchItems($request, $collection, $playlistId)
+            : $this->simpleList($request, $collection, $playlistId);
 
         return JsonResource::fromSearchResults($results)
             ->renderResponse();
@@ -41,16 +44,21 @@ class PlaylistReadItems extends CollectionController
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $collection
+     *   The user's collection.
      * @param string $playlistId
      *   The id of the playlist.
      *
      * @return WishgranterProject\Backend\Helper\SearchResults
      *   Search results.
      */
-    protected function simpleList(ServerRequestInterface $request, string $playlistId): SearchResults
-    {
+    protected function simpleList(
+        ServerRequestInterface $request,
+        PlaylistManager $collection,
+        string $playlistId
+    ): SearchResults {
         list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
-        $playlist = $this->playlistManager->getPlaylist($playlistId);
+        $playlist = $collection->getPlaylist($playlistId);
         $total    = $playlist->lineCount - 1;
         $pages    = $this->numberPages($total, $itemsPerPage);
         $list     = $playlist->getItems(range($offset, $offset + $limit - 1));
@@ -71,16 +79,21 @@ class PlaylistReadItems extends CollectionController
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $collection
+     *   The user's collection.
      * @param string $playlistId
      *   The id of the playlist.
      *
      * @return WishgranterProject\Backend\Helper\SearchResults
      *   Search results.
      */
-    protected function searchItems(ServerRequestInterface $request, $playlistId): SearchResults
-    {
+    protected function searchItems(
+        ServerRequestInterface $request,
+        PlaylistManager $collection,
+        $playlistId
+    ): SearchResults {
         list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
-        $playlist = $this->playlistManager->getPlaylist($playlistId);
+        $playlist = $collection->getPlaylist($playlistId);
 
         $search = $playlist->search();
 

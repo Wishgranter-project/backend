@@ -15,6 +15,10 @@ body:multipart-form {
   title: Nek Militema ( updated )
 }
 
+assert {
+  res.status: eq 404
+}
+
 settings {
   encodeUrl: true
   timeout: 0

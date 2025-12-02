@@ -16,6 +16,10 @@ body:multipart-form {
   genre: Metal
 }
 
+assert {
+  res.status: eq 200
+}
+
 settings {
   encodeUrl: true
   timeout: 0
