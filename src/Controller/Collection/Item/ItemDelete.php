@@ -19,14 +19,16 @@ class ItemDelete extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $uuid = $request->getAttribute('itemUuid');
-        $item = $this->playlistManager->findItemByUuid($uuid, $playlistId);
+        $item = $collection->findItemByUuid($uuid, $playlistId);
 
         if (!$item) {
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
-        $playlist = $this->playlistManager->getPlaylist($playlistId);
+        $playlist = $collection->getPlaylist($playlistId);
         $playlist->deleteItem($item);
 
         $data = $this->describer->describe($item);

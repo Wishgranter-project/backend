@@ -15,6 +15,10 @@ body:multipart-form {
   description: hyeha!
 }
 
+assert {
+  res.status: eq 200
+}
+
 settings {
   encodeUrl: true
   timeout: 0

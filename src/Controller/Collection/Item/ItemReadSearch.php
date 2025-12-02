@@ -68,7 +68,9 @@ class ItemReadSearch extends CollectionController
      */
     protected function search(ServerRequestInterface $request): array
     {
-        $search = $this->playlistManager->search();
+        $collection = $this->getCollection($request);
+
+        $search = $collection->search();
 
         if ($request->get('playlist')) {
             $search->playlists($request->get('playlist'));

@@ -2,47 +2,38 @@
 
 namespace WishgranterProject\Backend\Controller\Discover;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Helper\SearchResults;
+use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Service\Discography;
 use WishgranterProject\Backend\Service\ServicesManager;
-use WishgranterProject\Backend\Service\Describer;
 
 /**
  * Searches for artists by name.
  */
-class DiscoverArtists extends ControllerBase
+class DiscoverArtists extends AuthenticatedController
 {
-    /**
-     * The discography service.
-     *
-     * @var WishgranterProject\Backend\Service\Discography
-     */
-    protected Discography $discography;
-
-    /**
-     * The describer service.
-     *
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
     /**
      * Constructor.
      *
+     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     *   Authentication service.
      * @param WishgranterProject\Backend\Service\Discography $discography
      *   The discography service.
      * @param WishgranterProject\Backend\Service\Describer $describer
      *   The describer service.
      */
-    public function __construct(Discography $discography, Describer $describer)
-    {
-        $this->discography = $discography;
-        $this->describer   = $describer;
+    public function __construct(
+        protected AuthenticationInterface $authentication,
+        protected Discography $discography,
+        protected Describer $describer
+    ) {
     }
 
     /**
@@ -52,6 +43,7 @@ class DiscoverArtists extends ControllerBase
     {
         $called = get_called_class();
         return new $called(
+            $servicesManager->get('authentication'),
             $servicesManager->get('discography'),
             $servicesManager->get('describer')
         );
@@ -62,6 +54,8 @@ class DiscoverArtists extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->needsAnUser($request);
+
         $artistName = $request->get('name');
 
         if (empty($artistName) || !is_string($artistName)) {

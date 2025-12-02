@@ -3,4 +3,5 @@ files/cache/*
 files/cache-test/*
 files/playlist-files/*
 files/playlist-files-test/*
+files/users-files/*
 web/configurations.json

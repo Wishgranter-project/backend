@@ -27,9 +27,11 @@ class PlaylistReadList extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
 
-        $all   = $this->playlistManager->getAllPlaylists();
+        $all   = $collection->getAllPlaylists();
         $total = count($all);
         $pages = $this->numberPages($total, $itemsPerPage);
         $list  = array_slice($all, $offset, $limit);

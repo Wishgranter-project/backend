@@ -5,42 +5,16 @@ namespace WishgranterProject\Backend\Controller\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Backend\Authentication\Authentication;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Lists all the artists within the collection.
  */
-class ArtistsList extends ControllerBase
+class ArtistsList extends CollectionController
 {
-    /**
-     * The service to manage playlists.
-     *
-     * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     */
-    protected PlaylistManager $playlistManager;
-
-    /**
-     * Constructor.
-     *
-     * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
-     *   The playlist manager service.
-     */
-    public function __construct(PlaylistManager $playlistManager)
-    {
-        $this->playlistManager = $playlistManager;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
-    {
-        return new self($servicesManager->get('playlistManager'));
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -65,7 +39,7 @@ class ArtistsList extends ControllerBase
     {
         $list = [];
 
-        foreach ($this->playlistManager->getAllPlaylists() as $playlistId => $playlist) {
+        foreach ($this->getCollection($request)->getAllPlaylists() as $playlistId => $playlist) {
             foreach ($playlist->items as $key => $item) {
                 if (! $item->artist) {
                     continue;

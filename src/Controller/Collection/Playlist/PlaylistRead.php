@@ -10,6 +10,9 @@ use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
+/**
+ * Reads a individual playlist.
+ */
 class PlaylistRead extends CollectionController
 {
     /**
@@ -17,15 +20,15 @@ class PlaylistRead extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $playlistId = $request->getAttribute('playlist');
 
-        if (! $this->playlistManager->playlistExists($playlistId)) {
+        if (! $collection->playlistExists($playlistId)) {
             throw new NotFound('Playlist ' . $playlistId . ' does not exist.');
         }
 
-        $playlist = $this->playlistManager->getPlaylist($playlistId);
-
-        $aaa = $request->getHeaderLine('accept');
+        $playlist = $collection->getPlaylist($playlistId);
 
         return $request->getHeaderLine('accept') == 'application/jsonl'
             ? $this->download($request, $handler, $playlist)

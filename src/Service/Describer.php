@@ -9,6 +9,11 @@ use WishgranterProject\Discography\Album;
 use WishgranterProject\AetherMusic\Resource\Resource;
 use WishgranterProject\AetherMusic\Description;
 
+/**
+ * Service to generate flat associative arrays out of different objects.
+ *
+ * @todo Replace this with something better.
+ */
 class Describer
 {
     public static function create(): Describer

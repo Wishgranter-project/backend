@@ -19,8 +19,10 @@ class ItemRead extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $uuid = $request->getAttribute('itemUuid');
-        $item = $this->playlistManager->getItemByUuid($uuid);
+        $item = $collection->getItemByUuid($uuid);
 
         if (!$item) {
             throw new NotFound('Item ' . $playlistId . ' does not exist.');

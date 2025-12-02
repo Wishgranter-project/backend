@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
@@ -13,7 +14,7 @@ use WishgranterProject\Backend\Service\ServicesManager;
 /**
  * Fetches information about a release.
  */
-class ReleaseRead extends ControllerBase
+class ReleaseRead extends AuthenticatedController
 {
     /**
      * The playlist manager.
@@ -59,6 +60,8 @@ class ReleaseRead extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->needsAnUser($request);
+
         $release = $this->getRelease($request);
 
         $data = $this->describer->describe($release);

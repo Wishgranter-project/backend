@@ -9,6 +9,7 @@ use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptivePlaylist\PlaylistItem;
+use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Creates a new playlist item.
@@ -20,6 +21,8 @@ class ItemCreate extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $collection = $this->getCollection($request);
+
         $post = $this->getPostData($request);
 
         $playlistId = $post['playlist'] ?? null;
@@ -28,15 +31,15 @@ class ItemCreate extends CollectionController
         }
         unset($post['playlist']);
 
-        if (!$this->playlistManager->playlistExists($playlistId)) {
+        if (!$collection->playlistExists($playlistId)) {
             throw new \InvalidArgumentException('Playlist ' . $playlistId . ' does not exist');
         }
 
         $uuid = $post['uuid'] ?? null;
 
         $item = $uuid
-            ? $this->createItemByCopying($playlistId, $uuid)
-            : $this->createItemFromScratch($playlistId, $post);
+            ? $this->createItemByCopying($collection, $playlistId, $uuid)
+            : $this->createItemFromScratch($collection, $playlistId, $post);
 
         $data = $this->describer->describe($item);
 
@@ -50,6 +53,8 @@ class ItemCreate extends CollectionController
      *
      * Adds it to the end of the playlist.
      *
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $collection
+     *   The user's collection.
      * @param string $playlistId
      *   The playlist id to add the new item to.
      * @param string $uuid
@@ -58,15 +63,15 @@ class ItemCreate extends CollectionController
      * @return WishgranterProject\DescriptivePlaylist\PlaylistItem
      *   The new playlist item.
      */
-    protected function createItemByCopying(string $playlistId, string $uuid): PlaylistItem
+    protected function createItemByCopying(PlaylistManager $collection, string $playlistId, string $uuid): PlaylistItem
     {
-        $original = $this->playlistManager->getItemByUuid($uuid);
+        $original = $collection->getItemByUuid($uuid);
 
         if (!$original) {
             throw new \InvalidArgumentException('Item ' . $uuid . ' does not exist');
         }
 
-        return $this->playlistManager->addItem($playlistId, $original);
+        return $collection->addItem($playlistId, $original);
     }
 
     /**
@@ -74,6 +79,8 @@ class ItemCreate extends CollectionController
      *
      * Adds it to the end of the playlist.
      *
+     * @param WishgranterProject\DescriptiveManager\PlaylistManager $collection
+     *   The user's collection.
      * @param string $playlistId
      *   The playlist id to add the new item to.
      * @param array $post
@@ -82,7 +89,7 @@ class ItemCreate extends CollectionController
      * @return WishgranterProject\DescriptivePlaylist\PlaylistItem
      *   The new playlist item.
      */
-    protected function createItemFromScratch(string $playlistId, array $post): PlaylistItem
+    protected function createItemFromScratch(PlaylistManager $collection, string $playlistId, array $post): PlaylistItem
     {
         $item = new PlaylistItem();
         foreach ($post as $k => $v) {
@@ -94,6 +101,6 @@ class ItemCreate extends CollectionController
         }
         $item->sanitize();
 
-        return $this->playlistManager->addItem($playlistId, $item);
+        return $collection->addItem($playlistId, $item);
     }
 }

@@ -15,6 +15,10 @@ body:multipart-form {
   playlist: music-metal
 }
 
+assert {
+  res.status: eq 201
+}
+
 settings {
   encodeUrl: true
   timeout: 0
