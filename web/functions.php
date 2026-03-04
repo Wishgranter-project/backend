@@ -11,7 +11,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  */
 function isLocalEnvironment(): bool
 {
-    return isset($_SERVER['HTTP_X_LANDO']);
+    return getenv('IS_DDEV_PROJECT') == 'true';
 }
 
 /**

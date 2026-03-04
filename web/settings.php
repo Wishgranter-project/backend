@@ -10,7 +10,7 @@ $parentDirectory  = File::getParentDirectory($currentDirectory);
 //=============================================================================
 
 $settings['corsAllowedDomain'] = isLocalEnvironment()
-    ? 'player-frontend.lndo.site'
+    ? 'wishgranter-frontend.ddev.site'
     : 'adinancenci.com.br';
 
 define('ROOT_DIR',        $currentDirectory);
