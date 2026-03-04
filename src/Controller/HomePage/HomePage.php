@@ -15,7 +15,7 @@ class HomePage extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        return $this->jsonResource('home page')
+        return $this->jsonResource(['hello' => 'world'])
             ->renderResponse();
     }
 }
