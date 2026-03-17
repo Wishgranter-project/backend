@@ -148,16 +148,16 @@
         },
         {
             "name": "adinan-cenci/json-lines",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/json-lines.git",
-                "reference": "009e0a5a8cfc9992f3be731a2c2ef74b60173845"
+                "reference": "a502f6f8ec02ee342fda27d8f2685eb6699d9af7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/json-lines/zipball/009e0a5a8cfc9992f3be731a2c2ef74b60173845",
-                "reference": "009e0a5a8cfc9992f3be731a2c2ef74b60173845",
+                "url": "https://api.github.com/repos/adinan-cenci/json-lines/zipball/a502f6f8ec02ee342fda27d8f2685eb6699d9af7",
+                "reference": "a502f6f8ec02ee342fda27d8f2685eb6699d9af7",
                 "shasum": ""
             },
             "require": {
@@ -195,9 +195,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/json-lines/issues",
-                "source": "https://github.com/adinan-cenci/json-lines/tree/v3.2.0"
+                "source": "https://github.com/adinan-cenci/json-lines/tree/v3.2.1"
             },
-            "time": "2025-01-27T01:18:35+00:00"
+            "time": "2026-03-17T22:34:02+00:00"
         },
         {
             "name": "adinan-cenci/psr-17",
