@@ -36,3 +36,7 @@ $router->get(   '#api/v1/discover/resources$#',                                '
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\User');
 $router->post(  '#api/v1/login$#',                                             'Login');
 $router->get(   '#api/v1/logout$#',                                            'Logout');
+
+// DEBUG
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Debug');
+$router->get(   '#debug/php-info$#',                                           'PhpInformation');
