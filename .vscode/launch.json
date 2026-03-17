@@ -2,13 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Listen to XDebug",
+      "name": "Listen to XDebug ( ddev )",
       "type": "php",
       "request": "launch",
       "port": 9003,
       "log": false,
       "pathMappings": {
-        "/app/": "${workspaceRoot}/",
+          "/var/www/html/": "${workspaceFolder}/",
       }
     }
   ]
