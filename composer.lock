@@ -105,16 +105,16 @@
         },
         {
             "name": "adinan-cenci/generic-rest-api",
-            "version": "v1.0.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/generic-rest-api.git",
-                "reference": "2aa370fe87247f1fbf78d27b32bd12aa4709bdfe"
+                "reference": "1fbdfae5e31a4625d3737e4c32e1e16948449422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/generic-rest-api/zipball/2aa370fe87247f1fbf78d27b32bd12aa4709bdfe",
-                "reference": "2aa370fe87247f1fbf78d27b32bd12aa4709bdfe",
+                "url": "https://api.github.com/repos/adinan-cenci/generic-rest-api/zipball/1fbdfae5e31a4625d3737e4c32e1e16948449422",
+                "reference": "1fbdfae5e31a4625d3737e4c32e1e16948449422",
                 "shasum": ""
             },
             "require": {
@@ -141,10 +141,10 @@
             ],
             "description": "Generic library to integrate with rest APIs",
             "support": {
-                "source": "https://github.com/adinan-cenci/generic-rest-api/tree/v1.0.0",
+                "source": "https://github.com/adinan-cenci/generic-rest-api/tree/v2.0.0",
                 "issues": "https://github.com/adinan-cenci/generic-rest-api/issues"
             },
-            "time": "2025-06-16T22:50:00+00:00"
+            "time": "2026-03-17T21:10:48+00:00"
         },
         {
             "name": "adinan-cenci/json-lines",
@@ -201,20 +201,20 @@
         },
         {
             "name": "adinan-cenci/psr-17",
-            "version": "v2.1.1",
+            "version": "v2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-17.git",
-                "reference": "f168dc8dfa7dc6ec355546261e33a532a3ba8f71"
+                "reference": "961488f3bd39900cbf703c51cbf5de08edfaa9e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/f168dc8dfa7dc6ec355546261e33a532a3ba8f71",
-                "reference": "f168dc8dfa7dc6ec355546261e33a532a3ba8f71",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/961488f3bd39900cbf703c51cbf5de08edfaa9e9",
+                "reference": "961488f3bd39900cbf703c51cbf5de08edfaa9e9",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/psr-7": "^2.0",
+                "adinan-cenci/psr-7": ">=2.0",
                 "psr/http-factory": "^1.1"
             },
             "require-dev": {
@@ -239,27 +239,28 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/psr-17/issues",
-                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.1"
+                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.2"
             },
-            "time": "2025-06-26T23:48:29+00:00"
+            "time": "2026-03-16T21:56:56+00:00"
         },
         {
             "name": "adinan-cenci/psr-18",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-18.git",
-                "reference": "5b8488b031d18cde815f9de2471544adc95b5edc"
+                "reference": "b2763aaeef75cb2c1d3529c4698aa6f7425d354a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-18/zipball/5b8488b031d18cde815f9de2471544adc95b5edc",
-                "reference": "5b8488b031d18cde815f9de2471544adc95b5edc",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-18/zipball/b2763aaeef75cb2c1d3529c4698aa6f7425d354a",
+                "reference": "b2763aaeef75cb2c1d3529c4698aa6f7425d354a",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/psr-17": ">=1.0",
                 "adinan-cenci/psr-7": ">=1.1.3",
+                "ext-curl": "*",
                 "psr/http-client": "^1.0"
             },
             "require-dev": {
@@ -287,10 +288,10 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/adinan-cenci/psr-18/tree/v1.0.1",
+                "source": "https://github.com/adinan-cenci/psr-18/tree/v1.0.2",
                 "issues": "https://github.com/adinan-cenci/psr-18/issues"
             },
-            "time": "2025-06-12T22:28:56+00:00"
+            "time": "2026-03-17T00:00:17+00:00"
         },
         {
             "name": "adinan-cenci/psr-7",
@@ -714,21 +715,21 @@
         },
         {
             "name": "wishgranter-project/aether-music",
-            "version": "v5.0.4",
+            "version": "v5.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/aether-music.git",
-                "reference": "eca5e925b9bf95567ba4a376945dc638287be528"
+                "reference": "2b80aaf29cb8d91054f581d4355a72c5e7a26b04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/eca5e925b9bf95567ba4a376945dc638287be528",
-                "reference": "eca5e925b9bf95567ba4a376945dc638287be528",
+                "url": "https://api.github.com/repos/Wishgranter-project/aether-music/zipball/2b80aaf29cb8d91054f581d4355a72c5e7a26b04",
+                "reference": "2b80aaf29cb8d91054f581d4355a72c5e7a26b04",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/file-cache": "^2.0",
-                "adinan-cenci/generic-rest-api": "^1.0",
+                "adinan-cenci/generic-rest-api": "^2.0",
                 "adinan-cenci/psr-17": "^2.1",
                 "adinan-cenci/psr-7": "^2.0"
             },
@@ -749,10 +750,10 @@
             ],
             "description": "Eather music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/aether-music/tree/v5.0.4",
+                "source": "https://github.com/Wishgranter-project/aether-music/tree/v5.0.5",
                 "issues": "https://github.com/Wishgranter-project/aether-music/issues"
             },
-            "time": "2025-06-22T12:40:43+00:00"
+            "time": "2026-03-17T21:23:42+00:00"
         },
         {
             "name": "wishgranter-project/descriptive-manager",
@@ -807,16 +808,16 @@
         },
         {
             "name": "wishgranter-project/descriptive-playlist",
-            "version": "v6.1.0",
+            "version": "v6.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/descriptive-playlist.git",
-                "reference": "c71b79cbfdbc6ca313962b235cd0477154a39811"
+                "reference": "c02cecc9fe963a42e22e65119c30f2ef8b94c6dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-playlist/zipball/c71b79cbfdbc6ca313962b235cd0477154a39811",
-                "reference": "c71b79cbfdbc6ca313962b235cd0477154a39811",
+                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-playlist/zipball/c02cecc9fe963a42e22e65119c30f2ef8b94c6dd",
+                "reference": "c02cecc9fe963a42e22e65119c30f2ef8b94c6dd",
                 "shasum": ""
             },
             "require": {
@@ -856,28 +857,28 @@
                 "json-lines"
             ],
             "support": {
-                "source": "https://github.com/Wishgranter-project/descriptive-playlist/tree/v6.1.0",
+                "source": "https://github.com/Wishgranter-project/descriptive-playlist/tree/v6.1.1",
                 "issues": "https://github.com/Wishgranter-project/descriptive-playlist/issues"
             },
-            "time": "2025-01-27T21:06:46+00:00"
+            "time": "2026-03-04T21:53:49+00:00"
         },
         {
             "name": "wishgranter-project/discography",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/discography.git",
-                "reference": "f8d3104a0c92361405f58cbd98dca0644c0e7203"
+                "reference": "d5fc4b46451353cb7bf60249ead8897ca0b98cdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/f8d3104a0c92361405f58cbd98dca0644c0e7203",
-                "reference": "f8d3104a0c92361405f58cbd98dca0644c0e7203",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/d5fc4b46451353cb7bf60249ead8897ca0b98cdc",
+                "reference": "d5fc4b46451353cb7bf60249ead8897ca0b98cdc",
                 "shasum": ""
             },
             "require": {
                 "adinan-cenci/file-cache": "^2.0",
-                "adinan-cenci/generic-rest-api": "^1.0",
+                "adinan-cenci/generic-rest-api": "^2.0",
                 "adinan-cenci/psr-18": "^1.0"
             },
             "type": "library",
@@ -897,19 +898,19 @@
             ],
             "description": "Discography",
             "support": {
-                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.2",
+                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.3",
                 "issues": "https://github.com/Wishgranter-project/discography/issues"
             },
-            "time": "2025-06-22T13:31:03+00:00"
+            "time": "2026-03-17T21:41:59+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
