@@ -19,7 +19,6 @@ class Logout extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-
         $session = Helpers::guidv4();
         $expiration = 1;
 

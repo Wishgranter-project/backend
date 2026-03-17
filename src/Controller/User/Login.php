@@ -53,7 +53,7 @@ class Login extends ControllerBase
 
         $user->addSession($session, $now, $expiration);
 
-        $resource = new JsonResource();
+        $resource = new JsonResource(['session' => $session]);
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
         $response = $response->withAddedCookie('session', $session, $expiration);

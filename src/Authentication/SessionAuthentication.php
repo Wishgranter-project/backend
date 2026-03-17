@@ -14,7 +14,16 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
      */
     public function getUser(ServerRequestInterface $request): ?User
     {
-        $sessionId = $request->getCookieParams()['session'] ?? null;
+        $cookies = $request->getCookieParams();
+
+        $sessionCookie = isset($cookies['session'])
+            ? $cookies['session']
+            : null;
+
+        $sessionId = $sessionCookie ?:
+            $request->getHeaderLine('Authorization') ?:
+            null;
+
         if (!$sessionId) {
             return null;
         }

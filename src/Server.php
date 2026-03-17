@@ -101,7 +101,7 @@ final class Server
     ): ResponseInterface {
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', getCorsAllowedDomain($request, $GLOBALS['settings']));
         $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
-        $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type');
+        $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type, *');
         $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
         return $response;
     }
