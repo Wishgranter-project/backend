@@ -1,17 +1,21 @@
 meta {
-  name: LOGOUT
+  name: SESSION
   type: http
-  seq: 3
+  seq: 4
 }
 
 get {
-  url: {{base_url}}/test/api/v1/logout
+  url: {{base_url}}/test/api/v1/session
   body: none
   auth: inherit
 }
 
+headers {
+  Cookie: session={{session}}
+}
+
 script:post-response {
-  bru.setVar('session', '');
+  
   
 }
 
