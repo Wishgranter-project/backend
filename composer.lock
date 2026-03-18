@@ -201,16 +201,16 @@
         },
         {
             "name": "adinan-cenci/psr-17",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-17.git",
-                "reference": "961488f3bd39900cbf703c51cbf5de08edfaa9e9"
+                "reference": "ab458fbcc84363625dba49fbfd25c85d4358ef4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/961488f3bd39900cbf703c51cbf5de08edfaa9e9",
-                "reference": "961488f3bd39900cbf703c51cbf5de08edfaa9e9",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-17/zipball/ab458fbcc84363625dba49fbfd25c85d4358ef4c",
+                "reference": "ab458fbcc84363625dba49fbfd25c85d4358ef4c",
                 "shasum": ""
             },
             "require": {
@@ -239,9 +239,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/psr-17/issues",
-                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.2"
+                "source": "https://github.com/adinan-cenci/psr-17/tree/v2.1.3"
             },
-            "time": "2026-03-16T21:56:56+00:00"
+            "time": "2026-03-18T20:42:03+00:00"
         },
         {
             "name": "adinan-cenci/psr-18",
