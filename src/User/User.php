@@ -35,32 +35,6 @@ class User implements UserInterface
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function addSession(string $sessionId, $created, $expiration): void
-    {
-        $this->getFile()->addObject([
-            'sessionId' => $sessionId,
-            'created' => $created,
-            'expiration' => $expiration,
-        ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSessions()
-    {
-        $n = 1;
-
-        do {
-            $obj = $this->getFile()->getObject($n);
-            $n++;
-            yield $obj;
-        } while ($obj);
-    }
-
-    /**
      * Return the object to read the user's data.
      *
      * @return AdinanCenci\JsonLines\JsonLines

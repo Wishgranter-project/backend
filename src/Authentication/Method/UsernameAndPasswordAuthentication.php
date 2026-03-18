@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Authentication;
+namespace WishgranterProject\Backend\Authentication\Method;
 
 use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\User\UserInterface;

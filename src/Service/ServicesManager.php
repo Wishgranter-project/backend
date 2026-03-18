@@ -2,7 +2,9 @@
 
 namespace WishgranterProject\Backend\Service;
 
+use WishgranterProject\Backend\Authentication\AuthenticationManager;
 use WishgranterProject\Backend\Helper\Singleton;
+use WishgranterProject\Backend\Session\SessionManager;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\Discography\Discogs\ApiDiscogs;
 use WishgranterProject\Discography\Discogs\Source\SourceDiscogs;
@@ -195,11 +197,22 @@ class ServicesManager extends Singleton
     /**
      * Instantiates the authentication service.
      *
-     * @return WishgranterProject\Backend\Authentication\Authentication
+     * @return WishgranterProject\Backend\Authentication\AuthenticationManager
      *   Authentication service.
      */
     protected function instantiateAuthentication()
     {
-        return new \WishgranterProject\Backend\Authentication\Authentication($this);
+        return new AuthenticationManager($this);
+    }
+
+    /**
+     * Instantiates the session manager service.
+     *
+     * @return WishgranterProject\Backend\Session\SessionManager
+     *   Session manager service.
+     */
+    protected function instantiateSessionManager()
+    {
+        return new SessionManager(\SESSIONS_DIR, $this->get('userManager'));
     }
 }

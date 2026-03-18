@@ -27,6 +27,10 @@ if (!file_exists(CACHE_DIR)) {
     mkdir(CACHE_DIR);
 }
 
+if (!file_exists(SESSIONS_DIR)) {
+    mkdir(SESSIONS_DIR);
+}
+
 //=============================================================================
 
 $server = new Server();

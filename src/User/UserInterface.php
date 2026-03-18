@@ -19,21 +19,4 @@ interface UserInterface
      *   Hash.
      */
     public function getHash(): string;
-
-    /**
-     * Opens a new session for the user.
-     *
-     * @param string $sessionId
-     *   The session id.
-     * @param int $created
-     *   Timestamp.
-     * @param int $expiration
-     *   Timestamp.
-     */
-    public function addSession(string $sessionId, $created, $expiration);
-
-    /**
-     * Iterates through the user's sessions.
-     */
-    public function getSessions();
 }

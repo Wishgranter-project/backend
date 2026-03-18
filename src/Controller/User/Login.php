@@ -9,6 +9,7 @@ use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Session\SessionManagerInterface;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
@@ -19,9 +20,12 @@ class Login extends ControllerBase
      *
      * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
      *   Authentication service.
+     * @param WishgranterProject\Backend\Session\SessionManagerInterface $sessionManager
      */
-    public function __construct(protected AuthenticationInterface $authentication)
-    {
+    public function __construct(
+        protected AuthenticationInterface $authentication,
+        protected SessionManagerInterface $sessionManager
+    ) {
     }
 
     /**
@@ -29,7 +33,10 @@ class Login extends ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        return new Login($servicesManager->get('authentication'));
+        return new Login(
+            $servicesManager->get('authentication'),
+            $servicesManager->get('sessionManager')
+        );
     }
 
     /**
@@ -47,16 +54,13 @@ class Login extends ControllerBase
             throw new \InvalidArgumentException('Username or password incorrect');
         }
 
-        $session = Helpers::guidv4();
-        $now = time();
         $expiration = strtotime('+24 hours');
+        $session = $this->sessionManager->startNewSession($user, $expiration);
 
-        $user->addSession($session, $now, $expiration);
-
-        $resource = new JsonResource(['session' => $session]);
+        $resource = new JsonResource(['session' => $session->getId()]);
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
-        $response = $response->withAddedCookie('session', $session, $expiration);
+        $response = $response->withAddedCookie('session', $session->getId(), $expiration);
 
         return $response;
     }

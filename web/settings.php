@@ -19,3 +19,4 @@ define('LOCAL_FILES_DIR', FILES_DIR . 'local-files/');
 define('CACHE_DIR',       FILES_DIR . 'cache/');
 define('PLAYLISTS_DIR',   FILES_DIR . 'playlist-files/');
 define('USERS_DIR',       FILES_DIR . 'users-files/');
+define('SESSIONS_DIR',    FILES_DIR . 'sessions/');
