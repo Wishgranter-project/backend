@@ -57,6 +57,27 @@ class SessionManager implements SessionManagerInterface
         return $session;
     }
 
+    public function getSessions()
+    {
+        $files = $this->scandir();
+
+        foreach ($files as $file) {
+            yield $this->getSessionFromFile($file);
+        }
+    }
+
+    protected function scandir(): array
+    {
+        $files = array_slice(scandir($this->directory), 2);
+        $dir = $this->directory;
+
+        array_walk($files, function (&$file) use ($dir) {
+            $file = $dir . $file;
+        });
+
+        return $files;
+    }
+
     /**
      * Instantiates a session object from a file.
      *

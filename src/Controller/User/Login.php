@@ -10,6 +10,7 @@ use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Session\SessionManagerInterface;
+use WishgranterProject\Backend\Session\SessionGarbageCollector;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
@@ -21,10 +22,14 @@ class Login extends ControllerBase
      * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\Backend\Session\SessionManagerInterface $sessionManager
+     *   Session manager service.
+     * @param WishgranterProject\Backend\Session\SessionGarbageCollector $sessionGarbageCollector
+     *   Session garbage collector.
      */
     public function __construct(
         protected AuthenticationInterface $authentication,
-        protected SessionManagerInterface $sessionManager
+        protected SessionManagerInterface $sessionManager,
+        protected SessionGarbageCollector $sessionGarbageCollector
     ) {
     }
 
@@ -33,9 +38,12 @@ class Login extends ControllerBase
      */
     public static function instantiate(ServicesManager $servicesManager): ControllerBase
     {
-        return new Login(
+        $class = get_called_class();
+
+        return new $class(
             $servicesManager->get('authentication'),
-            $servicesManager->get('sessionManager')
+            $servicesManager->get('sessionManager'),
+            $servicesManager->get('sessionGarbageCollector')
         );
     }
 
@@ -44,7 +52,12 @@ class Login extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $user = $this->authentication->getMethod('session')->getUser($request);
+        $this->sessionGarbageCollector->cleanUp();
+
+        $user = $this->authentication
+            ->getMethod('session')
+            ->getUser($request);
+
         if ($user) {
             throw new \InvalidArgumentException('You are already logged in');
         }

@@ -17,20 +17,15 @@ use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
  */
 class Session extends Login
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
-    {
-        return new Session($servicesManager->get('authentication'));
-    }
 
     /**
      * {@inheritdoc}
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $user = $this->authentication->getMethod('session')->getUser($request);
+        $user = $this->authentication
+            ->getMethod('session')
+            ->getUser($request);
 
         if ($user) {
             $resource = new JsonResource(null, 200);

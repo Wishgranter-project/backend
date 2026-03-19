@@ -29,7 +29,7 @@ class AuthenticationManager implements AuthenticationInterface
      */
     public function getUser(ServerRequestInterface $request): ?UserInterface
     {
-        foreach ($this->getApplicableMethods() as $method) {
+        foreach ($this->getApplicableMethods($request) as $method) {
             if ($user = $method->getUser($request)) {
                 return $user;
             }

@@ -24,7 +24,9 @@ abstract class BaseAuthenticationMethod implements AuthenticationMethodInterface
      */
     public static function instantiate(ServicesManager $servicesManager): AuthenticationMethodInterface
     {
-        return new (get_called_class())($servicesManager->get('userManager'));
+        return new (get_called_class())(
+            $servicesManager->get('userManager')
+        );
     }
 
     /**
