@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Beginning.
+ */
+
 use WishgranterProject\Backend\Server;
 
 if (! file_exists('../vendor/autoload.php')) {
@@ -29,6 +33,10 @@ if (!file_exists(CACHE_DIR)) {
 
 if (!file_exists(SESSIONS_DIR)) {
     mkdir(SESSIONS_DIR);
+}
+
+if (!file_exists(LOCAL_FILES_DIR)) {
+    mkdir(LOCAL_FILES_DIR);
 }
 
 //=============================================================================

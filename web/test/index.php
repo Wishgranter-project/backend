@@ -23,20 +23,57 @@ if (!file_exists(ROOT_DIR . 'configurations.json')) {
     copy(ROOT_DIR . 'configurations.template.json', ROOT_DIR . 'configurations.json');
 }
 
-if (!file_exists(PLAYLISTS_DIR_TEST)) {
-    mkdir(PLAYLISTS_DIR_TEST);
+if (!file_exists(PLAYLISTS_DIR)) {
+    mkdir(PLAYLISTS_DIR);
 }
 
-if (!file_exists(CACHE_DIR_TEST)) {
-    mkdir(CACHE_DIR_TEST);
+if (!file_exists(CACHE_DIR)) {
+    mkdir(CACHE_DIR);
 }
 
-// Reset the playlist files at every request.
-foreach (scandir(PLAYLISTS_DIR_TEST_TEMPLATES) as $entry) {
-    if (is_file(PLAYLISTS_DIR_TEST_TEMPLATES . $entry)) {
-        copy(PLAYLISTS_DIR_TEST_TEMPLATES . $entry, PLAYLISTS_DIR_TEST . 'adinan/' . $entry);
+if (!file_exists(SESSIONS_DIR)) {
+    mkdir(SESSIONS_DIR);
+}
+
+if (!file_exists(LOCAL_FILES_DIR)) {
+    mkdir(LOCAL_FILES_DIR);
+}
+
+//=============================================================================
+
+function scan_dir($directory): array
+{
+    $entries = array_slice(scandir($directory), 2);
+    array_walk($entries, function (&$entry) use ($directory) {
+        $entry = $directory . $entry;
+    });
+
+    return $entries;
+}
+
+// Reset the test playlist files at every request.
+function copy_files($fromDir, $toDir)
+{
+    $entries = scan_dir($fromDir);
+    foreach ($entries as $entry) {
+        if (is_dir($entry)) {
+            $entry .= '/';
+            $destination = $toDir . basename($entry) . '/';
+            if (!file_exists($destination)) {
+                mkdir($destination);
+            }
+            copy_files($entry, $destination);
+        } else {
+            $destination = $toDir . basename($entry);
+            if (file_exists($destination)) {
+                unlink($destination);
+            }
+            copy($entry, $destination);
+        }
     }
 }
+
+copy_files(PLAYLISTS_DIR_TEST_TEMPLATES, PLAYLISTS_DIR);
 
 //=============================================================================
 

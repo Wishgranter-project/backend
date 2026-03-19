@@ -1,8 +1,9 @@
 vendor/*
 files/cache/*
 files/cache-test/*
-files/playlist-files/*
-files/playlist-files-test/*
-files/users-files/*
-files/sessions/*
+files/playlist/*
+files/playlist-test/*
+files/user/*
+files/session/*
+files/session-test/*
 web/configurations.json

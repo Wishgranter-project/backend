@@ -100,11 +100,7 @@ class ServicesManager extends Singleton
      */
     protected function instantiateCache()
     {
-        $dir = defined('CACHE_DIR_TEST')
-            ? CACHE_DIR_TEST
-            : CACHE_DIR;
-
-        return new Cache($dir);
+        return new Cache(CACHE_DIR);
     }
 
     /**

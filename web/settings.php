@@ -7,16 +7,17 @@ $currentFile      = Server::getCurrentFile();
 $currentDirectory = File::getParentDirectory($currentFile);
 $parentDirectory  = File::getParentDirectory($currentDirectory);
 
+
 //=============================================================================
 
 $settings['corsAllowedDomain'] = isLocalEnvironment()
     ? 'wishgranter-frontend.ddev.site'
     : 'adinancenci.com.br';
 
-define('ROOT_DIR',        $currentDirectory);
-define('FILES_DIR',       $parentDirectory . 'files/');
-define('LOCAL_FILES_DIR', FILES_DIR . 'local-files/');
-define('CACHE_DIR',       FILES_DIR . 'cache/');
-define('PLAYLISTS_DIR',   FILES_DIR . 'playlist-files/');
-define('USERS_DIR',       FILES_DIR . 'users-files/');
-define('SESSIONS_DIR',    FILES_DIR . 'sessions/');
+define('ROOT_DIR',                     $currentDirectory);
+define('FILES_DIR',                    $parentDirectory . 'files/');
+define('LOCAL_FILES_DIR',              FILES_DIR . 'local-medias/');
+define('CACHE_DIR',                    FILES_DIR . 'cache/');
+define('PLAYLISTS_DIR',                FILES_DIR . 'playlist/');
+define('USERS_DIR',                    FILES_DIR . 'user/');
+define('SESSIONS_DIR',                 FILES_DIR . 'session/');

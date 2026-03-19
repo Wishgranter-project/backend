@@ -17,7 +17,6 @@ use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
  */
 class Session extends Login
 {
-
     /**
      * {@inheritdoc}
      */
