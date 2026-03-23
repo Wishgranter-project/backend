@@ -1,7 +1,7 @@
 meta {
-  name: ITEMS - 1: CREATE ( 400 [3] )
+  name: ITEMS - 1: CREATE ( copy )
   type: http
-  seq: 5
+  seq: 2
 }
 
 post {
@@ -11,12 +11,12 @@ post {
 }
 
 body:multipart-form {
-  title: music title
-  playlist: non-existent
+  playlist: music-metal
+  uuid: 0c1a2c95-ec9e-41bb-bc9b-5f64628490cc
 }
 
 assert {
-  res.status: eq 400
+  res.status: eq 201
 }
 
 settings {
