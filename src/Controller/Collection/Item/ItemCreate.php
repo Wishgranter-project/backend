@@ -35,6 +35,10 @@ class ItemCreate extends CollectionController
             throw new \InvalidArgumentException('Playlist ' . $playlistId . ' does not exist');
         }
 
+        while (!$collection->lock()) {
+            // loop until the lock is acquired.
+        }
+
         $uuid = $post['uuid'] ?? null;
 
         $item = $uuid
@@ -42,6 +46,8 @@ class ItemCreate extends CollectionController
             : $this->createItemFromScratch($collection, $playlistId, $post);
 
         $data = $this->describer->describe($item);
+
+        $collection->unlock();
 
         return $this->jsonResource($data, 201)
             ->addSuccess(201, 'Item created')

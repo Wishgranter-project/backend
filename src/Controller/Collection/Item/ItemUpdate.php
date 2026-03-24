@@ -46,10 +46,16 @@ class ItemUpdate extends CollectionController
             }
         }
 
+        while (!$collection->lock()) {
+            // loop until the lock is acquired.
+        }
+
         $item->sanitize();
         $collection->setItem($playlistId, $item, $newPosition);
 
         $data = $this->describer->describe($item);
+
+        $collection->unlock();
 
         return $this->jsonResource($data)
             ->addSuccess(200, 'Item updated sucessfully.')
