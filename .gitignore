@@ -6,4 +6,5 @@ files/playlist-test/*
 files/user/*
 files/session/*
 files/session-test/*
+web/local-medias/*
 web/configurations.json

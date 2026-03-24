@@ -15,8 +15,8 @@ $settings['corsAllowedDomain'] = isLocalEnvironment()
     : 'adinancenci.com.br';
 
 define('ROOT_DIR',                     $parentDirectory);
-define('FILES_DIR',                    $grandParentDirectory . 'files/');
 define('LOCAL_FILES_DIR',              FILES_DIR . 'local-medias-test/');
+define('FILES_DIR',                    $grandParentDirectory . 'files/');
 define('CACHE_DIR',                    FILES_DIR . 'cache-test/');
 define('PLAYLISTS_DIR',                FILES_DIR . 'playlist-test/');
 define('USERS_DIR',                    FILES_DIR . 'user-test/');

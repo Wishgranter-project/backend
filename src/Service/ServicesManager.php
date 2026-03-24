@@ -149,7 +149,7 @@ class ServicesManager extends Singleton
         $youTubeLax  = new SourceYouTubeLax($apiYouTube);
 
         if (file_exists(LOCAL_FILES_DIR)) {
-            $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'http://player-backend.lndo.site:8000/');
+            $localFiles = new SourceLocalFiles(LOCAL_FILES_DIR, 'https://wishgranter-backend.ddev.site/' . basename(LOCAL_FILES_DIR) . '/');
             $aether->addSource($localFiles, 20);
         }
 
