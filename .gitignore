@@ -1,10 +1,10 @@
 vendor/*
-files/cache/*
-files/cache-test/*
-files/playlist/*
-files/playlist-test/*
-files/user/*
-files/session/*
-files/session-test/*
+player-files/*
 web/local-medias/*
 web/configurations.json
+
+player-files-test/*
+!player-files-test/playlist-templates/
+!player-files-test/user-templates/
+web/test/local-medias/*
+web/test/configurations.json

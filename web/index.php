@@ -19,8 +19,8 @@ require '../vendor/autoload.php';
 require 'functions.php';
 require 'settings.php';
 
-if (!file_exists(ROOT_DIR . 'configurations.json')) {
-    copy(ROOT_DIR . 'configurations.template.json', ROOT_DIR . 'configurations.json');
+if (!file_exists(APP_DIR . 'configurations.json')) {
+    copy(APP_DIR . 'configurations.template.json', APP_DIR . 'configurations.json');
 }
 
 if (!file_exists(PLAYLISTS_DIR)) {
@@ -35,8 +35,8 @@ if (!file_exists(SESSIONS_DIR)) {
     mkdir(SESSIONS_DIR);
 }
 
-if (!file_exists(LOCAL_FILES_DIR)) {
-    mkdir(LOCAL_FILES_DIR);
+if (!file_exists(LOCAL_MEDIA_DIR)) {
+    mkdir(LOCAL_MEDIA_DIR);
 }
 
 //=============================================================================
@@ -44,6 +44,6 @@ if (!file_exists(LOCAL_FILES_DIR)) {
 $server = new Server();
 
 /** @var AdinanCenci\Router\Router */
-$router = $server->getRouter(ROOT_DIR . 'routes.php');
+$router = $server->getRouter(APP_DIR . 'routes.php');
 
 $router->run();

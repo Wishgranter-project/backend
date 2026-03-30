@@ -54,13 +54,13 @@ class Configurations extends Singleton
      */
     protected function loadConfig(): array
     {
-        $file = ROOT_DIR . 'configurations.json';
+        $file = APP_DIR . 'configurations.json';
 
         if (!file_exists($file)) {
             return [];
         }
 
-        $json = file_get_contents(ROOT_DIR . 'configurations.json');
+        $json = file_get_contents(APP_DIR . 'configurations.json');
         $data = json_decode($json, true);
 
         return $data;
@@ -74,7 +74,7 @@ class Configurations extends Singleton
      */
     protected function saveConfig(array $data): void
     {
-        $file = ROOT_DIR . 'configurations.json';
+        $file = APP_DIR . 'configurations.json';
 
         $json = json_encode($data);
         file_put_contents($file, $json);

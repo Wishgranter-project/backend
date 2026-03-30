@@ -3,23 +3,28 @@
 use AdinanCenci\Router\Helper\Server;
 use AdinanCenci\Router\Helper\File;
 
-$currentFile      = Server::getCurrentFile();
-$currentDirectory = File::getParentDirectory($currentFile);
-$parentDirectory  = File::getParentDirectory($currentDirectory);
+$currentFile           = Server::getCurrentFile();
+$currentDirectory      = File::getParentDirectory($currentFile);
+$parentDirectory       = File::getParentDirectory($currentDirectory);
 $grandParentDirectory  = File::getParentDirectory($parentDirectory);
 
 //=============================================================================
 
-$settings['corsAllowedDomain'] = isLocalEnvironment()
-    ? 'wishgranter-frontend.ddev.site'
-    : 'adinancenci.com.br';
+define('SERVER_ROOT',                  Server::getServerRoot());
 
-define('ROOT_DIR',                     $parentDirectory);
-define('LOCAL_FILES_DIR',              FILES_DIR . 'local-medias-test/');
-define('FILES_DIR',                    $grandParentDirectory . 'files/');
-define('CACHE_DIR',                    FILES_DIR . 'cache-test/');
-define('PLAYLISTS_DIR',                FILES_DIR . 'playlist-test/');
-define('USERS_DIR',                    FILES_DIR . 'user-test/');
-define('SESSIONS_DIR',                 FILES_DIR . 'session-test/');
+$settings['corsAllowedDomain']         = 'wishgranter-frontend.ddev.site';
+define('APP_DIR',                      $currentDirectory);
+define('PLAYER_FILES_DIR',             File::getParentDirectory(SERVER_ROOT) . 'player-files-test/');
 
-define('PLAYLISTS_DIR_TEST_TEMPLATES', FILES_DIR . 'playlist-test-templates/');
+
+
+
+
+
+define('LOCAL_MEDIA_DIR',              APP_DIR . 'local-medias/');
+define('CACHE_DIR',                    PLAYER_FILES_DIR . 'cache/');
+define('PLAYLISTS_DIR',                PLAYER_FILES_DIR . 'playlist/');
+define('USERS_DIR',                    PLAYER_FILES_DIR . 'user/');
+define('SESSIONS_DIR',                 PLAYER_FILES_DIR . 'session/');
+define('PLAYLISTS_DIR_TEST_TEMPLATES', PLAYER_FILES_DIR . 'playlist-templates/');
+define('USERS_DIR_TEST_TEMPLATES',     PLAYER_FILES_DIR . 'user-templates/');
