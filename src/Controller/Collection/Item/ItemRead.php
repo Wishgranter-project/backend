@@ -25,7 +25,7 @@ class ItemRead extends CollectionController
         $item = $collection->getItemByUuid($uuid);
 
         if (!$item) {
-            throw new NotFound('Item ' . $playlistId . ' does not exist.');
+            throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
         $data = $this->describer->describe($item);
