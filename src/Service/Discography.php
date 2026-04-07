@@ -2,7 +2,7 @@
 
 namespace WishgranterProject\Backend\Service;
 
-use WishgranterProject\Discography\Album;
+use WishgranterProject\Discography\AlbumInterface;
 use WishgranterProject\Backend\Helper\Singleton;
 
 /**
@@ -13,14 +13,14 @@ class Discography extends Singleton
     /**
      * Sources of discographic information.
      *
-     * @var WishgranterProject\Discography\Source\SourceInterface[]
+     * @var WishgranterProject\Discography\SourceInterface[]
      */
     protected array $sources = [];
 
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Discography\Source\SourceInterface[] $sources
+     * @param WishgranterProject\Discography\SourceInterface[] $sources
      *   Sources of discographic information.
      */
     public function __construct(array $sources)
@@ -34,7 +34,7 @@ class Discography extends Singleton
      * @param string $artistName
      *   The name of the artist we are looking for.
      *
-     * @return \WishgranterProject\Discography\Artist[]
+     * @return \WishgranterProject\Discography\ArtistInterface[]
      *   Array of matching artists.
      */
     public function searchForArtist(string $artistName): array
@@ -55,7 +55,7 @@ class Discography extends Singleton
      * @param string $artistName
      *   The name of the artist we are looking for.
      *
-     * @return \WishgranterProject\Discography\Albums[]
+     * @return \WishgranterProject\Discography\AlbumInterface[]
      *   Array of matching albums.
      */
     public function getArtistsAlbums(string $artistName): array
@@ -78,10 +78,10 @@ class Discography extends Singleton
      * @param string $title
      *   The title of the album.
      *
-     * @return \WishgranterProject\Discography\Albums|null
+     * @return \WishgranterProject\Discography\AlbumInterface|null
      *   The album we are looking for.
      */
-    public function getAlbum(string $artistName, string $title): ?Album
+    public function getAlbum(string $artistName, string $title): ?AlbumInterface
     {
         foreach ($this->sources as $id => $source) {
             $album = $source->getAlbum($artistName, $title);

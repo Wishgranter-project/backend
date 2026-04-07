@@ -17,6 +17,14 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/wishgranter-project/discography-discogs"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/wishgranter-project/discography-music-brainz"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/wishgranter-project/aether-music"
         },
         {
@@ -42,9 +50,11 @@
     },
     "require": {
         "wishgranter-project/descriptive-manager": "^2.1",
-        "wishgranter-project/discography": "^2.1",
+        "wishgranter-project/discography": "^3.0",
         "wishgranter-project/aether-music": "^5.0",
         "adinan-cenci/router": "^5.0",
-        "adinan-cenci/file-cache": "^2.0"
+        "adinan-cenci/file-cache": "^2.0",
+        "wishgranter-project/discography-discogs": "^1.0",
+        "wishgranter-project/discography-music-brainz": "^1.0"
     }
 }

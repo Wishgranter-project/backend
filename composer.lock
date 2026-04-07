@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6d5fe89fd16feda2c5abad694fea240",
+    "content-hash": "ed3931a028f22aab75785435ba3aba88",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -864,22 +864,17 @@
         },
         {
             "name": "wishgranter-project/discography",
-            "version": "v2.1.3",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/discography.git",
-                "reference": "d5fc4b46451353cb7bf60249ead8897ca0b98cdc"
+                "reference": "1ff807a14a7c05c97d6a3490272985bb76e7fb52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/d5fc4b46451353cb7bf60249ead8897ca0b98cdc",
-                "reference": "d5fc4b46451353cb7bf60249ead8897ca0b98cdc",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography/zipball/1ff807a14a7c05c97d6a3490272985bb76e7fb52",
+                "reference": "1ff807a14a7c05c97d6a3490272985bb76e7fb52",
                 "shasum": ""
-            },
-            "require": {
-                "adinan-cenci/file-cache": "^2.0",
-                "adinan-cenci/generic-rest-api": "^2.0",
-                "adinan-cenci/psr-18": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -896,12 +891,96 @@
                     "email": "adinancenci@protonmail.com"
                 }
             ],
-            "description": "Discography",
+            "description": "An API to retrieve discography information.",
             "support": {
-                "source": "https://github.com/Wishgranter-project/discography/tree/v2.1.3",
+                "source": "https://github.com/Wishgranter-project/discography/tree/v3.0.0",
                 "issues": "https://github.com/Wishgranter-project/discography/issues"
             },
-            "time": "2026-03-17T21:41:59+00:00"
+            "time": "2026-04-07T22:35:29+00:00"
+        },
+        {
+            "name": "wishgranter-project/discography-discogs",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Wishgranter-project/discography-discogs.git",
+                "reference": "5ef68621806b6079cc11c187a10cd339e8b4fb48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography-discogs/zipball/5ef68621806b6079cc11c187a10cd339e8b4fb48",
+                "reference": "5ef68621806b6079cc11c187a10cd339e8b4fb48",
+                "shasum": ""
+            },
+            "require": {
+                "adinan-cenci/file-cache": "^2.0",
+                "adinan-cenci/generic-rest-api": "^2.0",
+                "adinan-cenci/psr-18": "^1.0",
+                "wishgranter-project/discography": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WishgranterProject\\DiscographyDiscogs\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adinan Cenci",
+                    "email": "adinancenci@protonmail.com"
+                }
+            ],
+            "description": "Discography from discogs",
+            "support": {
+                "source": "https://github.com/Wishgranter-project/discography-discogs/tree/v1.0.0",
+                "issues": "https://github.com/Wishgranter-project/discography-discogs/issues"
+            },
+            "time": "2026-04-07T22:40:04+00:00"
+        },
+        {
+            "name": "wishgranter-project/discography-music-brainz",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:Wishgranter-project/discography-music-brainz.git",
+                "reference": "6524f9798a778c0154767b4955723753f5e89772"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wishgranter-project/discography-music-brainz/zipball/6524f9798a778c0154767b4955723753f5e89772",
+                "reference": "6524f9798a778c0154767b4955723753f5e89772",
+                "shasum": ""
+            },
+            "require": {
+                "adinan-cenci/file-cache": "^2.0",
+                "adinan-cenci/generic-rest-api": "^2.0",
+                "adinan-cenci/psr-18": "^1.0",
+                "wishgranter-project/discography": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WishgranterProject\\DiscographyMusicBrainz\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adinan Cenci",
+                    "email": "adinancenci@protonmail.com"
+                }
+            ],
+            "description": "Discography from MusicBrainz",
+            "support": {
+                "source": "https://github.com/Wishgranter-project/discography-music-brainz/tree/v1.0.0",
+                "issues": "https://github.com/Wishgranter-project/discography-music-brainz/issues"
+            },
+            "time": "2026-04-07T22:55:11+00:00"
         }
     ],
     "packages-dev": [],
