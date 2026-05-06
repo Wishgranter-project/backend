@@ -9,13 +9,12 @@ use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Controller\PaginationTrait;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
-use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Retrieve items from a specific playlist.
  */
-class PlaylistReadItems extends CollectionController
+class ReadPlaylistItems extends CollectionController
 {
     use PaginationTrait;
 
@@ -35,8 +34,7 @@ class PlaylistReadItems extends CollectionController
             ? $this->searchItems($request, $collection, $playlistId)
             : $this->simpleList($request, $collection, $playlistId);
 
-        return JsonResource::fromSearchResults($results)
-            ->renderResponse();
+        return $results->renderResponse();
     }
 
     /**
@@ -57,20 +55,23 @@ class PlaylistReadItems extends CollectionController
         PlaylistManager $collection,
         string $playlistId
     ): SearchResults {
-        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
-        $playlist = $collection->getPlaylist($playlistId);
-        $total    = $playlist->lineCount - 1;
-        $pages    = $this->numberPages($total, $itemsPerPage);
-        $list     = $playlist->getItems(range($offset, $offset + $limit - 1));
-        $count    = count($list);
+
+        list($currentPage, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        $playlist         = $collection->getPlaylist($playlistId);
+        $resultsCount     = $playlist->lineCount - 1;
+        $pagesCount       = $this->countPages($resultsCount, $itemsPerPage);
+        $slice            = $playlist->getItems(range($offset, $offset + $limit - 1));
+        $currentPageCount = count($slice);
+
+        $data = array_map([$this, 'dataTransferItem'], $slice);
 
         return new SearchResults(
-            $list,
-            $count,
-            $page,
-            $pages,
+            $data,
+            $currentPageCount,
+            $currentPage,
+            $pagesCount,
             $itemsPerPage,
-            $total
+            $resultsCount,
         );
     }
 
@@ -92,7 +93,7 @@ class PlaylistReadItems extends CollectionController
         PlaylistManager $collection,
         $playlistId
     ): SearchResults {
-        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        list($currentPage, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
         $playlist = $collection->getPlaylist($playlistId);
 
         $search = $playlist->search();
@@ -117,20 +118,21 @@ class PlaylistReadItems extends CollectionController
             $search->orderBy($request->get('orderBy'), $request->get('order', 'ASC'));
         }
 
-        $results = $search->find();
+        $results          = $search->find();
+        $resultsCount     = count($results);
+        $pagesCount       = $this->countPages($resultsCount, $itemsPerPage);
+        $slice            = array_slice($results, $offset, $limit);
+        $currentPageCount = count($slice);
 
-        $total = count($results);
-        $pages = $this->numberPages($total, $itemsPerPage);
-        $list  = array_slice($results, $offset, $limit);
-        $count = count($list);
+        $data = array_map([$this, 'dataTransferItem'], $slice);
 
         return new SearchResults(
-            $list,
-            $count,
-            $page,
-            $pages,
+            $data,
+            $currentPageCount,
+            $currentPage,
+            $pagesCount,
             $itemsPerPage,
-            $total
+            $resultsCount,
         );
     }
 

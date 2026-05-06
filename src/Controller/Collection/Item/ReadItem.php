@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Helper\JsonResource;
 /**
  * Returns information about a playlist item.
  */
-class ItemRead extends CollectionController
+class ReadItem extends CollectionController
 {
     /**
      * {@inheritdoc}

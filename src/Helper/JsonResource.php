@@ -15,53 +15,32 @@ use AdinanCenci\Psr17\ResponseFactory;
 class JsonResource
 {
     /**
-     * The actual data of the response.
+     * The HTTP status code.
      *
-     * @var array
+     * @var int
      */
-    protected $data       = null;
+    protected int $statusCode = 200;
 
     /**
      * Meta information on the data.
      *
      * @var array
      */
-    protected $meta       = [];
+    protected \stdClass $meta;
 
     /**
-     * The HTTP status code.
-     *
-     * @var int
-     */
-    protected $statusCode = 200;
-
-    /**
-     * Error messages.
+     * Messages.
      *
      * @var array
      */
-    protected $errors     = [];
+    protected array $messages = [];
 
     /**
-     * Warning messages.
+     * The actual data of the response.
      *
-     * @var array
+     * @var mixed
      */
-    protected $warnings   = [];
-
-    /**
-     * Success messages.
-     *
-     * @var array
-     */
-    protected $successes  = [];
-
-    /**
-     * Info messages.
-     *
-     * @var array
-     */
-    protected $infos      = [];
+    protected $data       = null;
 
     /**
      * Constructor.
@@ -75,6 +54,8 @@ class JsonResource
     {
         $this->data       = $data;
         $this->statusCode = $statusCode;
+        $this->meta       = new \stdClass();
+        $this->setMeta('statusCode', $statusCode);
     }
 
     /**
@@ -158,6 +139,22 @@ class JsonResource
     public function setStatusCode(int $statusCode)
     {
         $this->statusCode = $statusCode;
+        $this->setMeta('statusCode', $statusCode);
+        return $this;
+    }
+
+    /**
+     * Sets the metadata.
+     *
+     * @param \stdClass $metaData
+     *   Metadata
+     *
+     * @return self
+     *   Return itself.
+     */
+    public function setMetaData(\stdClass $metaData): JsonResource
+    {
+        $this->meta = $metaData;
         return $this;
     }
 
@@ -174,7 +171,25 @@ class JsonResource
      */
     public function setMeta(string $variable, $value): JsonResource
     {
-        $this->meta[$variable] = $value;
+        $this->meta->{$variable} = $value;
+        return $this;
+    }
+
+    /**
+     * Sets multiple pieces of meta data.
+     *
+     * @param int $meta
+     *   Associative array with the data to set.
+     *
+     * @return self
+     *   Return itself.
+     */
+    public function addMeta(array $meta): JsonResource
+    {
+        foreach ($meta as $variable => $value) {
+            $this->setMeta($variable, $value);
+        }
+
         return $this;
     }
 
@@ -200,16 +215,15 @@ class JsonResource
      *   Code for the message.
      * @param string $title
      *   Title for the message.
-     * @param string|null $datail
+     * @param string|null $description
      *   Details for the message.
      *
      * @return self
      *   Return itself.
      */
-    public function addError(int $code, string $title, ?string $detail = null): JsonResource
+    public function addError(int $code, string $title, ?string $description = null): JsonResource
     {
-        $this->errors[] = $this->createMessage('error', $code, $title, $detail);
-        return $this;
+        return $this->addMessage('error', $code, $title, $description);
     }
 
     /**
@@ -219,16 +233,15 @@ class JsonResource
      *   Code for the message.
      * @param string $title
      *   Title for the message.
-     * @param string|null $datail
+     * @param string|null $description
      *   Details for the message.
      *
      * @return self
      *   Return itself.
      */
-    public function addSuccess(int $code, string $title, ?string $detail = null): JsonResource
+    public function addSuccess(int $code, string $title, ?string $description = null): JsonResource
     {
-        $this->successes[] = $this->createMessage('success', $code, $title, $detail);
-        return $this;
+        return $this->addMessage('success', $code, $title, $description);
     }
 
     /**
@@ -238,16 +251,15 @@ class JsonResource
      *   Code for the message.
      * @param string $title
      *   Title for the message.
-     * @param string|null $datail
+     * @param string|null $description
      *   Details for the message.
      *
      * @return self
      *   Return itself.
      */
-    public function addWarning(int $code, string $title, ?string $detail = null): JsonResource
+    public function addWarning(int $code, string $title, ?string $description = null): JsonResource
     {
-        $this->warnings[] = $this->createMessage('warning', $code, $title, $detail);
-        return $this;
+        return $this->addMessage('warning', $code, $title, $description);
     }
 
     /**
@@ -257,15 +269,35 @@ class JsonResource
      *   Code for the message.
      * @param string $title
      *   Title for the message.
-     * @param string|null $datail
+     * @param string|null $description
      *   Details for the message.
      *
      * @return self
      *   Return itself.
      */
-    public function addInfo(int $code, string $title, ?string $detail = null): JsonResource
+    public function addInfo(int $code, string $title, ?string $description = null): JsonResource
     {
-        $this->infos[] = $this->createMessage('info', $code, $title, $detail);
+        return $this->addMessage('info', $code, $title, $description);
+    }
+
+    /**
+     * Adds a message.
+     *
+     * @param string $type
+     *   Type of the message.
+     * @param int $code
+     *   Code for the message.
+     * @param string $title
+     *   Title for the message.
+     * @param string|null $description
+     *   Details for the message.
+     *
+     * @return self
+     *   Return itself.
+     */
+    public function addMessage(string $type, int $code, string $title, ?string $description = null): JsonResource
+    {
+        $this->messages[] = $this->createMessage($type, $code, $title, $description);
         return $this;
     }
 
@@ -278,22 +310,22 @@ class JsonResource
      *   The code of the message.
      * @param string $title
      *   The title of the message.
-     * @param string|null $detail
+     * @param string|null $description
      *   Further details.
      *
      * @return array
      *   The message structured as an array.
      */
-    protected function createMessage(string $type, int $code, string $title, ?string $detail = null): array
+    protected function createMessage(string $type, int $code, string $title, ?string $description = null): array
     {
         $message = [
-            'type'  => $type,
             'code'  => $code,
+            'type'  => $type,
             'title' => $title,
         ];
 
-        if ($detail) {
-            $message['detail'] = $detail;
+        if ($description) {
+            $message['description'] = $description;
         }
 
         return $message;
@@ -309,20 +341,8 @@ class JsonResource
     {
         $array = [];
 
-        if ($this->errors) {
-            $array['errors'] = $this->errors;
-        }
-
-        if ($this->warnings) {
-            $array['warnings'] = $this->warnings;
-        }
-
-        if ($this->successes) {
-            $array['successes'] = $this->successes;
-        }
-
-        if ($this->infos) {
-            $array['infos'] = $this->infos;
+        if ($this->messages) {
+            $array['messages'] = $this->messages;
         }
 
         if ($this->meta) {
@@ -334,23 +354,5 @@ class JsonResource
         }
 
         return json_encode($array);
-    }
-
-
-    public static function fromSearchResults(SearchResults $searchResult): JsonResource
-    {
-        $describer = ServicesManager::singleton()->get('describer');
-
-        $data = $describer->describeAll($searchResult->items);
-        $resource = new JsonResource($data, 200);
-
-        $resource
-            ->setMeta('total', $searchResult->total)
-            ->setMeta('itemsPerPage', $searchResult->itemsPerPage)
-            ->setMeta('pages', $searchResult->pages)
-            ->setMeta('page', $searchResult->page)
-            ->setMeta('count', $searchResult->count);
-
-        return $resource;
     }
 }

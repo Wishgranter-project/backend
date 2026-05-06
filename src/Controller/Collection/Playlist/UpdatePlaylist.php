@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Helper\JsonResource;
 /**
  * Updates a playlist.
  */
-class PlaylistUpdate extends CollectionController
+class UpdatePlaylist extends CollectionController
 {
     /**
      * {@inheritdoc}

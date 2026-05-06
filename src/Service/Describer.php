@@ -64,7 +64,6 @@ class Describer
         $data = (array) $playlist->getHeader()->getCopyOfTheData();
 
         $data += [
-            'type' => 'playlist',
             'id' => basename($playlist->fileName, '.dpls'),
         ];
 

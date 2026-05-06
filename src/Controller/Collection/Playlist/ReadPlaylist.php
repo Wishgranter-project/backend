@@ -13,7 +13,7 @@ use WishgranterProject\DescriptivePlaylist\Playlist;
 /**
  * Reads a individual playlist.
  */
-class PlaylistRead extends CollectionController
+class ReadPlaylist extends CollectionController
 {
     /**
      * {@inheritdoc}

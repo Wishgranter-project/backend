@@ -9,12 +9,11 @@ use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Controller\PaginationTrait;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
-use WishgranterProject\Backend\Helper\JsonResource;
 
 /**
  * Searches for an item within the entire collection.
  */
-class ItemReadSearch extends CollectionController
+class SearchItems extends CollectionController
 {
     use PaginationTrait;
 
@@ -23,38 +22,25 @@ class ItemReadSearch extends CollectionController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $searchResults = $this->searchItems($request);
+        list($currentPage, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        $items            = $this->search($request);
+        $resultsCount     = count($items);
+        $pagesCount       = $this->countPages($resultsCount, $itemsPerPage);
+        $slice            = array_slice($items, $offset, $limit);
+        $currentPageCount = count($slice);
 
-        return JsonResource::fromSearchResults($searchResults)
-          ->renderResponse();
-    }
+        $data = array_map([$this, 'dataTransferItem'], $slice);
 
-    /**
-     * Returns a page of search results.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     *
-     * @return WishgranterProject\Backend\Helper\SearchResults
-     *   The search results.
-     */
-    protected function searchItems(ServerRequestInterface $request): SearchResults
-    {
-        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
-        $all   = $this->search($request);
-        $total = count($all);
-        $pages = $this->numberPages($total, $itemsPerPage);
-        $list  = array_slice($all, $offset, $limit);
-        $count = count($list);
-
-        return new SearchResults(
-            $list,
-            $count,
-            $page,
-            $pages,
+        $searchResults = new SearchResults(
+            $data,
+            $currentPageCount,
+            $currentPage,
+            $pagesCount,
             $itemsPerPage,
-            $total
+            $resultsCount,
         );
+
+        return $searchResults->renderResponse();
     }
 
     /**

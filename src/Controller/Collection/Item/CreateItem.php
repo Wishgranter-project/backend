@@ -14,7 +14,7 @@ use WishgranterProject\DescriptiveManager\PlaylistManager;
 /**
  * Creates a new playlist item.
  */
-class ItemCreate extends CollectionController
+class CreateItem extends CollectionController
 {
     /**
      * {@inheritdoc}

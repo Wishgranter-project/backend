@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Helper\JsonResource;
 /**
  * Deletes a playlist and all its items.
  */
-class PlaylistDelete extends CollectionController
+class DeletePlaylist extends CollectionController
 {
     /**
      * {@inheritdoc}

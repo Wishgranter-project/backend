@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Helper\JsonResource;
 /**
  * Deletes an item from the collection.
  */
-class ItemDelete extends CollectionController
+class DeleteItem extends CollectionController
 {
     /**
      * {@inheritdoc}

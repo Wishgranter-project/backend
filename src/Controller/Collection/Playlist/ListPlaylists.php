@@ -7,12 +7,13 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Controller\PaginationTrait;
-use WishgranterProject\Backend\Helper\JsonResource;
+use WishgranterProject\Backend\Helper\SearchResults;
+use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
  * Lists the playlists.
  */
-class PlaylistReadList extends CollectionController
+class ListPlaylists extends CollectionController
 {
     // I can't remember why I made this controller paginable.
     use PaginationTrait;
@@ -29,31 +30,31 @@ class PlaylistReadList extends CollectionController
     {
         $collection = $this->getCollection($request);
 
-        list($page, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
+        list($currentPage, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
 
-        $all   = $collection->getAllPlaylists();
-        $total = count($all);
-        $pages = $this->numberPages($total, $itemsPerPage);
-        $list  = array_slice($all, $offset, $limit);
-        $count = count($list);
+        $playlists        = $collection->getAllPlaylists();
+        $resultsCount     = count($playlists);
+        $pagesCount       = $this->countPages($resultsCount, $itemsPerPage);
+        $slice            = array_slice($playlists, $offset, $limit);
+        $currentPageCount = count($slice);
 
         if ($request->getHeaderLine('accept') == 'application/zip') {
-            return $this->download($handler, $list);
+            return $this->download($handler, $slice);
         }
 
-        $data  = [];
-        usort($list, [$this, 'sortPlaylistByTitle']);
-        foreach ($list as $playlistId => $playlist) {
-            $data[] = $this->describer->describe($playlist);
-        }
+        usort($slice, [$this, 'sortPlaylistByTitle']);
+        $data = array_map([$this, 'dataTransferPlaylist'], $slice);
 
-        return $this->jsonResource($data)
-            ->setMeta('total', $total)
-            ->setMeta('itemsPerPage', $itemsPerPage)
-            ->setMeta('pages', $pages)
-            ->setMeta('page', $page)
-            ->setMeta('count', $count)
-            ->renderResponse();
+        $searchResults = new SearchResults(
+            $data,
+            $currentPageCount,
+            $currentPage,
+            $pagesCount,
+            $itemsPerPage,
+            $resultsCount,
+        );
+
+        return $searchResults->renderResponse();
     }
 
     /**
@@ -67,7 +68,7 @@ class PlaylistReadList extends CollectionController
      * @return int
      *   To sort.
      */
-    public function sortPlaylistByTitle($p1, $p2): int
+    public function sortPlaylistByTitle(Playlist $p1, Playlist $p2): int
     {
         if (!$p1->title || !$p2->title) {
             return 0;

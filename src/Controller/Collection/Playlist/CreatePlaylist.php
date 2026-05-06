@@ -12,7 +12,7 @@ use WishgranterProject\DescriptivePlaylist\Playlist;
 /**
  * Creates a new playlist.
  */
-class PlaylistCreate extends CollectionController
+class CreatePlaylist extends CollectionController
 {
     /**
      * {@inheritdoc}

@@ -7,7 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 trait PaginationTrait
 {
     /**
-     * Returns the page number requested for.
+     * Get the page requested for.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
@@ -15,7 +15,7 @@ trait PaginationTrait
      * @return int
      *   The page.
      */
-    protected function getPage(ServerRequestInterface $request): int
+    protected function getCurrentPage(ServerRequestInterface $request): int
     {
         $page = (int) $request->get('page', 1);
         return $page > 0
@@ -55,13 +55,13 @@ trait PaginationTrait
      */
     protected function getPaginationInfo(ServerRequestInterface $request): array
     {
-        $page          = $this->getPage($request);
+        $currentPage   = $this->getCurrentPage($request);
         $itemsPerPage  = $this->getItemsPerPage($request);
-        $offset        = ($page - 1) * $itemsPerPage;
+        $offset        = ($currentPage - 1) * $itemsPerPage;
         $limit         = $itemsPerPage;
 
         return [
-            $page,
+            $currentPage,
             $itemsPerPage,
             $offset,
             $limit,
@@ -79,7 +79,7 @@ trait PaginationTrait
      * @return int
      *   The number of pages.
      */
-    protected function numberPages(int $totalNumberOfResults, int $itemsPerPage): int
+    protected function countPages(int $totalNumberOfResults, int $itemsPerPage): int
     {
         $pages = $totalNumberOfResults ? round($totalNumberOfResults / $itemsPerPage) : 0;
         $pages += $totalNumberOfResults > $itemsPerPage * $pages

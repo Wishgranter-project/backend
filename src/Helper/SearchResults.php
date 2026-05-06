@@ -2,53 +2,14 @@
 
 namespace WishgranterProject\Backend\Helper;
 
+use Psr\Http\Message\ResponseInterface;
+use WishgranterProject\Backend\Helper\JsonResource;
+
 /**
  * Represents paged portion of search results.
  */
 class SearchResults implements \ArrayAccess, \Iterator
 {
-    /**
-     * The actual results.
-     *
-     * @var array
-     */
-    protected array $items;
-
-    /**
-     * How many items are in $items.
-     *
-     * @var int
-     */
-    protected int $count;
-
-    /**
-     * The page $items can be find in.
-     *
-     * @var int
-     */
-    protected int $page;
-
-    /**
-     * How many pages of search results are there.
-     *
-     * @var int
-     */
-    protected int $pages;
-
-    /**
-     * The maximum number of items there should be in a page.
-     *
-     * @var int
-     */
-    protected int $itemsPerPage;
-
-    /**
-     * How many results are there.
-     *
-     * @var int
-     */
-    protected int $total;
-
     /**
      * Internal pointer.
      *
@@ -63,31 +24,26 @@ class SearchResults implements \ArrayAccess, \Iterator
      *
      * @param array $items
      *   The actual results.
-     * @param int $count
+     * @param int $currentPageCount
      *   How many items are in $items.
-     * @param int $page
+     * @param int $currentPage
      *   The page $items can be find in.
-     * @param int $pages
+     * @param int $pagesCount
      *   How many pages of search results are there.
      * @param int $itemsPerPage
      *   The maximum number of items there should be in a page.
-     * @param int $total
+     * @param int $resultsCount
      *   How many results are there.
      */
     public function __construct(
-        array $items,
-        int $count,
-        int $page,
-        int $pages,
-        int $itemsPerPage,
-        int $total
+        protected array $items,
+        protected int $currentPageCount,
+        protected int $currentPage,
+        protected int $pagesCount,
+        protected int $itemsPerPage,
+        protected int $resultsCount
     ) {
-        $this->items        = $items;
-        $this->count        = $count;
-        $this->page         = $page;
-        $this->pages        = $pages;
-        $this->itemsPerPage = $itemsPerPage;
-        $this->total        = $total;
+        $this->items = array_values($items);
     }
 
     public function __get($var)
@@ -176,5 +132,36 @@ class SearchResults implements \ArrayAccess, \Iterator
     public function valid(): bool
     {
         return isset($this->items[$this->pointer]);
+    }
+
+    /**
+     * Renders the search results into a json resource object.
+     *
+     * @return WishgranterProject\Backend\Helper\JsonResource
+     *   Json resource.
+     */
+    public function renderResource(): JsonResource
+    {
+        $resource = new JsonResource($this->items, 200);
+        $resource->addMeta([
+            'resultsCount'     => $this->resultsCount,
+            'itemsPerPage'     => $this->itemsPerPage,
+            'pagesCount'       => $this->pagesCount,
+            'currentPage'      => $this->currentPage,
+            'currentPageCount' => $this->currentPageCount,
+        ]);
+
+        return $resource;
+    }
+
+    /**
+     * Renders the search results into a http response.
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     *   Response object.
+     */
+    public function renderResponse(): ResponseInterface
+    {
+        return $this->renderResource()->renderResponse();
     }
 }

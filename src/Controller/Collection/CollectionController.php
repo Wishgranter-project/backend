@@ -10,6 +10,8 @@ use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\CollectionManager;
 use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
+use WishgranterProject\DescriptivePlaylist\Playlist;
+use WishgranterProject\DescriptivePlaylist\PlaylistItem;
 
 /**
  * Base collection controller.
@@ -49,5 +51,35 @@ abstract class CollectionController extends AuthenticatedController
     {
         $user = $this->needsAnUser($request);
         return $this->collectionManager->getCollection($user);
+    }
+
+    /**
+     * Generates a data transfer object out of a given playlist.
+     *
+     * @param WishgranterProject\DescriptivePlaylist\Playlist $playlist
+     *   A playlist object.
+     *
+     * @return \stdClass
+     *   Data for transfer.
+     */
+    protected function dataTransferPlaylist(Playlist $playlist): \stdClass
+    {
+        $data = $playlist->getHeader()->getCopyOfTheData();
+        $data->id = basename($playlist->fileName, '.dpls');
+        return $data;
+    }
+
+    /**
+     * Generates a data transfer object out of a given playlist item.
+     *
+     * @param WishgranterProject\DescriptivePlaylist\PlaylistItem $playlistItem
+     *   A playlist object.
+     *
+     * @return \stdClass
+     *   Data for transfer.
+     */
+    protected function dataTransferItem($playlistItem): \stdClass
+    {
+        return $playlistItem->getCopyOfTheData();
     }
 }
