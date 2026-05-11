@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend;
+namespace WishgranterProject\Backend\Server;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -11,6 +11,7 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Exception\Unauthorized;
 use WishgranterProject\Backend\Service\ServicesManager;
+use AdinanCenci\Router\Caller\Handler\ObjectAndMethodHandler;
 
 final class Server
 {
@@ -25,9 +26,8 @@ final class Server
      */
     public function getRouter(string $routes): Router
     {
-        $instantiator = new ControllerInstantiator(ServicesManager::singleton());
-        $caller       = DefaultCaller::withDefaultHandlers($instantiator);
-        $router       = new Router(null, null, null, $caller);
+        $caller = $this->getCaller();
+        $router = new Router(null, null, null, $caller);
         $router->setNotFoundHandler([$this, 'handleNotFoundError']);
         $router->setExceptionHandler([$this, 'handleException']);
         // CORS Pre-flight.
@@ -176,5 +176,31 @@ final class Server
 
         return $resource
             ->renderResponse();
+    }
+
+    /**
+     * Returns our caller.
+     *
+     * The object that will invoke our routes callbacks.
+     *
+     * @return AdinanCenci\Router\Caller\CallerInterface
+     *   The caller.
+     */
+    protected function getCaller()
+    {
+        $instantiator = new CustomControllerInstantiator(ServicesManager::singleton());
+
+        $handlers = [
+            new CustomClassHandler($instantiator),
+            //new ClousureHandler(),
+            //new FileHandler(),
+            //new FunctionHandler(),
+            //new MethodHandler($instantiator),
+            new ObjectAndMethodHandler(),
+            //new ObjectHandler(),
+            //new StaticMethodHandler(),
+        ];
+
+        return new DefaultCaller($handlers);
     }
 }

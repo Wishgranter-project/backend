@@ -60,8 +60,6 @@ class ReleaseRead extends AuthenticatedController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->needsAnUser($request);
-
         $release = $this->getRelease($request);
 
         $data = $this->describer->describe($release);

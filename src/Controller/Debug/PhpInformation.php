@@ -24,8 +24,6 @@ class PhpInformation extends AuthenticatedController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->needsAnUser($request);
-
         ob_start();
         phpinfo();
         $html = ob_get_contents();

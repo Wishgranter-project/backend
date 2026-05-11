@@ -4,7 +4,7 @@
  * This file is intended for testing.
  */
 
-use WishgranterProject\Backend\Server;
+use WishgranterProject\Backend\Server\Server;
 
 if (! file_exists('../../vendor/autoload.php')) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);

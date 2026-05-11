@@ -12,6 +12,7 @@ use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 use WishgranterProject\DescriptivePlaylist\PlaylistItem;
+use WishgranterProject\Backend\Access\AccessResultInterface;
 
 /**
  * Base collection controller.
@@ -49,8 +50,26 @@ abstract class CollectionController extends AuthenticatedController
 
     public function getCollection(ServerRequestInterface $request)
     {
-        $user = $this->needsAnUser($request);
+        $user = $this->getUser($request);
         return $this->collectionManager->getCollection($user);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAccess(ServerRequestInterface $request): AccessResultInterface
+    {
+        $user = $this->getUser($request);
+        if (!$user) {
+            return $this->accessForbidden();
+        }
+
+        $owner = $request->getAttribute('userName');
+
+        // Rather basic logic, can be spanded if needed.
+        return $owner == $user->getUsername()
+            ? $this->accessGranted()
+            : $this->accessUnauthorized('You are not allowed to access this user\'s collection');
     }
 
     /**

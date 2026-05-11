@@ -7,9 +7,12 @@ use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Exception\Unauthorized;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\User\User;
+use WishgranterProject\Backend\Access\AccessResultInterface;
 
 abstract class AuthenticatedController extends ControllerBase
 {
+    protected $user = false;
+
     /**
      * Constructor.
      *
@@ -31,35 +34,30 @@ abstract class AuthenticatedController extends ControllerBase
     /**
      * Retrieves the current user.
      *
-     * @param Psr\Http\Message\ServerRequestInterface $request
+     * @param null|Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
      *
      * @return null|WishgranterProject\Backend\User\User
-     *   The user.
+     *   The user, NULL if no user can be matched.
      */
-    public function getUser(ServerRequestInterface $request): ?User
+    public function getUser(?ServerRequestInterface $request): ?User
     {
-        return $this->authentication->getUser($request);
+        if ($this->user === false) {
+            $this->user = $this->authentication->getUser($request);
+        }
+
+        return $this->user;
     }
 
     /**
-     * Retrieves the current user.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     *
-     * @return null|WishgranterProject\Backend\User\User
-     *   The user.
+     * {@inheritdoc}
      */
-    public function needsAnUser(
-        ServerRequestInterface $request,
-        string $message = 'You are unauthorized to access this page'
-    ): ?User {
+    public function getAccess(ServerRequestInterface $request): AccessResultInterface
+    {
         $user = $this->getUser($request);
-        if (!$user) {
-            throw new Unauthorized($message);
-        }
 
-        return $user;
+        return $user
+            ? $this->accessGranted()
+            : $this->accessForbidden();
     }
 }

@@ -31,10 +31,10 @@ interface AuthenticationInterface
     public function getApplicableMethods(ServerRequestInterface $request): array;
 
     /**
-     * Given a name, returns the matching authentication method.
+     * Given a machine name, returns the respective authentication method.
      *
      * @param string $methodName
-     *   The name of the method.
+     *   The method's machine name.
      *
      * @return null|WishgranterProject\Backend\Authentication\Method\AuthenticationMethodInterface
      *   Authentication method.

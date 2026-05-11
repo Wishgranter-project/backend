@@ -54,8 +54,6 @@ class DiscoverArtists extends AuthenticatedController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->needsAnUser($request);
-
         $artistName = $request->get('name');
 
         if (empty($artistName) || !is_string($artistName)) {

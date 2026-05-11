@@ -54,8 +54,6 @@ class DiscoverResources extends AuthenticatedController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->needsAnUser($request);
-
         $description = $this->buildDescription($request);
         $search      = $this->aether->search($description);
         $search->addDefaultCriteria();

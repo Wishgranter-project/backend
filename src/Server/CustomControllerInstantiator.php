@@ -1,16 +1,16 @@
 <?php
 
-namespace WishgranterProject\Backend;
+namespace WishgranterProject\Backend\Server;
 
 use AdinanCenci\Router\Instantiator\InstantiatorInterface;
 use WishgranterProject\Backend\Service\ServicesManager;
 
 /**
- * Instantiates the controllers.
+ * Custom class to instantiate the controllers.
  *
- * For the router, enables dependency injection.
+ * For the router object, allow us to implement dependency injection.
  */
-class ControllerInstantiator implements InstantiatorInterface
+class CustomControllerInstantiator implements InstantiatorInterface
 {
     /**
      * Service manager.
