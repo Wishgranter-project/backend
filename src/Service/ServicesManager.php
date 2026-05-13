@@ -85,11 +85,7 @@ class ServicesManager extends Singleton
      */
     protected function instantiateCollectionManager()
     {
-        $dir = defined('PLAYLISTS_DIR_TEST')
-            ? PLAYLISTS_DIR_TEST
-            : PLAYLISTS_DIR;
-
-        return new CollectionManager($dir);
+        return new CollectionManager(DIR_COLLECTIONS);
     }
 
     /**
@@ -100,7 +96,7 @@ class ServicesManager extends Singleton
      */
     protected function instantiateCache()
     {
-        return new Cache(CACHE_DIR);
+        return new Cache(DIR_CACHE);
     }
 
     /**
@@ -137,8 +133,8 @@ class ServicesManager extends Singleton
         $youTube     = new SourceYouTube($apiYouTube);
         $youTubeLax  = new SourceYouTubeLax($apiYouTube);
 
-        if (file_exists(LOCAL_MEDIA_DIR)) {
-            $localFiles = new SourceLocalFiles(LOCAL_MEDIA_DIR, 'https://wishgranter-backend.ddev.site/' . basename(LOCAL_MEDIA_DIR) . '/');
+        if (file_exists(DIR_LOCAL_MEDIA)) {
+            $localFiles = new SourceLocalFiles(DIR_LOCAL_MEDIA, 'https://wishgranter-backend.ddev.site/' . basename(DIR_LOCAL_MEDIA) . '/');
             $aether->addSource($localFiles, 20);
         }
 
@@ -177,7 +173,7 @@ class ServicesManager extends Singleton
      */
     protected function instantiateUserManager()
     {
-        return new UserManager(\USERS_DIR);
+        return new UserManager(\DIR_USERS);
     }
 
     /**
@@ -199,7 +195,7 @@ class ServicesManager extends Singleton
      */
     protected function instantiateSessionManager()
     {
-        return new SessionManager(\SESSIONS_DIR, $this->get('userManager'));
+        return new SessionManager(\DIR_SESSIONS, $this->get('userManager'));
     }
 
     /**

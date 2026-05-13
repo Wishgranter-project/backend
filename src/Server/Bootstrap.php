@@ -10,24 +10,24 @@ abstract class Bootstrap
     {
         require $settingsFile;
 
-        if (!file_exists(APP_DIR . 'configurations.json')) {
-            copy(APP_DIR . 'configurations.template.json', APP_DIR . 'configurations.json');
+        if (!file_exists(DIR_APP . 'configurations.json')) {
+            copy(DIR_APP . 'configurations.template.json', DIR_APP . 'configurations.json');
         }
 
-        if (!file_exists(PLAYLISTS_DIR)) {
-            mkdir(PLAYLISTS_DIR);
+        if (!file_exists(DIR_COLLECTIONS)) {
+            mkdir(DIR_COLLECTIONS, 0777, true);
         }
 
-        if (!file_exists(CACHE_DIR)) {
-            mkdir(CACHE_DIR);
+        if (!file_exists(DIR_CACHE)) {
+            mkdir(DIR_CACHE, 0777, true);
         }
 
-        if (!file_exists(SESSIONS_DIR)) {
-            mkdir(SESSIONS_DIR);
+        if (!file_exists(DIR_SESSIONS)) {
+            mkdir(DIR_SESSIONS, 0777, true);
         }
 
-        if (!file_exists(LOCAL_MEDIA_DIR)) {
-            mkdir(LOCAL_MEDIA_DIR);
+        if (!file_exists(DIR_LOCAL_MEDIA)) {
+            mkdir(DIR_LOCAL_MEDIA, 0777, true);
         }
     }
 

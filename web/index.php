@@ -24,5 +24,5 @@ Bootstrap::bootstrap('settings.php');
 //=============================================================================
 
 $server = new Server();
-$router = $server->getRouter(APP_DIR . 'routes.php');
+$router = $server->getRouter(DIR_APP . 'routes.php');
 $router->run();

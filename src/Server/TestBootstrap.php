@@ -10,8 +10,8 @@ abstract class TestBootstrap extends Bootstrap
     {
         parent::bootstrap($settingsFile);
 
-        self::copyFiles(PLAYLISTS_DIR_TEST_TEMPLATES, PLAYLISTS_DIR);
-        self::copyFiles(USERS_DIR_TEST_TEMPLATES,     USERS_DIR);
+        self::copyFiles(DIR_TEST_COLLECTIONS_TEMPLATES, DIR_COLLECTIONS);
+        self::copyFiles(DIR_TEST_USERS_TEMPLATES,     DIR_USERS);
     }
 
     public static function scanDir($directory): array

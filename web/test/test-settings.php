@@ -8,16 +8,18 @@ $currentDirectory      = File::getParentDirectory($currentFile);
 
 //=============================================================================
 
-define('SERVER_ROOT',                  Server::getServerRoot());
+$settings['corsAllowedDomain']           = 'wishgranter-frontend.ddev.site';
 
-$settings['corsAllowedDomain']         = 'wishgranter-frontend.ddev.site';
-define('APP_DIR',                      $currentDirectory);
-define('PLAYER_FILES_DIR',             File::getParentDirectory(SERVER_ROOT) . 'player-files-test/');
 
-define('LOCAL_MEDIA_DIR',              APP_DIR . 'local-medias/');
-define('CACHE_DIR',                    PLAYER_FILES_DIR . 'cache/');
-define('PLAYLISTS_DIR',                PLAYER_FILES_DIR . 'playlist/');
-define('USERS_DIR',                    PLAYER_FILES_DIR . 'user/');
-define('SESSIONS_DIR',                 PLAYER_FILES_DIR . 'session/');
-define('PLAYLISTS_DIR_TEST_TEMPLATES', PLAYER_FILES_DIR . 'playlist-templates/');
-define('USERS_DIR_TEST_TEMPLATES',     PLAYER_FILES_DIR . 'user-templates/');
+
+define('DIR_PUBLIC',                     Server::getServerRoot());
+define('DIR_APP',                        $currentDirectory);
+define('DIR_PRIVATE',                    File::getParentDirectory(DIR_PUBLIC) . 'private/');
+define('DIR_PLAYER_FILES',               DIR_PRIVATE . 'player-files-test/');
+define('DIR_LOCAL_MEDIA',                DIR_APP . 'local-medias/');
+define('DIR_CACHE',                      DIR_PLAYER_FILES . 'cache/');
+define('DIR_COLLECTIONS',                DIR_PLAYER_FILES . 'collection/');
+define('DIR_USERS',                      DIR_PLAYER_FILES . 'user/');
+define('DIR_SESSIONS',                   DIR_PLAYER_FILES . 'session/');
+define('DIR_TEST_COLLECTIONS_TEMPLATES', DIR_PLAYER_FILES . 'collection-templates/');
+define('DIR_TEST_USERS_TEMPLATES',       DIR_PLAYER_FILES . 'user-templates/');
