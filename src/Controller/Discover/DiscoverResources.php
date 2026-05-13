@@ -13,7 +13,6 @@ use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
-use WishgranterProject\Backend\Service\Describer;
 
 /**
  * Given the description of a music, searches for playable media.
@@ -27,13 +26,10 @@ class DiscoverResources extends AuthenticatedController
      *   Authentication service.
      * @param WishgranterProject\AetherMusic\Aether $aether
      *   The aether service.
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     *   The describer service.
      */
     public function __construct(
         protected AuthenticationInterface $authentication,
         protected Aether $aether,
-        protected Describer $describer
     ) {
     }
 
@@ -45,7 +41,6 @@ class DiscoverResources extends AuthenticatedController
         return new self(
             $servicesManager->get('authentication'),
             $servicesManager->get('aether'),
-            $servicesManager->get('describer')
         );
     }
 
@@ -62,11 +57,11 @@ class DiscoverResources extends AuthenticatedController
 
         $data = [];
         foreach ($searchResults as $item) {
-            $data[] = $this->describer->describe($item->resource);
+            $data[] = $item->resource->toArray();
         }
 
         $debug = [
-            'description' => $this->describer->describe($description)
+            'description' => $description->toArray()
         ];
 
         return $this->jsonResource($data)

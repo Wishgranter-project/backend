@@ -43,7 +43,7 @@ class UpdatePlaylist extends CollectionController
 
         $playlist->setHeader($header);
 
-        $data = $this->describer->describe($playlist);
+        $data = $this->dataTransferPlaylist($playlist);
 
         return $this->jsonResource($data)
             ->addSuccess(200, 'Changes saved')

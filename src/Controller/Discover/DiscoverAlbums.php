@@ -23,9 +23,23 @@ class DiscoverAlbums extends DiscoverArtists
         }
 
         $searchResults = $this->discography->getArtistsAlbums($artistName);
-        $array         = $this->describer->describeAll($searchResults);
+        $data          = array_map([$this, 'dataTransferAlbum'], $searchResults);
 
-        return $this->jsonResource($array)
+        return $this->jsonResource($data)
             ->renderResponse();
+    }
+
+    /**
+     * Generates a data transfer object out of a given album object.
+     *
+     * @param WishgranterProject\Discography\AlbumInterface $album
+     *   An album object.
+     *
+     * @return array
+     *   Data for transfer.
+     */
+    protected function dataTransferAlbum($album): array
+    {
+        return $album->toArray();
     }
 }

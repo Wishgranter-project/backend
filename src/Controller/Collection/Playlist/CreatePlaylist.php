@@ -44,7 +44,7 @@ class CreatePlaylist extends CollectionController
             throw $e;
         }
 
-        $data = $this->describer->describe($playlist);
+        $data = $this->dataTransferItem($playlist);
 
         return $this->jsonResource($data, 201)
             ->addSuccess(201, 'Playlist created')

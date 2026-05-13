@@ -53,7 +53,7 @@ class UpdateItem extends CollectionController
         $item->sanitize();
         $collection->setItem($playlistId, $item, $newPosition);
 
-        $data = $this->describer->describe($item);
+        $data = $this->dataTransferItem($item);
 
         $collection->unlock();
 

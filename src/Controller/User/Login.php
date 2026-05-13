@@ -70,7 +70,7 @@ class Login extends ControllerBase
         $expiration = strtotime('+24 hours');
         $session = $this->sessionManager->startNewSession($user, $expiration);
 
-        $resource = new JsonResource(['session' => $session->getId()]);
+        $resource = new JsonResource(['session' => $session->getId()], 200);
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
         $response = $response->withAddedCookie('session', $session->getId(), $expiration);

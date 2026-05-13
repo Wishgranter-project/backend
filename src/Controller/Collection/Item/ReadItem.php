@@ -28,7 +28,7 @@ class ReadItem extends CollectionController
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
-        $data = $this->describer->describe($item);
+        $data = $this->dataTransferItem($item);
 
         return $this->jsonResource($data)
             ->renderResponse();

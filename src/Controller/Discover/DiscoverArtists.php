@@ -10,7 +10,6 @@ use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Helper\SearchResults;
-use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Service\Discography;
 use WishgranterProject\Backend\Service\ServicesManager;
 
@@ -26,13 +25,10 @@ class DiscoverArtists extends AuthenticatedController
      *   Authentication service.
      * @param WishgranterProject\Backend\Service\Discography $discography
      *   The discography service.
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     *   The describer service.
      */
     public function __construct(
         protected AuthenticationInterface $authentication,
         protected Discography $discography,
-        protected Describer $describer
     ) {
     }
 
@@ -45,7 +41,6 @@ class DiscoverArtists extends AuthenticatedController
         return new $called(
             $servicesManager->get('authentication'),
             $servicesManager->get('discography'),
-            $servicesManager->get('describer')
         );
     }
 
@@ -61,9 +56,23 @@ class DiscoverArtists extends AuthenticatedController
         }
 
         $searchResults = $this->discography->searchForArtist($artistName);
-        $array         = $this->describer->describeAll($searchResults);
+        $data          = array_map([$this, 'dataTransferArtist'], $searchResults);
 
-        return $this->jsonResource($array)
+        return $this->jsonResource($data)
             ->renderResponse();
+    }
+
+    /**
+     * Generates a data transfer object out of a given artist object.
+     *
+     * @param WishgranterProject\Discography\ArtistInterface $artist
+     *   An artist object.
+     *
+     * @return array
+     *   Data for transfer.
+     */
+    protected function dataTransferArtist($artist): array
+    {
+        return $artist->toArray();
     }
 }

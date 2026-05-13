@@ -45,7 +45,7 @@ class CreateItem extends CollectionController
             ? $this->createItemByCopying($collection, $playlistId, $uuid)
             : $this->createItemFromScratch($collection, $playlistId, $post);
 
-        $data = $this->describer->describe($item);
+        $data = $this->dataTransferItem($item);
 
         $collection->unlock();
 

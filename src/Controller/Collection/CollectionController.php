@@ -8,7 +8,6 @@ use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\Service\CollectionManager;
-use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 use WishgranterProject\DescriptivePlaylist\PlaylistItem;
@@ -26,13 +25,10 @@ abstract class CollectionController extends AuthenticatedController
      *   Authentication service.
      * @param WishgranterProject\Backend\Service\CollectionManager $collectionManager
      *   Collection manager service.
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     *   The describer service.
      */
     public function __construct(
         protected AuthenticationInterface $authentication,
-        protected CollectionManager $collectionManager,
-        protected Describer $describer
+        protected CollectionManager $collectionManager
     ) {
     }
 
@@ -43,15 +39,8 @@ abstract class CollectionController extends AuthenticatedController
     {
         return new (get_called_class())(
             $servicesManager->get('authentication'),
-            $servicesManager->get('collectionManager'),
-            $servicesManager->get('describer')
+            $servicesManager->get('collectionManager')
         );
-    }
-
-    public function getCollection(ServerRequestInterface $request)
-    {
-        $user = $this->getUser($request);
-        return $this->collectionManager->getCollection($user);
     }
 
     /**
@@ -70,6 +59,23 @@ abstract class CollectionController extends AuthenticatedController
         return $owner == $user->getUsername()
             ? $this->accessGranted()
             : $this->accessUnauthorized('You are not allowed to access this user\'s collection');
+    }
+
+    /**
+     * Returns the collection of the user's referenced in the request.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return null|WishgranterProject\DescriptiveManager\PlaylistManager
+     *   The user's
+     */
+    public function getCollection(ServerRequestInterface $request): ?PlaylistManager
+    {
+        $user = $this->getUser($request);
+        return $user
+            ? $this->collectionManager->getCollection($user)
+            : null;
     }
 
     /**

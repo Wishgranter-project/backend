@@ -31,7 +31,7 @@ class DeleteItem extends CollectionController
         $playlist = $collection->getPlaylist($playlistId);
         $playlist->deleteItem($item);
 
-        $data = $this->describer->describe($item);
+        $data = $this->dataTransferItem($item);
 
         return $this->jsonResource()
             ->addSuccess(200, 'Item deleted')

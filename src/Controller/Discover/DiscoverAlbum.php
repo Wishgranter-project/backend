@@ -20,7 +20,7 @@ class DiscoverAlbum extends DiscoverArtists
         $artistName = $request->get('artist');
         $albumTitle = $request->get('title');
         $album      = $this->discography->getAlbum($artistName, $albumTitle);
-        $data       = $this->describer->describe($album);
+        $data       = $album->toArray();
 
         return $this->jsonResource($data)
             ->renderResponse();

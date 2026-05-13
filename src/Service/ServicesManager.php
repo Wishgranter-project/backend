@@ -122,17 +122,6 @@ class ServicesManager extends Singleton
     }
 
     /**
-     * Instantiates the describer service.
-     *
-     * @return WishgranterProject\Backend\Service\Describer
-     *   The describer service.
-     */
-    protected function instantiateDescriber()
-    {
-        return Describer::create();
-    }
-
-    /**
      * Instantiates the service to find playable media.
      *
      * @return WishgranterProject\AetherMusic\Aether

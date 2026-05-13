@@ -7,7 +7,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
-use WishgranterProject\Backend\Service\Describer;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServicesManager;
 
@@ -17,31 +16,13 @@ use WishgranterProject\Backend\Service\ServicesManager;
 class ReleaseRead extends AuthenticatedController
 {
     /**
-     * The playlist manager.
-     *
-     * @var WishgranterProject\DescriptiveManager\PlaylistManager
-     */
-    protected PlaylistManager $playlistManager;
-
-    /**
-     * The describer service.
-     *
-     * @var WishgranterProject\Backend\Service\Describer
-     */
-    protected Describer $describer;
-
-    /**
      * Constructor.
      *
      * @param WishgranterProject\DescriptiveManager\PlaylistManager $playlistManager
      *   The playlist manager.
-     * @param WishgranterProject\Backend\Service\Describer $describer
-     *   The describer service.
      */
-    public function __construct(PlaylistManager $playlistManager, Describer $describer)
+    public function __construct(protected PlaylistManager $playlistManager)
     {
-        $this->playlistManager = $playlistManager;
-        $this->describer       = $describer;
     }
 
     /**
@@ -51,7 +32,6 @@ class ReleaseRead extends AuthenticatedController
     {
         return new static(
             $servicesManager->get('playlistManager'),
-            $servicesManager->get('describer')
         );
     }
 
@@ -62,7 +42,7 @@ class ReleaseRead extends AuthenticatedController
     {
         $release = $this->getRelease($request);
 
-        $data = $this->describer->describe($release);
+        $data = $release->toArray();
 
         return $this->jsonResource($data)
             ->renderResponse();

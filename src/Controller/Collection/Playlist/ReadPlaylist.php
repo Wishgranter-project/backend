@@ -53,7 +53,7 @@ class ReadPlaylist extends CollectionController
         RequestHandlerInterface $handler,
         Playlist $playlist
     ): ResponseInterface {
-        $data = $this->describer->describe($playlist);
+        $data = $this->dataTransferPlaylist($playlist);
 
         return $this->jsonResource($data)
             ->renderResponse();

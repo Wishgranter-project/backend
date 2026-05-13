@@ -115,15 +115,15 @@ abstract class ControllerBase
     /**
      * Generates an access denied response.
      *
-     * @param WishgranterProject\Backend\Access\AccessDeniedInterface $accessResult
+     * @param WishgranterProject\Backend\Access\AccessDeniedInterface $accessDenied
      *   The computed access result.
      *
      * @return Psr\Http\Message\ResponseInterface
      *   The access denied response object.
      */
-    public function deniedResponse(AccessResultDeniedInterface $accessResult): ResponseInterface
+    public function deniedResponse(AccessResultDeniedInterface $accessDenied): ResponseInterface
     {
-        if ($accessResult instanceof AccessResultForbidden) {
+        if ($accessDenied instanceof AccessResultForbidden) {
             $statusCode = 403;
             $title = 'Unauthenticated';
         } else {
@@ -132,7 +132,7 @@ abstract class ControllerBase
         }
 
         $json = $this->jsonResource(null, $statusCode);
-        $json->addError($statusCode, $title, $accessResult->getReason());
+        $json->addError($statusCode, $title, $accessDenied->getReason());
         return $json->renderResponse();
     }
 
