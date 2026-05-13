@@ -1,10 +1,13 @@
 <?php
 
 /**
- * This file is intended for testing.
+ * This file is intended for tests.
  */
 
 use WishgranterProject\Backend\Server\Server;
+use WishgranterProject\Backend\Server\TestBootstrap;
+
+//=============================================================================
 
 if (! file_exists('../../vendor/autoload.php')) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
@@ -16,71 +19,14 @@ require '../../vendor/autoload.php';
 
 //=============================================================================
 
-require '../functions.php';
-require 'settings.php';
-
-if (!file_exists(APP_DIR . 'configurations.json')) {
-    copy(APP_DIR . 'configurations.template.json', APP_DIR . 'configurations.json');
+if (!TestBootstrap::isLocalEnvironment()) {
+    die();
 }
 
-if (!file_exists(PLAYLISTS_DIR)) {
-    mkdir(PLAYLISTS_DIR);
-}
-
-if (!file_exists(CACHE_DIR)) {
-    mkdir(CACHE_DIR);
-}
-
-if (!file_exists(SESSIONS_DIR)) {
-    mkdir(SESSIONS_DIR);
-}
-
-if (!file_exists(LOCAL_MEDIA_DIR)) {
-    mkdir(LOCAL_MEDIA_DIR);
-}
-
-//=============================================================================
-
-function scan_dir($directory): array
-{
-    $entries = array_slice(scandir($directory), 2);
-    array_walk($entries, function (&$entry) use ($directory) {
-        $entry = $directory . $entry;
-    });
-
-    return $entries;
-}
-
-// Reset the test playlist files at every request.
-function copy_files($fromDir, $toDir)
-{
-    $entries = scan_dir($fromDir);
-    foreach ($entries as $entry) {
-        if (is_dir($entry)) {
-            $entry .= '/';
-            $destination = $toDir . basename($entry) . '/';
-            if (!file_exists($destination)) {
-                mkdir($destination);
-            }
-            copy_files($entry, $destination);
-        } else {
-            $destination = $toDir . basename($entry);
-            if (file_exists($destination)) {
-                unlink($destination);
-            }
-            copy($entry, $destination);
-        }
-    }
-}
-
-copy_files(PLAYLISTS_DIR_TEST_TEMPLATES, PLAYLISTS_DIR);
-copy_files(USERS_DIR_TEST_TEMPLATES,     USERS_DIR);
+TestBootstrap::bootstrap('test-settings.php');
 
 //=============================================================================
 
 $server = new Server();
-
-/** @var AdinanCenci\Router\Router */
 $router = $server->getRouter(APP_DIR . '../routes.php');
-
 $router->run();

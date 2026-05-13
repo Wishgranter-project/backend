@@ -2,16 +2,15 @@
 
 use AdinanCenci\Router\Helper\Server;
 use AdinanCenci\Router\Helper\File;
+use AdinanCenci\Server\Bootstrap;
 
 $currentFile      = Server::getCurrentFile();
-$currentDirectory = File::getParentDirectory($currentFile);
-$parentDirectory  = File::getParentDirectory($currentDirectory);
 
 //=============================================================================
 
 define('SERVER_ROOT',                  Server::getServerRoot());
 
-if (isLocalEnvironment()) {
+if (Bootstrap::isLocalEnvironment()) {
     $settings['corsAllowedDomain']     = 'wishgranter-frontend.ddev.site';
     define('APP_DIR',                  SERVER_ROOT);
     define('PLAYER_FILES_DIR',         File::getParentDirectory(SERVER_ROOT) . 'player-files/');
