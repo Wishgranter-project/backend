@@ -4,8 +4,8 @@
  * Beginning.
  */
 
-use WishgranterProject\Backend\Server\Server;
 use WishgranterProject\Backend\Server\Bootstrap;
+use AdinanCenci\Router\Helper\Server;
 
 //=============================================================================
 
@@ -19,10 +19,11 @@ require '../vendor/autoload.php';
 
 //=============================================================================
 
-Bootstrap::bootstrap('settings.php');
+$bootstrap = new Bootstrap(Server::getServerRoot() . 'settings.php');
+$bootstrap->bootstrap();
 
 //=============================================================================
 
-$server = new Server();
+$server = $bootstrap->getServer();
 $router = $server->getRouter(DIR_APP . 'routes.php');
 $router->run();

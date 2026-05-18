@@ -40,7 +40,7 @@ class JsonResource
      *
      * @var mixed
      */
-    protected $data       = null;
+    protected \stdClass $data;
 
     /**
      * Constructor.
@@ -52,7 +52,7 @@ class JsonResource
      */
     public function __construct($data = null, int $statusCode = 200)
     {
-        $this->data       = $data;
+        $this->data       = (object) $data;
         $this->statusCode = $statusCode;
         $this->meta       = new \stdClass();
         $this->setMeta('statusCode', $statusCode);
@@ -194,6 +194,41 @@ class JsonResource
     }
 
     /**
+     * Sets a piece of data.
+     *
+     * @param int $variable
+     *   Name of the data property.
+     * @param mixed $value
+     *   The value of the data.
+     *
+     * @return self
+     *   Return itself.
+     */
+    public function setData(string $variable, $value): JsonResource
+    {
+        $this->data->{$variable} = $value;
+        return $this;
+    }
+
+    /**
+     * Sets multiple pieces of data.
+     *
+     * @param int $data
+     *   Associative array with the data to set.
+     *
+     * @return self
+     *   Return itself.
+     */
+    public function addData(array $data): JsonResource
+    {
+        foreach ($data as $variable => $value) {
+            $this->setData($variable, $value);
+        }
+
+        return $this;
+    }
+
+    /**
      * Sets the data.
      *
      * @param mixed $data
@@ -202,7 +237,7 @@ class JsonResource
      * @return self
      *   Return itself.
      */
-    public function setData($data): JsonResource
+    public function setDataBody($data): JsonResource
     {
         $this->data = $data;
         return $this;

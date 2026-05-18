@@ -6,6 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\User\User;
 use WishgranterProject\Backend\User\UserManager;
+use WishgranterProject\Backend\Session\SessionInterface;
 
 class SessionAuthentication extends BaseAuthenticationMethod implements AuthenticationMethodInterface
 {
@@ -29,22 +30,27 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getUser(ServerRequestInterface $request): ?User
+    public function getSession(ServerRequestInterface $request): ?SessionInterface
     {
-        return $this->userManager->getUser('adinan');
         if (!$sessionId = $this->getSessionId($request)) {
             return null;
         }
 
-        if (!$session = $this->sessionManager->getSession($sessionId)) {
+        return $this->sessionManager->getSession($sessionId);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUser(ServerRequestInterface $request, &$session = null): ?User
+    {
+        if (!$session = $this->getSession($request)) {
             return null;
         }
 
         if ($session->expired() || !$session->getUser()) {
             $session->delete();
+            $session = null;
             return null;
         }
 
@@ -55,14 +61,14 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
     {
         $cookies = $request->getCookieParams();
 
-        $sessionCookie = isset($cookies['session'])
-            ? $cookies['session']
-            : null;
+        if (isset($cookies['session']) && !is_null($cookies['session'])) {
+            return $cookies['session'];
+        }
 
-        $sessionId = $sessionCookie ?:
-            $request->getHeaderLine('Authorization') ?:
-            null;
+        if (IS_TEST_ENVIRONMENT && $sessionId = $request->getHeaderLine('test-environment-only-session-id')) {
+            return $sessionId;
+        }
 
-        return $sessionId;
+        return null;
     }
 }

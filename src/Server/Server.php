@@ -15,6 +15,10 @@ use AdinanCenci\Router\Caller\Handler\ObjectAndMethodHandler;
 
 final class Server
 {
+    public function __construct(protected $servicesManager)
+    {
+    }
+
     /**
      * Returns the router object.
      *
@@ -99,7 +103,8 @@ final class Server
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');//getCorsAllowedDomain($request, $GLOBALS['settings']));
+        $settings = $this->servicesManager->get('settings');
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', $settings->get('corsAllowedDomain', '*'));
         $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
         $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type, *');
         $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
@@ -188,7 +193,7 @@ final class Server
      */
     protected function getCaller()
     {
-        $instantiator = new CustomControllerInstantiator(ServicesManager::singleton());
+        $instantiator = new CustomControllerInstantiator($this->servicesManager);
 
         $handlers = [
             new CustomClassHandler($instantiator),

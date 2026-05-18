@@ -4,17 +4,31 @@ namespace WishgranterProject\Backend\Server;
 
 use Psr\Http\Message\ServerRequestInterface;
 
-abstract class TestBootstrap extends Bootstrap
+class TestBootstrap extends Bootstrap
 {
-    public static function bootstrap(string $settingsFile)
+    /**
+     * Bootstrap the test app.
+     */
+    public function bootstrap()
     {
-        parent::bootstrap($settingsFile);
-
+        parent::bootstrap();
         self::copyFiles(DIR_TEST_COLLECTIONS_TEMPLATES, DIR_COLLECTIONS);
-        self::copyFiles(DIR_TEST_USERS_TEMPLATES,     DIR_USERS);
+        self::copyFiles(DIR_TEST_USERS_TEMPLATES, DIR_USERS);
     }
 
-    public static function scanDir($directory): array
+    /**
+     * Scans the contents of a directory.
+     *
+     * Unlike scandir(), it avoids . and ..
+     * and returns absolute paths instead of relative ones.
+     *
+     * @param string $directory
+     *   Absolute path to the directory.
+     *
+     * @return array
+     *   The contents of the directory.
+     */
+    protected static function scanDir($directory): array
     {
         $entries = array_slice(scandir($directory), 2);
         array_walk($entries, function (&$entry) use ($directory) {
@@ -24,8 +38,15 @@ abstract class TestBootstrap extends Bootstrap
         return $entries;
     }
 
-    // Reset the test playlist files at every request.
-    public static function copyFiles($fromDir, $toDir)
+    /**
+     * Recursiverly copies file from a directory to another.
+     *
+     * @param string $fromDir
+     *   The origin directory.
+     * @param string $toDir
+     *   The destination directory.
+     */
+    protected static function copyFiles(string $fromDir, string $toDir)
     {
         $entries = self::scanDir($fromDir);
         foreach ($entries as $entry) {

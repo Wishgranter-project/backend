@@ -70,10 +70,24 @@ class Login extends ControllerBase
         $expiration = strtotime('+24 hours');
         $session = $this->sessionManager->startNewSession($user, $expiration);
 
-        $resource = new JsonResource(['session' => $session->getId()], 200);
+        $resource = new JsonResource([
+            'expiration' => $session->getExpiration(),
+            'username'   => $user->getUsername(),
+        ], 200);
+
+        if (IS_TEST_ENVIRONMENT) {
+            // Add the session id to the body so JS scripts may read it.
+            $resource->setData('test-environment-only-session-id', $session->getId());
+        }
+
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
+
         $response = $response->withAddedCookie('session', $session->getId(), $expiration);
+        if (IS_TEST_ENVIRONMENT) {
+            // Add the session id to a non-cookie header so JS scripts may read it.
+            $response = $response->withAddedHeader('test-environment-only-session-id', $session->getId());
+        }
 
         return $response;
     }

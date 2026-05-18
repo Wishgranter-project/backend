@@ -208,4 +208,15 @@ class ServicesManager extends Singleton
     {
         return new SessionGarbageCollector($this->get('sessionManager'));
     }
+
+    /**
+     * Instantiates the settings service.
+     *
+     * @return WishgranterProject\Backend\Service\Settings
+     *   Settings service
+     */
+    protected function instantiateSettings()
+    {
+        return new Settings();
+    }
 }

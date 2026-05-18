@@ -22,20 +22,35 @@ class Session extends Login
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
+        $this->sessionGarbageCollector->cleanUp();
+
         $user = $this->authentication
             ->getMethod('session')
-            ->getUser($request);
+            ->getUser($request, $session);
 
-        if ($user) {
-            $resource = new JsonResource(null, 200);
-            $resource->addSuccess(200, 'Welcome back ' . $user->getUsername());
-        } else {
+        if (!$user) {
             $resource = new JsonResource(null, 400);
             $resource->addError(400, 'Unauthenticated');
+            return $resource->renderResponse();
         }
 
+        $resource = new JsonResource([
+            'expiration' => $session->getExpiration(),
+            'username'   => $user->getUsername(),
+        ], 200);
+
+        if (IS_TEST_ENVIRONMENT) {
+            // Add the session id to the body so JS scripts may read it.
+            $resource->setData('test-environment-only-session-id', $session->getId());
+        }
+
+        $resource->addSuccess(200, 'Welcome back ' . $user->getUsername());
+
         $response = $resource->renderResponse();
-        //$response = $response->withAddedCookie('session', $session, $expiration);
+        if (IS_TEST_ENVIRONMENT) {
+            // Add the session id to a non-cookie header so JS scripts may read it.
+            $response = $response->withAddedHeader('test-environment-only-session-id', $session->getId());
+        }
 
         return $response;
     }

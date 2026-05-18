@@ -1,10 +1,9 @@
 <?php
 
 /**
- * This file is intended for tests.
+ * This file is intended for automated tests.
  */
 
-use WishgranterProject\Backend\Server\Server;
 use WishgranterProject\Backend\Server\TestBootstrap;
 
 //=============================================================================
@@ -23,10 +22,11 @@ if (!TestBootstrap::isLocalEnvironment()) {
     die();
 }
 
-TestBootstrap::bootstrap('test-settings.php');
+$bootstrap = new TestBootstrap('./test-settings.php');
+$bootstrap->bootstrap();
 
 //=============================================================================
 
-$server = new Server();
+$server = $bootstrap->getServer();
 $router = $server->getRouter(DIR_APP . '../routes.php');
 $router->run();

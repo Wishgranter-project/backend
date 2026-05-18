@@ -2,13 +2,23 @@
 
 namespace WishgranterProject\Backend\Server;
 
+use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Server\Server;
 use Psr\Http\Message\ServerRequestInterface;
 
-abstract class Bootstrap
+class Bootstrap
 {
-    public static function bootstrap(string $settingsFile)
+    protected $servicesManager;
+
+    public function __construct(protected string $settingsFile)
     {
-        require $settingsFile;
+        $this->servicesManager = ServicesManager::singleton();
+    }
+
+    public function bootstrap()
+    {
+        require $this->settingsFile;
+        $this->servicesManager->get('settings')->setSettings($settings);
 
         if (!file_exists(DIR_APP . 'configurations.json')) {
             copy(DIR_APP . 'configurations.template.json', DIR_APP . 'configurations.json');
@@ -31,32 +41,19 @@ abstract class Bootstrap
         }
     }
 
+    public function getServer()
+    {
+        return new Server($this->servicesManager);
+    }
+
     /**
      * Checks weather this is a dev or production environment.
      *
      * @return bool
+     *   True if it is.
      */
     public static function isLocalEnvironment(): bool
     {
         return getenv('IS_DDEV_PROJECT') == 'true';
-    }
-
-    /**
-     * Return CORS allowed domains.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     * @param array $settings
-     *
-     * @return string
-     */
-    public static function getCorsAllowedDomain(ServerRequestInterface $request, array $settings): string
-    {
-        $host = (string) $request->getHeaderLine('origin');
-
-        $allowedDomain = substr_count($host, $settings['corsAllowedDomain']) > 0
-            ? $host
-            : 'self';
-
-        return $allowedDomain;
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($router)) {
+    die();
+}
+
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\HomePage');
 
 $router->get(   '#^$#',                                                        'HomePage');
