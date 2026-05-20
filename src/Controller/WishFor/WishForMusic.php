@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller\Discover;
+namespace WishgranterProject\Backend\Controller\WishFor;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
@@ -17,7 +17,7 @@ use WishgranterProject\Backend\Service\ServicesManager;
 /**
  * Given the description of a music, searches for playable media.
  */
-class DiscoverResources extends AuthenticatedController
+class WishForMusic extends AuthenticatedController
 {
     /**
      * Constructor.

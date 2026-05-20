@@ -40,7 +40,7 @@ class JsonResource
      *
      * @var mixed
      */
-    protected \stdClass $data;
+    protected mixed $data;
 
     /**
      * Constructor.
@@ -52,7 +52,9 @@ class JsonResource
      */
     public function __construct($data = null, int $statusCode = 200)
     {
-        $this->data       = (object) $data;
+        $this->data       = $this->isNumericArray($data)
+            ? $data
+            : (object) $data;
         $this->statusCode = $statusCode;
         $this->meta       = new \stdClass();
         $this->setMeta('statusCode', $statusCode);
@@ -389,5 +391,14 @@ class JsonResource
         }
 
         return json_encode($array);
+    }
+
+    protected function isNumericArray($array): bool
+    {
+        if (!is_array($array)) {
+            return false;
+        }
+
+        return isset($array[0]);
     }
 }

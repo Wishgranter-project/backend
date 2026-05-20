@@ -34,7 +34,10 @@ $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Discove
 $router->get(   '#api/v1/discover/artists$#',                                                            'DiscoverArtists');
 $router->get(   '#api/v1/discover/albums$#',                                                             'DiscoverAlbums');
 $router->get(   '#api/v1/discover/album$#',                                                              'DiscoverAlbum');
-$router->get(   '#api/v1/discover/resources$#',                                                          'DiscoverResources');
+
+// WISH
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\WishFor');
+$router->get(   '#api/v1/wish-for/music$#',                                                              'WishForMusic');
 
 // USER
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Session');
