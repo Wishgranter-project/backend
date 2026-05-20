@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller\User;
+namespace WishgranterProject\Backend\Controller\Session;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -14,7 +14,7 @@ use WishgranterProject\Backend\Session\SessionGarbageCollector;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-class Login extends ControllerBase
+class OpenSession extends ControllerBase
 {
     /**
      * Constructor.

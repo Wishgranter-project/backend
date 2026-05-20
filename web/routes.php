@@ -6,7 +6,7 @@ if (!isset($router)) {
 
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\HomePage');
 
-$router->get(   '#^$#',                                                        'HomePage');
+$router->get(   '#^$#',                                                                                  'HomePage');
 
 // COLLECTION
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection');
@@ -31,17 +31,17 @@ $router->delete('#api/v1/users/(?<userName>[\w-]+)/collection/items/(?<itemUuid>
 
 // DISCOVER
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Discover');
-$router->get(   '#api/v1/discover/artists$#',                                  'DiscoverArtists');
-$router->get(   '#api/v1/discover/albums$#',                                   'DiscoverAlbums');
-$router->get(   '#api/v1/discover/album$#',                                    'DiscoverAlbum');
-$router->get(   '#api/v1/discover/resources$#',                                'DiscoverResources');
+$router->get(   '#api/v1/discover/artists$#',                                                            'DiscoverArtists');
+$router->get(   '#api/v1/discover/albums$#',                                                             'DiscoverAlbums');
+$router->get(   '#api/v1/discover/album$#',                                                              'DiscoverAlbum');
+$router->get(   '#api/v1/discover/resources$#',                                                          'DiscoverResources');
 
 // USER
-$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\User');
-$router->post(  '#api/v1/user/login$#',                                             'Login');
-$router->get(   '#api/v1/user/logout$#',                                            'Logout');
-$router->get(   '#api/v1/user/session$#',                                           'Session');
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Session');
+$router->post(  '#api/v1/session$#',                                                                     'OpenSession');
+$router->delete('#api/v1/session$#',                                                                     'CloseSession');
+$router->get(   '#api/v1/session$#',                                                                     'GetSession');
 
 // DEBUG
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Debug');
-$router->get(   '#debug/php-info$#',                                           'PhpInformation');
+$router->get(   '#debug/php-info$#',                                                                     'PhpInformation');

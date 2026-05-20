@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller\User;
+namespace WishgranterProject\Backend\Controller\Session;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -15,7 +15,7 @@ use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 /**
  * Used to check if the user is authenticated.
  */
-class Session extends Login
+class GetSession extends OpenSession
 {
     /**
      * {@inheritdoc}

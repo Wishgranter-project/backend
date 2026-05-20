@@ -1,6 +1,6 @@
 <?php
 
-namespace WishgranterProject\Backend\Controller\User;
+namespace WishgranterProject\Backend\Controller\Session;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Service\ServicesManager;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-class Logout extends ControllerBase
+class CloseSession extends ControllerBase
 {
     /**
      * {@inheritdoc}
