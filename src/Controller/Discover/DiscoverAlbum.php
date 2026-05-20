@@ -20,8 +20,14 @@ class DiscoverAlbum extends DiscoverArtists
         $artistName = $request->get('artist');
         $albumTitle = $request->get('title');
         $album      = $this->discography->getAlbum($artistName, $albumTitle);
-        $data       = $album->toArray();
 
+        if (!$album) {
+            $resource = $this->jsonResource($data, 404);
+            $resource->addError(404, 'No results', 'Nothing found');
+            return $resource->renderResponse();
+        }
+
+        $data       = $album->toArray();
         return $this->jsonResource($data)
             ->renderResponse();
     }
