@@ -8,7 +8,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 
 /**
  * Fetches information about a release.
@@ -28,10 +28,10 @@ class ReleaseRead extends AuthenticatedController
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         return new static(
-            $servicesManager->get('playlistManager'),
+            $serviceLocator->get('playlistManager'),
         );
     }
 

@@ -8,7 +8,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Session\SessionManagerInterface;
 use WishgranterProject\Backend\Session\SessionGarbageCollector;
 use WishgranterProject\Backend\User\UserManager;
@@ -36,14 +36,14 @@ class OpenSession extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         $class = get_called_class();
 
         return new $class(
-            $servicesManager->get('authentication'),
-            $servicesManager->get('sessionManager'),
-            $servicesManager->get('sessionGarbageCollector')
+            $serviceLocator->get('authentication'),
+            $serviceLocator->get('sessionManager'),
+            $serviceLocator->get('sessionGarbageCollector')
         );
     }
 

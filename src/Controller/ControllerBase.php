@@ -5,7 +5,7 @@ namespace WishgranterProject\Backend\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Access\Access;
@@ -27,13 +27,13 @@ abstract class ControllerBase
     /**
      * Instantiates a new controller.
      *
-     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
+     * @param WishgranterProject\Backend\Service\ServiceLocator $serviceManager
      *   The service manager for dependency injection.
      *
      * @return WishgranterProject\Backend\Controller\ControllerBase
      *   The instantiated controller.
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         return new (get_called_class());
     }

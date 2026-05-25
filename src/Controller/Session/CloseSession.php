@@ -8,7 +8,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Authentication\Authentication;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 

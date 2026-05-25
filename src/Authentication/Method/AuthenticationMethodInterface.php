@@ -3,7 +3,7 @@
 namespace WishgranterProject\Backend\Authentication\Method;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\UserInterface;
 
 interface AuthenticationMethodInterface
@@ -11,13 +11,13 @@ interface AuthenticationMethodInterface
     /**
      * Instantiates a new instance of this class.
      *
-     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
+     * @param WishgranterProject\Backend\Service\ServiceLocator $serviceManager
      *   The service manager for dependency injection.
      *
      * @return WishgranterProject\Backend\Authentication\AuthenticationMethodInterface
      *   The authentication object.
      */
-    public static function instantiate(ServicesManager $servicesManager): AuthenticationMethodInterface;
+    public static function instantiate(ServiceLocator $serviceLocator): AuthenticationMethodInterface;
 
     /**
      * Check if this method applies to a given request.

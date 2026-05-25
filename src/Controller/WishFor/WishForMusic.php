@@ -12,7 +12,7 @@ use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 
 /**
  * Given the description of a music, searches for playable media.
@@ -36,11 +36,11 @@ class WishForMusic extends AuthenticatedController
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         return new self(
-            $servicesManager->get('authentication'),
-            $servicesManager->get('aether'),
+            $serviceLocator->get('authentication'),
+            $serviceLocator->get('aether'),
         );
     }
 

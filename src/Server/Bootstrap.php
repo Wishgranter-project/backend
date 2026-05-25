@@ -2,23 +2,23 @@
 
 namespace WishgranterProject\Backend\Server;
 
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Server\Server;
 use Psr\Http\Message\ServerRequestInterface;
 
 class Bootstrap
 {
-    protected $servicesManager;
+    protected $serviceLocator;
 
     public function __construct(protected string $settingsFile)
     {
-        $this->servicesManager = ServicesManager::singleton();
+        $this->serviceLocator = ServiceLocator::singleton();
     }
 
     public function bootstrap()
     {
         require $this->settingsFile;
-        $this->servicesManager->get('settings')->setSettings($settings);
+        $this->serviceLocator->get('settings')->setSettings($settings);
 
         if (!file_exists(DIR_APP . 'configurations.json')) {
             copy(DIR_APP . 'configurations.template.json', DIR_APP . 'configurations.json');
@@ -43,7 +43,7 @@ class Bootstrap
 
     public function getServer()
     {
-        return new Server($this->servicesManager);
+        return new Server($this->serviceLocator);
     }
 
     /**

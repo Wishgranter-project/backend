@@ -2,7 +2,7 @@
 
 namespace WishgranterProject\Backend\Helper;
 
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Helper\SearchResults;
 use Psr\Http\Message\ResponseInterface;
 use AdinanCenci\Psr17\ResponseFactory;

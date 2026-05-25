@@ -19,11 +19,11 @@ use WishgranterProject\AetherMusic\Aether;
 use AdinanCenci\FileCache\Cache;
 
 /**
- * Service manager.
+ * Service locator.
  *
- * Vary simple, very crude.
+ * Very simple, very crude.
  */
-class ServicesManager extends Singleton
+class ServiceLocator extends Singleton
 {
     /**
      * The instances of different services.

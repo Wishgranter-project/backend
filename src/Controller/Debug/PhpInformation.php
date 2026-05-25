@@ -4,7 +4,7 @@ namespace WishgranterProject\Backend\Controller\Debug;
 
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;

@@ -5,7 +5,7 @@ namespace WishgranterProject\Backend\Controller;
 use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Exception\Unauthorized;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\User;
 use WishgranterProject\Backend\Access\AccessResultInterface;
 
@@ -26,9 +26,9 @@ abstract class AuthenticatedController extends ControllerBase
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
-        return new (get_called_class())($servicesManager->get('authentication'));
+        return new (get_called_class())($serviceLocator->get('authentication'));
     }
 
     /**

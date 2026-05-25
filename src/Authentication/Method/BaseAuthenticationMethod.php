@@ -3,7 +3,7 @@
 namespace WishgranterProject\Backend\Authentication\Method;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\Backend\User\UserManager;
 
@@ -22,10 +22,10 @@ abstract class BaseAuthenticationMethod implements AuthenticationMethodInterface
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): AuthenticationMethodInterface
+    public static function instantiate(ServiceLocator $serviceLocator): AuthenticationMethodInterface
     {
         return new (get_called_class())(
-            $servicesManager->get('userManager')
+            $serviceLocator->get('userManager')
         );
     }
 

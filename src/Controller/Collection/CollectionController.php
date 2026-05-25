@@ -6,7 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Service\CollectionManager;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\DescriptivePlaylist\Playlist;
@@ -35,11 +35,11 @@ abstract class CollectionController extends AuthenticatedController
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         return new (get_called_class())(
-            $servicesManager->get('authentication'),
-            $servicesManager->get('collectionManager')
+            $serviceLocator->get('authentication'),
+            $serviceLocator->get('collectionManager')
         );
     }
 

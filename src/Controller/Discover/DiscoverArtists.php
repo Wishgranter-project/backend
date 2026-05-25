@@ -11,7 +11,7 @@ use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\Backend\Service\Discography;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 
 /**
  * Searches for artists by name.
@@ -35,12 +35,12 @@ class DiscoverArtists extends AuthenticatedController
     /**
      * {@inheritdoc}
      */
-    public static function instantiate(ServicesManager $servicesManager): ControllerBase
+    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
     {
         $called = get_called_class();
         return new $called(
-            $servicesManager->get('authentication'),
-            $servicesManager->get('discography'),
+            $serviceLocator->get('authentication'),
+            $serviceLocator->get('discography'),
         );
     }
 

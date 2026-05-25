@@ -10,12 +10,12 @@ use AdinanCenci\Router\Router;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Exception\Unauthorized;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use AdinanCenci\Router\Caller\Handler\ObjectAndMethodHandler;
 
 final class Server
 {
-    public function __construct(protected $servicesManager)
+    public function __construct(protected $serviceLocator)
     {
     }
 
@@ -103,7 +103,7 @@ final class Server
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        $settings = $this->servicesManager->get('settings');
+        $settings = $this->serviceLocator->get('settings');
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', $settings->get('corsAllowedDomain', '*'));
         $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
         $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type, *');
@@ -193,7 +193,7 @@ final class Server
      */
     protected function getCaller()
     {
-        $instantiator = new CustomControllerInstantiator($this->servicesManager);
+        $instantiator = new CustomControllerInstantiator($this->serviceLocator);
 
         $handlers = [
             new CustomClassHandler($instantiator),

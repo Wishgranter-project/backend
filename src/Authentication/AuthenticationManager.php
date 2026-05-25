@@ -6,7 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Authentication\Method\AuthenticationMethodInterface;
 use WishgranterProject\Backend\Authentication\Method\SessionAuthentication;
 use WishgranterProject\Backend\Authentication\Method\UsernameAndPasswordAuthentication;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\UserInterface;
 
 /**
@@ -17,10 +17,10 @@ class AuthenticationManager implements AuthenticationInterface
     /**
      * Constructor
      *
-     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager
+     * @param WishgranterProject\Backend\Service\ServiceLocator $serviceManager
      *   Services manager.
      */
-    public function __construct(protected ServicesManager $serviceManager)
+    public function __construct(protected ServiceLocator $serviceManager)
     {
     }
 

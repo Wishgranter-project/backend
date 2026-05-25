@@ -3,7 +3,7 @@
 namespace WishgranterProject\Backend\Server;
 
 use AdinanCenci\Router\Instantiator\InstantiatorInterface;
-use WishgranterProject\Backend\Service\ServicesManager;
+use WishgranterProject\Backend\Service\ServiceLocator;
 
 /**
  * Custom class to instantiate the controllers.
@@ -17,17 +17,17 @@ class CustomControllerInstantiator implements InstantiatorInterface
      *
      * With the services to inject in the controllers.
      *
-     * @var WishgranterProject\Backend\Service\ServicesManager
+     * @var WishgranterProject\Backend\Service\ServiceLocator
      */
-    protected ServicesManager $serviceManager;
+    protected ServiceLocator $serviceManager;
 
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Service\ServicesManager $serviceManager.
+     * @param WishgranterProject\Backend\Service\ServiceLocator $serviceManager.
      *   Service manager.
      */
-    public function __construct(ServicesManager $serviceManager)
+    public function __construct(ServiceLocator $serviceManager)
     {
         $this->serviceManager = $serviceManager;
     }
