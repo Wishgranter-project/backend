@@ -10,13 +10,15 @@ $router->get(   '#^$#',                                                         
 
 // COLLECTION
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/artists/?$#',                              'ArtistsList');
+$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/artists$#',                                'ArtistsList');
+$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/download$#',                               'DownloadCollection');
 
 // PLAYLIST
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection\\Playlist');
 $router->post(  '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/?$#',                            'CreatePlaylist');
 $router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/?$#',                            'ListPlaylists');
 $router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'ReadPlaylist');
+$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/download$#', 'DownloadPlaylist');
 $router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/items/?$#',  'ReadPlaylistItems');
 $router->put(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'UpdatePlaylist');
 $router->delete('#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'DeletePlaylist');

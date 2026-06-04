@@ -38,10 +38,6 @@ class ListPlaylists extends CollectionController
         $slice            = array_slice($playlists, $offset, $limit);
         $currentPageCount = count($slice);
 
-        if ($request->getHeaderLine('accept') == 'application/zip') {
-            return $this->download($handler, $slice);
-        }
-
         usort($slice, [$this, 'sortPlaylistByTitle']);
         $data = array_map([$this, 'dataTransferPlaylist'], $slice);
 
@@ -75,37 +71,5 @@ class ListPlaylists extends CollectionController
         }
 
         return strcasecmp($p1->title, $p2->title);
-    }
-
-    /**
-     * Compacts the playlists into a zip file.
-     *
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *   Http request handler.
-     * @param WishgranterProject\DescriptivePlaylist\Playlist[] $list
-     *   Playlist objects.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response object.
-     */
-    protected function download(RequestHandlerInterface $handler, array $list): ResponseInterface
-    {
-        $zipFile = tempnam(sys_get_temp_dir(), 'zip');
-        register_shutdown_function('unlink', $zipFile);
-
-        $zip = new \ZipArchive();
-        $zip->open($zipFile, \ZipArchive::OVERWRITE);
-
-        foreach ($list as $playlist) {
-            $zip->addFile($playlist->fileName, basename($playlist->fileName));
-        }
-
-        $zip->close();
-
-        $response = $handler->responseFactory->ok(file_get_contents($zipFile));
-        $response = $response->withAddedHeader('content-type', 'application/zip');
-        $response = $response->withAddedHeader('Content-Disposition', 'attachment; filename="your-collection.zip"');
-
-        return $response;
     }
 }

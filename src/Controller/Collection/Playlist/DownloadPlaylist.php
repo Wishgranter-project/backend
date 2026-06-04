@@ -11,9 +11,9 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
- * Reads a individual playlist.
+ * Downloads a individual playlist.
  */
-class ReadPlaylist extends CollectionController
+class DownloadPlaylist extends CollectionController
 {
     /**
      * {@inheritdoc}
@@ -29,8 +29,13 @@ class ReadPlaylist extends CollectionController
         }
 
         $playlist = $collection->getPlaylist($playlistId);
-        $data = $this->dataTransferPlaylist($playlist);
-        return $this->jsonResource($data)
-            ->renderResponse();
+        $file     = $playlist->fileName;
+        $basename = basename($file);
+
+        $response = $handler->responseFactory->ok(file_get_contents($file));
+        $response = $response->withAddedHeader('content-type', 'application/jsonl');
+        $response = $response->withAddedHeader('Content-Disposition', "attachment; filename=\"$basename\"");
+
+        return $response;
     }
 }
