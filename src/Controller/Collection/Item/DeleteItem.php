@@ -33,8 +33,8 @@ class DeleteItem extends CollectionController
 
         $data = $this->dataTransferItem($item);
 
-        return $this->jsonResource(null, 204)
-            ->addSuccess(204, 'Item deleted')
+        return $this->jsonResource()
+            ->addSuccess(200, 'Item deleted')
             ->renderResponse();
     }
 }

@@ -29,8 +29,8 @@ class DeletePlaylist extends CollectionController
 
         $collection->deletePlaylist($playlistId);
 
-        return $this->jsonResource(null, 204)
-            ->addSuccess(204, 'Playlist deleted')
+        return $this->jsonResource()
+            ->addSuccess(200, 'Playlist deleted')
             ->renderResponse();
     }
 }
