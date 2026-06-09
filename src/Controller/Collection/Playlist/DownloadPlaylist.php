@@ -33,7 +33,7 @@ class DownloadPlaylist extends CollectionController
         $basename = basename($file);
 
         $response = $handler->responseFactory->ok(file_get_contents($file));
-        $response = $response->withAddedHeader('content-type', 'application/jsonl');
+        $response = $response->withAddedHeader('content-type', 'application/vnd.dpls+jsonl');
         $response = $response->withAddedHeader('Content-Disposition', "attachment; filename=\"$basename\"");
 
         return $response;

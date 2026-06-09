@@ -22,8 +22,8 @@ class CloseSession extends ControllerBase
         $session = Helpers::guidv4();
         $expiration = 1;
 
-        $resource = new JsonResource();
-        $resource->addSuccess(200, 'Goodbye');
+        $resource = new JsonResource(null, 204);
+        $resource->addSuccess(204, 'Goodbye');
         $response = $resource->renderResponse();
         $response = $response->withAddedCookie('session', $session, $expiration);
 
