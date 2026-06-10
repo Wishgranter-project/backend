@@ -1,23 +1,10 @@
 # Wishgranter music player ( backend )
 
-In early development.
-
 This is a little project of mine, a web-based music player.
 
-It has been built around my [descriptive playlist](https://github.com/wishgranter-project/descriptive-playlist-definition) concept.
+Part of the wider [Wishgranter project](https://github.com/orgs/Wishgranter-project).
 
-This repository contains the backend, the user interface can be found [here](https://github.com/wishgranter-project/frontend).
+A server to manage [descriptive playlists](https://github.com/Wishgranter-project/descriptive-playlist-definition) 
+according to the [afiliated restful API](https://github.com/Wishgranter-project/wishgranter-rest-api).
 
-
-# Features
-
-## Sources
-:heavy_check_mark: Search for multimidia in different sources ( Youtube, Spotify etc ).  
-:heavy_check_mark: Youtube.  
-:heavy_check_mark: ~~SliderKz~~ ( service defunct ).  
-
-
-## Discoverability
-:heavy_check_mark: Support for discography resources.  
-:heavy_check_mark: MusicBrainz.  
-
+Check the [frontend](https://github.com/wishgranter-project/frontend) for a client.

@@ -29,8 +29,8 @@ class GetSession extends OpenSession
             ->getUser($request, $session);
 
         if (!$user) {
-            $resource = new JsonResource(null, 400);
-            $resource->addError(400, 'Unauthenticated');
+            $resource = new JsonResource(null, 401);
+            $resource->addError(401, 'Unauthenticated');
             return $resource->renderResponse();
         }
 
