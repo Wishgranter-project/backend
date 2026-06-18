@@ -50,7 +50,7 @@ abstract class CollectionController extends AuthenticatedController
     {
         $user = $this->getUser($request);
         if (!$user) {
-            return $this->accessForbidden();
+            return $this->accessUnauthenticated();
         }
 
         $owner = $request->getAttribute('userName');

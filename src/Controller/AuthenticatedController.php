@@ -58,6 +58,6 @@ abstract class AuthenticatedController extends ControllerBase
 
         return $user
             ? $this->accessGranted()
-            : $this->accessForbidden();
+            : $this->accessUnauthorized();
     }
 }

@@ -14,8 +14,8 @@ abstract class Access
         return new AccessResultUnauthorized($reason);
     }
 
-    public static function forbidden(string $reason): AccessResultInterface
+    public static function unauthenticated(string $reason): AccessResultInterface
     {
-        return new AccessResultForbidden($reason);
+        return new AccessResultUnauthenticated($reason);
     }
 }

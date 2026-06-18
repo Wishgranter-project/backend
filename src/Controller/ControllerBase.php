@@ -11,7 +11,7 @@ use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Access\Access;
 use WishgranterProject\Backend\Access\AccessResultInterface;
 use WishgranterProject\Backend\Access\AccessResultDeniedInterface;
-use WishgranterProject\Backend\Access\AccessResultForbidden;
+use WishgranterProject\Backend\Access\AccessResultUnauthenticated;
 use WishgranterProject\Backend\Access\AccessResultUnauthorized;
 
 abstract class ControllerBase
@@ -123,11 +123,11 @@ abstract class ControllerBase
      */
     public function deniedResponse(AccessResultDeniedInterface $accessDenied): ResponseInterface
     {
-        if ($accessDenied instanceof AccessResultForbidden) {
-            $statusCode = 403;
+        if ($accessDenied instanceof AccessResultUnauthenticated) {
+            $statusCode = 401;
             $title = 'Unauthenticated';
         } else {
-            $statusCode = 401;
+            $statusCode = 403;
             $title = 'Unauthorized';
         }
 
@@ -153,9 +153,9 @@ abstract class ControllerBase
      * @return WishgranterProject\Backend\Access\AccessResultInterface
      *   Access result.
      */
-    protected function accessForbidden(string $reason = 'User unauthenticated'): AccessResultInterface
+    protected function accessUnauthenticated(string $reason = 'User unauthenticated'): AccessResultInterface
     {
-        return Access::forbidden($reason);
+        return Access::unauthenticated($reason);
     }
 
     /**
