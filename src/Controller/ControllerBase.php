@@ -107,6 +107,15 @@ abstract class ControllerBase
             : $contentType;
     }
 
+    /**
+     * Given a request, checks if it is clear for a proper response.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request object.
+     *
+     * @return WishgranterProject\Backend\Access\AccessResultInterface
+     *   Access result.
+     */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
         return $this->accessGranted();
@@ -148,7 +157,7 @@ abstract class ControllerBase
     }
 
     /**
-     * Instantiates an access denied result object.
+     * Instantiates an access unauthenticated result object.
      *
      * @return WishgranterProject\Backend\Access\AccessResultInterface
      *   Access result.

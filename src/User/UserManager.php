@@ -71,7 +71,21 @@ class UserManager
      */
     public function validatePassword(string $password, string $hash): bool
     {
-        return md5($password) == $hash;
+        return password_verify($password, $hash);
+    }
+
+    /**
+     * Generates a hash out of a given password.
+     *
+     * @param string $password
+     *   Password.
+     *
+     * @return string
+     *   The hash.
+     */
+    public function generateHash(string $password): string
+    {
+        return password_hash($password, \PASSWORD_DEFAULT);
     }
 
     /**
