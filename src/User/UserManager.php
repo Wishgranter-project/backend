@@ -15,31 +15,42 @@ class UserManager
     }
 
     /**
-     * Given a username, returns the user.
+     * Given a user id, returns the user.
      *
-     * @param string $username
-     *   The username.
+     * @param string $userId
+     *   The id.
      *
      * @return WishgranterProject\Backend\User\User
      *   User object.
      */
-    public function getUser(string $username): User
+    public function getUser(string $userId): User
     {
-        return new User($this->getFilename($username));
+        return new User($this->getFilename($userId));
+    }
+
+    public function getUserByUsername(string $username): ?User
+    {
+        foreach ($this->getAllUsers() as $user) {
+            if ($user->getUsername() == $username) {
+                return $user;
+            }
+        }
+
+        return null;
     }
 
     /**
-     * Given a username, checks if it exists.
+     * Given a user id, checks if it exists.
      *
-     * @param string $username
-     *   The username.
+     * @param string $userId
+     *   The user id.
      *
      * @return bool
      *   True if the user exists.
      */
-    public function userExists(string $username): bool
+    public function userExists(string $userId): bool
     {
-        return file_exists($this->getFilename($username));
+        return file_exists($this->getFilename($userId));
     }
 
     /**
@@ -89,16 +100,16 @@ class UserManager
     }
 
     /**
-     * Given a username, retrieves the filename containing the user's data.
+     * Given a user id, retrieves the filename containing the user's data.
      *
-     * @param string $username
-     *   Username.
+     * @param string $userId
+     *   User id.
      *
      * @return string
      *   Absolute filename.
      */
-    protected function getFilename(string $username): string
+    protected function getFilename(string $userId): string
     {
-        return $this->directory . '/' . $username . '.jsonl';
+        return $this->directory . '/' . $userId . '.jsonl';
     }
 }

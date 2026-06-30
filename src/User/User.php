@@ -18,12 +18,17 @@ class User implements UserInterface
     {
     }
 
+    public function getId(): ?string
+    {
+        return basename($this->filename, '.jsonl');
+    }
+
     /**
      * {@inheritdoc}
      */
     public function getUsername(): ?string
     {
-        return basename($this->filename, '.jsonl');
+        return (string) $this->getProperty('username');
     }
 
     /**

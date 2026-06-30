@@ -19,11 +19,11 @@ class UsernameAndPasswordAuthentication extends BaseAuthenticationMethod impleme
             return null;
         }
 
-        if (!$this->userManager->userExists($username)) {
+        $user = $this->userManager->getUserByUsername($username);
+        if (!$user) {
             return null;
         }
 
-        $user = $this->userManager->getUser($username);
         if (!$this->userManager->validatePassword($password, $user->getHash())) {
             return null;
         }

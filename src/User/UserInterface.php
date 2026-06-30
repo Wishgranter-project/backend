@@ -5,6 +5,14 @@ namespace WishgranterProject\Backend\User;
 interface UserInterface
 {
     /**
+     * Return the user's id.
+     *
+     * @return string
+     *   Id.
+     */
+    public function getId(): ?string;
+
+    /**
      * Return the user's username.
      *
      * @return string

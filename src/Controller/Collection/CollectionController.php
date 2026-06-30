@@ -53,10 +53,10 @@ abstract class CollectionController extends AuthenticatedController
             return $this->accessUnauthenticated();
         }
 
-        $owner = $request->getAttribute('userName');
+        $owner = $request->getAttribute('userId');
 
         // Rather basic logic, can be spanded if needed.
-        return $owner == $user->getUsername()
+        return $owner == $user->getId()
             ? $this->accessGranted()
             : $this->accessUnauthorized('You are not allowed to access this user\'s collection');
     }

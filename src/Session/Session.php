@@ -109,7 +109,8 @@ class Session implements SessionInterface
     public function save(): void
     {
         $data = [
-            'userId'     => $this->user->getUsername(),
+            'userId'     => $this->user->getId(),
+            'username'   => $this->user->getUsername(),
             'created'    => $this->created,
             'expiration' => $this->expiration,
         ];

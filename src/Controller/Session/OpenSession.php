@@ -72,6 +72,7 @@ class OpenSession extends ControllerBase
 
         $resource = new JsonResource([
             'expiration' => $session->getExpiration(),
+            'id'         => $user->getId(),
             'username'   => $user->getUsername(),
         ], 200);
 

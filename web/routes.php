@@ -10,26 +10,26 @@ $router->get(   '#^$#',                                                         
 
 // COLLECTION
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/artists$#',                                'ArtistsList');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/download$#',                               'DownloadCollection');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/artists$#',                                  'ArtistsList');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/download$#',                                 'DownloadCollection');
 
 // PLAYLIST
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection\\Playlist');
-$router->post(  '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/?$#',                            'CreatePlaylist');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/?$#',                            'ListPlaylists');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'ReadPlaylist');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/download$#', 'DownloadPlaylist');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/items/?$#',  'ReadPlaylistItems');
-$router->put(   '#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'UpdatePlaylist');
-$router->delete('#api/v1/users/(?<userName>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',          'DeletePlaylist');
+$router->post(  '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/?$#',                              'CreatePlaylist');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/?$#',                              'ListPlaylists');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'ReadPlaylist');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/download$#',   'DownloadPlaylist');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/items/?$#',    'ReadPlaylistItems');
+$router->put(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'UpdatePlaylist');
+$router->delete('#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'DeletePlaylist');
 
 // ITEMS
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Collection\\Item');
-$router->post(  '#api/v1/users/(?<userName>[\w-]+)/collection/items/?$#',                                'CreateItem');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',            'ReadItem');
-$router->get(   '#api/v1/users/(?<userName>[\w-]+)/collection/items/?$#',                                'SearchItems');
-$router->put(   '#api/v1/users/(?<userName>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',            'UpdateItem');
-$router->delete('#api/v1/users/(?<userName>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',            'DeleteItem');
+$router->post(  '#api/v1/users/(?<userId>[\w-]+)/collection/items/?$#',                                  'CreateItem');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'ReadItem');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/?$#',                                  'SearchItems');
+$router->put(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'UpdateItem');
+$router->delete('#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'DeleteItem');
 
 // DISCOVER
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Discover');
@@ -42,6 +42,11 @@ $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\WishFor
 $router->get(   '#api/v1/wish-for/music$#',                                                              'WishForMusic');
 
 // USER
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\User');
+$router->get(   '#api/v1/users/(?<userId>[\w-]+)$#',                                                     'GetUser');
+$router->post(  '#api/v1/users$#',                                                                       'CreateUser');
+
+// SESSION
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Session');
 $router->post(  '#api/v1/session$#',                                                                     'OpenSession');
 $router->delete('#api/v1/session$#',                                                                     'CloseSession');

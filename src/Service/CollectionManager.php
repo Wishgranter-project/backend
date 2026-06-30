@@ -34,7 +34,7 @@ class CollectionManager
      */
     public function getCollection(UserInterface $user): PlaylistManager
     {
-        $directory = $this->directory . $user->getUsername() . '/';
+        $directory = $this->directory . $user->getId() . '/';
         if (!file_exists($directory)) {
             mkdir($directory);
         }
