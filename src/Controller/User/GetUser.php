@@ -2,13 +2,13 @@
 
 namespace WishgranterProject\Backend\Controller\User;
 
-use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Access\AccessResultInterface;
+use WishgranterProject\Backend\Exception\NotFound;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class GetUser extends AuthenticatedController
+class GetUser extends UserController
 {
     /**
      * Invoke the controler.
@@ -23,10 +23,13 @@ class GetUser extends AuthenticatedController
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $user = $this->getUser($request);
+        $userId = $request->getAttribute('userId');
+        if (!$this->userManager->userExists($userId)) {
+            throw new NotFound('User ' . $userId . ' does not exist.');
+        }
 
-        $data = $this->dataTransferItem($user);
-
+        $user = $this->userManager->getUser($userId);
+        $data = $this->dataTransferUser($user);
         return $this->jsonResource($data)
             ->renderResponse();
     }
@@ -36,21 +39,16 @@ class GetUser extends AuthenticatedController
      */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
-        $user = $this->getUser($request);
-        if (!$user) {
+        $loggedUser = $this->getAuthenticatedUser($request);
+        if (!$loggedUser) {
             return $this->accessUnauthenticated();
         }
 
-        return $user->getId() == $request->getAttribute('userId')
+        $sameUser = $loggedUser->getId() == $request->getAttribute('userId');
+        $isAdmin = $loggedUser->hasRole('admin');
+
+        return $sameUser || $isAdmin
             ? $this->accessGranted()
             : $this->accessUnauthorized('You are not authorized to see this user\'s info');
-    }
-
-    protected function dataTransferItem($user): array
-    {
-        return [
-            'id' => $user->getId(),
-            'username' => $user->getUsername(),
-        ];
     }
 }

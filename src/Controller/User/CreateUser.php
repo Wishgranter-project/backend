@@ -3,42 +3,12 @@
 namespace WishgranterProject\Backend\Controller\User;
 
 use WishgranterProject\Backend\Access\AccessResultInterface;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
-use WishgranterProject\Backend\Controller\AuthenticatedController;
-use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\Backend\Service\ServiceLocator;
-use WishgranterProject\Backend\User\UserManager;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class CreateUser extends AuthenticatedController
+class CreateUser extends GetUser
 {
-    /**
-     * Constructor.
-     *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
-     *   Authentication service.
-     * @param WishgranterProject\Backend\User\UserManager $userManager
-     *   User manager service.
-     */
-    public function __construct(
-        protected AuthenticationInterface $authentication,
-        protected UserManager $userManager
-    ) {
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function instantiate(ServiceLocator $serviceLocator): ControllerBase
-    {
-        return new (get_called_class())(
-            $serviceLocator->get('authentication'),
-            $serviceLocator->get('userManager')
-        );
-    }
-
     /**
      * Invoke the controler.
      *
@@ -53,13 +23,18 @@ class CreateUser extends AuthenticatedController
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $data = $this->getPostData($request);
-
         $this->validateData($data);
 
+        $userId = $this->userManager->getAvailableUserId($data['username']);
 
-        
+        $user = $this->userManager->getUser($userId);
+        $user->setUsername($data['username']);
+        $user->setEmail($data['email']);
+        $user->setHash($this->userManager->generateHash($data['password']));
 
-        return $this->jsonResource($data)
+        $data = $this->dataTransferUser($user);
+
+        return $this->jsonResource($data, 201)
             ->renderResponse();
     }
 
@@ -68,22 +43,57 @@ class CreateUser extends AuthenticatedController
      */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
-        $user = $this->getUser($request);
+        $user = $this->getAuthenticatedUser($request);
         if (!$user /** and $anonymous_registration_enabled */) {
             return $this->accessGranted();
         }
 
-        /**
-         * @todo
-         *   Replace this for a proper permission system call.
-         */
-        return $user->getId() == 'adinan'
+        return $user->hasRole('admin')
             ? $this->accessGranted()
             : $this->accessUnauthorized('You are already logged in');
     }
 
-    protected function validateData($data)
+    /**
+     * Validates the data submitted to the controller.
+     *
+     * @throws \InvalidArgumentException
+     */
+    protected function validateData(array $data)
     {
+        $knownInputs =
+        $requiredInput = [
+            'password',
+            'confirmPassword',
+            'username',
+            'email',
+        ];
 
+        foreach ($requiredInput as $key) {
+            if (!isset($data[$key])) {
+                throw new \InvalidArgumentException('Missing property ' . $key);
+            }
+        }
+
+        foreach (array_keys($data) as $key) {
+            if (!in_array($key, $knownInputs)) {
+                throw new \InvalidArgumentException('Unrecognized property ' . $key);
+            }
+        }
+
+        if ($data['password'] != $data['confirmPassword']) {
+            throw new \InvalidArgumentException('Passwords do not match.');
+        }
+
+        if (!$this->userManager->validateUsername($data['username'])) {
+            throw new \InvalidArgumentException('Invalid username. Alpha-numerical characters only, please.');
+        }
+
+        if ($this->userManager->getUserByUsername($data['username'])) {
+            throw new \InvalidArgumentException('Username is taken.');
+        }
+
+        if (!filter_var($data['email'], \FILTER_VALIDATE_EMAIL)) {
+            throw new \InvalidArgumentException('Please provide a valid e-mail address.');
+        }
     }
 }

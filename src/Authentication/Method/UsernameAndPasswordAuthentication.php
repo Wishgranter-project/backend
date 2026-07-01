@@ -36,6 +36,6 @@ class UsernameAndPasswordAuthentication extends BaseAuthenticationMethod impleme
      */
     public function applies(ServerRequestInterface $request): bool
     {
-        return $request->getMethod() == 'POST';
+        return $request->getMethod() == 'POST' && substr_count($request->getRequestTarget(), '/session');
     }
 }

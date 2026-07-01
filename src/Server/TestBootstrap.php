@@ -12,6 +12,7 @@ class TestBootstrap extends Bootstrap
     public function bootstrap()
     {
         parent::bootstrap();
+        self::emptyDir(DIR_USERS);
         self::copyFiles(DIR_TEST_COLLECTIONS_TEMPLATES, DIR_COLLECTIONS);
         self::copyFiles(DIR_TEST_USERS_TEMPLATES, DIR_USERS);
     }
@@ -36,6 +37,18 @@ class TestBootstrap extends Bootstrap
         });
 
         return $entries;
+    }
+
+    protected static function emptyDir($directory)
+    {
+        $entries = self::scanDir($directory);
+        foreach ($entries as $entry) {
+            if (is_dir($entry)) {
+                self::emptyDir($entry);
+            } else {
+                unlink($entry);
+            }
+        }
     }
 
     /**

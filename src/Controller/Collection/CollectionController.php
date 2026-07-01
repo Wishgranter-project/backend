@@ -48,7 +48,7 @@ abstract class CollectionController extends AuthenticatedController
      */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
-        $user = $this->getUser($request);
+        $user = $this->getAuthenticatedUser($request);
         if (!$user) {
             return $this->accessUnauthenticated();
         }
@@ -72,7 +72,7 @@ abstract class CollectionController extends AuthenticatedController
      */
     public function getCollection(ServerRequestInterface $request): ?PlaylistManager
     {
-        $user = $this->getUser($request);
+        $user = $this->getAuthenticatedUser($request);
         return $user
             ? $this->collectionManager->getCollection($user)
             : null;

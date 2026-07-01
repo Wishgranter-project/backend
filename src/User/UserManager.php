@@ -15,20 +15,29 @@ class UserManager
     }
 
     /**
-     * Given a user id, returns the user.
+     * Given a user id, returns the respective user.
      *
      * @param string $userId
      *   The id.
      *
-     * @return WishgranterProject\Backend\User\User
+     * @return WishgranterProject\Backend\User\UserInterface
      *   User object.
      */
-    public function getUser(string $userId): User
+    public function getUser(string $userId): UserInterface
     {
         return new User($this->getFilename($userId));
     }
 
-    public function getUserByUsername(string $username): ?User
+    /**
+     * Given a username, returns the respective user.
+     *
+     * @param string $username
+     *   Username.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface|null
+     *   User object.
+     */
+    public function getUserByUsername(string $username): ?UserInterface
     {
         foreach ($this->getAllUsers() as $user) {
             if ($user->getUsername() == $username) {
@@ -40,7 +49,7 @@ class UserManager
     }
 
     /**
-     * Given a user id, checks if it exists.
+     * Given a user id, checks if the respective user exists.
      *
      * @param string $userId
      *   The user id.
@@ -100,6 +109,66 @@ class UserManager
     }
 
     /**
+     * Given a username, returns an available user id.
+     *
+     * @param string $username
+     *   Username as the base.
+     *
+     * @return string
+     *   An available user id.
+     */
+    public function getAvailableUserId(string $username): string
+    {
+        $userId = $this->usernameToUserId($username);
+        while ($this->userExists($userId)) {
+            $userId = preg_match('/_(\d+)$/', $userId, $matches)
+                ? preg_replace('/_(\d+)$/', '_' . $matches[1], $userId)
+                : $userId = '_2';
+        }
+
+        return $userId;
+    }
+
+    /**
+     * Given a username, returns a valid user id.
+     *
+     * @param string $username
+     *   Username as the base.
+     *
+     * @return string
+     *   A valid user id.
+     */
+    protected function usernameToUserId(string $username): string
+    {
+        $userId = strtolower(trim($username));
+        $userId = str_replace(' ', '-', $userId);
+        $userId = preg_replace('/[^\w\-]/', '', $userId);
+        $userId = $userId
+            ? $userId
+            : ((string) rand(10000, 99999));
+
+        return $userId;
+    }
+
+    /**
+     * Checks if a string is a valid username.
+     *
+     * @param string $username
+     *   The username candidate.
+     *
+     * @return bool
+     *   True if valid.
+     */
+    public function validateUsername(string $username): bool
+    {
+        if (trim($username) != $username) {
+            return false;
+        }
+
+        return preg_replace('/[^\w\d\- ]/', '', $username) == $username;
+    }
+
+    /**
      * Given a user id, retrieves the filename containing the user's data.
      *
      * @param string $userId
@@ -110,6 +179,6 @@ class UserManager
      */
     protected function getFilename(string $userId): string
     {
-        return $this->directory . '/' . $userId . '.jsonl';
+        return $this->directory . $userId . '.jsonl';
     }
 }

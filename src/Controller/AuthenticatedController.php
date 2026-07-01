@@ -40,7 +40,7 @@ abstract class AuthenticatedController extends ControllerBase
      * @return null|WishgranterProject\Backend\User\User
      *   The user, NULL if no user can be matched.
      */
-    public function getUser(?ServerRequestInterface $request): ?User
+    public function getAuthenticatedUser(?ServerRequestInterface $request): ?User
     {
         if ($this->user === false) {
             $this->user = $this->authentication->getUser($request);
@@ -54,7 +54,7 @@ abstract class AuthenticatedController extends ControllerBase
      */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
-        $user = $this->getUser($request);
+        $user = $this->getAuthenticatedUser($request);
 
         return $user
             ? $this->accessGranted()
