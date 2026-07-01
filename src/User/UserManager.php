@@ -15,6 +15,20 @@ class UserManager
     }
 
     /**
+     * Given a user id, checks if the respective user exists.
+     *
+     * @param string $userId
+     *   The user id.
+     *
+     * @return bool
+     *   True if the user exists.
+     */
+    public function userExists(string $userId): bool
+    {
+        return file_exists($this->getFilename($userId));
+    }
+
+    /**
      * Given a user id, returns the respective user.
      *
      * @param string $userId
@@ -46,20 +60,6 @@ class UserManager
         }
 
         return null;
-    }
-
-    /**
-     * Given a user id, checks if the respective user exists.
-     *
-     * @param string $userId
-     *   The user id.
-     *
-     * @return bool
-     *   True if the user exists.
-     */
-    public function userExists(string $userId): bool
-    {
-        return file_exists($this->getFilename($userId));
     }
 
     /**

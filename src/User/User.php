@@ -60,7 +60,7 @@ class User implements UserInterface
      */
     public function getRoles(): array
     {
-        return (array) $this->getProperty('email', []);
+        return (array) $this->getProperty('roles', []);
     }
 
     /**

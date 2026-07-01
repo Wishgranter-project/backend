@@ -7,6 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Controller\PaginationTrait;
+use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
@@ -29,6 +30,9 @@ class ListPlaylists extends CollectionController
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $collection = $this->getCollection($request);
+        if (is_null($collection)) {
+            throw new NotFound();
+        }
 
         list($currentPage, $itemsPerPage, $offset, $limit) = $this->getPaginationInfo($request);
 

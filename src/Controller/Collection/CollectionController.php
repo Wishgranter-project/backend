@@ -8,6 +8,7 @@ use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Service\CollectionManager;
+use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 use WishgranterProject\DescriptivePlaylist\PlaylistItem;
@@ -23,11 +24,14 @@ abstract class CollectionController extends AuthenticatedController
      *
      * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
      *   Authentication service.
+     * @param WishgranterProject\Backend\User\UserManager $userManager
+     *   User manager service.
      * @param WishgranterProject\Backend\Service\CollectionManager $collectionManager
      *   Collection manager service.
      */
     public function __construct(
         protected AuthenticationInterface $authentication,
+        protected UserManager $userManager,
         protected CollectionManager $collectionManager
     ) {
     }
@@ -39,6 +43,7 @@ abstract class CollectionController extends AuthenticatedController
     {
         return new (get_called_class())(
             $serviceLocator->get('authentication'),
+            $serviceLocator->get('userManager'),
             $serviceLocator->get('collectionManager')
         );
     }
@@ -53,10 +58,10 @@ abstract class CollectionController extends AuthenticatedController
             return $this->accessUnauthenticated();
         }
 
-        $owner = $request->getAttribute('userId');
+        $isTheOwner = $user->getId() == $request->getAttribute('userId');
+        $isAdmin = $user->hasRole('admin');
 
-        // Rather basic logic, can be spanded if needed.
-        return $owner == $user->getId()
+        return $isTheOwner || $isAdmin
             ? $this->accessGranted()
             : $this->accessUnauthorized('You are not allowed to access this user\'s collection');
     }
@@ -72,7 +77,12 @@ abstract class CollectionController extends AuthenticatedController
      */
     public function getCollection(ServerRequestInterface $request): ?PlaylistManager
     {
-        $user = $this->getAuthenticatedUser($request);
+        $userId = $request->getAttribute('userId');
+        if (!$this->userManager->userExists($userId)) {
+            return null;
+        }
+
+        $user = $this->userManager->getUser($userId);
         return $user
             ? $this->collectionManager->getCollection($user)
             : null;
