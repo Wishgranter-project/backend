@@ -8,8 +8,6 @@ use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Authentication\Authentication;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServiceLocator;
-use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
 class CloseSession extends ControllerBase
@@ -19,13 +17,13 @@ class CloseSession extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $session = Helpers::guidv4();
+        $sessionId = Helpers::guidv4();
         $expiration = 1;
 
         $resource = new JsonResource();
         $resource->addSuccess(200, 'Goodbye');
         $response = $resource->renderResponse();
-        $response = $response->withAddedCookie('session', $session, $expiration);
+        $response = $response->withAddedCookie('session', $sessionId, $expiration);
 
         return $response;
     }

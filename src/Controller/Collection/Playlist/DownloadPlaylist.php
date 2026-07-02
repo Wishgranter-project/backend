@@ -7,8 +7,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Exception\NotFound;
-use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
  * Downloads a individual playlist.

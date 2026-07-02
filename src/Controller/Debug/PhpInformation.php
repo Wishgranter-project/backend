@@ -2,12 +2,11 @@
 
 namespace WishgranterProject\Backend\Controller\Debug;
 
-use WishgranterProject\Backend\Controller\AuthenticatedController;
-use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\Backend\Service\ServiceLocator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use WishgranterProject\Backend\Access\AccessResultInterface;
+use WishgranterProject\Backend\Controller\AuthenticatedController;
 
 class PhpInformation extends AuthenticatedController
 {
@@ -30,5 +29,20 @@ class PhpInformation extends AuthenticatedController
         ob_end_clean();
 
         return $handler->responseFactory->ok($html);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAccess(ServerRequestInterface $request): AccessResultInterface
+    {
+        $user = $this->getAuthenticatedUser($request);
+        if (!$user) {
+            return $this->accessUnauthenticated();
+        }
+
+        return $user->hasRole('admin')
+            ? $this->accessGranted()
+            : $this->accessUnauthorized();
     }
 }

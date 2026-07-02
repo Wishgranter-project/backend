@@ -2,10 +2,10 @@
 
 namespace WishgranterProject\Backend\Controller\User;
 
-use WishgranterProject\Backend\Access\AccessResultInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use WishgranterProject\Backend\Access\AccessResultInterface;
 
 class CreateUser extends GetUser
 {
@@ -50,7 +50,7 @@ class CreateUser extends GetUser
 
         return $user->hasRole('admin')
             ? $this->accessGranted()
-            : $this->accessUnauthorized('You are already logged in');
+            : $this->accessUnauthorized('You are already logged in.');
     }
 
     /**

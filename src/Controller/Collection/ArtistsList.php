@@ -5,10 +5,6 @@ namespace WishgranterProject\Backend\Controller\Collection;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Authentication\Authentication;
-use WishgranterProject\Backend\Helper\JsonResource;
-use WishgranterProject\Backend\Service\ServiceLocator;
-use WishgranterProject\DescriptiveManager\PlaylistManager;
 
 /**
  * Lists all the artists within the collection.

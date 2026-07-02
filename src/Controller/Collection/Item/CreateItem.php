@@ -6,8 +6,6 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
-use WishgranterProject\Backend\Exception\NotFound;
-use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\DescriptivePlaylist\PlaylistItem;
 use WishgranterProject\DescriptiveManager\PlaylistManager;
 
@@ -36,7 +34,9 @@ class CreateItem extends CollectionController
         }
 
         while (!$collection->lock()) {
-            // loop until the lock is acquired.
+            // Wait to acquire a lock.
+            // Multiple requests happening at the same time may damage the
+            // collection.
         }
 
         $uuid = $post['uuid'] ?? null;

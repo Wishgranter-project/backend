@@ -6,7 +6,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\PaginationTrait;
-use WishgranterProject\Backend\Helper\SearchResults;
 use WishgranterProject\DescriptivePlaylist\Playlist;
 
 /**
@@ -14,7 +13,9 @@ use WishgranterProject\DescriptivePlaylist\Playlist;
  */
 class DownloadCollection extends CollectionController
 {
-    // I can't remember why I made this controller paginable.
+    /**
+     * @todo Remove it. I can't remember why I made this controller paginable.
+     */
     use PaginationTrait;
 
     /**

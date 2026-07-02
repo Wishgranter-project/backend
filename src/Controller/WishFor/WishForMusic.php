@@ -7,11 +7,9 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\AetherMusic\Aether;
 use WishgranterProject\AetherMusic\Description;
-use WishgranterProject\AetherMusic\Search\SearchResults;
 use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
-use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServiceLocator;
 
 /**

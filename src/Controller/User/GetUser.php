@@ -2,11 +2,11 @@
 
 namespace WishgranterProject\Backend\Controller\User;
 
-use WishgranterProject\Backend\Access\AccessResultInterface;
-use WishgranterProject\Backend\Exception\NotFound;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
+use WishgranterProject\Backend\Access\AccessResultInterface;
+use WishgranterProject\Backend\Exception\NotFound;
 
 class GetUser extends UserController
 {

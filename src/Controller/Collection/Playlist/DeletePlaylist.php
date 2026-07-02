@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Exception\NotFound;
-use WishgranterProject\Backend\Helper\JsonResource;
 
 /**
  * Deletes a playlist and all its items.
