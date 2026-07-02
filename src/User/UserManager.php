@@ -53,8 +53,30 @@ class UserManager
      */
     public function getUserByUsername(string $username): ?UserInterface
     {
+        $username = strtolower($username);
         foreach ($this->getAllUsers() as $user) {
-            if ($user->getUsername() == $username) {
+            if (strtolower($user->getUsername()) == $username) {
+                return $user;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Given an email, returns the respective user.
+     *
+     * @param string $email
+     *   Username.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface|null
+     *   User object.
+     */
+    public function getUserByEmail(string $email): ?UserInterface
+    {
+        $email = strtolower($email);
+        foreach ($this->getAllUsers() as $user) {
+            if (strtolower($user->getEmail()) == $email) {
                 return $user;
             }
         }

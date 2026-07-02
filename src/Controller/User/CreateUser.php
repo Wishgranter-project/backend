@@ -35,6 +35,7 @@ class CreateUser extends GetUser
         $data = $this->dataTransferUser($user);
 
         return $this->jsonResource($data, 201)
+            ->addSuccess(201, 'User registered', 'User ' . $data['username'] . ' registered')
             ->renderResponse();
     }
 
@@ -60,7 +61,54 @@ class CreateUser extends GetUser
      */
     protected function validateData(array $data)
     {
-        $knownInputs =
+        $this->validateKnownProperties($data);
+
+        $this->validateRequiredProperties($data);
+
+        $this->validateDataFormats($data);
+
+        if ($data['password'] != $data['confirmPassword']) {
+            throw new \InvalidArgumentException('Passwords do not match.');
+        }
+
+        if ($this->userManager->getUserByUsername($data['username'])) {
+            throw new \InvalidArgumentException('Username is taken.');
+        }
+
+        if ($this->userManager->getUserByEmail($data['email'])) {
+            throw new \InvalidArgumentException('This e-mail is in use.');
+        }
+    }
+
+    protected function validateDataFormats(array $data)
+    {
+        if (!$this->userManager->validateUsername($data['username'])) {
+            throw new \InvalidArgumentException('Invalid username. Alpha-numerical characters only, please.');
+        }
+
+        if (!filter_var($data['email'], \FILTER_VALIDATE_EMAIL)) {
+            throw new \InvalidArgumentException('Please provide a valid e-mail address.');
+        }
+    }
+
+    protected function validateKnownProperties(array $data)
+    {
+        $knownInputs = [
+            'password',
+            'confirmPassword',
+            'username',
+            'email',
+        ];
+
+        foreach (array_keys($data) as $key) {
+            if (!in_array($key, $knownInputs)) {
+                throw new \InvalidArgumentException('Unrecognized property ' . $key);
+            }
+        }
+    }
+
+    protected function validateRequiredProperties(array $data)
+    {
         $requiredInput = [
             'password',
             'confirmPassword',
@@ -72,28 +120,6 @@ class CreateUser extends GetUser
             if (!isset($data[$key])) {
                 throw new \InvalidArgumentException('Missing property ' . $key);
             }
-        }
-
-        foreach (array_keys($data) as $key) {
-            if (!in_array($key, $knownInputs)) {
-                throw new \InvalidArgumentException('Unrecognized property ' . $key);
-            }
-        }
-
-        if ($data['password'] != $data['confirmPassword']) {
-            throw new \InvalidArgumentException('Passwords do not match.');
-        }
-
-        if (!$this->userManager->validateUsername($data['username'])) {
-            throw new \InvalidArgumentException('Invalid username. Alpha-numerical characters only, please.');
-        }
-
-        if ($this->userManager->getUserByUsername($data['username'])) {
-            throw new \InvalidArgumentException('Username is taken.');
-        }
-
-        if (!filter_var($data['email'], \FILTER_VALIDATE_EMAIL)) {
-            throw new \InvalidArgumentException('Please provide a valid e-mail address.');
         }
     }
 }
