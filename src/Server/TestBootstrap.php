@@ -4,10 +4,13 @@ namespace WishgranterProject\Backend\Server;
 
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Bootstrap the test app.
+ */
 class TestBootstrap extends Bootstrap
 {
     /**
-     * Bootstrap the test app.
+     * {@inheritdoce}
      */
     public function bootstrap()
     {
@@ -20,8 +23,8 @@ class TestBootstrap extends Bootstrap
     /**
      * Scans the contents of a directory.
      *
-     * Unlike scandir(), it avoids . and ..
-     * and returns absolute paths instead of relative ones.
+     * Unlike the native scandir(), it avoids . and .. and returns absolute
+     * paths instead of relative ones.
      *
      * @param string $directory
      *   Absolute path to the directory.
@@ -29,7 +32,7 @@ class TestBootstrap extends Bootstrap
      * @return array
      *   The contents of the directory.
      */
-    protected static function scanDir($directory): array
+    protected static function scanDir(string $directory): array
     {
         $entries = array_slice(scandir($directory), 2);
         array_walk($entries, function (&$entry) use ($directory) {
@@ -39,7 +42,13 @@ class TestBootstrap extends Bootstrap
         return $entries;
     }
 
-    protected static function emptyDir($directory)
+    /**
+     * Empties a directory.
+     *
+     * @param string $directory
+     *   Absolute path to the directory.
+     */
+    protected static function emptyDir(string $directory)
     {
         $entries = self::scanDir($directory);
         foreach ($entries as $entry) {
@@ -53,6 +62,8 @@ class TestBootstrap extends Bootstrap
 
     /**
      * Recursiverly copies file from a directory to another.
+     *
+     * Existing files are replaced.
      *
      * @param string $fromDir
      *   The origin directory.

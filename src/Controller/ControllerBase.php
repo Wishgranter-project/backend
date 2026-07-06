@@ -134,10 +134,10 @@ abstract class ControllerBase
     {
         if ($accessDenied instanceof AccessResultUnauthenticated) {
             $statusCode = 401;
-            $title = 'Unauthenticated';
+            $title = 'User unauthenticated';
         } else {
             $statusCode = 403;
-            $title = 'Denied';
+            $title = 'Access denied';
         }
 
         $json = $this->jsonResource(null, $statusCode);

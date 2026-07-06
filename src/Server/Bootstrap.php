@@ -15,6 +15,9 @@ class Bootstrap
         $this->serviceLocator = ServiceLocator::singleton();
     }
 
+    /**
+     * Bootstrap the app, creating directories and setting defaults.
+     */
     public function bootstrap()
     {
         require $this->settingsFile;
