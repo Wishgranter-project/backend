@@ -64,7 +64,7 @@ class OpenSession extends ControllerBase
 
         $user = $this->authentication->getMethod('usernameAndPassword')->getUser($request);
         if (!$user) {
-            throw new \InvalidArgumentException('Username or password incorrect');
+            throw new \InvalidArgumentException('Username or password incorrect.');
         }
 
         $expiration = strtotime('+24 hours');

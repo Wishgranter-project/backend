@@ -30,6 +30,7 @@ class UpdateUser extends CreateUser
             throw new NotFound('User ' . $userId . ' not found');
         }
         $this->user = $this->userManager->getUser($userId);
+        $this->request = $request;
 
         $data = $this->getPostData($request);
         $this->validateData($data);
@@ -68,6 +69,7 @@ class UpdateUser extends CreateUser
 
     protected function validateDataPassword(array $data)
     {
+        // Password is not being updated.
         if (empty($data['password'])) {
             return;
         }
@@ -76,7 +78,8 @@ class UpdateUser extends CreateUser
             throw new \InvalidArgumentException('Passwords do not match.');
         }
 
-        if (!$this->userManager->validatePassword($data['existingPassword'], $this->user->getHash())) {
+        $sameUser = $this->getAuthenticatedUser($this->request)->getId() == $this->user->getId();
+        if ($sameUser && !$this->userManager->validatePassword($data['existingPassword'], $this->user->getHash())) {
             throw new \InvalidArgumentException('Password incorrect.');
         }
     }
