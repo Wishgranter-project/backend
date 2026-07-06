@@ -21,6 +21,7 @@ $router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlis
 $router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/download$#',   'DownloadPlaylist');
 $router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)/items/?$#',    'ReadPlaylistItems');
 $router->put(   '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'UpdatePlaylist');
+$router->patch( '#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'PatchPlaylist');
 $router->delete('#api/v1/users/(?<userId>[\w-]+)/collection/playlists/(?<playlist>[\w-]+)$#',            'DeletePlaylist');
 
 // ITEMS
@@ -29,6 +30,7 @@ $router->post(  '#api/v1/users/(?<userId>[\w-]+)/collection/items/?$#',         
 $router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'ReadItem');
 $router->get(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/?$#',                                  'SearchItems');
 $router->put(   '#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'UpdateItem');
+$router->patch( '#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'PatchItem');
 $router->delete('#api/v1/users/(?<userId>[\w-]+)/collection/items/(?<itemUuid>[\w-]+)/?$#',              'DeleteItem');
 
 // DISCOVER

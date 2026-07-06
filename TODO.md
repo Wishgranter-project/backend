@@ -5,5 +5,5 @@
 - [ ] e-mail validation
 - [ ] option to change e-mail post registration.
 - [ ] password recovery
-- [ ] Patch method for playlists
-- [ ] Patch method for playlist items
+- [X] Patch method for playlists
+- [X] Patch method for playlist items

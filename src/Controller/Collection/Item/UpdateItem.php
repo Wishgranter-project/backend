@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WishgranterProject\Backend\Controller\Collection\CollectionController;
 use WishgranterProject\Backend\Exception\NotFound;
+use WishgranterProject\DescriptivePlaylist\PlaylistItem;
 
 /**
  * Updates a playlist item.
@@ -28,8 +29,7 @@ class UpdateItem extends CollectionController
             throw new NotFound('Item ' . $uuid . ' does not exist.');
         }
 
-        // Clears everything except for those two.
-        $item->empty(['uuid', 'xxxOriginal']);
+        $this->prepareItem($item);
 
         $newPosition = null;
         $post = $this->getPostData($request);
@@ -59,5 +59,17 @@ class UpdateItem extends CollectionController
         return $this->jsonResource($data)
             ->addSuccess(200, 'Item updated sucessfully.')
             ->renderResponse();
+    }
+
+    /**
+     * Prepares an item to be updated.
+     *
+     * @param WishgranterProject\DescriptivePlaylist\PlaylistItem $item
+     *   Playlist item.
+     */
+    protected function prepareItem($item): void
+    {
+        // Clears everything except for those two.
+        $item->empty(['uuid', 'xxxOriginal']);
     }
 }

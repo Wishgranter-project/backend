@@ -51,7 +51,7 @@ abstract class ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        return $handler->responseFactory->ok('-');
+        return $handler->responseFactory->ok('Something went wrong.');
     }
 
     /**
