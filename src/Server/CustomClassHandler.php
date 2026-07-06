@@ -22,7 +22,7 @@ class CustomClassHandler extends Base
         $access = $controller->getAccess($parameters['request']);
 
         if (!$access->isAllowed()) {
-            return $controller->deniedResponse($access);
+            return $controller->barredResponse($access);
         }
 
         return call_user_func_array($controller, $parameters);

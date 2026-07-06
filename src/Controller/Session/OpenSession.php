@@ -5,7 +5,7 @@ namespace WishgranterProject\Backend\Controller\Session;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServiceLocator;
@@ -19,7 +19,7 @@ class OpenSession extends ControllerBase
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\Backend\Session\SessionManagerInterface $sessionManager
      *   Session manager service.
@@ -27,7 +27,7 @@ class OpenSession extends ControllerBase
      *   Session garbage collector.
      */
     public function __construct(
-        protected AuthenticationInterface $authentication,
+        protected AuthenticationManagerInterface $authentication,
         protected SessionManagerInterface $sessionManager,
         protected SessionGarbageCollector $sessionGarbageCollector
     ) {

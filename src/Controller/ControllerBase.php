@@ -55,6 +55,10 @@ abstract class ControllerBase
     }
 
     /**
+     * Instantiates a new json resource.
+     *
+     * Convenience method to help us compose a response.
+     *
      * @return WishgranterProject\Backend\Helper\JsonResource
      *   JsonResource object.
      */
@@ -108,7 +112,7 @@ abstract class ControllerBase
     }
 
     /**
-     * Given a request, checks if it is clear for a proper response.
+     * Given a request, checks for clearance.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
@@ -122,30 +126,6 @@ abstract class ControllerBase
     }
 
     /**
-     * Generates an access denied response.
-     *
-     * @param WishgranterProject\Backend\Access\AccessDeniedInterface $accessDenied
-     *   The computed access result.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The access denied response object.
-     */
-    public function deniedResponse(AccessResultBarredInterface $accessDenied): ResponseInterface
-    {
-        if ($accessDenied instanceof AccessResultUnauthenticated) {
-            $statusCode = 401;
-            $title = 'User unauthenticated';
-        } else {
-            $statusCode = 403;
-            $title = 'Access denied';
-        }
-
-        $json = $this->jsonResource(null, $statusCode);
-        $json->addError($statusCode, $title, $accessDenied->getReason());
-        return $json->renderResponse();
-    }
-
-    /**
      * Instantiates an access granted result object.
      *
      * @return WishgranterProject\Backend\Access\AccessResultInterface
@@ -154,6 +134,30 @@ abstract class ControllerBase
     protected function accessGranted(): AccessResultInterface
     {
         return Access::granted();
+    }
+
+    /**
+     * Generates an access denied response.
+     *
+     * @param WishgranterProject\Backend\Access\AccessResultBarredInterface $accessBarred
+     *   The computed access result.
+     *
+     * @return Psr\Http\Message\ResponseInterface
+     *   The access denied response object.
+     */
+    public function barredResponse(AccessResultBarredInterface $accessBarred): ResponseInterface
+    {
+        if ($accessBarred instanceof AccessResultUnauthenticated) {
+            $statusCode = 401;
+            $title = 'User unauthenticated';
+        } else {
+            $statusCode = 403;
+            $title = 'Access denied';
+        }
+
+        $json = $this->jsonResource(null, $statusCode);
+        $json->addError($statusCode, $title, $accessBarred->getReason());
+        return $json->renderResponse();
     }
 
     /**

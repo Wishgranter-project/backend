@@ -5,7 +5,7 @@ namespace WishgranterProject\Backend\Controller\Discover;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
@@ -21,13 +21,13 @@ class DiscoverArtists extends AuthenticatedController
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\Backend\Service\Discography $discography
      *   The discography service.
      */
     public function __construct(
-        protected AuthenticationInterface $authentication,
+        protected AuthenticationManagerInterface $authentication,
         protected Discography $discography,
     ) {
     }

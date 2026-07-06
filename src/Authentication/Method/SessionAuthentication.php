@@ -30,15 +30,6 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
         );
     }
 
-    public function getSession(ServerRequestInterface $request): ?SessionInterface
-    {
-        if (!$sessionId = $this->getSessionId($request)) {
-            return null;
-        }
-
-        return $this->sessionManager->getSession($sessionId);
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -57,6 +48,33 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
         return $session->getUser();
     }
 
+    /**
+     * Retrieves the session referenced by the request.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request.
+     *
+     * @return null|WishgranterProject\Backend\Session\SessionInterface
+     *   The session referenced in the request.
+     */
+    public function getSession(ServerRequestInterface $request): ?SessionInterface
+    {
+        if (!$sessionId = $this->getSessionId($request)) {
+            return null;
+        }
+
+        return $this->sessionManager->getSession($sessionId);
+    }
+
+    /**
+     * Retrieves the session id in the request.
+     *
+     * @param Psr\Http\Message\ServerRequestInterface $request
+     *   The HTTP request.
+     *
+     * @return string|null
+     *   The session id within the request.
+     */
     protected function getSessionId(ServerRequestInterface $request): ?string
     {
         $cookies = $request->getCookieParams();

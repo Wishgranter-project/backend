@@ -3,7 +3,7 @@
 namespace WishgranterProject\Backend\Controller;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Exception\Unauthorized;
 use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\User\UserInterface;
@@ -21,10 +21,10 @@ abstract class AuthenticatedController extends ControllerBase
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      */
-    public function __construct(protected AuthenticationInterface $authentication)
+    public function __construct(protected AuthenticationManagerInterface $authentication)
     {
     }
 

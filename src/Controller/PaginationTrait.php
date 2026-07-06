@@ -81,7 +81,10 @@ trait PaginationTrait
      */
     protected function countPages(int $totalNumberOfResults, int $itemsPerPage): int
     {
-        $pages = $totalNumberOfResults ? round($totalNumberOfResults / $itemsPerPage) : 0;
+        $pages = $totalNumberOfResults
+            ? round($totalNumberOfResults / $itemsPerPage)
+            : 0;
+
         $pages += $totalNumberOfResults > $itemsPerPage * $pages
             ? 1
             : 0;

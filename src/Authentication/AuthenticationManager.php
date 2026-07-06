@@ -12,7 +12,7 @@ use WishgranterProject\Backend\User\UserInterface;
 /**
  * Authentication service.
  */
-class AuthenticationManager implements AuthenticationInterface
+class AuthenticationManager implements AuthenticationManagerInterface
 {
     /**
      * Constructor

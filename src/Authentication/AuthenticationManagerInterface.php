@@ -6,7 +6,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Authentication\Method\AuthenticationMethodInterface;
 use WishgranterProject\Backend\User\UserInterface;
 
-interface AuthenticationInterface
+interface AuthenticationManagerInterface
 {
     /**
      * Given a HTTP request, returns the relevant user.

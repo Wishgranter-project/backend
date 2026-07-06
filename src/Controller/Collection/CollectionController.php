@@ -3,7 +3,7 @@
 namespace WishgranterProject\Backend\Controller\Collection;
 
 use Psr\Http\Message\ServerRequestInterface;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServiceLocator;
@@ -22,7 +22,7 @@ abstract class CollectionController extends AuthenticatedController
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\Backend\User\UserManager $userManager
      *   User manager service.
@@ -30,7 +30,7 @@ abstract class CollectionController extends AuthenticatedController
      *   Collection manager service.
      */
     public function __construct(
-        protected AuthenticationInterface $authentication,
+        protected AuthenticationManagerInterface $authentication,
         protected UserManager $userManager,
         protected CollectionManager $collectionManager
     ) {
@@ -53,13 +53,13 @@ abstract class CollectionController extends AuthenticatedController
      */
     public function getAccess(ServerRequestInterface $request): AccessResultInterface
     {
-        $user = $this->getAuthenticatedUser($request);
-        if (!$user) {
+        $authenticatedUser = $this->getAuthenticatedUser($request);
+        if (!$authenticatedUser) {
             return $this->accessUnauthenticated();
         }
 
-        $isTheOwner = $user->getId() == $request->getAttribute('userId');
-        $isAdmin = $user->hasRole('admin');
+        $isTheOwner = $authenticatedUser->getId() == $request->getAttribute('userId');
+        $isAdmin = $authenticatedUser->hasRole('admin');
 
         return $isTheOwner || $isAdmin
             ? $this->accessGranted()

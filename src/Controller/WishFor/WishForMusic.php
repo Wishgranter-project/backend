@@ -7,7 +7,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
 use WishgranterProject\AetherMusic\Aether;
 use WishgranterProject\AetherMusic\Description;
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Service\ServiceLocator;
@@ -20,13 +20,13 @@ class WishForMusic extends AuthenticatedController
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\AetherMusic\Aether $aether
      *   The aether service.
      */
     public function __construct(
-        protected AuthenticationInterface $authentication,
+        protected AuthenticationManagerInterface $authentication,
         protected Aether $aether,
     ) {
     }

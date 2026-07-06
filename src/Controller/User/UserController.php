@@ -2,7 +2,7 @@
 
 namespace WishgranterProject\Backend\Controller\User;
 
-use WishgranterProject\Backend\Authentication\AuthenticationInterface;
+use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\User\UserInterface;
@@ -14,13 +14,13 @@ abstract class UserController extends AuthenticatedController
     /**
      * Constructor.
      *
-     * @param WishgranterProject\Backend\Authentication\AuthenticationInterface $authentication
+     * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
      * @param WishgranterProject\Backend\User\UserManager $userManager
      *   User manager service.
      */
     public function __construct(
-        protected AuthenticationInterface $authentication,
+        protected AuthenticationManagerInterface $authentication,
         protected UserManager $userManager
     ) {
     }
