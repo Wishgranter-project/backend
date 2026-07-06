@@ -7,7 +7,7 @@ abstract class AccessResult implements AccessResultInterface
     /**
      * {@inheritdoc}
      */
-    public function allowed(): bool
+    public function isAllowed(): bool
     {
         return false;
     }

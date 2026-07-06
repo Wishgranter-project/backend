@@ -59,7 +59,7 @@ class OpenSession extends ControllerBase
             ->getUser($request);
 
         if ($user) {
-            throw new \InvalidArgumentException('You are already logged in');
+            throw new \InvalidArgumentException('You are already logged in.');
         }
 
         $user = $this->authentication->getMethod('usernameAndPassword')->getUser($request);

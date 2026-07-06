@@ -51,7 +51,7 @@ class CreateUser extends GetUser
 
         return $user->hasRole('admin')
             ? $this->accessGranted()
-            : $this->accessUnauthorized('You are already logged in.');
+            : $this->accessDenied('You are already logged in.');
     }
 
     /**
@@ -67,59 +67,92 @@ class CreateUser extends GetUser
 
         $this->validateDataFormats($data);
 
-        if ($data['password'] != $data['confirmPassword']) {
+        $this->validateDataPassword($data);
+
+        $this->validateDataUsername($data);
+
+        $this->validateDataEmail($data);
+    }
+
+    protected function validateDataPassword(array $data)
+    {
+        if (isset($data['password']) && $data['password'] != $data['confirmPassword']) {
             throw new \InvalidArgumentException('Passwords do not match.');
         }
+    }
 
+    protected function validateDataUsername(array $data)
+    {
         if ($this->userManager->getUserByUsername($data['username'])) {
             throw new \InvalidArgumentException('Username is taken.');
         }
+    }
 
-        if ($this->userManager->getUserByEmail($data['email'])) {
+    protected function validateDataEmail(array $data)
+    {
+        if (!empty($data['email']) && $this->userManager->getUserByEmail($data['email'])) {
             throw new \InvalidArgumentException('This e-mail is in use.');
         }
     }
 
     protected function validateDataFormats(array $data)
     {
-        if (!$this->userManager->validateUsername($data['username'])) {
+        $this->validateDataFormatsUsername($data);
+        $this->validateDataFormatsEmail($data);
+    }
+
+    protected function validateDataFormatsUsername($data)
+    {
+        if (isset($data['username']) && !$this->userManager->validateUsername($data['username'])) {
             throw new \InvalidArgumentException('Invalid username. Alpha-numerical characters only, please.');
         }
+    }
 
-        if (!filter_var($data['email'], \FILTER_VALIDATE_EMAIL)) {
+    protected function validateDataFormatsEmail($data)
+    {
+        if (isset($data['email']) && !filter_var($data['email'], \FILTER_VALIDATE_EMAIL)) {
             throw new \InvalidArgumentException('Please provide a valid e-mail address.');
         }
     }
 
-    protected function validateKnownProperties(array $data)
+    protected function getKnownProperties(array $data): array
     {
-        $knownInputs = [
+        return [
             'password',
             'confirmPassword',
             'username',
             'email',
         ];
+    }
+
+    protected function getRequiredProperties(array $data): array
+    {
+        return $this->getKnownProperties($data);
+    }
+
+    protected function validateKnownProperties(array $data)
+    {
+        $knownInputs = $this->getKnownProperties($data);
 
         foreach (array_keys($data) as $key) {
-            if (!in_array($key, $knownInputs)) {
-                throw new \InvalidArgumentException('Unrecognized property ' . $key);
+            if (in_array($key, $knownInputs)) {
+                continue;
             }
+
+            throw new \InvalidArgumentException('Unrecognized property ' . $key);
         }
     }
 
     protected function validateRequiredProperties(array $data)
     {
-        $requiredInput = [
-            'password',
-            'confirmPassword',
-            'username',
-            'email',
-        ];
+        $requiredInput = $this->getRequiredProperties($data);
 
         foreach ($requiredInput as $key) {
-            if (!isset($data[$key])) {
-                throw new \InvalidArgumentException('Missing property ' . $key);
+            if (isset($data[$key])) {
+                continue;
             }
+
+            throw new \InvalidArgumentException('Missing property ' . $key);
         }
     }
 }

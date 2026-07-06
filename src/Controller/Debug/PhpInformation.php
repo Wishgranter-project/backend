@@ -43,6 +43,6 @@ class PhpInformation extends AuthenticatedController
 
         return $user->hasRole('admin')
             ? $this->accessGranted()
-            : $this->accessUnauthorized();
+            : $this->accessDenied();
     }
 }

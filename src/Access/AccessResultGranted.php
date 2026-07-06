@@ -7,7 +7,7 @@ class AccessResultGranted extends AccessResult
     /**
      * {@inheritdoc}
      */
-    public function allowed(): bool
+    public function isAllowed(): bool
     {
         return true;
     }

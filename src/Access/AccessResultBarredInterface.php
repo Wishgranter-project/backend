@@ -2,7 +2,7 @@
 
 namespace WishgranterProject\Backend\Access;
 
-interface AccessResultDeniedInterface extends AccessResultInterface
+interface AccessResultBarredInterface extends AccessResultInterface
 {
     /**
      * Returns a human readalbe reason for being denied access.

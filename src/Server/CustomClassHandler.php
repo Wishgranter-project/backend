@@ -21,7 +21,7 @@ class CustomClassHandler extends Base
 
         $access = $controller->getAccess($parameters['request']);
 
-        $response = $access->allowed()
+        $response = $access->isAllowed()
             ? call_user_func_array($controller, $parameters)
             : $controller->deniedResponse($access);
 

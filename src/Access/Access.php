@@ -9,9 +9,9 @@ abstract class Access
         return new AccessResultGranted();
     }
 
-    public static function unauthorized(string $reason): AccessResultInterface
+    public static function denied(string $reason): AccessResultInterface
     {
-        return new AccessResultUnauthorized($reason);
+        return new AccessResultDenied($reason);
     }
 
     public static function unauthenticated(string $reason): AccessResultInterface

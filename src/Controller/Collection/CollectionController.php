@@ -63,7 +63,7 @@ abstract class CollectionController extends AuthenticatedController
 
         return $isTheOwner || $isAdmin
             ? $this->accessGranted()
-            : $this->accessUnauthorized('You are not allowed to access this user\'s collection');
+            : $this->accessDenied('You are not allowed to access this user\'s collection');
     }
 
     /**

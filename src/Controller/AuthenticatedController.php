@@ -6,12 +6,17 @@ use Psr\Http\Message\ServerRequestInterface;
 use WishgranterProject\Backend\Authentication\AuthenticationInterface;
 use WishgranterProject\Backend\Exception\Unauthorized;
 use WishgranterProject\Backend\Service\ServiceLocator;
-use WishgranterProject\Backend\User\User;
+use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\Backend\Access\AccessResultInterface;
 
 abstract class AuthenticatedController extends ControllerBase
 {
-    protected $user = false;
+    /**
+     * The user authenticated.
+     *
+     * @var null|false|WishgranterProject\Backend\User\UserInterface
+     */
+    protected $authenticatedUser = false;
 
     /**
      * Constructor.
@@ -37,16 +42,16 @@ abstract class AuthenticatedController extends ControllerBase
      * @param null|Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
      *
-     * @return null|WishgranterProject\Backend\User\User
+     * @return null|WishgranterProject\Backend\User\UserInterface
      *   The user, NULL if no user can be matched.
      */
-    public function getAuthenticatedUser(?ServerRequestInterface $request): ?User
+    public function getAuthenticatedUser(?ServerRequestInterface $request): ?UserInterface
     {
-        if ($this->user === false) {
-            $this->user = $this->authentication->getUser($request);
+        if ($this->authenticatedUser === false) {
+            $this->authenticatedUser = $this->authentication->getUser($request);
         }
 
-        return $this->user;
+        return $this->authenticatedUser;
     }
 
     /**

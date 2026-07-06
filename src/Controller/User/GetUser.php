@@ -49,6 +49,6 @@ class GetUser extends UserController
 
         return $sameUser || $isAdmin
             ? $this->accessGranted()
-            : $this->accessUnauthorized('You are not authorized to see this user\'s info');
+            : $this->accessDenied('You are not authorized to see this user\'s info');
     }
 }

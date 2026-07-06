@@ -10,9 +10,9 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Exception\NotFound;
 use WishgranterProject\Backend\Access\Access;
 use WishgranterProject\Backend\Access\AccessResultInterface;
-use WishgranterProject\Backend\Access\AccessResultDeniedInterface;
+use WishgranterProject\Backend\Access\AccessResultBarredInterface;
 use WishgranterProject\Backend\Access\AccessResultUnauthenticated;
-use WishgranterProject\Backend\Access\AccessResultUnauthorized;
+use WishgranterProject\Backend\Access\AccessResultDenied;
 
 abstract class ControllerBase
 {
@@ -130,14 +130,14 @@ abstract class ControllerBase
      * @return Psr\Http\Message\ResponseInterface
      *   The access denied response object.
      */
-    public function deniedResponse(AccessResultDeniedInterface $accessDenied): ResponseInterface
+    public function deniedResponse(AccessResultBarredInterface $accessDenied): ResponseInterface
     {
         if ($accessDenied instanceof AccessResultUnauthenticated) {
             $statusCode = 401;
             $title = 'Unauthenticated';
         } else {
             $statusCode = 403;
-            $title = 'Unauthorized';
+            $title = 'Denied';
         }
 
         $json = $this->jsonResource(null, $statusCode);
@@ -162,8 +162,9 @@ abstract class ControllerBase
      * @return WishgranterProject\Backend\Access\AccessResultInterface
      *   Access result.
      */
-    protected function accessUnauthenticated(string $reason = 'User unauthenticated'): AccessResultInterface
-    {
+    protected function accessUnauthenticated(
+        string $reason = 'User unauthenticated.'
+    ): AccessResultInterface {
         return Access::unauthenticated($reason);
     }
 
@@ -173,9 +174,9 @@ abstract class ControllerBase
      * @return WishgranterProject\Backend\Access\AccessResultInterface
      *   Access result.
      */
-    protected function accessUnauthorized(
-        string $reason = 'Why unauthorized ? Who knows, lazy bastard never specified.'
+    protected function accessDenied(
+        string $reason = 'You lack an unespecified permission.'
     ): AccessResultInterface {
-        return Access::unauthorized($reason);
+        return Access::denied($reason);
     }
 }

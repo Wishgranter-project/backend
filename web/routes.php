@@ -44,6 +44,7 @@ $router->get(   '#api/v1/wish-for/music$#',                                     
 // USER
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\User');
 $router->get(   '#api/v1/users/(?<userId>[\w-]+)$#',                                                     'GetUser');
+$router->put(   '#api/v1/users/(?<userId>[\w-]+)$#',                                                     'UpdateUser');
 $router->post(  '#api/v1/users$#',                                                                       'CreateUser');
 
 // SESSION

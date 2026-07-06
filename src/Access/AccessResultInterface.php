@@ -13,5 +13,5 @@ interface AccessResultInterface
      * @return bool
      *   Yes or no.
      */
-    public function allowed(): bool;
+    public function isAllowed(): bool;
 }
