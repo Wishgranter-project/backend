@@ -22,7 +22,7 @@ if (!TestBootstrap::isLocalEnvironment()) {
     die();
 }
 
-$bootstrap = new TestBootstrap('./settings.test.php');
+$bootstrap = new TestBootstrap(__DIR__ . '/settings.test.php');
 $bootstrap->bootstrap();
 
 //=============================================================================

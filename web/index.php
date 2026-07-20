@@ -19,7 +19,7 @@ require '../vendor/autoload.php';
 
 //=============================================================================
 
-$bootstrap = new Bootstrap(Server::getServerRoot() . 'settings.php');
+$bootstrap = new Bootstrap(__DIR__ . '/settings.php');
 $bootstrap->bootstrap();
 
 //=============================================================================
