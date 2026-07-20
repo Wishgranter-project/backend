@@ -5,8 +5,8 @@ namespace WishgranterProject\Backend\Controller\WishFor;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ResponseInterface;
-use WishgranterProject\AetherMusic\Aether;
-use WishgranterProject\AetherMusic\Description;
+use WishgranterProject\MusicRadar\Radar;
+use WishgranterProject\MusicProbe\Description;
 use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\AuthenticatedController;
 use WishgranterProject\Backend\Controller\ControllerBase;
@@ -22,12 +22,12 @@ class WishForMusic extends AuthenticatedController
      *
      * @param WishgranterProject\Backend\Authentication\AuthenticationManagerInterface $authentication
      *   Authentication service.
-     * @param WishgranterProject\AetherMusic\Aether $aether
-     *   The aether service.
+     * @param WishgranterProject\MusicRadar\Radar $radar
+     *   The radar service.
      */
     public function __construct(
         protected AuthenticationManagerInterface $authentication,
-        protected Aether $aether,
+        protected Radar $radar,
     ) {
     }
 
@@ -38,7 +38,7 @@ class WishForMusic extends AuthenticatedController
     {
         return new self(
             $serviceLocator->get('authentication'),
-            $serviceLocator->get('aether'),
+            $serviceLocator->get('radar'),
         );
     }
 
@@ -48,14 +48,14 @@ class WishForMusic extends AuthenticatedController
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $description = $this->buildDescription($request);
-        $search      = $this->aether->search($description);
+        $search      = $this->radar->searchFor($description);
         $search->addDefaultCriteria();
 
         $searchResults = $search->find();
 
         $data = [];
         foreach ($searchResults as $item) {
-            $data[] = $item->resource->toArray();
+            $data[] = $item->getResource()->toArray();
         }
 
         $debug = [

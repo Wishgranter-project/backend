@@ -11,11 +11,10 @@ use WishgranterProject\DiscographyDiscogs\ApiDiscogs;
 use WishgranterProject\DiscographyDiscogs\SourceDiscogs;
 use WishgranterProject\DiscographyMusicBrainz\ApiMusicBrainz;
 use WishgranterProject\DiscographyMusicBrainz\SourceMusicBrainz;
-use WishgranterProject\AetherMusic\YouTube\YouTubeApi;
-use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTube;
-use WishgranterProject\AetherMusic\YouTube\Source\SourceYouTubeLax;
-use WishgranterProject\AetherMusic\LocalFiles\Source\SourceLocalFiles;
-use WishgranterProject\AetherMusic\Aether;
+use WishgranterProject\YouTubeProbe\YouTubeApi;
+use WishgranterProject\YouTubeProbe\YouTubeProbe;
+use WishgranterProject\LocalFilesProbe\LocalFilesProbe;
+use WishgranterProject\MusicRadar\Radar;
 use AdinanCenci\FileCache\Cache;
 
 /**
@@ -120,27 +119,25 @@ class ServiceLocator extends Singleton
     /**
      * Instantiates the service to find playable media.
      *
-     * @return WishgranterProject\AetherMusic\Aether
-     *   Aether service.
+     * @return WishgranterProject\MusicRadar\Radar
+     *   Music radar service.
      */
-    protected function instantiateAether()
+    protected function instantiateRadar()
     {
         $youtubeApiKey = $this->get('config')->get('youtubeApiKey');
 
-        $aether = new Aether();
+        $radar = new Radar();
 
         $apiYouTube  = new YouTubeApi($youtubeApiKey, [], $this->get('cache'));
-        $youTube     = new SourceYouTube($apiYouTube);
-        $youTubeLax  = new SourceYouTubeLax($apiYouTube);
+        $youTube     = new YouTubeProbe($apiYouTube);
 
         if (file_exists(DIR_LOCAL_MEDIA)) {
-            $localFiles = new SourceLocalFiles(DIR_LOCAL_MEDIA, 'https://wishgranter-backend.ddev.site/' . basename(DIR_LOCAL_MEDIA) . '/');
-            $aether->addSource($localFiles, 20);
+            $localFiles = new LocalFilesProbe(DIR_LOCAL_MEDIA, 'https://wishgranter-backend.ddev.site/' . basename(DIR_LOCAL_MEDIA) . '/');
+            $radar->addProbe($localFiles, 20);
         }
 
-        $aether->addSource($youTube, 1);
-        $aether->addSource($youTubeLax, 2);
-        return $aether;
+        $radar->addProbe($youTube, 1);
+        return $radar;
     }
 
     /**
