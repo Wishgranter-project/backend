@@ -130,13 +130,16 @@ class ServiceLocator extends Singleton
 
         $apiYouTube  = new YouTubeApi($youtubeApiKey, [], $this->get('cache'));
         $youTube     = new YouTubeProbe($apiYouTube);
+        $radar->addProbe($youTube, 1);
 
         if (file_exists(DIR_LOCAL_MEDIA)) {
-            $localFiles = new LocalFilesProbe(DIR_LOCAL_MEDIA, 'https://wishgranter-backend.ddev.site/' . basename(DIR_LOCAL_MEDIA) . '/');
+            $domain = $this->get('settings')->get('domain');
+            $host = 'https://' . $domain . '/';
+            $path = str_replace(DIR_SERVER_ROOT, '', DIR_LOCAL_MEDIA);
+            $localFiles = new LocalFilesProbe(DIR_LOCAL_MEDIA, $host . $path);
             $radar->addProbe($localFiles, 20);
         }
 
-        $radar->addProbe($youTube, 1);
         return $radar;
     }
 

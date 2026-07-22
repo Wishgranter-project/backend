@@ -32,7 +32,7 @@ class GetSession extends OpenSession
 
         $resource = new JsonResource([
             'expiration' => $session->getExpiration(),
-            'id'         => $user->getId(),
+            'userId'     => $user->getId(),
             'username'   => $user->getUsername(),
         ], 200);
 
