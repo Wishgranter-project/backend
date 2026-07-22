@@ -34,81 +34,10 @@ final class Server
         $router = new Router(null, null, null, $caller);
         $router->setNotFoundHandler([$this, 'handleNotFoundError']);
         $router->setExceptionHandler([$this, 'handleException']);
-        // CORS Pre-flight.
-        $router->add('OPTIONS', '#^.*$#', [$this, 'preFlight']);
-        // Add CORS headers to all responses.
-        $router->before('GET|POST|PUT|PATCH|DELETE', '#^.*$#', [$this, 'decorator']);
 
         require $routes;
 
         return $router;
-    }
-
-    /**
-     * Cors pre-flight controller for CORS.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *   The request handler object.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response for the request.
-     */
-    public function preFlight(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-        $response = $handler->responseFactory->ok('');
-        $response = $this->withAddedCorsHeaders($request, $response);
-
-        return $response;
-    }
-
-    /**
-     * Generates a response and adds CORS headers.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     * @param Psr\Http\Server\RequestHandlerInterface $handler
-     *   The request handler object.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response for the request.
-     */
-    public function decorator(
-        ServerRequestInterface $request,
-        RequestHandlerInterface $handler
-    ): ResponseInterface {
-
-        $response = $handler->handle($request);
-        if (!$response->hasHeader('Access-Control-Allow-Origin')) {
-            $response = $this->withAddedCorsHeaders($request, $response);
-        }
-        return $response;
-    }
-
-    /**
-     * Returns a response with CORS headers added.
-     *
-     * @param Psr\Http\Message\ServerRequestInterface $request
-     *   The HTTP request object.
-     * @param Psr\Http\Server\ResponseInterface $response
-     *   The response for the request.
-     *
-     * @return Psr\Http\Message\ResponseInterface
-     *   The response for the request with CORS headers.
-     */
-    public function withAddedCorsHeaders(
-        ServerRequestInterface $request,
-        ResponseInterface $response
-    ): ResponseInterface {
-        $settings = $this->serviceLocator->get('settings');
-        $response = $response->withAddedHeader('Access-Control-Allow-Origin', $settings->get('corsAllowedDomain', '*'));
-        $response = $response->withAddedHeader('Access-Control-Allow-Credentials', 'true');
-        $response = $response->withAddedHeader('Access-Control-Allow-Headers', 'content-type, *');
-        $response = $response->withAddedHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-        return $response;
     }
 
     /**

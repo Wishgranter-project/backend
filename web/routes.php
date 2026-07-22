@@ -1,11 +1,16 @@
 <?php
 
+use WishgranterProject\Backend\Middleware\CorsDecorator;
+use WishgranterProject\Backend\Controller\Preflight;
+
 if (!isset($router)) {
     die();
 }
 
-$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\HomePage');
+$router->before('GET|POST|PUT|PATCH|DELETE', '#^.*$#',                                                   CorsDecorator::class);
+$router->options('#^.*$#',                                                                               Preflight::class);
 
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\HomePage');
 $router->get(   '#^$#',                                                                                  'HomePage');
 
 // COLLECTION
