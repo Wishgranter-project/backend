@@ -18,12 +18,13 @@ class CloseSession extends ControllerBase
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $sessionId = Helpers::guidv4();
+        $maxAge =
         $expiration = 1;
 
         $resource = new JsonResource();
         $resource->addSuccess(200, 'Goodbye');
         $response = $resource->renderResponse();
-        $response = $response->withAddedCookie('session', $sessionId, $expiration);
+        $response = $response->withAddedCookie('session', $sessionId, $maxAge, $expiration);
 
         return $response;
     }

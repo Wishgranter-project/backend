@@ -67,7 +67,8 @@ class OpenSession extends ControllerBase
             throw new \InvalidArgumentException('Username or password incorrect.');
         }
 
-        $expiration = strtotime('+24 hours');
+        $maxAge = 86400; // 24 hours
+        $expiration = time() + $maxAge;
         $session = $this->sessionManager->startNewSession($user, $expiration);
 
         $resource = new JsonResource([
@@ -84,7 +85,7 @@ class OpenSession extends ControllerBase
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
 
-        $response = $response->withAddedCookie('session', $session->getId(), $expiration);
+        $response = $response->withAddedCookie('session', $session->getId(), $maxAge, $expiration, '', '', true, true, 'Strinct');
         if (IS_TEST_ENVIRONMENT) {
             // Add the session id to a non-cookie header so JS scripts may read it.
             $response = $response->withAddedHeader('test-environment-only-session-id', $session->getId());

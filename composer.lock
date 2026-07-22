@@ -295,16 +295,16 @@
         },
         {
             "name": "adinan-cenci/psr-7",
-            "version": "v2.0.1",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/psr-7.git",
-                "reference": "d510a6c16f08809a187ec7328a7de8232d976feb"
+                "reference": "d8de83a4afe32e5c6215790bfb0124e402f5f7c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/psr-7/zipball/d510a6c16f08809a187ec7328a7de8232d976feb",
-                "reference": "d510a6c16f08809a187ec7328a7de8232d976feb",
+                "url": "https://api.github.com/repos/adinan-cenci/psr-7/zipball/d8de83a4afe32e5c6215790bfb0124e402f5f7c4",
+                "reference": "d8de83a4afe32e5c6215790bfb0124e402f5f7c4",
                 "shasum": ""
             },
             "require": {
@@ -333,9 +333,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/psr-7/issues",
-                "source": "https://github.com/adinan-cenci/psr-7/tree/v2.0.1"
+                "source": "https://github.com/adinan-cenci/psr-7/tree/v3.0.0"
             },
-            "time": "2025-06-11T00:00:21+00:00"
+            "time": "2026-03-16T21:46:35+00:00"
         },
         {
             "name": "adinan-cenci/router",

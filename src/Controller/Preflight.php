@@ -43,7 +43,7 @@ class Preflight extends ControllerBase
      *   The response object.
      *
      * @return Psr\Http\Message\ResponseInterface
-     *   The response with cors headers added.
+     *   New response with CORS headers added.
      */
     protected function withAddedCorsHeaders(ResponseInterface $response): ResponseInterface
     {
