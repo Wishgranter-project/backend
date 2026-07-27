@@ -85,7 +85,7 @@ class OpenSession extends ControllerBase
         $resource->addSuccess(200, 'Welcome back');
         $response = $resource->renderResponse();
 
-        $response = $response->withAddedCookie('session', $session->getId(), $maxAge, $expiration, '', '', true, true, 'Strinct');
+        $response = $response->withAddedCookie('session', $session->getId(), $maxAge, $expiration, '', '', true, true, 'Strict');
         if (IS_TEST_ENVIRONMENT) {
             // Add the session id to a non-cookie header so JS scripts may read it.
             $response = $response->withAddedHeader('test-environment-only-session-id', $session->getId());
