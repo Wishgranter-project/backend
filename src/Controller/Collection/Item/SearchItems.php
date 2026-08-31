@@ -309,11 +309,12 @@ class SearchItems extends CollectionController
             if (self::isLogicalOperator($keyName)) {
                 $this->addConditionGroup($search, $keyName, $keyValue, $trail);
             } elseif (self::isComparisonOperator($keyName)) {
-                $this->addCondition($search, $keyValue, $trail);
+                $field = $trail[count($trail) - 2];
+                $this->addCondition($search, $field, $keyName, $keyValue, $trail);
             } elseif (is_numeric($keyName)) {
                 $this->addChild($search, $keyValue, $trail);
             } elseif (self::isValidFieldName($keyName)) {
-                $this->addField($search, $keyValue, $trail);
+                $this->addField($search, $keyName, $keyValue, $trail);
             } else {
                 throw new \InvalidArgumentException('Invalid data at ' . $this->readabableTrail($trail) . '.');
             }
@@ -326,16 +327,18 @@ class SearchItems extends CollectionController
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
+     * @param string $field
+     *   The field.
+     * @param string $uriOperator
+     *   The comparison operator.
      * @param mixed $value
      *   Value to add to the condition.
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addCondition($search, $value, $trail)
+    protected function addCondition($search, $field, $uriOperator, $value, $trail)
     {
-        $uriOperator = array_pop($trail);
         $operator = self::getSearchOperator($uriOperator);
-        $field = array_pop($trail);
         $search->condition($field, $value, $operator);
     }
 
@@ -376,18 +379,14 @@ class SearchItems extends CollectionController
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
-     * @param mixed $filters
-     *   Filters to add to the search.
+     * @param mixed $childConditions
+     *   Child conditions to add to the search.
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addConditionGroup($search, $logicalOperator, $filters, $trail)
+    protected function addConditionGroup($search, $logicalOperator, $childConditions, $trail)
     {
-        if (!is_array($filters)) {
-            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
-        }
-
-        if (!self::isSequentialArray($filters)) {
+        if (!is_array($childConditions) || !self::isSequentialArray($childConditions)) {
             throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected a sequential array.');
         }
 
@@ -395,7 +394,7 @@ class SearchItems extends CollectionController
             ? $search->andConditionGroup()
             : $search->orConditionGroup();
 
-        $this->addConditionsToSearch($group, $filters, $trail);
+        $this->addConditionsToSearch($group, $childConditions, $trail);
     }
 
     /**
@@ -405,11 +404,11 @@ class SearchItems extends CollectionController
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
      * @param mixed $operatorAndValue
-     *   Value to add to the condition.
+     *   Operator and value to add to the condition.
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addField($search, $operatorAndValue, $trail = [])
+    protected function addField($search, $field, $operatorAndValue, $trail = [])
     {
         if (!is_array($operatorAndValue)) {
             throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
