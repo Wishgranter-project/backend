@@ -270,26 +270,26 @@ class SearchItems extends CollectionController
     /**
      * Adds conditions to the search.
      *
-     *  Example of an aggregated filter:
-     *  ?filters[$and][0][$or][0][title][$contains]=noldor&filters[$and][0][$or][1][title][$contains]=hobbit&filters[$and][1][artist][$eq]=Blind+Guardian
+     * Example of an aggregated filter:
+     * ?filters[$and][0][$or][0][title][$contains]=noldor&filters[$and][0][$or][1][title][$contains]=hobbit&filters[$and][1][artist][$eq]=Blind+Guardian
      *
-     *  It can be read better as:
-     *  filters
-     *      [$and]
-     *          [0]
-     *              [$or]
-     *                  [0]
-     *                      [title]
-     *                          [$contains]=noldor
-     *                  [1]
-     *                      [title]
-     *                          [$contains]=hobbit
-     *          [1]
-     *              [artist]
-     *                  [$eq]=Blind+Guardian
-     *  ------------------------------------------------
-     *  Here a simpler example:
-     *  ?filters[title][$contains]=noldor
+     * It can be read better as:
+     * filters
+     *     [$and]
+     *         [0]
+     *             [$or]
+     *                 [0]
+     *                     [title]
+     *                         [$contains]=noldor
+     *                 [1]
+     *                     [title]
+     *                         [$contains]=hobbit
+     *         [1]
+     *             [artist]
+     *                 [$eq]=Blind+Guardian
+     * ------------------------------------------------
+     * Here a simpler example:
+     * ?filters[title][$contains]=noldor
      *
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
