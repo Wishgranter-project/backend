@@ -16,3 +16,5 @@
   - [ ] Protection against brute force on login.
 - [ ] Get rid of singleton
 - [ ] Unit tests
+- [ ] Improve search controller with more complex parameters,
+      see https://docs.strapi.io/cms/api/rest/filters
