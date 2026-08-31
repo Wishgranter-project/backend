@@ -18,3 +18,4 @@
 - [ ] Unit tests
 - [ ] Improve search controller with more complex parameters,
       see https://docs.strapi.io/cms/api/rest/filters
+  - [ ] Implement way to be able to filter items by playlistId.
