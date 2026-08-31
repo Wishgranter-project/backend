@@ -61,10 +61,13 @@ class SearchItems extends CollectionController
             return true;
         }
 
-        // Maybe ? maybe ?
-        // if ($field == 'playlistId') {
-        //     return true;
-        // }
+        /**
+         * @todo Implements playlistId.
+         *
+         * if ($field == 'playlistId') {
+         *    return true;
+         * }
+         */
 
         return false;
     }
@@ -102,13 +105,13 @@ class SearchItems extends CollectionController
      *
      * @param string $uriOperator
      */
-    public static function getSearchOperator(string $uriOperator): string
+    public static function getComparisonOperatofFromUri(string $uriOperator): string
     {
         return self::getComparisonOperators()[$uriOperator];
     }
 
     /**
-     * Returns the comparison logical operators.
+     * Returns the supported comparison logical operators.
      *
      * Indexed by the equivalent URI operator.
      *
@@ -124,7 +127,7 @@ class SearchItems extends CollectionController
     }
 
     /**
-     * Returns the comparison supported operators.
+     * Returns the supported comparison operators.
      *
      * Indexed by the equivalent URI operator.
      *
@@ -187,7 +190,7 @@ class SearchItems extends CollectionController
     }
 
     /**
-     * Retrieves the sort parameters.
+     * Retrieves the sorting criteria.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
      *   The HTTP request object.
@@ -267,6 +270,27 @@ class SearchItems extends CollectionController
     /**
      * Adds conditions to the search.
      *
+     *  Example of an aggregated filter:
+     *  ?filters[$and][0][$or][0][title][$contains]=noldor&filters[$and][0][$or][1][title][$contains]=hobbit&filters[$and][1][artist][$eq]=Blind+Guardian
+     *
+     *  It can be read better as:
+     *  filters
+     *      [$and]
+     *          [0]
+     *              [$or]
+     *                  [0]
+     *                      [title]
+     *                          [$contains]=noldor
+     *                  [1]
+     *                      [title]
+     *                          [$contains]=hobbit
+     *          [1]
+     *              [artist]
+     *                  [$eq]=Blind+Guardian
+     *  ------------------------------------------------
+     *  Here a simpler example:
+     *  ?filters[title][$contains]=noldor
+     *
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
@@ -277,33 +301,6 @@ class SearchItems extends CollectionController
      */
     protected function addConditionsToSearch($search, $filters, $trail = [])
     {
-        /**
-         *  ?filters[$and][0][$or][0][title][$contains]=noldor&filters[$and][0][$or][1][title][$contains]=hobbit&filters[$and][1][artist][$eq]=Blind+Guardian
-         *
-         *  filters[$and][0][$or][0][title][$contains]=noldor
-         *  filters[$and][0][$or][1][title][$contains]=hobbit
-         *  filters[$and][1][artist][$eq]=Blind+Guardian
-         *
-         *  filters
-         *      [$and]
-                    [0]
-                        [$or]
-                            [0]
-                                [title]
-                                    [$contains]=noldor
-                            [1]
-                                [title]
-                                    [$contains]=hobbit
-
-                    [1]
-                        [artist]
-                            [$eq]=Blind+Guardian
-
-            ------------------------------------------------
-
-            ?filters[title][$contains]=noldor
-         */
-
         foreach ($filters as $keyName => $keyValue) {
             $trail[] = $keyName;
             if (self::isLogicalOperator($keyName)) {
@@ -312,11 +309,11 @@ class SearchItems extends CollectionController
                 $field = $trail[count($trail) - 2];
                 $this->addCondition($search, $field, $keyName, $keyValue, $trail);
             } elseif (is_numeric($keyName)) {
-                $this->addChild($search, $keyValue, $trail);
+                $this->addChildConditions($search, $keyValue, $trail);
             } elseif (self::isValidFieldName($keyName)) {
-                $this->addField($search, $keyName, $keyValue, $trail);
+                $this->addFilterField($search, $keyName, $keyValue, $trail);
             } else {
-                throw new \InvalidArgumentException('Invalid data at ' . $this->readabableTrail($trail) . '.');
+                throw new \InvalidArgumentException('Invalid data at ' . $this->readableTrail($trail) . '.');
             }
         }
     }
@@ -338,12 +335,16 @@ class SearchItems extends CollectionController
      */
     protected function addCondition($search, $field, $uriOperator, $value, $trail)
     {
-        $operator = self::getSearchOperator($uriOperator);
+        if (empty($value)) {
+            throw new \InvalidArgumentException('Empty value at ' . $this->readableTrail($trail) . '.');
+        }
+
+        $operator = self::getComparisonOperatofFromUri($uriOperator);
         $search->condition($field, $value, $operator);
     }
 
     /**
-     * Adds a child condition to the search.
+     * Adds a child conditions to the search.
      *
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
@@ -353,20 +354,20 @@ class SearchItems extends CollectionController
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addChild($search, $child, $trail)
+    protected function addChildConditions($search, $child, $trail)
     {
         if (!is_array($child)) {
-            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
+            throw new \InvalidArgumentException('Invalid type at ' . $this->readableTrail($trail) . ', expected an array.');
         }
 
         $firstKey = array_keys($child)[0];
         $firstValue = array_values($child)[0];
 
         $conditionGroup  = self::isLogicalOperator($firstKey) && self::isSequentialArray($firstValue);
-        $singleCondition = self::isValidFieldName($firstKey) && $child;
+        $singleCondition = self::isValidFieldName($firstKey) && count($child) == 1;
 
         if (!$conditionGroup && !$singleCondition) {
-            throw new \InvalidArgumentException('Invalid data at ' . $this->readabableTrail($trail) .
+            throw new \InvalidArgumentException('Invalid data at ' . $this->readableTrail($trail) .
               ', expected a condition or a condition group.');
         }
 
@@ -387,7 +388,7 @@ class SearchItems extends CollectionController
     protected function addConditionGroup($search, $logicalOperator, $childConditions, $trail)
     {
         if (!is_array($childConditions) || !self::isSequentialArray($childConditions)) {
-            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected a sequential array.');
+            throw new \InvalidArgumentException('Invalid type at ' . $this->readableTrail($trail) . ', expected a sequential array.');
         }
 
         $group = $logicalOperator == '$and'
@@ -408,10 +409,10 @@ class SearchItems extends CollectionController
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addField($search, $field, $operatorAndValue, $trail = [])
+    protected function addFilterField($search, $field, $operatorAndValue, $trail = [])
     {
         if (!is_array($operatorAndValue)) {
-            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
+            throw new \InvalidArgumentException('Invalid type at ' . $this->readableTrail($trail) . ', expected an array.');
         }
 
         $this->addConditionsToSearch($search, $operatorAndValue, $trail);
@@ -428,7 +429,7 @@ class SearchItems extends CollectionController
      * @return string
      *   The trail as a string.
      */
-    protected function readabableTrail(array $trail)
+    protected function readableTrail(array $trail)
     {
         return 'filters[' . implode('][', $trail) . ']';
     }
