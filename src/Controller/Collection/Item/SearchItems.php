@@ -219,6 +219,27 @@ class SearchItems extends CollectionController
     }
 
     /**
+     * Checks if a value is a sequential array.
+     *
+     * @param mixed $value
+     *   The would be sequential array.
+     *
+     * @return bool
+     *   True if it is a sequential array.
+     */
+    public static function isSequentialArray($value): bool
+    {
+        if (!is_array($value)) {
+            return false;
+        }
+
+        $keys = array_keys($value);
+        $keys = array_filter($keys, 'is_numeric');
+
+        return count($keys) == count($value);
+    }
+
+    /**
      * Searches for all matching items.
      *
      * @param Psr\Http\Message\ServerRequestInterface $request
@@ -324,12 +345,12 @@ class SearchItems extends CollectionController
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
-     * @param mixed $value
-     *   Value to add to the condition.
+     * @param mixed $child
+     *   Child to add to the condition.
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
-    protected function addChild($search, $index, $trail)
+    protected function addChild($search, $child, $trail)
     {
         if (!is_array($child)) {
             throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
@@ -338,16 +359,15 @@ class SearchItems extends CollectionController
         $firstKey = array_keys($child)[0];
         $firstValue = array_values($child)[0];
 
-        if (self::isLogicalOperator($firstKey)) {
-            // ok.
-        } elseif (self::isValidFieldName($firstKey) && count($child) > 1) {
-            throw new \InvalidArgumentException('Invalid data at ' . $this->readabableTrail($trail) . ', expected a single condition.');
+        $conditionGroup  = self::isLogicalOperator($firstKey) && self::isSequentialArray($firstValue);
+        $singleCondition = self::isValidFieldName($firstKey) && $child;
+
+        if (!$conditionGroup && !$singleCondition) {
+            throw new \InvalidArgumentException('Invalid data at ' . $this->readabableTrail($trail) .
+              ', expected a condition or a condition group.');
         }
 
-        // must be a conditon group $and $or
-        // or a field, but if so, it must be a one item array.
-
-        $this->addConditionsToSearch($search, $index, $trail);
+        $this->addConditionsToSearch($search, $child, $trail);
     }
 
     /**
@@ -356,8 +376,8 @@ class SearchItems extends CollectionController
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
      *   Search or condition group object.
-     * @param mixed $value
-     *   Value to add to the condition.
+     * @param mixed $filters
+     *   Filters to add to the search.
      * @param array $trail
      *   Trail of keys leading to the current filter.
      */
@@ -367,10 +387,8 @@ class SearchItems extends CollectionController
             throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected an array.');
         }
 
-        $keys = array_keys($filters);
-        $keys = array_filter($keys, 'is_numeric');
-        if (count($keys) != count($filters)) {
-            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected a numerical array.');
+        if (!self::isSequentialArray($filters)) {
+            throw new \InvalidArgumentException('Invalid type at ' . $this->readabableTrail($trail) . ', expected a sequential array.');
         }
 
         $group = $logicalOperator == '$and'
