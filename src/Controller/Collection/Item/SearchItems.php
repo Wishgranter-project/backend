@@ -215,6 +215,10 @@ class SearchItems extends CollectionController
                 ? ':' . $sort
                 : '';
 
+            if (preg_match('/RAND\(([^)]+)\)/', $criterion, $matches)) {
+                $criterion = 'rand:' . $matches[1];
+            }
+
             $criteria[] = $criterion;
         }
 
@@ -344,7 +348,7 @@ class SearchItems extends CollectionController
     }
 
     /**
-     * Adds a child conditions to the search.
+     * Adds child conditions to the search.
      *
      * @param WishgranterProject\DescriptiveManager\Search\Search|
      *   WishgranterProject\DescriptiveManager\Search\ConditionGroup $search
@@ -387,7 +391,7 @@ class SearchItems extends CollectionController
      */
     protected function addConditionGroup($search, $logicalOperator, $childConditions, $trail)
     {
-        if (!is_array($childConditions) || !self::isSequentialArray($childConditions)) {
+        if (!self::isSequentialArray($childConditions)) {
             throw new \InvalidArgumentException('Invalid type at ' . $this->readableTrail($trail) . ', expected a sequential array.');
         }
 
@@ -411,7 +415,7 @@ class SearchItems extends CollectionController
      */
     protected function addFilterField($search, $field, $operatorAndValue, $trail = [])
     {
-        if (!is_array($operatorAndValue)) {
+        if (!is_array($operatorAndValue) || !$operatorAndValue) {
             throw new \InvalidArgumentException('Invalid type at ' . $this->readableTrail($trail) . ', expected an array.');
         }
 
