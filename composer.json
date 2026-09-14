@@ -61,7 +61,7 @@
         }
     },
     "require": {
-        "wishgranter-project/descriptive-manager": "^2.1",
+        "wishgranter-project/descriptive-manager": "^3.0",
         "wishgranter-project/discography": "^3.0",
         "adinan-cenci/router": "^5.0",
         "adinan-cenci/file-cache": "^2.0",

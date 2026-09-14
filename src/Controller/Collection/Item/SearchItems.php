@@ -61,13 +61,9 @@ class SearchItems extends CollectionController
             return true;
         }
 
-        /**
-         * @todo Implements playlistId.
-         *
-         * if ($field == 'playlistId') {
-         *    return true;
-         * }
-         */
+        if ($field == 'playlistId') {
+            return true;
+        }
 
         return false;
     }
@@ -344,6 +340,9 @@ class SearchItems extends CollectionController
         }
 
         $operator = self::getComparisonOperatofFromUri($uriOperator);
+        if ($field == 'playlistId') {
+            $field = ['@metadata', 'playlistId'];
+        }
         $search->condition($field, $value, $operator);
     }
 

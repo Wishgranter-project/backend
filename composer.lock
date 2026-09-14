@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6b480c02f6b13e687568ad2ef83a066",
+    "content-hash": "13645dd7f698b12a17430c4867ed96c8",
     "packages": [
         {
             "name": "adinan-cenci/file-cache",
@@ -59,20 +59,20 @@
         },
         {
             "name": "adinan-cenci/file-editor",
-            "version": "v3.0.0",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/file-editor.git",
-                "reference": "ac49958eaf56f578e3d03536c24f9fa5aacb742f"
+                "reference": "c9da38fafa24e66a42714315d50a51683cf8fd8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/file-editor/zipball/ac49958eaf56f578e3d03536c24f9fa5aacb742f",
-                "reference": "ac49958eaf56f578e3d03536c24f9fa5aacb742f",
+                "url": "https://api.github.com/repos/adinan-cenci/file-editor/zipball/c9da38fafa24e66a42714315d50a51683cf8fd8d",
+                "reference": "c9da38fafa24e66a42714315d50a51683cf8fd8d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
@@ -99,9 +99,9 @@
             "description": "A library to read and write files.",
             "support": {
                 "issues": "https://github.com/adinan-cenci/file-editor/issues",
-                "source": "https://github.com/adinan-cenci/file-editor/tree/v3.0.0"
+                "source": "https://github.com/adinan-cenci/file-editor/tree/v4.0.0"
             },
-            "time": "2025-01-27T01:03:11+00:00"
+            "time": "2026-09-09T21:46:44+00:00"
         },
         {
             "name": "adinan-cenci/generic-rest-api",
@@ -148,21 +148,21 @@
         },
         {
             "name": "adinan-cenci/json-lines",
-            "version": "v3.2.1",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adinan-cenci/json-lines.git",
-                "reference": "a502f6f8ec02ee342fda27d8f2685eb6699d9af7"
+                "reference": "b6ddacf0cfa027edaa1faee2b3862560b8544b40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adinan-cenci/json-lines/zipball/a502f6f8ec02ee342fda27d8f2685eb6699d9af7",
-                "reference": "a502f6f8ec02ee342fda27d8f2685eb6699d9af7",
+                "url": "https://api.github.com/repos/adinan-cenci/json-lines/zipball/b6ddacf0cfa027edaa1faee2b3862560b8544b40",
+                "reference": "b6ddacf0cfa027edaa1faee2b3862560b8544b40",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/file-editor": "^3.0",
-                "php": ">=7.0"
+                "adinan-cenci/file-editor": "^4.0",
+                "php": ">=8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
@@ -195,9 +195,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adinan-cenci/json-lines/issues",
-                "source": "https://github.com/adinan-cenci/json-lines/tree/v3.2.1"
+                "source": "https://github.com/adinan-cenci/json-lines/tree/v4.0.0"
             },
-            "time": "2026-03-17T22:34:02+00:00"
+            "time": "2026-09-10T20:59:09+00:00"
         },
         {
             "name": "adinan-cenci/psr-17",
@@ -715,21 +715,21 @@
         },
         {
             "name": "wishgranter-project/descriptive-manager",
-            "version": "v2.2.1",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/descriptive-manager.git",
-                "reference": "b8b726f2598277c0934a0a4edac1c36ed3f30ab7"
+                "reference": "2246d97c9be5a50a304303abc5f8955a7f6f0125"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-manager/zipball/b8b726f2598277c0934a0a4edac1c36ed3f30ab7",
-                "reference": "b8b726f2598277c0934a0a4edac1c36ed3f30ab7",
+                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-manager/zipball/2246d97c9be5a50a304303abc5f8955a7f6f0125",
+                "reference": "2246d97c9be5a50a304303abc5f8955a7f6f0125",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0",
-                "wishgranter-project/descriptive-playlist": "^6.1"
+                "php": ">=8.0",
+                "wishgranter-project/descriptive-playlist": "^7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
@@ -759,28 +759,28 @@
             ],
             "description": "A library to manage descriptive playlists.",
             "support": {
-                "source": "https://github.com/Wishgranter-project/descriptive-manager/tree/v2.2.1",
+                "source": "https://github.com/Wishgranter-project/descriptive-manager/tree/v3.0.0",
                 "issues": "https://github.com/Wishgranter-project/descriptive-manager/issues"
             },
-            "time": "2026-04-06T21:27:13+00:00"
+            "time": "2026-09-14T19:25:17+00:00"
         },
         {
             "name": "wishgranter-project/descriptive-playlist",
-            "version": "v6.1.1",
+            "version": "v7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/descriptive-playlist.git",
-                "reference": "c02cecc9fe963a42e22e65119c30f2ef8b94c6dd"
+                "reference": "8dcc45b8050b38c7817489aba55b3da2b3402217"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-playlist/zipball/c02cecc9fe963a42e22e65119c30f2ef8b94c6dd",
-                "reference": "c02cecc9fe963a42e22e65119c30f2ef8b94c6dd",
+                "url": "https://api.github.com/repos/Wishgranter-project/descriptive-playlist/zipball/8dcc45b8050b38c7817489aba55b3da2b3402217",
+                "reference": "8dcc45b8050b38c7817489aba55b3da2b3402217",
                 "shasum": ""
             },
             "require": {
-                "adinan-cenci/json-lines": "^3.2",
-                "php": ">=7.0"
+                "adinan-cenci/json-lines": "^4.0",
+                "php": ">=8.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
@@ -815,10 +815,10 @@
                 "json-lines"
             ],
             "support": {
-                "source": "https://github.com/Wishgranter-project/descriptive-playlist/tree/v6.1.1",
+                "source": "https://github.com/Wishgranter-project/descriptive-playlist/tree/v7.0.0",
                 "issues": "https://github.com/Wishgranter-project/descriptive-playlist/issues"
             },
-            "time": "2026-03-04T21:53:49+00:00"
+            "time": "2026-09-13T19:51:03+00:00"
         },
         {
             "name": "wishgranter-project/discography",
@@ -861,7 +861,7 @@
             "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Wishgranter-project/discography-discogs.git",
+                "url": "https://github.com/Wishgranter-project/discography-discogs.git",
                 "reference": "5ef68621806b6079cc11c187a10cd339e8b4fb48"
             },
             "dist": {
@@ -903,7 +903,7 @@
             "version": "v1.0.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:Wishgranter-project/discography-music-brainz.git",
+                "url": "https://github.com/Wishgranter-project/discography-music-brainz.git",
                 "reference": "6524f9798a778c0154767b4955723753f5e89772"
             },
             "dist": {
