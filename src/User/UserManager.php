@@ -144,8 +144,8 @@ class UserManager
         $userId = $this->usernameToUserId($username);
         while ($this->userExists($userId)) {
             $userId = preg_match('/_(\d+)$/', $userId, $matches)
-                ? preg_replace('/_(\d+)$/', '_' . $matches[1], $userId)
-                : $userId = '_2';
+                ? preg_replace('/_(\d+)$/', '_' . $matches[1] + 1, $userId)
+                : $userId = $userId . '_2';
         }
 
         return $userId;

@@ -23,7 +23,7 @@ class DiscoverAlbum extends DiscoverArtists
 
         if (!$album) {
             $resource = $this->jsonResource($data, 404);
-            $resource->addError(404, 'No results', 'Nothing found');
+            $resource->addError(404, 'No results', 'No matching albums found');
             return $resource->renderResponse();
         }
 
