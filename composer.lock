@@ -1017,16 +1017,16 @@
         },
         {
             "name": "wishgranter-project/music-radar",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/music-radar.git",
-                "reference": "f413ab0cb2e04928212a2b8fbf31e024da2f50f1"
+                "reference": "fbfc8b96fc96c3dad90b0d3baf10db736cd98a63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/music-radar/zipball/f413ab0cb2e04928212a2b8fbf31e024da2f50f1",
-                "reference": "f413ab0cb2e04928212a2b8fbf31e024da2f50f1",
+                "url": "https://api.github.com/repos/Wishgranter-project/music-radar/zipball/fbfc8b96fc96c3dad90b0d3baf10db736cd98a63",
+                "reference": "fbfc8b96fc96c3dad90b0d3baf10db736cd98a63",
                 "shasum": ""
             },
             "require": {
@@ -1053,23 +1053,23 @@
             ],
             "description": "Probe different sources for music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/music-radar/tree/v1.0.0",
+                "source": "https://github.com/Wishgranter-project/music-radar/tree/v1.0.1",
                 "issues": "https://github.com/Wishgranter-project/music-radar/issues"
             },
-            "time": "2026-07-20T15:30:15+00:00"
+            "time": "2026-09-22T22:23:48+00:00"
         },
         {
             "name": "wishgranter-project/youtube-probe",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wishgranter-project/youtube-probe.git",
-                "reference": "d94847bcfb0514adaec74e6595176d3aeff50308"
+                "reference": "9d380902c224d1a61a4269b2b9adbe362902f9e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wishgranter-project/youtube-probe/zipball/d94847bcfb0514adaec74e6595176d3aeff50308",
-                "reference": "d94847bcfb0514adaec74e6595176d3aeff50308",
+                "url": "https://api.github.com/repos/Wishgranter-project/youtube-probe/zipball/9d380902c224d1a61a4269b2b9adbe362902f9e6",
+                "reference": "9d380902c224d1a61a4269b2b9adbe362902f9e6",
                 "shasum": ""
             },
             "require": {
@@ -1094,10 +1094,10 @@
             ],
             "description": "Probe YouTube for music",
             "support": {
-                "source": "https://github.com/Wishgranter-project/youtube-probe/tree/v1.0.0",
+                "source": "https://github.com/Wishgranter-project/youtube-probe/tree/v1.0.1",
                 "issues": "https://github.com/Wishgranter-project/youtube-probe/issues"
             },
-            "time": "2026-07-20T15:22:07+00:00"
+            "time": "2026-09-22T21:08:25+00:00"
         }
     ],
     "packages-dev": [
