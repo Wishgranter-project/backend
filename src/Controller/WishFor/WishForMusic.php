@@ -80,6 +80,7 @@ class WishForMusic extends AuthenticatedController
     {
         $title      = $request->get('title');
         $artist     = $request->get('artist');
+        $featuring  = $request->get('featuring');
         $soundtrack = $request->get('soundtrack');
         $genre      = $request->get('genre');
 
@@ -90,6 +91,7 @@ class WishForMusic extends AuthenticatedController
         return Description::createFromArray([
             'title'      => $title,
             'artist'     => $artist,
+            'featuring'  => $featuring,
             'soundtrack' => $soundtrack,
             'genre'      => $genre,
         ]);
