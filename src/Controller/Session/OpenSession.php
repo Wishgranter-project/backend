@@ -9,11 +9,7 @@ use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServiceLocator;
-use WishgranterProject\Backend\Session\SessionInterface;
 use WishgranterProject\Backend\Session\SessionManagerInterface;
-use WishgranterProject\Backend\User\UserInterface;
-use WishgranterProject\Backend\User\UserManager;
-use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
 class OpenSession extends ControllerBase
 {

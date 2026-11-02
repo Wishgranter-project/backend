@@ -15,7 +15,7 @@ interface UserGrantInterface
     public function getId(): string;
 
     /**
-     * Returns the user the grant belongs to.
+     * The user that owns the grant and gets to use it.
      *
      * @return null|WishgranterProject\Backend\User\UserInterface
      *   The user.

@@ -12,7 +12,7 @@ abstract class UserGrant implements UserGrantInterface
      * @param string $filename
      *   Absolute filename that stores the grant.
      * @param null|WishgranterProject\Backend\User\UserInterface
-     *   The user the grant belongs to.
+     *   The user that owns the grant and gets to use it.
      * @param int $created
      *   Timestamp of when the grant was created.
      * @param int $expiration
