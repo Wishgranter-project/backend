@@ -18,7 +18,7 @@ class GetSession extends OpenSession
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->sessionGarbageCollector->cleanUp();
+        $this->sessionManager->cleanUp();
 
         $user = $this->authentication
             ->getMethod('session')

@@ -69,6 +69,18 @@ abstract class UserGrantManager
     }
 
     /**
+     * Clean up expired grants.
+     */
+    public function cleanUp()
+    {
+        foreach ($this->getGrants() as $grant) {
+            if ($grant->isExpired()) {
+                $grant->delete();
+            }
+        }
+    }
+
+    /**
      * Scans the directory for grant files.
      *
      * @return array

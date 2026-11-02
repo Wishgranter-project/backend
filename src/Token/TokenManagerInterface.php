@@ -14,7 +14,7 @@ interface TokenManagerInterface
      * @param string
      *   The action the token clears.
      * @param int $expiration
-     *   When the session is set to expire.
+     *   When the token is set to expire.
      *
      * @return WishgranterProject\Backend\Token\TokenInterface
      *   The newly minted token.
@@ -53,20 +53,28 @@ interface TokenManagerInterface
      *
      * @param WishgranterProject\Backend\Token\TokenInterface $token
      *   The token.
+     * @param WishgranterProject\Backend\User\UserInterface $user
+     *   The user the token applies to.
+     * @param string $action
+     *   The action the token clears.
      *
      * @return bool
      *   If the token is valid.
      */
-    public function validateToken(TokenInterface $token, string $action): bool;
+    public function validateToken(TokenInterface $token, UserInterface $user, string $action): bool;
 
     /**
      * Expends the token.
      *
      * @param WishgranterProject\Backend\Token\TokenInterface $token
      *   The token.
+     * @param WishgranterProject\Backend\User\UserInterface $user
+     *   The user the token applies to.
+     * @param string $action
+     *   The action the token clears.
      *
      * @return bool
      *   If the token is valid.
      */
-    public function expendToken(TokenInterface $token, string $action): bool;
+    public function expendToken(TokenInterface $token, UserInterface $user, string $action): bool;
 }

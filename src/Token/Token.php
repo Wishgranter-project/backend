@@ -2,6 +2,7 @@
 
 namespace WishgranterProject\Backend\Token;
 
+use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\Backend\UserGrant\UserGrant;
 
 class Token extends UserGrant implements TokenInterface
@@ -35,5 +36,16 @@ class Token extends UserGrant implements TokenInterface
     public function getAction(): string
     {
         return $this->token;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function dataTransfer(): array
+    {
+        $data = parent::dataTransfer();
+        $data['action'] = $this->action;
+
+        return $data;
     }
 }

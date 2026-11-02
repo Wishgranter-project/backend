@@ -5,7 +5,6 @@ namespace WishgranterProject\Backend\Service;
 use WishgranterProject\Backend\Authentication\AuthenticationManager;
 use WishgranterProject\Backend\Helper\Singleton;
 use WishgranterProject\Backend\Session\SessionManager;
-use WishgranterProject\Backend\Session\SessionGarbageCollector;
 use WishgranterProject\Backend\Token\TokenManager;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DiscographyDiscogs\ApiDiscogs;
@@ -196,7 +195,7 @@ class ServiceLocator extends Singleton
      */
     protected function instantiateSessionManager()
     {
-        return new SessionManager(\DIR_TOKENS, $this->get('userManager'));
+        return new SessionManager(\DIR_SESSIONS, $this->get('userManager'));
     }
 
     /**
@@ -207,18 +206,7 @@ class ServiceLocator extends Singleton
      */
     protected function instantiateTokenManager()
     {
-        return new TokenManager(\DIR_SESSIONS, $this->get('userManager'));
-    }
-
-    /**
-     * Instantiates the session garbage collector service.
-     *
-     * @return WishgranterProject\Backend\Session\SessionGarbageCollector
-     *   Session garbage collector.
-     */
-    protected function instantiateSessionGarbageCollector()
-    {
-        return new SessionGarbageCollector($this->get('sessionManager'));
+        return new TokenManager(\DIR_TOKENS, $this->get('userManager'));
     }
 
     /**

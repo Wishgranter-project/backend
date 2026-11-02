@@ -11,7 +11,6 @@ use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServiceLocator;
 use WishgranterProject\Backend\Session\SessionInterface;
 use WishgranterProject\Backend\Session\SessionManagerInterface;
-use WishgranterProject\Backend\Session\SessionGarbageCollector;
 use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
@@ -25,13 +24,10 @@ class OpenSession extends ControllerBase
      *   Authentication service.
      * @param WishgranterProject\Backend\Session\SessionManagerInterface $sessionManager
      *   Session manager service.
-     * @param WishgranterProject\Backend\Session\SessionGarbageCollector $sessionGarbageCollector
-     *   Session garbage collector.
      */
     public function __construct(
         protected AuthenticationManagerInterface $authentication,
-        protected SessionManagerInterface $sessionManager,
-        protected SessionGarbageCollector $sessionGarbageCollector
+        protected SessionManagerInterface $sessionManager
     ) {
     }
 
@@ -45,7 +41,6 @@ class OpenSession extends ControllerBase
         return new $class(
             $serviceLocator->get('authentication'),
             $serviceLocator->get('sessionManager'),
-            $serviceLocator->get('sessionGarbageCollector')
         );
     }
 
@@ -54,7 +49,7 @@ class OpenSession extends ControllerBase
      */
     public function __invoke(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $this->sessionGarbageCollector->cleanUp();
+        $this->sessionManager->cleanUp();
 
         $user = $this->authentication
             ->getMethod('session')

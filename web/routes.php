@@ -55,6 +55,9 @@ $router->put(   '#api/v1/users/(?<userId>[\w-]+)$#',                            
 $router->get(   '#api/v1/users$#',                                                                       'ListUsers');
 $router->post(  '#api/v1/users$#',                                                                       'CreateUser');
 
+$router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Confirmation');
+$router->post(  '#api/v1/confirmation$#',                                                                'Confirmation');
+
 // SESSION
 $router->setDefaultNamespace('\\WishgranterProject\\Backend\\Controller\\Session');
 $router->post(  '#api/v1/session$#',                                                                     'OpenSession');
