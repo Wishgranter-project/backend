@@ -40,4 +40,9 @@ interface SessionManagerInterface
      *   The new session.
      */
     public function startNewSession(UserInterface $user, ?int $expiration = null): SessionInterface;
+
+    /**
+     * Return all sessions to iterate through them.
+     */
+    public function getSessions();
 }

@@ -6,6 +6,7 @@ use WishgranterProject\Backend\Authentication\AuthenticationManager;
 use WishgranterProject\Backend\Helper\Singleton;
 use WishgranterProject\Backend\Session\SessionManager;
 use WishgranterProject\Backend\Session\SessionGarbageCollector;
+use WishgranterProject\Backend\Token\TokenManager;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DiscographyDiscogs\ApiDiscogs;
 use WishgranterProject\DiscographyDiscogs\SourceDiscogs;
@@ -195,7 +196,18 @@ class ServiceLocator extends Singleton
      */
     protected function instantiateSessionManager()
     {
-        return new SessionManager(\DIR_SESSIONS, $this->get('userManager'));
+        return new SessionManager(\DIR_TOKENS, $this->get('userManager'));
+    }
+
+    /**
+     * Instantiates the token manager service.
+     *
+     * @return WishgranterProject\Backend\Token\TokenManager
+     *   Token manager service.
+     */
+    protected function instantiateTokenManager()
+    {
+        return new TokenManager(\DIR_SESSIONS, $this->get('userManager'));
     }
 
     /**

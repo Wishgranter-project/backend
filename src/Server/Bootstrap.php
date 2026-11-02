@@ -39,6 +39,10 @@ class Bootstrap
             mkdir(DIR_SESSIONS, 0777, true);
         }
 
+        if (!file_exists(DIR_TOKENS)) {
+            mkdir(DIR_TOKENS, 0777, true);
+        }
+
         if (!file_exists(DIR_LOCAL_MEDIA)) {
             mkdir(DIR_LOCAL_MEDIA, 0777, true);
         }

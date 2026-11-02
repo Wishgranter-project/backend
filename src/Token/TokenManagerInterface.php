@@ -33,6 +33,11 @@ interface TokenManagerInterface
     public function getToken(string $tokenId): ?TokenInterface;
 
     /**
+     * Return all tokens to iterate through them.
+     */
+    public function getTokens();
+
+    /**
      * Checks if the token exists.
      *
      * @param string $tokenId

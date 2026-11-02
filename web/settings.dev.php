@@ -15,6 +15,7 @@ define('DIR_CACHE',                      DIR_PLAYER_FILES . 'cache/');
 define('DIR_COLLECTIONS',                DIR_PLAYER_FILES . 'collection/');
 define('DIR_USERS',                      DIR_PLAYER_FILES . 'user/');
 define('DIR_SESSIONS',                   DIR_PLAYER_FILES . 'session/');
+define('DIR_TOKENS',                     DIR_PLAYER_FILES . 'tokens/');
 
 $settings['domain']                      = 'wishgranter-backend.ddev.site';
 $settings['corsAllowedDomain']           = '*';

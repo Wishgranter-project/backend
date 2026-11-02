@@ -8,12 +8,29 @@ use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
 abstract class UserGrantManager
 {
+    /**
+     * Constructor.
+     *
+     * @param string $directory
+     *   Absolute file where the grant files are to be stored.
+     * @param WishgranterProject\Backend\User\UserManager $userManager
+     *   User manager service.
+     */
     public function __construct(
         protected string $directory,
         protected UserManager $userManager,
     ) {
     }
 
+    /**
+     * Given an Id, returns the respective grant.
+     *
+     * @param string $grantId
+     *   The Id.
+     *
+     * @return null|WishgranterProject\Backend\UserGrant\UserGrantInterface
+     *   The grant object.
+     */
     public function getGrant(string $grantId): ?UserGrantInterface
     {
         if (!$this->grantExists($grantId)) {
@@ -25,7 +42,13 @@ abstract class UserGrantManager
     }
 
     /**
-     * {@inheritdoc}
+     * Checks if a specific grant exists.
+     *
+     * @param string $grantId
+     *   The Id.
+     *
+     * @return bool
+     *   True if it exists.
      */
     public function grantExists(string $grantId): bool
     {

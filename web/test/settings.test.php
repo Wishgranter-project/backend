@@ -19,6 +19,7 @@ define('DIR_CACHE',                      DIR_PLAYER_FILES . 'cache/');
 define('DIR_COLLECTIONS',                DIR_PLAYER_FILES . 'collection/');
 define('DIR_USERS',                      DIR_PLAYER_FILES . 'user/');
 define('DIR_SESSIONS',                   DIR_PLAYER_FILES . 'session/');
+define('DIR_TOKENS',                     DIR_PLAYER_FILES . 'tokens/');
 define('DIR_TEST_COLLECTIONS_TEMPLATES', DIR_PLAYER_FILES . 'collection-templates/');
 define('DIR_TEST_USERS_TEMPLATES',       DIR_PLAYER_FILES . 'user-templates/');
 

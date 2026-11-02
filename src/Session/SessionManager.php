@@ -27,7 +27,7 @@ class SessionManager extends UserGrantManager implements SessionManagerInterface
     }
 
     /**
-     * Return all sessions to iterate through them.
+     * {@inheritdoc}
      */
     public function getSessions()
     {
@@ -58,13 +58,7 @@ class SessionManager extends UserGrantManager implements SessionManagerInterface
     }
 
     /**
-     * Instantiates a session object from a file.
-     *
-     * @param string $filename
-     *   The file containing the session.
-     *
-     * @return WishgranterProject\Backend\UserGrant\UserGrantInterface
-     *   The session object.
+     * {@inheritdoc}
      */
     protected function getGrantFromFile(string $filename): UserGrantInterface
     {
