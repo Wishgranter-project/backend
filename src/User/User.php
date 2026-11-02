@@ -34,9 +34,10 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setUsername(string $username): void
+    public function setUsername(string $username): UserInterface
     {
         $this->setProperty('username', $username);
+        return $this;
     }
 
     /**
@@ -50,9 +51,10 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmail(string $email): void
+    public function setEmail(string $email): UserInterface
     {
         $this->setProperty('email', $email);
+        return $this;
     }
 
     /**
@@ -66,9 +68,10 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setRoles(array $roles): void
+    public function setRoles(array $roles): UserInterface
     {
         $this->setProperty('roles', $roles);
+        return $this;
     }
 
     /**
@@ -90,9 +93,44 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setHash(string $hash): void
+    public function setHash(string $hash): UserInterface
     {
         $this->setProperty('hash', $hash);
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCreated(): int
+    {
+        return (int) $this->getProperty('created');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCreated(int $timestamp): UserInterface
+    {
+        $this->setProperty('created', $timestamp);
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLastLogin(): int
+    {
+        return (int) $this->getProperty('lastLogin');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLastLogin(int $timestamp): UserInterface
+    {
+        $this->setProperty('lastLogin', $timestamp);
+        return $this;
     }
 
     /**

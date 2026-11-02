@@ -25,8 +25,11 @@ interface UserInterface
      *
      * @param string $username
      *   The username.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
      */
-    public function setUsername(string $username): void;
+    public function setUsername(string $username): UserInterface;
 
     /**
      * Return the user's e-mail.
@@ -41,8 +44,11 @@ interface UserInterface
      *
      * @param string $email
      *   The email.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
      */
-    public function setEmail(string $email): void;
+    public function setEmail(string $email): UserInterface;
 
     /**
      * Returns the user's role within the system.
@@ -57,8 +63,11 @@ interface UserInterface
      *
      * @param string[] $roles
      *   The roles.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
      */
-    public function setRoles(array $roles): void;
+    public function setRoles(array $roles): UserInterface;
 
     /**
      * Checks if the user has been granted a given role.
@@ -84,6 +93,47 @@ interface UserInterface
      *
      * @param string $hash
      *   The password hash.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
      */
-    public function setHash(string $hash): void;
+    public function setHash(string $hash): UserInterface;
+
+    /**
+     * Returns the timestamp of when the account was created.
+     *
+     * @return int
+     *   Unix timestamp.
+     */
+    public function getCreated(): int;
+
+    /**
+     * Sets the timestamp of when the account was created.
+     *
+     * @param int $timestamp
+     *   Unix timestamp.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
+     */
+    public function setCreated(int $timestamp): UserInterface;
+
+    /**
+     * Returns the timestamp of the last time the user logged in.
+     *
+     * @return int
+     *   Unix timestamp.
+     */
+    public function getLastLogin(): int;
+
+    /**
+     * Sets the timestamp of when the last time the user logged in.
+     *
+     * @param int $timestamp
+     *   Unix timestamp.
+     *
+     * @return WishgranterProject\Backend\User\UserInterface
+     *   Itself.
+     */
+    public function setLastLogin(int $timestamp): UserInterface;
 }

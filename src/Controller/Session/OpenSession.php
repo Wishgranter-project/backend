@@ -9,8 +9,10 @@ use WishgranterProject\Backend\Authentication\AuthenticationManagerInterface;
 use WishgranterProject\Backend\Controller\ControllerBase;
 use WishgranterProject\Backend\Helper\JsonResource;
 use WishgranterProject\Backend\Service\ServiceLocator;
+use WishgranterProject\Backend\Session\SessionInterface;
 use WishgranterProject\Backend\Session\SessionManagerInterface;
 use WishgranterProject\Backend\Session\SessionGarbageCollector;
+use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
@@ -68,14 +70,12 @@ class OpenSession extends ControllerBase
         }
 
         $maxAge = 86400; // 24 hours
-        $expiration = time() + $maxAge;
+        $now = time();
+        $expiration = $now + $maxAge;
         $session = $this->sessionManager->startNewSession($user, $expiration);
+        $user->setLastLogin($now);
 
-        $resource = new JsonResource([
-            'expiration' => $session->getExpiration(),
-            'userId'     => $user->getId(),
-            'username'   => $user->getUsername(),
-        ], 200);
+        $resource = new JsonResource($this->dataTransferSession($session, $user), 200);
 
         if (IS_TEST_ENVIRONMENT) {
             // Add the session id to the body so JS scripts may read it.
@@ -92,5 +92,25 @@ class OpenSession extends ControllerBase
         }
 
         return $response;
+    }
+
+    /**
+     * Generates a data transfer object.
+     *
+     * @param WishgranterProject\Backend\Session\SessionInterface $session
+     *   A session object.
+     * @param WishgranterProject\Backend\User\UserInterface $user
+     *   A playlist object.
+     *
+     * @return array
+     *   Data for transfer.
+     */
+    protected function dataTransferSession(SessionInterface $session, UserInterface $user): array
+    {
+        return [
+            'expiration' => $session->getExpiration(),
+            'userId'     => $user->getId(),
+            'username'   => $user->getUsername(),
+        ];
     }
 }

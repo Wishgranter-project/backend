@@ -30,11 +30,7 @@ class GetSession extends OpenSession
             return $resource->renderResponse();
         }
 
-        $resource = new JsonResource([
-            'expiration' => $session->getExpiration(),
-            'userId'     => $user->getId(),
-            'username'   => $user->getUsername(),
-        ], 200);
+        $resource = new JsonResource($this->dataTransferSession($session, $user), 200);
 
         if (IS_TEST_ENVIRONMENT) {
             // Add the session id to the body so JS scripts may read it.

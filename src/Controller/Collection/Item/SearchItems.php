@@ -164,7 +164,8 @@ class SearchItems extends CollectionController
         $queryParams = $request->getQueryParams();
         $filters = (array) $queryParams['filters'] ?? [];
 
-        // Simply being lenient with the filters, when added flat to the query string.
+        // Simply being lenient with the filters, supporting the old standard
+        // when we used to add the arguments flat to the query string.
         foreach (['title', 'artist', 'album', 'featuring', 'soundtrack', 'genre'] as $property) {
             if (isset($filters[$property])) {
                 continue;
