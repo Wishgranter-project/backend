@@ -1,0 +1,39 @@
+<?php
+
+namespace WishgranterProject\Backend\Token;
+
+use WishgranterProject\Backend\UserGrant\UserGrant;
+
+class Token extends UserGrant implements TokenInterface
+{
+    /**
+     * Constructor.
+     *
+     * @param string $filename
+     *   Absolute filename that stores the grant.
+     * @param null|WishgranterProject\Backend\User\UserInterface
+     *   The user the grant belongs to.
+     * @param int $created
+     *   Timestamp of when the grant was created.
+     * @param int $expiration
+     *   Expiration timestamp.
+     * @param int $action
+     *   The action the token grants.
+     */
+    public function __construct(
+        protected string $filename,
+        protected ?UserInterface $user,
+        protected int $created,
+        protected int $expiration,
+        protected string $action,
+    ) {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAction(): string
+    {
+        return $this->token;
+    }
+}

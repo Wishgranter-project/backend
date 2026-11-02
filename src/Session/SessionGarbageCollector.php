@@ -24,7 +24,7 @@ class SessionGarbageCollector
     public function cleanUp()
     {
         foreach ($this->sessionManager->getSessions() as $session) {
-            if ($session->expired()) {
+            if ($session->isExpired()) {
                 $session->delete();
             }
         }

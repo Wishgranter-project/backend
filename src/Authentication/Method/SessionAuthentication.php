@@ -39,7 +39,7 @@ class SessionAuthentication extends BaseAuthenticationMethod implements Authenti
             return null;
         }
 
-        if ($session->expired() || !$session->getUser()) {
+        if ($session->isExpired() || !$session->getUser()) {
             $session->delete();
             $session = null;
             return null;

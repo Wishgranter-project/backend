@@ -75,7 +75,7 @@ class OpenSession extends ControllerBase
         $session = $this->sessionManager->startNewSession($user, $expiration);
         $user->setLastLogin($now);
 
-        $resource = new JsonResource($this->dataTransferSession($session, $user), 200);
+        $resource = new JsonResource($session->dataTransfer(), 200);
 
         if (IS_TEST_ENVIRONMENT) {
             // Add the session id to the body so JS scripts may read it.
@@ -92,25 +92,5 @@ class OpenSession extends ControllerBase
         }
 
         return $response;
-    }
-
-    /**
-     * Generates a data transfer object.
-     *
-     * @param WishgranterProject\Backend\Session\SessionInterface $session
-     *   A session object.
-     * @param WishgranterProject\Backend\User\UserInterface $user
-     *   A playlist object.
-     *
-     * @return array
-     *   Data for transfer.
-     */
-    protected function dataTransferSession(SessionInterface $session, UserInterface $user): array
-    {
-        return [
-            'expiration' => $session->getExpiration(),
-            'userId'     => $user->getId(),
-            'username'   => $user->getUsername(),
-        ];
     }
 }

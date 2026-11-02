@@ -33,6 +33,8 @@ interface SessionManagerInterface
      *
      * @param WishgranterProject\Backend\User\UserInterface $user;
      *   The user.
+     * @param null|int $expiration
+     *   When the session is set to expire.
      *
      * @return WishgranterProject\Backend\Session\SessionInterface
      *   The new session.

@@ -4,26 +4,18 @@ namespace WishgranterProject\Backend\Session;
 
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\Backend\User\UserInterface;
+use WishgranterProject\Backend\UserGrant\UserGrantManager;
+use WishgranterProject\Backend\UserGrant\UserGrantInterface;
+use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-class SessionManager implements SessionManagerInterface
+class SessionManager extends UserGrantManager implements SessionManagerInterface
 {
-    public function __construct(
-        protected string $directory,
-        protected UserManager $userManager,
-    ) {
-    }
-
     /**
      * {@inheritdoc}
      */
     public function getSession(string $sessionId): ?SessionInterface
     {
-        if (!$this->sessionExists($sessionId)) {
-            return null;
-        }
-
-        $filename = $this->getFilename($sessionId);
-        return $this->getSessionFromFile($filename);
+        return $this->getGrant($sessionId);
     }
 
     /**
@@ -31,8 +23,15 @@ class SessionManager implements SessionManagerInterface
      */
     public function sessionExists(string $sessionId): bool
     {
-        $filename = $this->getFilename($sessionId);
-        return file_exists($filename);
+        return $this->grantExists($sessionId);
+    }
+
+    /**
+     * Return all sessions to iterate through them.
+     */
+    public function getSessions()
+    {
+        return $this->getGrants();
     }
 
     /**
@@ -40,8 +39,8 @@ class SessionManager implements SessionManagerInterface
      */
     public function startNewSession(UserInterface $user, ?int $expiration = null): SessionInterface
     {
-        $sessionId = \WishgranterProject\DescriptivePlaylist\Utils\Helpers::guidv4();
-        $filename  = $this->getFilename($sessionId);
+        $sessionId  = Helpers::guidv4();
+        $filename   = $this->getFilename($sessionId);
         $expiration = $expiration
             ? $expiration
             : strtotime('+24 hours');
@@ -52,30 +51,10 @@ class SessionManager implements SessionManagerInterface
             time(),
             $expiration,
         );
+
         $session->save();
 
         return $session;
-    }
-
-    public function getSessions()
-    {
-        $files = $this->scandir();
-
-        foreach ($files as $file) {
-            yield $this->getSessionFromFile($file);
-        }
-    }
-
-    protected function scandir(): array
-    {
-        $files = array_slice(scandir($this->directory), 2);
-        $dir = $this->directory;
-
-        array_walk($files, function (&$file) use ($dir) {
-            $file = $dir . $file;
-        });
-
-        return $files;
     }
 
     /**
@@ -84,10 +63,10 @@ class SessionManager implements SessionManagerInterface
      * @param string $filename
      *   The file containing the session.
      *
-     * @return WishgranterProject\Backend\Session\SessionInterface
+     * @return WishgranterProject\Backend\UserGrant\UserGrantInterface
      *   The session object.
      */
-    protected function getSessionFromFile(string $filename): SessionInterface
+    protected function getGrantFromFile(string $filename): UserGrantInterface
     {
         $contents = file_get_contents($filename);
         $data     = json_decode($contents);
@@ -100,19 +79,5 @@ class SessionManager implements SessionManagerInterface
         );
 
         return $session;
-    }
-
-    /**
-     * Given a session id, retrieves the filename containing the session's data.
-     *
-     * @param string $sessionId
-     *   Session id.
-     *
-     * @return string
-     *   Absolute filename.
-     */
-    protected function getFilename(string $sessionId): string
-    {
-        return $this->directory . '/' . $sessionId . '.json';
     }
 }
