@@ -35,7 +35,7 @@ class Token extends ExpirableCredential implements TokenInterface
      */
     public function getAction(): string
     {
-        return $this->token;
+        return $this->action;
     }
 
     /**

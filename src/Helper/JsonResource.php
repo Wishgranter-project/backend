@@ -100,6 +100,9 @@ class JsonResource
             case 201:
                 $response = $factory->created($json);
                 break;
+            case 204:
+                $response = $factory->response(204, 'Deleted', $json);
+                break;
             case 400:
                 $response = $factory->badRequest($json);
                 break;

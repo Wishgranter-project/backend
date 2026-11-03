@@ -74,7 +74,10 @@ class Confirmation extends AuthenticatedController
         $expiration = strtotime('+5 minutes');
         $token = $this->tokenManager->issueNewToken($user, $action, $expiration);
 
-        $resource = new JsonResource($token->dataTransfer(), 200);
+        $data = $token->dataTransfer();
+        $data['id'] = $token->getId();
+
+        $resource = new JsonResource($data, 200);
         $resource->addSuccess(200, 'Token created', 'It shall expire in the next five minutes.');
 
         return $resource->renderResponse();

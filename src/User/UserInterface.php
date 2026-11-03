@@ -136,4 +136,9 @@ interface UserInterface
      *   Itself.
      */
     public function setLastLogin(int $timestamp): UserInterface;
+
+    /**
+     * Deletes the user.
+     */
+    public function delete(): void;
 }

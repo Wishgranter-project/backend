@@ -134,6 +134,14 @@ class User implements UserInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function delete(): void
+    {
+        unlink($this->getFile()->filename);
+    }
+
+    /**
      * Return the object to read the user's data.
      *
      * @return AdinanCenci\JsonLines\JsonLines
