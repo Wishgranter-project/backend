@@ -3,11 +3,11 @@
 namespace WishgranterProject\Backend\Token;
 
 use WishgranterProject\Backend\User\UserInterface;
-use WishgranterProject\Backend\UserGrant\UserGrantManager;
-use WishgranterProject\Backend\UserGrant\UserGrantInterface;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialManager;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialInterface;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-class TokenManager extends UserGrantManager implements TokenManagerInterface
+class TokenManager extends ExpirableCredentialManager implements TokenManagerInterface
 {
     /**
      * {@inheritdoc}
@@ -38,7 +38,7 @@ class TokenManager extends UserGrantManager implements TokenManagerInterface
      */
     public function getToken(string $tokenId): ?TokenInterface
     {
-        return $this->getGrant($tokenId);
+        return $this->getCredential($tokenId);
     }
 
     /**
@@ -46,7 +46,7 @@ class TokenManager extends UserGrantManager implements TokenManagerInterface
      */
     public function tokenExists(string $tokenId): bool
     {
-        return $this->grantExists($tokenId);
+        return $this->credentialExists($tokenId);
     }
 
     /**
@@ -54,7 +54,7 @@ class TokenManager extends UserGrantManager implements TokenManagerInterface
      */
     public function getTokens()
     {
-        return $this->getGrants();
+        return $this->getCredentials();
     }
 
     /**
@@ -84,7 +84,7 @@ class TokenManager extends UserGrantManager implements TokenManagerInterface
     /**
      * {@inheritdoc}
      */
-    protected function getGrantFromFile(string $filename): UserGrantInterface
+    protected function getCredentialFromFile(string $filename): ExpirableCredentialInterface
     {
         $contents = file_get_contents($filename);
         $data     = json_decode($contents);

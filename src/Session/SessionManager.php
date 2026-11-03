@@ -4,18 +4,18 @@ namespace WishgranterProject\Backend\Session;
 
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\Backend\User\UserInterface;
-use WishgranterProject\Backend\UserGrant\UserGrantManager;
-use WishgranterProject\Backend\UserGrant\UserGrantInterface;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialManager;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialInterface;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-class SessionManager extends UserGrantManager implements SessionManagerInterface
+class SessionManager extends ExpirableCredentialManager implements SessionManagerInterface
 {
     /**
      * {@inheritdoc}
      */
     public function getSession(string $sessionId): ?SessionInterface
     {
-        return $this->getGrant($sessionId);
+        return $this->getCredential($sessionId);
     }
 
     /**
@@ -23,7 +23,7 @@ class SessionManager extends UserGrantManager implements SessionManagerInterface
      */
     public function sessionExists(string $sessionId): bool
     {
-        return $this->grantExists($sessionId);
+        return $this->credentialExists($sessionId);
     }
 
     /**
@@ -31,7 +31,7 @@ class SessionManager extends UserGrantManager implements SessionManagerInterface
      */
     public function getSessions()
     {
-        return $this->getGrants();
+        return $this->getCredentials();
     }
 
     /**
@@ -60,7 +60,7 @@ class SessionManager extends UserGrantManager implements SessionManagerInterface
     /**
      * {@inheritdoc}
      */
-    protected function getGrantFromFile(string $filename): UserGrantInterface
+    protected function getCredentialFromFile(string $filename): ExpirableCredentialInterface
     {
         $contents = file_get_contents($filename);
         $data     = json_decode($contents);

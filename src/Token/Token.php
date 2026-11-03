@@ -3,9 +3,9 @@
 namespace WishgranterProject\Backend\Token;
 
 use WishgranterProject\Backend\User\UserInterface;
-use WishgranterProject\Backend\UserGrant\UserGrant;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredential;
 
-class Token extends UserGrant implements TokenInterface
+class Token extends ExpirableCredential implements TokenInterface
 {
     /**
      * Constructor.

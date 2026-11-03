@@ -16,7 +16,8 @@ use WishgranterProject\Backend\Token\TokenManager;
 /**
  * Security confirmation.
  *
- * Generates a unique, short-lived token to be used in destructive requests.
+ * Generates a unique, short-lived token to be used in sensitive requests,
+ * mainly destructive ones.
  */
 class Confirmation extends AuthenticatedController
 {

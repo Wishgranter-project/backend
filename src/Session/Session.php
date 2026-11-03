@@ -2,8 +2,8 @@
 
 namespace WishgranterProject\Backend\Session;
 
-use WishgranterProject\Backend\UserGrant\UserGrant;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredential;
 
-class Session extends UserGrant implements SessionInterface
+class Session extends ExpirableCredential implements SessionInterface
 {
 }

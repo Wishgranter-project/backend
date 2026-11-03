@@ -1,10 +1,10 @@
 <?php
 
-namespace WishgranterProject\Backend\UserGrant;
+namespace WishgranterProject\Backend\ExpirableCredential;
 
 use WishgranterProject\Backend\User\UserInterface;
 
-abstract class UserGrant implements UserGrantInterface
+abstract class ExpirableCredential implements ExpirableCredentialInterface
 {
     /**
      * Constructor.

@@ -1,18 +1,18 @@
 <?php
 
-namespace WishgranterProject\Backend\UserGrant;
+namespace WishgranterProject\Backend\ExpirableCredential;
 
 use WishgranterProject\Backend\User\UserManager;
 use WishgranterProject\Backend\User\UserInterface;
 use WishgranterProject\DescriptivePlaylist\Utils\Helpers;
 
-abstract class UserGrantManager
+abstract class ExpirableCredentialManager
 {
     /**
      * Constructor.
      *
      * @param string $directory
-     *   Absolute file where the grant files are to be stored.
+     *   Absolute file where the credential files are to be stored.
      * @param WishgranterProject\Backend\User\UserManager $userManager
      *   User manager service.
      */
@@ -25,55 +25,55 @@ abstract class UserGrantManager
     /**
      * Given an Id, returns the respective grant.
      *
-     * @param string $grantId
+     * @param string $credentialId
      *   The Id.
      *
-     * @return null|WishgranterProject\Backend\UserGrant\UserGrantInterface
-     *   The grant object.
+     * @return null|WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialInterface
+     *   The credential object.
      */
-    public function getGrant(string $grantId): ?UserGrantInterface
+    public function getCredential(string $credentialId): ?ExpirableCredentialInterface
     {
-        if (!$this->grantExists($grantId)) {
+        if (!$this->credentialExists($credentialId)) {
             return null;
         }
 
-        $filename = $this->getFilename($grantId);
-        return $this->getGrantFromFile($filename);
+        $filename = $this->getFilename($credentialId);
+        return $this->getCredentialFromFile($filename);
     }
 
     /**
-     * Checks if a specific grant exists.
+     * Checks if a specific credential exists.
      *
-     * @param string $grantId
+     * @param string $credentialId
      *   The Id.
      *
      * @return bool
      *   True if it exists.
      */
-    public function grantExists(string $grantId): bool
+    public function credentialExists(string $credentialId): bool
     {
-        $filename = $this->getFilename($grantId);
+        $filename = $this->getFilename($credentialId);
         return file_exists($filename);
     }
 
     /**
-     * Return all grants to iterate through them.
+     * Return all credentials to iterate through them.
      */
-    public function getGrants()
+    public function getCredentials()
     {
         $files = $this->scandir();
 
         foreach ($files as $file) {
-            yield $this->getGrantFromFile($file);
+            yield $this->getCredentialFromFile($file);
         }
     }
 
     /**
-     * Clean up expired grants.
+     * Clean up expired credentials.
      */
     public function cleanUp()
     {
-        foreach ($this->getGrants() as $grant) {
+        foreach ($this->getCredentials() as $grant) {
             if ($grant->isExpired()) {
                 $grant->delete();
             }
@@ -81,7 +81,7 @@ abstract class UserGrantManager
     }
 
     /**
-     * Scans the directory for grant files.
+     * Scans the directory for credential files.
      *
      * @return array
      *   Absolute path to the files.
@@ -99,20 +99,20 @@ abstract class UserGrantManager
     }
 
     /**
-     * Instantiates a grant object from a file.
+     * Instantiates a credential object from a file.
      *
      * @param string $filename
-     *   The file containing the grant.
+     *   The file containing the credential.
      *
-     * @return WishgranterProject\Backend\UserGrant\UserGrantInterface
-     *   The grant object.
+     * @return WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialInterface
+     *   The credential object.
      */
-    protected function getGrantFromFile(string $filename): UserGrantInterface
+    protected function getCredentialFromFile(string $filename): ExpirableCredentialInterface
     {
         $contents = file_get_contents($filename);
         $data     = json_decode($contents);
 
-        $grant = new UserGrant(
+        $grant = new ExpirableCredential(
             $filename,
             $this->userManager->getUser($data->userId),
             $data->created,
@@ -123,16 +123,16 @@ abstract class UserGrantManager
     }
 
     /**
-     * Given a grant id, retrieves the filename containing the grant's data.
+     * Given an id, retrieves the filename containing the credential's data.
      *
-     * @param string $grantId
+     * @param string $credentialId
      *   Grant id.
      *
      * @return string
      *   Absolute filename.
      */
-    protected function getFilename(string $grantId): string
+    protected function getFilename(string $credentialId): string
     {
-        return $this->directory . '/' . $grantId . '.json';
+        return $this->directory . '/' . $credentialId . '.json';
     }
 }

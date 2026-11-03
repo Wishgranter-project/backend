@@ -2,9 +2,9 @@
 
 namespace WishgranterProject\Backend\Token;
 
-use WishgranterProject\Backend\UserGrant\UserGrantInterface;
+use WishgranterProject\Backend\ExpirableCredential\ExpirableCredentialInterface;
 
-interface TokenInterface extends UserGrantInterface
+interface TokenInterface extends ExpirableCredentialInterface
 {
     /**
      * Return the action the token clears.
