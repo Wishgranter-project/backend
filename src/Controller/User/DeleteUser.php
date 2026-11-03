@@ -95,6 +95,6 @@ class DeleteUser extends UserController
 
         return $isAdmin
             ? $this->accessGranted()
-            : $this->accessDenied('You are not authorized delete this user.');
+            : $this->accessDenied('You are not authorized to delete this user.');
     }
 }
